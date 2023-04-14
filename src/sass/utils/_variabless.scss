@@ -1,0 +1,74 @@
+/* ------FONTS------ */
+$main-font: Roboto;
+
+
+/* ------COLORS------ */
+
+/* ------font colors----- */
+$main-font-dark-color: #000000;
+$main-font-bright-color: #FFFFFF;
+$movie-category-color: #FF6B08;
+$card-categories-name-color: #C8C8C8;
+$link-color: #545454;
+$warning-color: #FF001B;
+
+/* ------background colors------ */
+$main-background-color: #FFFFFF;
+$footer-background-color: #F7F7F7;
+$button-background-color: #FF6B01;
+$pagination-highlighted-background-color: #FF6B08;
+$pagination-arrows-background-color: #F7F7F7;
+$modal-overlay-color: rgba(0, 0, 0, 25%);
+
+/* ------other colors------ */
+$underline-color: #FF001B;
+
+
+/* ------OTHER VARIABLES------ */
+$border-radius: 5px;
+
+
+/* ------MIXIN------ */
+@mixin mobile-retina {
+  @media (max-width: 767px),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet-retina {
+  @media (min-width: 768px),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+@mixin desktop-retina {
+  @media (min-width: 1280px),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    @content;
+  }
+}
+/* reminder how to use mixin in media queries:
+.products {
+  gap: 20px;
+  
+  @include desktop {
+    gap: 24px;
+  }
+} 
+*/
