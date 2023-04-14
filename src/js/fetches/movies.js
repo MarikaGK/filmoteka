@@ -4,6 +4,7 @@
 const apiKey = "?api_key=11f568ee70218bec08ad7368f7bb3250";
 const apiUrl = "https://api.themoviedb.org/3/search/movie";
 const popularUrl = "https://api.themoviedb.org/3/movie/popular"
+const genresUrl = "https://api.themoviedb.org/3/genre/movie/list"
 let page = 1;
 
 
@@ -32,3 +33,17 @@ export const checkMovie = async (movieTitle) => {
     } catch (error) {
       console.error(error);
     }}
+
+
+// 3.
+//?api_key=<<api_key>>&language=en-US
+export const checkGenres = async () =>{
+  try {
+    const response = await fetch(genresUrl+apiKey);
+    const data = await response.json();
+    console.log('Poniżej przykladowy console.log dla listy gatunków')
+    console.log(data)
+//TO DO function here!
+  } catch (error) {
+    console.error(error);
+  }}
