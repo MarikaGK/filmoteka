@@ -1,19 +1,18 @@
 const API_KEY = 'b118f38ec77100db6763b4cc83604589';
 const gallery = document.querySelector('.gallery');
 
-const fetchGenres = async () => {
-  const genreArray =
-    `https://api.themoviedb.org/3/genre/movie/list` + `?api_key=${API_KEY}`;
-  try {
-    const response = await fetch(genreArray);
-    const genres = await response.json();
-    return genres;
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const fetchGenres = async () => {
+//   const genreArray = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
+//   try {
+//     const response = await fetch(genreArray);
+//     const genres = await response.json();
+//     return genres;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-fetchGenres();
+// fetchGenres();
 
 // Ustalic genres:
 // poiterowac po main genre array z serwera
@@ -56,9 +55,9 @@ const fetchTrendingMovies = async () => {
 };
 
 const startRenderingTrendingMovies = async () => {
-  const fetchedTrendingMovies = await fetchTrendingMovies();
-  console.log(fetchedTrendingMovies);
-  renderMovies(fetchedTrendingMovies.results);
+  const trendingMovies = await fetchTrendingMovies();
+  console.log(trendingMovies);
+  renderMovies(trendingMovies.results);
 };
 
 startRenderingTrendingMovies();
