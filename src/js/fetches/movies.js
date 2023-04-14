@@ -8,10 +8,11 @@ let page = 1;
 
 
 //  1.    ------ Function - fetch - Popular movies ------ 
-const checkPopular = async (page = 1) => {
+export const checkPopular = async (page = 1) => {
     try{
       const response = await fetch(popularUrl+apiKey+'&page='+page)
       const data = await response.json();
+      console.log('Poniżej przykladowy console.log dla popularnych')
       console.log(data)
 // TO DO function here!
     }catch(error){
@@ -21,10 +22,11 @@ const checkPopular = async (page = 1) => {
 
 //  2.    ------ function fetch - Movie checker - by title ------ 
 // movieTitle is a .value from header input
-const checkMovie = async (movieTitle) => {
+export const checkMovie = async (movieTitle) => {
     try {
       const response = await fetch(apiUrl+apiKey+'&query='+ movieTitle+'&page='+ page);
       const data = await response.json();
+      console.log('Poniżej przykladowy console.log dla filmu "Rambo"')
       console.log(data)
 //TO DO function here!
     } catch (error) {
