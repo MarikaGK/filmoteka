@@ -5,9 +5,11 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
+    
     @include tablet {
         height: 79px;
     }
+    
     @include desktop {
         height: 77px;
     }
@@ -20,6 +22,7 @@
     justify-content: center;
     gap: 10px;
     padding: 0;
+    
     @include tablet {
         flex-direction: row;
         gap: 4px;
