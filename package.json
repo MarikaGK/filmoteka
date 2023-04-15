@@ -2,7 +2,7 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://github.com/MarikaGK/filmoteka-js-team-project",
+  "homepage": "https://marikagk.github.io/filmoteka-js-team-project/",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /filmoteka-js-team-project/"
