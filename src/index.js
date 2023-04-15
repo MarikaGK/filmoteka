@@ -1,6 +1,11 @@
+
 import {getMovie, getPopular, getGenres} from './js/fetches/movies.js'
 
-//for results check console
-getMovie('Rambo');
-getPopular();
-getGenres();
+//for result for "Rambo" check console and use example from below
+// getMovie('Rambo');
+// getPopular();
+// getGenres();
+
+
+import { renderMovies } from './render';
+
