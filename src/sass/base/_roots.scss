@@ -1,0 +1,23 @@
+:root {
+  font-family: $main-font;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.rating {
+  display: flex;
+  width: 36px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+  color: $main-font-bright-color;
+  background-color: $button-background-color;
+  border-radius: $border-radius;
+}

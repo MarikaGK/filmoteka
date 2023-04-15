@@ -2,11 +2,64 @@
   width: 100vw;
   height: 100vh;
   background-color: $modal-overlay-color;
+  padding: 20px 20px 38px 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-card {
-  margin: 20px 20px 38px 20px;
+  position: relative;
   padding: 48px 20px;
+  width: 280px;
   background-color: $main-background-color;
-  
+}
+
+.modal__icon-close {
+  fill: $main-font-dark-color;
+  color: $main-font-dark-color;
+}
+
+.modal-card__movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.modal-card__poster {
+  width: 240px;
+  height: 357px;
+  border-radius: $border-radius;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.modal-card__movie-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-card__movie-title {
+  padding: 20px 0;
+  font-family: $main-font;
+  color: $main-font-dark-color;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.17;
+}
+
+.modal-card__about {
+  padding-top: 20px;
+  padding-bottom: 8px;
+  font-family: $main-font;
+  color: $main-font-dark-color;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.modal-card__about-description {
+  padding-bottom: 20px;
+  color: $main-font-dark-color;
+  font-size: 12px;
+  line-height: 1.67;
 }
