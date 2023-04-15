@@ -2,7 +2,6 @@
   width: 100vw;
   height: 100vh;
   background-color: $modal-overlay-color;
-  padding: 20px 20px 38px 20px;
   display: flex;
   justify-content: center;
 }
@@ -11,7 +10,22 @@
   position: relative;
   padding: 48px 20px;
   width: 280px;
+  height: auto;
   background-color: $main-background-color;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  @include tablet {
+    width: 704px;
+    margin: auto;
+    padding: 37px 36px;
+  }
+
+  @include desktop {
+    width: 806px;
+    padding: 16px 12px;
+  }
 }
 
 .modal__icon-close {
@@ -23,6 +37,15 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
+
+  @include tablet {
+    flex-direction: row;
+    gap: 68px;
+  }
+
+  @include desktop {
+    gap: 16px;
+  }
 }
 
 .modal-card__poster {
@@ -31,6 +54,16 @@
   border-radius: $border-radius;
   background-size: cover;
   overflow: hidden;
+
+  @include tablet {
+    width: 264px;
+    height: 373.5px;
+  }
+
+  @include desktop {
+    width: 375px;
+    height: 478px;
+  }
 }
 
 .modal-card__movie-description {
@@ -45,6 +78,10 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.17;
+
+  @include desktop {
+    font-size: 30px;
+  }
 }
 
 .modal-card__about {
