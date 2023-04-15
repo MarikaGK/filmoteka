@@ -1,16 +1,15 @@
 .footer {
     height: 100px;
     color: $link-color;
-    padding-top: 12px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     @include tablet {
         height: 79px;
-        @include desktop {
-                height: 77px;
-            }
+    }
+    @include desktop {
+        height: 77px;
     }
 }
 
