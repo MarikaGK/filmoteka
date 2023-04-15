@@ -1,1 +1,1 @@
-
+import { renderMovies } from './render';
