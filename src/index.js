@@ -5,4 +5,4 @@ import { getMovie, getPopular, getGenres } from './js/fetches/movies.js';
 // getPopular();
 // getGenres();
 
-import { renderMovies } from './render';
+import { renderMovies } from './js/rendering/render.js';
