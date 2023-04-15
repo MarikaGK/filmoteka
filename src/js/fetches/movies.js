@@ -11,7 +11,7 @@ let page = 1;
 //  1.    ------ Function - fetch - Popular movies ------ 
 export const getPopular = async (page = 1) => {
     try{
-      const response = await fetch(popularUrl+`?api_key=` + apiKey + '&page=' + page)
+      const response = await fetch(popularUrl + `?api_key=` + apiKey + '&page=' + page)
       const data = await response.json();
       console.log('Poniżej przykladowy console.log dla popularnych')
       console.log(data)
@@ -25,7 +25,7 @@ export const getPopular = async (page = 1) => {
 // movieTitle is a .value from header input
 export const getMovie = async (movieTitle) => {
     try {
-      const response = await fetch(apiUrl+`?api_key=` + apiKey + '&query=' + movieTitle+'&page=' + page);
+      const response = await fetch(apiUrl + `?api_key=` + apiKey + '&query=' + movieTitle + '&page=' + page);
       const data = await response.json();
       console.log('Poniżej przykladowy console.log dla filmu "Rambo"')
       console.log(data)
