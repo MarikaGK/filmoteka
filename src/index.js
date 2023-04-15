@@ -1,2 +1,1 @@
-import { renderMovies } from './render';
-// comment from Maciek Kk
+import { renderMovies } from './js/render';
