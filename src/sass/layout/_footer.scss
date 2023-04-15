@@ -1,5 +1,6 @@
 .footer {
     height: 100px;
+    color: $link-color;
     &__wrapper {
     display: flex;
     flex-direction: column;
@@ -17,7 +18,7 @@
         height: 79px;
         &__wrapper {
             flex-direction: row;
-            gap: 0px;
+            gap: 4px;
         }
     }
 }
