@@ -25,7 +25,7 @@ export const renderMovies = movies => {
     .map(movie => {
       return `
     <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" height=574 alt="${movie.original_title}" data-movie-id="${movie.id}"/>
-    <div class="movie-card">
+    <div class="movie-card" data-modal-open>
       <p class="movie-title">
         <b>${movie.original_title}</b>
       </p>
