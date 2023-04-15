@@ -24,17 +24,22 @@ export const renderMovies = movies => {
   const markupMovies = movies
     .map(movie => {
       return `
-    <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" height=574 alt="${movie.original_title}" data-movie-id="${movie.id}"/>
-    <div class="movie-card" data-modal-open>
+    <div class="movie-card" data-movie-id="${movie.id}">
+      <img src="https://image.tmdb.org/t/p/original${
+        movie.poster_path
+      }" height=574 alt="${movie.original_title}"/>
+    
       <p class="movie-title">
         <b>${movie.original_title}</b>
       </p>
-      <p class="movie-genre">
-        <b>${movie.genre_ids}</b>
-      </p>
-      <p class="movie-year">
-        <b>${movie.release_date}</b>
-      </p>
+      <div class="movie-subtitle">
+        <p class="movie-genre">
+          <b>${movie.genre_ids}</b>
+        </p>
+        <p class="movie-year">
+          <b>${parseInt(movie.release_date)}</b>
+        </p>
+      </div>
     </div>
   </a>`;
     })
