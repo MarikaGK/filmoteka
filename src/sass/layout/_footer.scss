@@ -4,10 +4,14 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 1.14;
+    display: flex;
+    justify-content: center;
     
     @include tablet {
         height: 79px;
+        font-size: 16px;
+        line-height: 1;
     }
     
     @include desktop {
@@ -32,4 +36,20 @@
 .footer__wrapper-link {
     text-decoration: underline;
     color: $link-color;
+}
+
+.footer__wrapper-animation {
+    animation: heart 2000ms infinite 1000ms;
+}
+
+@keyframes heart {
+    0% {
+        transform: scale(1);
+        }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+        }
 }
