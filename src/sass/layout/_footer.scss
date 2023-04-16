@@ -4,12 +4,14 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 1.14;
     display: flex;
     justify-content: center;
     
     @include tablet {
         height: 79px;
+        font-size: 16px;
+        line-height: 1;
     }
     
     @include desktop {
