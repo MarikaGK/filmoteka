@@ -3,15 +3,22 @@ import { renderMovies } from '../rendering/render';
 // ------ nessesary for work ------
 const apiKey = '11f568ee70218bec08ad7368f7bb3250';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
-const popularUrl = 'https://api.themoviedb.org/3/movie/popular';
-const genresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
+const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
+const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
+const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
 let page = 1;
+
+// może być przydatne do wyciągnięcia języka przeglądarki użytkownika - do zmiany języka strony/opisów filmów itd.
+// const userLocaleLang =
+//   navigator.languages && navigator.languages.length
+//     ? navigator.languages[0]
+//     : navigator.language;
 
 //  1.    ------ Function - fetch - Popular movies ------
 export const getPopular = async (page = 1) => {
   try {
     const response = await fetch(
-      popularUrl + `?api_key=` + apiKey + '&page=' + page
+      searchPopularUrl + `?api_key=` + apiKey + '&page=' + page
     );
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla popularnych');
@@ -23,9 +30,9 @@ export const getPopular = async (page = 1) => {
   }
 };
 
-//  2.    ------ function fetch - Movie checker - by title ------
+//  2.    ------ function fetch - get movies by title ------
 // movieTitle is a .value from header input
-export const getMovie = async movieTitle => {
+export const getMoviesByTitle = async movieTitle => {
   try {
     const response = await fetch(
       apiUrl + `?api_key=` + apiKey + '&query=' + movieTitle + '&page=' + page
@@ -40,14 +47,55 @@ export const getMovie = async movieTitle => {
   }
 };
 
-// 3.
+// 3.     ------ function fetch - get whole movies genres ------
 //?api_key=<<api_key>>&language=en-US
-export const getGenres = async () => {
+export const getMovieGenres = async () => {
   try {
-    const response = await fetch(genresUrl + `?api_key=` + apiKey);
+    const response = await fetch(searchGenresUrl + `?api_key=` + apiKey);
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla listy gatunków');
     console.log(data);
+    //TO DO function here!
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//  4.    ------ Function - fetch - get movie details object by movie ID ------
+export const getMovieById = async movieId => {
+  try {
+    const response = await fetch(
+      searchByMovieIdUrl + movieId + `?api_key=` + apiKey
+    );
+    const data = await response.json();
+    console.log(
+      `Poniżej console.log dla jednego filmu (${data.original_title}) po movieId: ${movieId}`
+    );
+    console.log(data);
+    //TO DO function here!
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//  5.    ------ Function - fetch - get trailer's url by movie ID ------
+export const returnTrailerUrlByMovieId = async movieId => {
+  try {
+    const response = await fetch(
+      searchByMovieIdUrl + movieId + '/videos' + `?api_key=` + apiKey
+    );
+    const data = await response.json();
+    const findIndexOfKeyTrailer = data.results.findIndex(
+      youtubeKey => youtubeKey.type === 'Trailer'
+    );
+    const youtubeKey = data.results[findIndexOfKeyTrailer].key;
+    const movieTrailerUrl = `https://www.youtube.com/watch?v=${youtubeKey}`;
+    console.log(
+      `Poniżej link do Video na Youtube jednego filmu po movieId: ${movieId}`
+    );
+    console.log(movieTrailerUrl);
+    return movieTrailerUrl;
     //TO DO function here!
   } catch (error) {
     console.error(error);
