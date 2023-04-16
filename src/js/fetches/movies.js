@@ -20,6 +20,10 @@ export const getPopular = async (page = 1) => {
     const response = await fetch(
       searchPopularUrl + `?api_key=` + apiKey + '&page=' + page
     );
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla popularnych');
     console.log(data);
@@ -37,6 +41,10 @@ export const getMoviesByTitle = async movieTitle => {
     const response = await fetch(
       apiUrl + `?api_key=` + apiKey + '&query=' + movieTitle + '&page=' + page
     );
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
     const data = await response.json();
     console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
     console.log(data);
@@ -52,6 +60,10 @@ export const getMoviesByTitle = async movieTitle => {
 export const getMovieGenres = async () => {
   try {
     const response = await fetch(searchGenresUrl + `?api_key=` + apiKey);
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla listy gatunków');
     console.log(data);
@@ -67,6 +79,10 @@ export const getMovieById = async movieId => {
     const response = await fetch(
       searchByMovieIdUrl + movieId + `?api_key=` + apiKey
     );
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
     const data = await response.json();
     console.log(
       `Poniżej console.log dla jednego filmu (${data.original_title}) po movieId: ${movieId}`
@@ -85,6 +101,10 @@ export const returnTrailerUrlByMovieId = async movieId => {
     const response = await fetch(
       searchByMovieIdUrl + movieId + '/videos' + `?api_key=` + apiKey
     );
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
     const data = await response.json();
     const findIndexOfKeyTrailer = data.results.findIndex(
       youtubeKey => youtubeKey.type === 'Trailer'
