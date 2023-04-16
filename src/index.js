@@ -25,4 +25,5 @@ returnTrailerUrlByMovieId(newMovieIdExample);
 
 import { sendMovieToFirebase } from './js/firebase/firebase.js';
 const addToWatched = document.querySelector(".button-list_watched");
+console.log(addToWatched);
 addToWatched.addEventListener("click", sendMovieToFirebase);

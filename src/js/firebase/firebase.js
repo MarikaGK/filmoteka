@@ -24,11 +24,11 @@ const app = initializeApp(firebaseConfig);
 
 
 // const firebaseRef = app.database().ref('Watched');
-const firebaseRef = ref(getDatabase(app), 'Watched');
+const firebaseRef = ref(getDatabase(app), 'watched');
 
 sendMovieToFirebase = e => {
-    const movieToSend = e.target.movie.id;
-    console.log(e.target.movie.id);
+    const movieId = e.target.parentNode.dataset.movieId;
+    console.log(`Dodano film o id ${movieId} do listy obejrzanych`);
     // firebaseRef.push(movieToSend);
     push(firebaseRef, movieToSend);
     console.log("succes!!!!!");
