@@ -1,14 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-
-import { getAnalytics } from "firebase/analytics";
+// import { getStorage } from "firebase/storage";
+import { getDatabase, ref, push } from 'firebase/database';
+// import { getAnalytics } from "firebase/analytics";
 // jeszcze nie wiem czy będzie potrzebne
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyC3WI9OwBz4EKjWjZ6_OIwGrF26sBcAXyE",
   authDomain: "filmoteka-js-team-project.firebaseapp.com",
@@ -23,5 +19,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
+
+
+// const firebaseRef = app.database().ref('Watched');
+const firebaseRef = ref(getDatabase(app), 'Watched');
+
+sendMovieToFirebase = e => {
+    const movieToSend = e.target.movie.id;
+    console.log(e.target.movie.id);
+    // firebaseRef.push(movieToSend);
+    push(firebaseRef, movieToSend);
+    console.log("succes!!!!!");
+};

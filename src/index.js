@@ -21,3 +21,8 @@ let newMovieIdExample = '603692'; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
 getMovieById(newMovieIdExample);
 returnTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js';
+
+
+import { sendMovieToFirebase } from './js/firebase/firebase.js';
+const addToWatched = document.querySelector(".button-list_watched");
+addToWatched.addEventListener("click", sendMovieToFirebase);
