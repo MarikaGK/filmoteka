@@ -19,8 +19,8 @@
 
 .movie-img {
   width: 100%;
-  height: auto;
   border-radius: 5px;
+  object-fit: fill;
 }
 
 p {
@@ -29,7 +29,6 @@ p {
 
 .movie-card {
   font-family: $main-font, sans-serif;
-  display: block;
   width: 100%;
   text-decoration: none;
 }
