@@ -1,11 +1,3 @@
-// export const loadGallery = () => {window.addEventListener("load", ()=>
-//     {const loader = document.querySelector('.loader')
-//     .setTimeout(startLoad,1500)
-//         const startLoad = () => {loader.classList.remove("loader-hidden")
-//         .setTimeout(stopLoad, 1500)
-//             const stopLoad = () => { loader.classList.add("loader-hidden") }}})}
-
-
     export const loadGallery = () => {window.addEventListener("load", ()=>{
         const loader = document.querySelector('.loader')
         loader.classList.remove("loader-hidden")
