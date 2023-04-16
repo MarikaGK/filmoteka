@@ -1,4 +1,5 @@
 import { renderMovies } from '../rendering/render';
+import { loadMovie } from '../loader.js';
 
 // ------ nessesary for work ------
 const apiKey = '11f568ee70218bec08ad7368f7bb3250';
@@ -48,6 +49,7 @@ export const getMoviesByTitle = async movieTitle => {
     const data = await response.json();
     console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
     console.log(data);
+    loadMovie()
     //TO DO function here!
     renderMovies(data.results);
   } catch (error) {
