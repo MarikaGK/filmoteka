@@ -6,6 +6,7 @@ const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
+const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 let page = 1;
 
 // może być przydatne do wyciągnięcia języka przeglądarki użytkownika - do zmiany języka strony/opisów filmów itd.
@@ -38,6 +39,7 @@ export const getPopular = async (page = 1) => {
 // movieTitle is a .value from header input
 export const getMoviesByTitle = async movieTitle => {
   try {
+    NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
       apiUrl + `?api_key=` + apiKey + '&query=' + movieTitle + '&page=' + page
     );
@@ -46,6 +48,12 @@ export const getMoviesByTitle = async movieTitle => {
       throw new Error(response.status);
     }
     const data = await response.json();
+    if (!data.total_results) {
+      NO_HIT_INFO_DIV_DOM.textContent =
+        'Search result not successful. Enter the correct movie name and search again.';
+      console.log('pusta tablica');
+      return;
+    };
     console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
     console.log(data);
     //TO DO function here!
