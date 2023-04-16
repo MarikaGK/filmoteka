@@ -10,7 +10,7 @@ import { handleSubmit } from './js/search-form-handler.js';
 //loader gallery
 import { loadGallery } from './js/loader.js';
 
-const FORM_DOM = document.querySelector('.header-input__text-box');
+const FORM_DOM = document.querySelector('.header-input__form');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 
@@ -24,4 +24,3 @@ let newMovieIdExample = '603692'; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
 getMovieById(newMovieIdExample);
 returnTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js';
-//loader initialization
