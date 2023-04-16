@@ -25,7 +25,7 @@ export const getPopular = async (page = 1) => {
 
 //  2.    ------ function fetch - Movie checker - by title ------
 // movieTitle is a .value from header input
-export const getMovie = async movieTitle => {
+export const getMovies = async movieTitle => {
   try {
     const response = await fetch(
       apiUrl + `?api_key=` + apiKey + '&query=' + movieTitle + '&page=' + page
