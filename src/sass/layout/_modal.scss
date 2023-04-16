@@ -33,7 +33,9 @@
   margin: 0;
   fill: $main-font-dark-color;
   color: $main-font-dark-color;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-card__movie-info {
