@@ -1,4 +1,5 @@
 // import { defaultImage } from '../../images/background/gallery_default_image';
+const defaultImage = '../../images/background/gallery_default_image.jpg';
 const gallery = document.querySelector('.gallery');
 
 // ------> RENDERING POPULAR/SEARCH GALLERY:
@@ -9,9 +10,11 @@ export const renderMovies = movies => {
 <<<<<<< Updated upstream
       if (movie.poster_path !== null) {
         return `<div class="movie-card" data-movie-id="${movie.id}">
-          <img class="movie-img" src="https://image.tmdb.org/t/p/original${
+          <div class="movie-card-poster"><img class="movie-img" src="https://image.tmdb.org/t/p/original${
             movie.poster_path
-          }" height=574 alt="${movie.original_title}" loading="lazy" />
+          }" width=375 height=574 alt="${
+          movie.original_title
+        }" loading="lazy" /></div>
           <p class="movie-title">${movie.original_title}</p>
           <div class="movie-subtitle">
             <p class="movie-genre">${movie.genre_ids}</p>
@@ -24,9 +27,7 @@ export const renderMovies = movies => {
         </div>`;
       } else {
         return `<div class="movie-card" data-movie-id="${movie.id}">
-          <img class="movie-img" src="${defaultImage}" height=574 alt="${
-          movie.original_title
-        }" loading="lazy"/>
+        <div class="movie-card-poster"></div>
           <p class="movie-title">${movie.original_title}</p>
           <div class="movie-subtitle">
             <p class="movie-genre">${movie.genre_ids}</p>
