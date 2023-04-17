@@ -31,9 +31,14 @@ returnTrailerUrlByMovieId(newMovieIdExample);
 // console.log(addToWatched);
 // addToWatched.addEventListener("click", sendMovieToFirebase);
 
-import { testFirst } from './js/firebase/firebase.js';
+import {
+  pushToWatched,
+  pushToQueue
+} from './js/firebase/firebase.js';
 const addToWatched = document.querySelector(".button-list_watched");
-console.log(addToWatched);
-let id = 5;
-let title = "blablabla";
-addToWatched.addEventListener("click", testFirst(id, title));
+const addToQueue = document.querySelector(".button-list_queue");
+let id;
+let title;
+addToWatched.addEventListener("click", pushToWatched(id, title));
+addToQueue.addEventListener("click", pushToQueue(id, title));
+

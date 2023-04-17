@@ -36,19 +36,35 @@ const app = initializeApp(firebaseConfig);
 // };
 
 // 2222222222222222
-export function testFirst(id, title) {
-  console.log("TEST1");
+export function pushToWatched(id, title) {
   const db = getDatabase(app);
 
   const postData = {
-    id: 2,
-    title: "tor",
+    id: 4,
+    title: "syrenka",
   };
 
   const newPostKey = push(child(ref(db), 'watched')).key;
 
   const updates = {};
   updates['/watched/' + newPostKey] = postData;
+  // updates['/user-posts/' + id + '/' + newPostKey] = postData;
+
+  return update(ref(db), updates);
+}
+
+export function pushToQueue(id, title) {
+  const db = getDatabase(app);
+
+  const postData = {
+    id: 12,
+    title: "mario",
+  };
+
+  const newPostKey = push(child(ref(db), 'queue')).key;
+
+  const updates = {};
+  updates['/queue/' + newPostKey] = postData;
   // updates['/user-posts/' + id + '/' + newPostKey] = postData;
 
   return update(ref(db), updates);
