@@ -23,7 +23,14 @@ returnTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js';
 
 
-import { sendMovieToFirebase } from './js/firebase/firebase.js';
+// import { sendMovieToFirebase } from './js/firebase/firebase.js';
+// const addToWatched = document.querySelector(".button-list_watched");
+// console.log(addToWatched);
+// addToWatched.addEventListener("click", sendMovieToFirebase);
+
+import { testFirst } from './js/firebase/firebase.js';
 const addToWatched = document.querySelector(".button-list_watched");
 console.log(addToWatched);
-addToWatched.addEventListener("click", sendMovieToFirebase);
+let id = 5;
+let title = "blablabla";
+addToWatched.addEventListener("click", testFirst(id, title));

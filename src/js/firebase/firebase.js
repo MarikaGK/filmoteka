@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// import { getStorage } from "firebase/storage";
-import { getDatabase, ref, push } from 'firebase/database';
+import { getDatabase, ref, push, child, update } from 'firebase/database';
 // import { getAnalytics } from "firebase/analytics";
 // jeszcze nie wiem czy będzie potrzebne
 
@@ -22,14 +21,36 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
 
+// 111111111111111
+
 
 // const firebaseRef = app.database().ref('Watched');
-const firebaseRef = ref(getDatabase(app), 'watched');
+// const firebaseRef = ref(getDatabase(app), 'watched');
 
-sendMovieToFirebase = e => {
-    const movieId = e.target.parentNode.dataset.movieId;
-    console.log(`Dodano film o id ${movieId} do listy obejrzanych`);
-    // firebaseRef.push(movieToSend);
-    push(firebaseRef, movieToSend);
-    console.log("succes!!!!!");
-};
+// sendMovieToFirebase = e => {
+//     const movieId = e.target.parentNode.dataset.movieId;
+//     console.log(`Dodano film o id ${movieId} do listy obejrzanych`);
+//     // firebaseRef.push(movieToSend);
+//     push(firebaseRef, movieToSend);
+//     console.log("succes!!!!!");
+// };
+
+// 2222222222222222
+export function testFirst(id, title) {
+  console.log("TEST1");
+  const db = getDatabase(app);
+
+  const postData = {
+    id: 2,
+    title: "tor",
+  };
+
+  const newPostKey = push(child(ref(db), 'watched')).key;
+
+  const updates = {};
+  updates['/watched/' + newPostKey] = postData;
+  // updates['/user-posts/' + id + '/' + newPostKey] = postData;
+
+  return update(ref(db), updates);
+}
+
