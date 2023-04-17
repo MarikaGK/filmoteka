@@ -1,35 +1,51 @@
 <div class="container">
-    <div class="header">
-        <nav class="header-nav">
-            <a href="#" class="header-nav__home-page-btn"><p>FILMOTEKA</p></a>
-                <svg class="header-nav__mobile-menu-icon" width="0" height="0" viewBox="0 0 0 0">
-                    <use href="#"></use>
-                </svg>
-            <ul class="header-nav__menu">
-                <li class="header-nav__element">
-                    <a class="header-nav__link" href="#">
-                        <p class="header-nav__link-text">HOME</p>
-                    </a>
-                </li>
-                <li class="header-nav__element">
-                    <a class="header-nav__link" href="#">
-                        <p class="header-nav__link-text">MY LIBRARY</p>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="header-input">
-            <form class="header-input__form">
-                <input type="text" placeholder="Movie search" class="header-input__text-box">
-                <button id="header-input__button">
-                    <svg class="header-input__icon" width="12" height="12" viewBox="0 0 32 32">
-                        <use href='./images/icons/icons.svg#icon-search'></use>
-                    </svg>
-                </button>
-            </form>
-            <div class="header-input__error-log">
-                <!-- Tu pojawi się Error w przypadku braku wyników wyszukiwanian -->
-            </div>   
-        </div>
+  <div class="header">
+    <nav class="header-nav">
+      <a href="./index.html" class="header-nav__home-page-btn">
+        <svg
+          class="header-nav__mobile-menu-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 32 32"
+        >
+          <use href="./images/icons/icons.svg#icon-film"></use>
+        </svg>
+        <p class="header-nav__menu-title">FILMOTEKA</p>
+      </a>
+      <ul class="header-nav__menu">
+        <li class="header-nav__element">
+          <a class="header-nav__link" href="./index.html">
+            <p class="header-nav__link-text">HOME</p>
+          </a>
+        </li>
+        <li class="header-nav__element">
+          <a class="header-nav__link" href="./my-library.html">
+            <p class="header-nav__link-text">MY LIBRARY</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-input">
+      <form class="header-input__form">
+        <input
+          type="text"
+          placeholder="Movie search"
+          class="header-input__text-box"
+        />
+        <button id="header-input__button" type="submit" title="search-btn">
+          <svg
+            class="header-input__icon"
+            width="12"
+            height="12"
+            viewBox="0 0 32 32"
+          >
+            <use href="./images/icons/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+      <div class="header-no-hit-info">
+        <!-- info when empty and no hit searching -->
+      </div>
     </div>
+  </div>
 </div>

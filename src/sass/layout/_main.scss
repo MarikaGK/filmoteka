@@ -1,61 +1,142 @@
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 20px;
-  margin: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  // grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
-@media screen and (min-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 32px;
-    margin: 0 32px;
+// @include tablet {
+//   .gallery {
+//     grid-template-columns: repeat(2, 1fr);
+//     grid-gap: 32px;
+//   }
+// }
+
+// @include desktop {
+//   .gallery {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+// }
+
+.movie-card-poster {
+  overflow: hidden;
+  height: 402px;
+  width: 280px;
+  border-radius: $border-radius;
+  // background-image: url(/src/images/background/gallery_default_image.jpg);
+  // background-size: cover;
+  // background-position: center;
+  background-color: inherit;
+  background-image: url(/src/images/icons/filmotekalogo.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include tablet {
+    height: 455px;
+    width: 336px;
+  }
+
+  @include desktop {
+    height: 574px;
+    width: 395px;
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-img {
+.movie-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  object-fit: cover;
+  will-change: transform;
+  transform: scale(1.001);
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.movie-img:hover,
+.movie-img:focus {
+  transform: scale(1.05);
 }
 
 .movie-card {
-  display: block;
-  width: 100%;
+  font-family: $main-font, sans-serif;
   text-decoration: none;
+  width: 280px;
+
+  @include tablet {
+    width: 336px;
+  }
+
+  @include desktop {
+    width: 395px;
+  }
 }
 
 .movie-title {
   display: block;
-  font-size: 20px;
-  line-height: 24px;
-  font-style: medium;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500;
   text-transform: uppercase;
+  margin: 8px 0 6px 0;
+}
+
+@include desktop {
+  .movie-title {
+    font-size: 20px;
+    line-height: 20px;
+  }
 }
 
 .movie-subtitle {
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
+  align-items: center;
+}
+
+@include desktop {
+  .movie-subtitle {
+    font-size: 20px;
+    line-height: 20px;
+  }
 }
 
 .movie-genre {
-  font-size: 20px;
-  line-height: 24px;
-  color: #ff6b08;
-  border-right: 2px solid #ff6b08;
+  color: $movie-category-color;
+  border-right: 2px solid $movie-category-color;
   padding-right: 6px;
 }
 
 .movie-year {
-  font-size: 20px;
-  line-height: 24px;
-  color: #ff6b08;
+  color: $movie-category-color;
   padding-left: 6px;
+}
+
+.movie-vote {
+  width: 36px;
+  height: 16px;
+  font-size: 12px;
+  color: $main-font-bright-color;
+  line-height: 14px;
+  background-color: $button-background-color;
+  border-radius: 5px;
+  border: none;
+  pointer-events: none;
+  padding: 1px 3px;
+  margin-left: 8px;
+  margin-top: 0;
+}
+
+@include desktop {
+  .movie-vote {
+    width: 40px;
+    height: 20px;
+  }
 }
