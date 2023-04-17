@@ -6,6 +6,7 @@ const gallery = document.querySelector('.gallery');
 export const renderMovies = movies => {
   const markupMovies = movies
     .map(movie => {
+<<<<<<< Updated upstream
       if (movie.poster_path !== null) {
         return `<div class="movie-card" data-movie-id="${movie.id}">
           <img class="movie-img" src="https://image.tmdb.org/t/p/original${
@@ -37,6 +38,29 @@ export const renderMovies = movies => {
           </div>
         </div>`;
       }
+=======
+      return `
+    <div class="movie-card" data-movie-id="${movie.id}">
+      <img class="movie-img" src="https://image.tmdb.org/t/p/original${
+        movie.poster_path
+      }" height=574 alt="${movie.original_title}"/>
+    
+      <p class="movie-title">${movie.original_title}
+      </p>
+      <div class="movie-subtitle">
+        <p class="movie-genre">${movie.genre_ids}  |
+        </p>
+        <p class="movie-year">${parseInt(movie.release_date)}
+        </p>
+        <p>
+          <button class="movie-vote" type="button">${movie.vote_average.toPrecision(
+            2
+          )}</button>
+        </p>
+      </div>
+    </div>
+  </a>`;
+>>>>>>> Stashed changes
     })
     .join('');
   gallery.insertAdjacentHTML('beforeend', markupMovies);
