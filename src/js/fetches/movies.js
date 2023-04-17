@@ -16,7 +16,29 @@ let page = 1;
 //     ? navigator.languages[0]
 //     : navigator.language;
 
-//  1.    ------ Function - fetch - Popular movies ------
+// 1.     ------ function fetch - get whole movies genres ------
+//?api_key=<<api_key>>&language=en-US
+export const getMovieGenres = async () => {
+  try {
+    const response = await fetch(searchGenresUrl + `?api_key=` + apiKey);
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    const data = await response.json();
+    console.log('Poniżej przykladowy console.log dla listy gatunków');
+    console.log(data.genres);
+    return data.genres;
+    //TO DO function here!
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const genresIdArray = getMovieGenres().then();
+console.log(genresIdArray);
+
+//  2.    ------ Function - fetch - Popular movies ------
 export const getPopular = async (page = 1) => {
   try {
     const response = await fetch(
@@ -29,14 +51,15 @@ export const getPopular = async (page = 1) => {
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla popularnych');
     console.log(data);
+    console.log(genresIdArray);
     // TO DO function here!
-    renderMovies(data.results);
+    renderMovies(data.results, genresIdArray);
   } catch (error) {
     console.error(error);
   }
 };
 
-//  2.    ------ function fetch - get movies by title ------
+//  3.    ------ function fetch - get movies by title ------
 // movieTitle is a .value from header input
 export const getMoviesByTitle = async movieTitle => {
   try {
@@ -78,6 +101,7 @@ export const getMovieGenres = async () => {
     console.log('Poniżej przykladowy console.log dla listy gatunków');
     console.log(data.genres);
     //TO DO function here!
+    renderMovies(data.results, genresIdArray);
   } catch (error) {
     console.error(error);
   }
@@ -131,19 +155,3 @@ export const returnTrailerUrlByMovieId = async movieId => {
     console.error(error);
   }
 };
-
-const genresIdArray = getMovieGenres.slice(0,2);
-
-const compareId = id => {
-  genresIdArray.filter(e => {
-    if (e.id == id) {
-      e.name;
-    }
-  });
-};
-
-const renderGenreIds = (genreIds) => {
-
-  const murkupIds = genreIds.map(id => compareId(id)).join(', ');
-  return murkupIds;
-}

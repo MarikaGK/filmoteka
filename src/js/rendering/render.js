@@ -2,6 +2,8 @@ const gallery = document.querySelector('.gallery');
 
 // ------> RENDERING POPULAR/SEARCH GALLERY:
 
+// ------ genres rendering ------
+
 // const compareId = id => {
 //   genresIdArray.genres.filter(e => {
 //     if (e.id == id) {
@@ -16,7 +18,18 @@ const gallery = document.querySelector('.gallery');
 //   return murkupIds;
 // }
 
-export const renderMovies = movies => {
+export const renderMovies = (movies, genresIdArray) => {
+  const compareId = id => {
+    genresIdArray.slice(0, 2).filter(e => {
+      if (e.id == id) {
+        e.name;
+      }
+    });
+  };
+  const renderGenreIds = genreIds => {
+    const murkupIds = genreIds.map(id => compareId(id));
+    return murkupIds;
+  };
   const markupMovies = movies
     .map(movie => {
       if (movie.poster_path !== null) {
@@ -26,7 +39,11 @@ export const renderMovies = movies => {
           }" width=280 alt="${movie.original_title}" loading="lazy" /></div>
           <p class="movie-title">${movie.original_title}</p>
           <div class="movie-subtitle">
+<<<<<<< Updated upstream
             <p class="movie-genre">${movie.genre_ids}  |</p>
+=======
+            <p class="movie-genre">${renderGenreIds(movie.genre_ids)}</p>
+>>>>>>> Stashed changes
             <p class="movie-year">${parseInt(movie.release_date)}</p>
             <p><button class="movie-vote" type="button">${movie.vote_average.toPrecision(
               2
