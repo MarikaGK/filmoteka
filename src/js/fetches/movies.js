@@ -35,9 +35,6 @@ export const getMovieGenres = async () => {
   }
 };
 
-const genresIdArray = getMovieGenres().then();
-console.log(genresIdArray);
-
 //  2.    ------ Function - fetch - Popular movies ------
 export const getPopular = async (page = 1) => {
   try {
