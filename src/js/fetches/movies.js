@@ -1,5 +1,6 @@
 import { renderMovies } from '../rendering/render';
 import { loadMovie } from '../utils/loader';
+import { renderPagination } from '../pagination/pagination';
 
 // ------ nessesary for work ------
 const apiKey = '11f568ee70218bec08ad7368f7bb3250';
@@ -8,7 +9,8 @@ const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
-let page = 1;
+const PAGINATION_DOM = document.querySelector('.pagination__list');
+
 
 // może być przydatne do wyciągnięcia języka przeglądarki użytkownika - do zmiany języka strony/opisów filmów itd.
 // const userLocaleLang =
@@ -31,6 +33,7 @@ export const getPopular = async (page = 1) => {
     console.log(data);
     // TO DO function here!
     renderMovies(data.results);
+
   } catch (error) {
     console.error(error);
   }
@@ -38,7 +41,7 @@ export const getPopular = async (page = 1) => {
 
 //  2.    ------ function fetch - get movies by title ------
 // movieTitle is a .value from header input
-export const getMoviesByTitle = async movieTitle => {
+export const getMoviesByTitle = async (movieTitle, page = 1) => {
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
@@ -56,10 +59,11 @@ export const getMoviesByTitle = async movieTitle => {
       return;
     }
     console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
-    console.log(data);
+    console.log(data)
     loadMovie();
     //TO DO function here!
     renderMovies(data.results);
+    renderPagination(PAGINATION_DOM, page,);
   } catch (error) {
     console.error(error);
   }

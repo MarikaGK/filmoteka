@@ -1,0 +1,30 @@
+.pagination {
+    &__list {
+        display: flex;
+        font-family: $main-font;
+        list-style-type: none;
+        list-style: none;
+
+    }
+
+    &__btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: $border-radius;
+        background-color: $main-background-color;
+        font-family: 'roboto';
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+
+}
+
+.active {
+    color: $main-font-bright-color;
+    background-color: $pagination-highlighted-background-color;
+
+}
