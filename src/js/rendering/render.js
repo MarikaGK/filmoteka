@@ -1,6 +1,27 @@
+import { getMovieGenres } from "../fetches/movies";
+
+// const genresIdArray = getMovieGenres;
+
+// console.log(genresIdArray);
+
+const API_KEY = 'b118f38ec77100db6763b4cc83604589';
 const gallery = document.querySelector('.gallery');
 
 // ------> RENDERING POPULAR/SEARCH GALLERY:
+
+// const compareId = id => {
+//   genresIdArray.genres.filter(e => {
+//     if (e.id == id) {
+//       e.name;
+//     }
+//   });
+// };
+
+// function renderGenreIds(genreIds) {
+//   const murkupIds = genreIds.map(id => compareId(id)).join(', ');
+
+//   return murkupIds;
+// }
 
 export const renderMovies = movies => {
   const markupMovies = movies
@@ -14,6 +35,8 @@ export const renderMovies = movies => {
       <p class="movie-title">${movie.original_title}
       </p>
       <div class="movie-subtitle">
+        <p class="movie-genre">
+          <b>${movie.genre_ids}</b>
         <p class="movie-genre">${movie.genre_ids}
         </p>
         <p class="movie-year">${parseInt(movie.release_date)}

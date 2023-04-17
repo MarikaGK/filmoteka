@@ -66,7 +66,7 @@ export const getMovieGenres = async () => {
     }
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla listy gatunków');
-    console.log(data);
+    console.log(data.genres);
     //TO DO function here!
   } catch (error) {
     console.error(error);
@@ -121,3 +121,19 @@ export const returnTrailerUrlByMovieId = async movieId => {
     console.error(error);
   }
 };
+
+const genresIdArray = getMovieGenres.slice(0,2);
+
+const compareId = id => {
+  genresIdArray.filter(e => {
+    if (e.id == id) {
+      e.name;
+    }
+  });
+};
+
+const renderGenreIds = (genreIds) => {
+
+  const murkupIds = genreIds.map(id => compareId(id)).join(', ');
+  return murkupIds;
+}
