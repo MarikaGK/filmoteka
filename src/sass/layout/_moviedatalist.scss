@@ -1,0 +1,26 @@
+.movie-data-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-data-list__item {
+  display: flex;
+  justify-content: left;
+  font-size: 12px;
+  line-height: 1.67;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-data-list__item-description {
+  display: block;
+  width: 108;
+  color: $card-categories-name-color;
+}
+
+.movie-data-list__item-value {
+  color: $main-font-dark-color;
+  display: flex;
+  align-items: center;
+}
