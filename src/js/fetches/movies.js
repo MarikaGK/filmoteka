@@ -59,11 +59,12 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
       return;
     }
     console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
-    console.log(data)
+    console.log(data);
     loadMovie();
     //TO DO function here!
+    console.log(data.total_pages);
     renderMovies(data.results);
-    renderPagination(PAGINATION_DOM, page,);
+    renderPagination(PAGINATION_DOM, page, data.total_pages);
   } catch (error) {
     console.error(error);
   }

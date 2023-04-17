@@ -8,7 +8,7 @@ export const paginationHandler = (event) => {
 
   const pageNumber = Number(event.target.textContent);
   console.log(pageNumber);
-  GALLERY_DOM.textContent = '';
+  // GALLERY_DOM.textContent = '';
   console.log(pageNumber);
   getMoviesByTitle(INPUT_DOM.value.trim, pageNumber);
 }

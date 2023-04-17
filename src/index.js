@@ -11,7 +11,7 @@ import { paginationSubmit } from './js/utils/pagination-handler.js';
 //loader gallery
 import { loadGallery } from './js/utils/loader.js';
 import { renderPagination } from './js/pagination/pagination.js';
-import { paginationHandler } from './js/utils/pagination-handler.js';
+import { renderPagination } from './js/pagination/pagination.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const PAGINATION_DOM = document.querySelector('.pagination__list');
@@ -27,6 +27,13 @@ let newMovieIdExample = '603692'; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
 getMovieById(newMovieIdExample);
 returnTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js';
-PAGINATION_DOM.addEventListener('click', paginationHandler)
+PAGINATION_DOM.addEventListener('click', (e) => {
+  PAGINATION_DOM.innerHTML = '';
+  const pageNumber = Number(e.target.textContent);
+  console.log(pageNumber)
+
+  renderPagination(PAGINATION_DOM, pageNumber);
+  getMoviesByTitle(_, pageNumber);
+})
 
 
