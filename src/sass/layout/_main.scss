@@ -1,59 +1,41 @@
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  // grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
-  margin: 0 auto;
-  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 20px;
+  padding: 20px 20px;
 }
 
-// @include tablet {
-//   .gallery {
-//     grid-template-columns: repeat(2, 1fr);
-//     grid-gap: 32px;
-//   }
-// }
+@include tablet {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
+  }
+}
 
-// @include desktop {
-//   .gallery {
-//     grid-template-columns: repeat(3, 1fr);
-//   }
-// }
+@include desktop {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 .movie-card-poster {
   overflow: hidden;
-  height: 402px;
-  width: 280px;
+  width: 100%;
+  height: auto;
   border-radius: $border-radius;
-  // background-image: url(/src/images/background/gallery_default_image.jpg);
-  // background-size: cover;
-  // background-position: center;
   background-color: inherit;
-  background-image: url(/src/images/icons/filmotekalogo.svg);
+  background-image: 'url(/src/images/icons/filmotekalogo.svg)';
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
-
-  @include tablet {
-    height: 455px;
-    width: 336px;
-  }
-
-  @include desktop {
-    height: 574px;
-    width: 395px;
-  }
 }
 
 .movie-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  object-fit: cover;
   will-change: transform;
   transform: scale(1.001);
   transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 5px;
 }
 
 .movie-img:hover,
@@ -62,37 +44,30 @@
 }
 
 .movie-card {
+  display: block;
   font-family: $main-font, sans-serif;
   text-decoration: none;
-  width: 280px;
-
-  @include tablet {
-    width: 336px;
-  }
-
-  @include desktop {
-    width: 395px;
-  }
+  width: 100%;
 }
 
 .movie-title {
   display: block;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  margin: 8px 0 6px 0;
+  margin: 8px 0 4px 0;
 }
 
 @include desktop {
   .movie-title {
     font-size: 20px;
-    line-height: 20px;
+    line-height: 24px;
   }
 }
 
 .movie-subtitle {
-  font-size: 16px;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 500;
   display: flex;
@@ -104,19 +79,17 @@
 @include desktop {
   .movie-subtitle {
     font-size: 20px;
-    line-height: 20px;
+    line-height: 24px;
   }
 }
 
 .movie-genre {
   color: $movie-category-color;
-  border-right: 2px solid $movie-category-color;
-  padding-right: 6px;
 }
 
 .movie-year {
   color: $movie-category-color;
-  padding-left: 6px;
+  padding-left: 5px;
 }
 
 .movie-vote {
