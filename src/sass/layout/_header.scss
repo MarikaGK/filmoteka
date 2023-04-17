@@ -1,3 +1,4 @@
+
 .header-no-hit-info {
   display: flex;
   align-items: center;
@@ -11,4 +12,67 @@
   @include tablet {
     justify-content: center;
   }
+}
+.header {
+  background: url("/src/images/background/background_home_mobile.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 230px;
+  padding-inline: 20px;
+  padding-top: 40px;
+  
+}
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+.header-nav__link {
+ text-decoration: none;
+    color: white;
+}
+.header-nav__menu {
+    list-style: none;
+}
+.header-nav__menu-title {
+    display: none;
+}
+.header-input__text-box {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    border-bottom: 2px solid white;
+    font-size: 14px;
+    
+}
+.header-nav__link-text {
+    margin: 0;
+}
+.header-nav__menu {
+    margin: 0;
+    display: flex;
+    gap: 39px;
+    font-size: 12px;
+    white-space: nowrap;
+    align-items: center;
+}
+.header-input {
+    
+    text-align: center;
+}
+.header-input__form {
+    position: relative;
+}
+.header-input__button {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.header-input__text-box::placeholder {
+    opacity: 1;
 }
