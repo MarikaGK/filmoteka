@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, child, update } from 'firebase/database';
+import { getDatabase, ref, push, child, update, onValue } from 'firebase/database';
 // import { getAnalytics } from "firebase/analytics";
 // jeszcze nie wiem czy będzie potrzebne
 
@@ -17,7 +17,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+const db = getDatabase(app);
 // const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
 
@@ -37,8 +37,6 @@ const app = initializeApp(firebaseConfig);
 
 // 2222222222222222
 export function pushToWatched(id, title) {
-  const db = getDatabase(app);
-
   const postData = {
     id: 4,
     title: "syrenka",
@@ -54,8 +52,6 @@ export function pushToWatched(id, title) {
 }
 
 export function pushToQueue(id, title) {
-  const db = getDatabase(app);
-
   const postData = {
     id: 12,
     title: "mario",
@@ -69,4 +65,3 @@ export function pushToQueue(id, title) {
 
   return update(ref(db), updates);
 }
-
