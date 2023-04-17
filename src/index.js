@@ -19,18 +19,9 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 loadGallery();
 getPopular();
 getMovieGenres();
+console.log(getMovieGenres());
 let oldMovieIdExample = '1369'; // Film: Rambo First Blood
 let newMovieIdExample = '603692'; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
 getMovieById(newMovieIdExample);
 returnTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js',.
-
-
-
-
-
-
-
-
-
-
