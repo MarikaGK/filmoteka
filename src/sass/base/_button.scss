@@ -9,12 +9,15 @@
   font-family: $main-font;
   font-style: normal;
   font-weight: 500;
+  font-size: 12px;
   line-height: 1.33;
   text-align: center;
   letter-spacing: 0.03em;
   padding-top: 13px;
   padding-bottom: 13px;
+  border-radius: $border-radius;
   cursor: pointer;
+border: none;
 
   &:not(:last-child) {
     margin-right: 20px;
@@ -25,12 +28,12 @@
     text-shadow: 2px 0 15px $main-background-color;
   }
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     &:not(:last-child) {
       margin-right: 15px;
     }
   }
-  @media screen and (min-width: 1024px) {
+  @include desktop {
     &:not(:last-child) {
       margin-right: 15px;
     }
@@ -39,9 +42,11 @@
 
 .button--orange {
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  background-color: $button-background-color;
 }
 
 .button--transparent {
+  background-color: transparent;
   color: $main-background-color;
   border: 1px solid $main-background-color;
 }
