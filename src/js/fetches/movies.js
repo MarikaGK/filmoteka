@@ -1,5 +1,5 @@
 import { renderMovies } from '../rendering/render';
-import { loadMovie } from '../loader.js';
+import { loadMovie } from '../utils/loader';
 
 // ------ nessesary for work ------
 const apiKey = '11f568ee70218bec08ad7368f7bb3250';
@@ -54,10 +54,10 @@ export const getMoviesByTitle = async movieTitle => {
         'Search result not successful. Enter the correct movie name and search again.';
       console.log('pusta tablica');
       return;
-    };
+    }
     console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
     console.log(data);
-    loadMovie()
+    loadMovie();
     //TO DO function here!
     renderMovies(data.results);
   } catch (error) {
