@@ -1,4 +1,4 @@
-import { getMoviesByTitle } from '../fetches/movies';
+import { getMoviesByTitle } from './fetches/movies';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 const INPUT_DOM = document.querySelector('.header-input__text-box');
