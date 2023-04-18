@@ -46,11 +46,10 @@ const db = getDatabase(app);
 // onclick="pushToWatched(event, ({movie}))"
 
 export function pushToWatched(movie) {
-  console.log(movie);
+  
   const movieId = movie.id;
   
-  console.log(id);
-  console.log(poster_path);
+ console.log(movieId);
 
   const newPostKey = push(child(ref(db), 'watched')).key;
 

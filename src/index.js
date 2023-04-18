@@ -37,7 +37,6 @@ import {
   // pushToQueue
 } from './js/firebase/firebase.js';
 const addToWatched = document.querySelector(".aaaddd");
-console.log(addToWatched);
 // const addToQueue = document.querySelector(".button-list_queue");
 // let id;
 addToWatched.addEventListener("click", pushToWatched);
