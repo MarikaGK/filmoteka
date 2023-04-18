@@ -15,30 +15,50 @@ const firebaseConfig = {
   measurementId: "G-F8RYGXVXSJ"
 };
 
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 // const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
 
-export function pushToWatched(e) {
-  console.log(e.target);
-  const TEST = e.target.movie;
-  console.log(TEST);
+// export function pushToWatched(e, movie) {
 
-  const postData = {
-    id: 4,
-  };
+//   const postData = {
+//     id: movie.id,
+//     poster_path: movie.poster_path,
+//     original_title: movie.original_title,
+//     genre_ids: movie.genre_ids,
+//     release_date: movie.release_date
+//   };
+
+//   const newPostKey = push(child(ref(db), 'watched')).key;
+
+//   const updates = {};
+//   updates['/watched/' + newPostKey] = postData;
+//   // updates['/user-posts/' + id + '/' + newPostKey] = postData;
+
+//   return update(ref(db), updates);
+// }
+
+
+// onclick="pushToWatched(event, ({movie}))"
+
+export function pushToWatched(movie) {
+  console.log(movie);
+  const movieId = movie.id;
+  
+  console.log(id);
+  console.log(poster_path);
 
   const newPostKey = push(child(ref(db), 'watched')).key;
 
   const updates = {};
-  updates['/watched/' + newPostKey] = postData;
-  // updates['/user-posts/' + id + '/' + newPostKey] = postData;
+  updates['/watched/' + newPostKey] = movieId;
 
   return update(ref(db), updates);
 }
-
 
 
 

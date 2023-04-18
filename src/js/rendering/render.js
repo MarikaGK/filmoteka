@@ -7,7 +7,6 @@ export const renderMovies = movies => {
     .map(movie => {
       if (movie.poster_path !== null) {
         return `<div class="movie-card" data-movie-id="${movie.id}">
-        <button class="button button--orange uppercase button-list_watched" data-movie-id="${movie.id}" type="button">Add to watched</button>
           <div class="movie-card-poster"><img class="movie-img" src="https://image.tmdb.org/t/p/original${
             movie.poster_path
           }" width=280 alt="${movie.original_title}" loading="lazy" /></div>
@@ -23,7 +22,6 @@ export const renderMovies = movies => {
         </div>`;
       } else {
         return `<div class="movie-card" data-movie-id="${movie.id}">
-        <button class="button button--orange uppercase button-list_watched" type="button">Add to watched</button>
         <div class="movie-card-poster"></div>
           <p class="movie-title">${movie.original_title}</p>
           <div class="movie-subtitle">
@@ -81,6 +79,9 @@ export const renderLibrary = movies => {
     .join('');
   gallery.insertAdjacentHTML('beforeend', markupLibrary);
 };
+
+
+
 
 // -----> EXAMPLE FETCH FOR GALLERY RENDER:
 

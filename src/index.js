@@ -26,6 +26,7 @@ returnTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js';
 
 
+
 // import { sendMovieToFirebase } from './js/firebase/firebase.js';
 // const addToWatched = document.querySelector(".button-list_watched");
 // console.log(addToWatched);
@@ -33,11 +34,12 @@ returnTrailerUrlByMovieId(newMovieIdExample);
 
 import {
   pushToWatched,
-  pushToQueue
+  // pushToQueue
 } from './js/firebase/firebase.js';
-const addToWatched = document.querySelector(".button-list_watched");
-const addToQueue = document.querySelector(".button-list_queue");
-let id;
-addToWatched.addEventListener("click", pushToWatched());
-addToQueue.addEventListener("click", pushToQueue(id));
+const addToWatched = document.querySelector(".aaaddd");
+console.log(addToWatched);
+// const addToQueue = document.querySelector(".button-list_queue");
+// let id;
+addToWatched.addEventListener("click", pushToWatched);
+// addToQueue.addEventListener("click", pushToQueue(id));
 
