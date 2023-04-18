@@ -45,11 +45,11 @@ const db = getDatabase(app);
 
 // onclick="pushToWatched(event, ({movie}))"
 
-export function pushToWatched(movie) {
+export function pushToWatched(id) {
   
-  const movieId = movie.id;
+  const movieId = id;
   
- console.log(movieId);
+  console.log(movieId);
 
   const newPostKey = push(child(ref(db), 'watched')).key;
 
@@ -58,7 +58,6 @@ export function pushToWatched(movie) {
 
   return update(ref(db), updates);
 }
-
 
 
 
