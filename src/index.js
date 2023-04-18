@@ -14,6 +14,7 @@ const FORM_DOM = document.querySelector('.header-input__form');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 
+
 //for result for "Rambo" check console and use example from below
 // getMoviesByTitle('Rambo');
 loadGallery();
@@ -26,19 +27,15 @@ returnTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js';
 
 
-
-// import { sendMovieToFirebase } from './js/firebase/firebase.js';
-// const addToWatched = document.querySelector(".button-list_watched");
-// console.log(addToWatched);
-// addToWatched.addEventListener("click", sendMovieToFirebase);
-
 import {
   pushToWatched,
-  // pushToQueue
+  pushToQueue
 } from './js/firebase/firebase.js';
 const addToWatched = document.querySelector(".button-list_watched");
-// const addToQueue = document.querySelector(".button-list_queue");
-// let id;
+const addToQueue = document.querySelector(".button-list_queue");
 addToWatched.addEventListener("click", pushToWatched);
-// addToQueue.addEventListener("click", pushToQueue(id));
+addToQueue.addEventListener("click", pushToQueue);
+
+
+
 

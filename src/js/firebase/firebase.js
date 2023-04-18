@@ -15,62 +15,37 @@ const firebaseConfig = {
   measurementId: "G-F8RYGXVXSJ"
 };
 
-
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 // const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
 
-// export function pushToWatched(e, movie) {
-
-//   const postData = {
-//     id: movie.id,
-//     poster_path: movie.poster_path,
-//     original_title: movie.original_title,
-//     genre_ids: movie.genre_ids,
-//     release_date: movie.release_date
-//   };
-
-//   const newPostKey = push(child(ref(db), 'watched')).key;
-
-//   const updates = {};
-//   updates['/watched/' + newPostKey] = postData;
-//   // updates['/user-posts/' + id + '/' + newPostKey] = postData;
-
-//   return update(ref(db), updates);
-// }
-
-
-// onclick="pushToWatched(event, ({movie}))"
 
 export function pushToWatched(id) {
-  id = 555;
+  id = 67890966;
   const movieId = id;
-  
   console.log(movieId);
-
   const newPostKey = push(child(ref(db), 'watched')).key;
-
   const updates = {};
   updates['/watched/' + newPostKey] = movieId;
-
   return update(ref(db), updates);
 }
-
-
 
 export function pushToQueue(id) {
-  const postData = {
-    id: 12,
-  };
-
+  id = 23323232;
+  const movieId = id;
+  console.log(movieId);
   const newPostKey = push(child(ref(db), 'queue')).key;
-
   const updates = {};
   updates['/queue/' + newPostKey] = postData;
-  // updates['/user-posts/' + id + '/' + newPostKey] = postData;
-
   return update(ref(db), updates);
 }
+
+
+// const watchedMoviesFromFB = ref(db, '/watched/' + movieId);
+// onValue(watchedMoviesFromFB, (snapshot) => {
+//   const data = snapshot.val();
+//   updateWatchedMovies();
+  
+// })
