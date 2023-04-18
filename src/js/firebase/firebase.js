@@ -24,7 +24,9 @@ const db = getDatabase(app);
 
 export function pushToWatched(id) {
   id = 67890966;
-  const movieId = id;
+  const movieId = {
+    id: id
+  };
   console.log(movieId);
   const newPostKey = push(child(ref(db), 'watched')).key;
   const updates = {};
