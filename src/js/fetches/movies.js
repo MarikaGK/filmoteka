@@ -31,6 +31,9 @@ export const getPopular = async (page = 1) => {
     console.log(data);
     // TO DO function here!
     renderMovies(data.results);
+    const totalPages = data.total_pages;
+    console.log('calkowita ilosc stron: ' + totalPages);
+    return(totalPages)
   } catch (error) {
     console.error(error);
   }
@@ -60,6 +63,9 @@ export const getMoviesByTitle = async movieTitle => {
     loadMovie();
     //TO DO function here!
     renderMovies(data.results);
+    const totalPages = data.total_pages;
+    console.log('calkowita ilosc stron: ' + totalPages);
+    return(totalPages)
   } catch (error) {
     console.error(error);
   }
