@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  height: 16px;
+  padding-bottom: 44px;
 
   color: $warning-color;
   font-weight: 400;
@@ -18,7 +20,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 230px;
-  padding-inline: 20px;
   padding-top: 40px;
   font-family: $main-font, sans-serif;
   @include tablet {
@@ -32,7 +33,6 @@
   @include desktop {
     background: url('/src/images/background/background_home_pc.png');
     background-repeat: no-repeat;
-    padding-inline: 32px;
     background-size: cover;
     background-position: center center;
   }
@@ -41,11 +41,7 @@
 .header-nav {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
   font-weight: 500;
-  @include tablet {
-    margin-bottom: 40px;
-  }
 }
 
 .header-nav__link {
@@ -104,6 +100,7 @@
 
 .header-input {
   text-align: center;
+  padding-bottom: 20px;
   @include tablet {
     width: 50%;
     margin: auto;
@@ -119,7 +116,7 @@
 }
 
 .header-input__button {
-  background-color: none;
+  background: none;
   border: none;
   position: absolute;
   top: 0;
