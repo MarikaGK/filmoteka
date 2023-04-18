@@ -2,26 +2,27 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 20px;
-  padding: 20px 20px;
+  padding: 20px 0 0 0;
 }
 
 @include tablet {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 32px;
+    padding: 59px 0 0 0;
   }
 }
 
 @include desktop {
   .gallery {
     grid-template-columns: repeat(3, 1fr);
+    padding: 60px 0 0 0;
   }
 }
 
 .movie-card-poster {
   overflow: hidden;
-  width: 100%;
-  height: 100%;
+  aspect-ratio: 0.7;
   border-radius: $border-radius;
   background-color: inherit;
   background-image: url(./../images/icons/filmotekalogo.svg);
