@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 20px;
+  padding: 20px 20px;
 }
 
 @include tablet {
@@ -17,41 +18,56 @@
   }
 }
 
-.movie-img {
+.movie-card-poster {
+  overflow: hidden;
   width: 100%;
   height: auto;
+  border-radius: $border-radius;
+  background-color: inherit;
+  background-image: 'url(/src/images/icons/filmotekalogo.svg)';
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movie-img {
+  width: 100%;
+  will-change: transform;
+  transform: scale(1.001);
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 5px;
 }
 
-p {
-  margin: 0;
+.movie-img:hover,
+.movie-img:focus {
+  transform: scale(1.05);
 }
 
 .movie-card {
-  font-family: $main-font, sans-serif;
   display: block;
-  width: 100%;
+  font-family: $main-font, sans-serif;
   text-decoration: none;
+  width: 100%;
 }
 
 .movie-title {
   display: block;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  margin: 8px 0 6px 0;
+  margin: 8px 0 4px 0;
 }
 
 @include desktop {
   .movie-title {
     font-size: 20px;
-    line-height: 20px;
+    line-height: 24px;
   }
 }
 
 .movie-subtitle {
-  font-size: 16px;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 500;
   display: flex;
@@ -63,19 +79,17 @@ p {
 @include desktop {
   .movie-subtitle {
     font-size: 20px;
-    line-height: 20px;
+    line-height: 24px;
   }
 }
 
 .movie-genre {
   color: $movie-category-color;
-  border-right: 2px solid $movie-category-color;
-  padding-right: 6px;
 }
 
 .movie-year {
   color: $movie-category-color;
-  padding-left: 6px;
+  padding-left: 5px;
 }
 
 .movie-vote {
