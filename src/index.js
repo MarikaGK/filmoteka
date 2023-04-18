@@ -4,7 +4,6 @@ import {
   getMovieGenres,
   getMovieById,
   returnTrailerUrlByMovieId,
-  movieGenresIds,
 } from './js/fetches/movies.js';
 //*? Powyższy import nie jest jeszcze używany - możliwe, że nie będzie potrzebny w ogóle.
 import { handleSubmit } from './js/utils/search-form-handler.js';
@@ -19,7 +18,7 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 // getMoviesByTitle('Rambo');
 getMovieGenres();
 loadGallery();
-getPopular();;
+getPopular();
 let oldMovieIdExample = '1369'; // Film: Rambo First Blood
 let newMovieIdExample = '603692'; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
 getMovieById(newMovieIdExample);

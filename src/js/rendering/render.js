@@ -1,39 +1,12 @@
+import { renderGenreIds } from "./genresrendering";
+
 const gallery = document.querySelector('.gallery');
 
 // ------> RENDERING POPULAR/SEARCH GALLERY:
 
-// ------ genres rendering ------
 
-// const compareId = id => {
-//   genresIdArray.genres.filter(e => {
-//     if (e.id == id) {
-//       e.name;
-//     }
-//   });
-// };
-
-// function renderGenreIds(genreIds) {
-//   const murkupIds = genreIds.map(id => compareId(id)).join(', ');
-
-//   return murkupIds;
-// }
-
-export const renderMovies = (movies, genresIdArray) => {
-  //  funkcja filtrująca po id tablicę nazw kategorii
-  const compareId = id => {
-    const genreName = genresIdArray.filter(e => e.id === id);
-    return genreName[0].name;
-  };
-
-  // funckja renderująca tablicę id na tablicę nazw gatunków
-  const renderGenreIds = genreIds => {
-    console.log('To jest tablica pobrana z danych filmu');
-    console.log(genreIds);
-    const murkupIds = genreIds.slice(0, 3).map(id => compareId(id));
-    console.log('To jest wynik renderowania po id');
-    console.log(murkupIds);
-    return murkupIds.join(', ');
-  };
+export const renderMovies = (movies) => {
+ 
   const markupMovies = movies
     .map(movie => {
       const genres = renderGenreIds(movie.genre_ids);
