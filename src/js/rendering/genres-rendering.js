@@ -26,6 +26,6 @@ const compareId = id => {
 
 // ----- rendering ids into genres ----------
 export const renderGenreIds = genreIds => {
-  const murkupIds = genreIds.slice(0, 3).map(id => compareId(id));
-  return murkupIds.join(', ');
+  const markupIds = genreIds.slice(0, 3).map(id => compareId(id));
+  return markupIds.join(', ');
 };

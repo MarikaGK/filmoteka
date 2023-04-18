@@ -1,4 +1,4 @@
-import { setMovieGenresToStorage } from '../rendering/genresrendering';
+import { setMovieGenresToStorage } from '../rendering/genres-rendering';
 import { renderMovies } from '../rendering/render';
 import { loadMovie } from '../utils/loader';
 
