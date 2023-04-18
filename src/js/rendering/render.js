@@ -19,19 +19,29 @@ const gallery = document.querySelector('.gallery');
 // }
 
 export const renderMovies = (movies, genresIdArray) => {
+
+//  funkcja filtrująca po id tablicę nazw kategorii
   const compareId = id => {
-    genresIdArray.slice(0, 2).filter(e => {
-      if (e.id == id) {
-        e.name;
+    genresIdArray.filter(e => {
+      if (e.id === id) {
+        console.log(`To jest nazwa gatunku: ${e.name} dla konkretnego id ${e.id}`);
+        return e.name;
       }
     });
   };
+
+  // funckja renderująca tablicę id na tablicę nazw gatunków
   const renderGenreIds = genreIds => {
-    const murkupIds = genreIds.map(id => compareId(id));
+    console.log('To jest tablica pobrana z danych filmu');
+    console.log(genreIds);
+    const murkupIds = genreIds.slice(0, 3).map(id => compareId(id));
+    console.log('To jest wynik renderowania po id');
+    console.log(murkupIds);
     return murkupIds;
   };
   const markupMovies = movies
     .map(movie => {
+      const genres = renderGenreIds(movie.genre_ids);
       if (movie.poster_path !== null) {
         return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster"><img class="movie-img" src="https://image.tmdb.org/t/p/original${
@@ -39,11 +49,7 @@ export const renderMovies = (movies, genresIdArray) => {
           }" width=280 alt="${movie.original_title}" loading="lazy" /></div>
           <p class="movie-title">${movie.original_title}</p>
           <div class="movie-subtitle">
-<<<<<<< Updated upstream
-            <p class="movie-genre">${movie.genre_ids}  |</p>
-=======
-            <p class="movie-genre">${renderGenreIds(movie.genre_ids)}</p>
->>>>>>> Stashed changes
+            <p class="movie-genre">${genres}</p>
             <p class="movie-year">${parseInt(movie.release_date)}</p>
             <p><button class="movie-vote" type="button">${movie.vote_average.toPrecision(
               2

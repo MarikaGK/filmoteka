@@ -18,6 +18,20 @@ let page = 1;
 
 // 1.     ------ function fetch - get whole movies genres ------
 //?api_key=<<api_key>>&language=en-US
+
+const renderMovieGenresIdsToJSON = d => {
+  const movieGenresIds = d.genres;
+  localStorage.setItem('movieGenresIdsArray', JSON.stringify(movieGenresIds));
+};
+
+const renderMovieGenres = () => {
+  const movieGenresIdsJSON = localStorage.getItem('movieGenresIdsArray');
+  const parsedGenresIDS = JSON.parse(movieGenresIdsJSON);
+  return parsedGenresIDS;
+};
+
+renderMovieGenres;
+
 export const getMovieGenres = async () => {
   try {
     const response = await fetch(searchGenresUrl + `?api_key=` + apiKey);
@@ -27,8 +41,10 @@ export const getMovieGenres = async () => {
     }
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla listy gatunków');
+    console.log(typeof data.genres)
     console.log(data.genres);
-    return data.genres;
+    renderMovieGenresIdsToJSON(data);
+    return;
     //TO DO function here!
   } catch (error) {
     console.error(error);
@@ -48,9 +64,8 @@ export const getPopular = async (page = 1) => {
     const data = await response.json();
     console.log('Poniżej przykladowy console.log dla popularnych');
     console.log(data);
-    console.log(genresIdArray);
     // TO DO function here!
-    renderMovies(data.results, genresIdArray);
+    renderMovies(data.results, renderMovieGenres());
   } catch (error) {
     console.error(error);
   }
@@ -79,26 +94,7 @@ export const getMoviesByTitle = async movieTitle => {
     console.log(data);
     loadMovie();
     //TO DO function here!
-    renderMovies(data.results);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-// 3.     ------ function fetch - get whole movies genres ------
-//?api_key=<<api_key>>&language=en-US
-export const getMovieGenres = async () => {
-  try {
-    const response = await fetch(searchGenresUrl + `?api_key=` + apiKey);
-    // response Status:404 handling
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    const data = await response.json();
-    console.log('Poniżej przykladowy console.log dla listy gatunków');
-    console.log(data.genres);
-    //TO DO function here!
-    renderMovies(data.results, genresIdArray);
+    renderMovies(data.results, renderMovieGenres());
   } catch (error) {
     console.error(error);
   }
