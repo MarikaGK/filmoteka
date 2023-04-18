@@ -720,27 +720,4 @@
   background-color: transparent;
   color: #ffffff;
   border: 1px solid #ffffff;
-}
-
-.pagination__list {
-  display: flex;
-  font-family: "Roboto", sans-serif;
-  list-style-type: none;
-  list-style: none;
-}
-.pagination__btn {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 5px;
-  background-color: #ffffff;
-  font-family: "roboto";
-}
-.pagination__btn:hover {
-  cursor: pointer;
-}
-
-.active {
-  color: #ffffff;
-  background-color: #ff6b08;
 }/*# sourceMappingURL=index.css.map */
