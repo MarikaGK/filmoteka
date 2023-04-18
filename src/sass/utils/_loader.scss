@@ -25,7 +25,7 @@
   }
   &-small {
     position: absolute;
-    width: 350px;
+    width: 280px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@
   }
   &-smallest {
     position: absolute;
-    width: 350px;
+    width: 280px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,8 +41,8 @@
   }
   &-big::after {
     content: '';
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border: 15px solid #b9b9b9;
     border-bottom-color: #942f2f;
     border-left-color: transparent;
@@ -54,8 +54,8 @@
   }
   &-small::after {
     content: '';
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border: 15px solid #b9b9b9;
     border-bottom-color: #660000;
     border-left-color: transparent;
