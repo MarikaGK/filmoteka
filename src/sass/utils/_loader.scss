@@ -2,10 +2,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 200px 0;
+  padding: 50px 0;
   align-items: center;
   background-color: white;
   transition: opacity 1s, visibility 1s;
+
+  @include tablet {
+    padding: 200px 0;
+  }
 }
 
 .loader-hidden {
