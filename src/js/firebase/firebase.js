@@ -46,7 +46,7 @@ const db = getDatabase(app);
 // onclick="pushToWatched(event, ({movie}))"
 
 export function pushToWatched(id) {
-  
+  id = 555;
   const movieId = id;
   
   console.log(movieId);
