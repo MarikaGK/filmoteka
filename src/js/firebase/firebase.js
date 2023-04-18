@@ -21,25 +21,13 @@ const db = getDatabase(app);
 // const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
 
-// 111111111111111
+export function pushToWatched(e) {
+  console.log(e.target);
+  const TEST = e.target.movie;
+  console.log(TEST);
 
-
-// const firebaseRef = app.database().ref('Watched');
-// const firebaseRef = ref(getDatabase(app), 'watched');
-
-// sendMovieToFirebase = e => {
-//     const movieId = e.target.parentNode.dataset.movieId;
-//     console.log(`Dodano film o id ${movieId} do listy obejrzanych`);
-//     // firebaseRef.push(movieToSend);
-//     push(firebaseRef, movieToSend);
-//     console.log("succes!!!!!");
-// };
-
-// 2222222222222222
-export function pushToWatched(id, title) {
   const postData = {
     id: 4,
-    title: "syrenka",
   };
 
   const newPostKey = push(child(ref(db), 'watched')).key;
@@ -51,10 +39,13 @@ export function pushToWatched(id, title) {
   return update(ref(db), updates);
 }
 
-export function pushToQueue(id, title) {
+
+
+
+
+export function pushToQueue(id) {
   const postData = {
     id: 12,
-    title: "mario",
   };
 
   const newPostKey = push(child(ref(db), 'queue')).key;

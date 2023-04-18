@@ -38,7 +38,6 @@ import {
 const addToWatched = document.querySelector(".button-list_watched");
 const addToQueue = document.querySelector(".button-list_queue");
 let id;
-let title;
-addToWatched.addEventListener("click", pushToWatched(id, title));
-addToQueue.addEventListener("click", pushToQueue(id, title));
+addToWatched.addEventListener("click", pushToWatched());
+addToQueue.addEventListener("click", pushToQueue(id));
 
