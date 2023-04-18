@@ -19,15 +19,10 @@ const gallery = document.querySelector('.gallery');
 // }
 
 export const renderMovies = (movies, genresIdArray) => {
-
-//  funkcja filtrująca po id tablicę nazw kategorii
+  //  funkcja filtrująca po id tablicę nazw kategorii
   const compareId = id => {
-    genresIdArray.filter(e => {
-      if (e.id === id) {
-        console.log(`To jest nazwa gatunku: ${e.name} dla konkretnego id ${e.id}`);
-        return e.name;
-      }
-    });
+    const genreName = genresIdArray.filter(e => e.id === id);
+    return genreName[0].name;
   };
 
   // funckja renderująca tablicę id na tablicę nazw gatunków
@@ -37,7 +32,7 @@ export const renderMovies = (movies, genresIdArray) => {
     const murkupIds = genreIds.slice(0, 3).map(id => compareId(id));
     console.log('To jest wynik renderowania po id');
     console.log(murkupIds);
-    return murkupIds;
+    return murkupIds.join(', ');
   };
   const markupMovies = movies
     .map(movie => {
