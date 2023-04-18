@@ -80,8 +80,10 @@
   width: 100%;
   border-bottom: 1px solid $main-font-bright-color;
   font-size: 14px;
+
   @include tablet {
     padding-bottom: 4px;
+    max-width: 700px;
   }
 }
 
@@ -100,7 +102,9 @@
 
 .header-input {
   text-align: center;
+  padding-top: 40px;
   padding-bottom: 20px;
+
   @include tablet {
     width: 50%;
     margin: auto;
@@ -113,6 +117,7 @@
 .header-input__form {
   position: relative;
   display: flex;
+  outline: none;
 }
 
 .header-input__button {
@@ -128,8 +133,17 @@
   background-color: none;
 }
 
-.header-input__text-box::placeholder {
-  opacity: 1;
+.header-input__text-box {
+  outline: none;
+
+  &::placeholder {
+    opacity: 1;
+  }
+
+  &:focus,
+  &:focus-within {
+    border-bottom: 2px solid $button-background-color;
+  }
 }
 
 .active__page {
