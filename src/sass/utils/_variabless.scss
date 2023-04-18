@@ -25,6 +25,10 @@ $underline-color: #ff001b;
 /* ------OTHER VARIABLES------ */
 $border-radius: 5px;
 
+li {
+  list-style-type: none;
+}
+
 /* ------MIXIN------ */
 @mixin mobile-retina {
   @media (max-width: 767px),
