@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, child, update, onValue } from 'firebase/database';
 // import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 // jeszcze nie wiem czy będzie potrzebne
 
@@ -25,17 +25,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 // const auth = getAuth(app);
-const provider = new GoogleAuthProvider(app)
+const provider = new GoogleAuthProvider(app);
+const auth = getAuth(app);
 // const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
 
 //AUTHENTICATION BY GOOGLE
 
+const homeAndLibrary = document.querySelector("#home-and-library");
+const signInBtn = document.querySelector("#sign-in");
+signInBtn.addEventListener("click", () => {
+  signOut(auth);
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      console.log("SUCCES SIGN IN");
+      homeAndLibrary.classList.remove("header__none");
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    });
+});
 
-
-
-
-
+const signOutBtn = document.querySelector("#sign-out");
+signOutBtn.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    console.log("Succes Sign Out")
+  }).catch((error) => {
+    console.log("Error Sign Out")
+  });
+});
 
 //AUTHENTICATION BY EMAIL AND PASSWORD
 
