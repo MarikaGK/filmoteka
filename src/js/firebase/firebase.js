@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, child, update, onValue } from 'firebase/database';
 // import { getAnalytics } from "firebase/analytics";
@@ -24,14 +23,13 @@ const db = getDatabase(app);
 
 export function pushToWatched(id) {
   id = 67890966;
-  const movieId = {
-    id: id
-  };
+  const movieId = id;
   console.log(movieId);
   const newPostKey = push(child(ref(db), 'watched')).key;
   const updates = {};
   updates['/watched/' + newPostKey] = movieId;
-  return update(ref(db), updates);
+  update(ref(db), updates);
+  return getWatchedMoviesIds()
 }
 
 export function pushToQueue(id) {
@@ -44,10 +42,30 @@ export function pushToQueue(id) {
   return update(ref(db), updates);
 }
 
+export function getWatchedMoviesIds() {
+  const watchedRef = ref(db, 'watched');
+  const watchedMoviesIds = [];
 
-// const watchedMoviesFromFB = ref(db, '/watched/' + movieId);
-// onValue(watchedMoviesFromFB, (snapshot) => {
-//   const data = snapshot.val();
-//   updateWatchedMovies();
-  
-// })
+  onValue(watchedRef, (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      const movieId = childSnapshot.val();
+      watchedMoviesIds.push(movieId);
+    });
+  });
+  console.log(watchedMoviesIds);
+  return watchedMoviesIds;
+}
+
+export function getQueueMoviesIds() {
+  const queueRef = ref(db, 'queue');
+  const queueMoviesIds = [];
+
+  onValue(queueRef, (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      const movieId = childSnapshot.val();
+      queueMoviesIds.push(movieId);
+    });
+  });
+  console.log(queueMoviesIds);
+  return queueMoviesIds;
+};
