@@ -8,6 +8,7 @@
   width: 130px;
   font-family: $main-font;
   font-style: normal;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -17,7 +18,7 @@
   padding-bottom: 13px;
   border-radius: $border-radius;
   cursor: pointer;
-border: none;
+  border: none;
 
   &:not(:last-child) {
     margin-right: 20px;

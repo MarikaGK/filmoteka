@@ -25,3 +25,22 @@
 .is-hidden {
   display: none;
 }
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.link--active {
+  position: relative;
+
+  &::after {
+    content: ' ';
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    background-color: $underline-color;
+  }
+}
