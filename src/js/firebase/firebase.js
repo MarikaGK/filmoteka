@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, child, update, onValue } from 'firebase/database';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+// import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 // jeszcze nie wiem czy będzie potrzebne
 
@@ -23,38 +24,47 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const auth = getAuth(app);
+// const auth = getAuth(app);
+const provider = new GoogleAuthProvider(app)
 // const analytics = getAnalytics(app);
 //jeszcze nie wiem czy będzie potrzebne
 
-//AUTHENTICATION
+//AUTHENTICATION BY GOOGLE
 
-const emailInput = document.querySelector("#email");
-const passwordInput = document.querySelector("#password");
-const signUpBtn = document.querySelector("#sign-up");
 
-let email;
-let password;
 
-signUpBtn.addEventListener("submit", (e) => {
-  // e.preventDefault();
-  email = emailInput.value;
-  password = passwordInput.value;
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log(email);
-      console.log(password);
-      console.log("Nowy User:", user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('Błąd:', errorCode);
-      console.log('Błąd:', errorMessage);
-    });
-})
+
+
+
+
+//AUTHENTICATION BY EMAIL AND PASSWORD
+
+// const emailInput = document.querySelector("#email");
+// const passwordInput = document.querySelector("#password");
+// const signUpBtn = document.querySelector("#sign-up");
+
+// let email;
+// let password;
+
+// signUpBtn.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   email = emailInput.value;
+//   password = passwordInput.value;
+//   createUserWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       // Signed in 
+//       const user = userCredential.user;
+//       console.log(email);
+//       console.log(password);
+//       console.log("Nowy User:", user);
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       console.log('Błąd:', errorCode);
+//       console.log('Błąd:', errorMessage);
+//     });
+// })
 
 //REALTIME DATABASE 
 
