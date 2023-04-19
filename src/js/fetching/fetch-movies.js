@@ -49,7 +49,7 @@ export const getPopularMovies = async (page = 1) => {
       throw new Error(response.status);
     }
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     // TODO function here!
     setPopularParameterToStorage(true)
