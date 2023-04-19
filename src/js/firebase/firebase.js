@@ -29,47 +29,32 @@ const auth = getAuth(app);
 
 //AUTHENTICATION
 
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+const emailInput = document.querySelector("#email");
+const passwordInput = document.querySelector("#password");
+const signUpBtn = document.querySelector("#sign-up");
 
+let email;
+let password;
 
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
-
-
-
-
-
-
+signUpBtn.addEventListener("submit", (e) => {
+  // e.preventDefault();
+  email = emailInput.value;
+  password = passwordInput.value;
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(email);
+      console.log(password);
+      console.log("Nowy User:", user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('Błąd:', errorCode);
+      console.log('Błąd:', errorMessage);
+    });
+})
 
 //REALTIME DATABASE 
 
