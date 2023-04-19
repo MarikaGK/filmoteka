@@ -1,6 +1,11 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
 import { renderMovies } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
+import { saveTotalPageToStorage,
+         saveTotalResultsToStorage,
+         saveCurrentPageToStorage,
+         getTotalPagesFromStorage,
+        renderPagination } from '../rendering/render-pagination'
 
 // ------> CONSTANTS USED IN THE PROJECT:
 
@@ -47,6 +52,9 @@ export const getPopularMovies = async (page = 1) => {
 
     // TODO function here!
     renderMovies(data.results);
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
   } catch (error) {
     console.error(error);
   }
@@ -78,6 +86,10 @@ export const getMoviesByTitle = async movieTitle => {
 
     //TODO function here!
     renderMovies(data.results);
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
+    renderPagination()
   } catch (error) {
     console.error(error);
   }
