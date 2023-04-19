@@ -23,8 +23,8 @@ startLoader();
 getPopularMovies();
 let oldMovieIdExample = '1369'; // Film: Rambo First Blood
 let newMovieIdExample = '603692'; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
-getMovieById(newMovieIdExample);
-returnTrailerUrlByMovieId(newMovieIdExample);
+// getMovieById(newMovieIdExample);
+getTrailerUrlByMovieId(newMovieIdExample);
 // import { renderMovies } from './js/rendering/render.js';
 
 //jutro wyeksportuję do oddzielnego handlera
@@ -36,5 +36,4 @@ GALLERY_DOM.addEventListener('click', evt => {
   //wyświetlenie Id filmu
   console.log(singleMovieCard.dataset.movieId);
   getMovieById(singleMovieCard.dataset.movieId);
-  CLOSE_BTN.addEventListener('click', hideModal);
 });
