@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "firebase": "^9.19.1",
+    "firebaseui": "^6.0.2",
     "modern-normalize": "^1.1.0",
     "webmanifest-loader": "^0.3.0"
   },
