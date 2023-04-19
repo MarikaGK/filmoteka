@@ -1,5 +1,6 @@
 import { renderMovies } from '../rendering/render';
 import { loadMovie } from '../utils/loader';
+import { renderModal } from '../rendering/render-modal';
 
 // ------ nessesary for work ------
 const apiKey = '11f568ee70218bec08ad7368f7bb3250';
@@ -99,7 +100,7 @@ export const getMovieById = async movieId => {
     );
     console.log(data);
     //TO DO function here!
-    return data;
+    return renderModal(data);
   } catch (error) {
     console.error(error);
   }

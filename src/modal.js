@@ -1,14 +1,26 @@
-(() => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-  };
+const modal = document.querySelector('[data-modal]');
+const watchedBtn = document.querySelector('[data-add-to-watched]');
+const queueBtn = document.querySelector('[data-add-to-queue]');
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+const toggleModal = () => {
+  modal.classList.toggle('is-hidden');
+};
 
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
-  }
-})();
+const addEventListenersToBtns = () => {
+  watchedBtn.addEventListener('click');
+  queueBtn.addEventListener('click');
+};
+const removeEventListenersFromBtns = () => {
+  watchedBtn.removeEventListener('click');
+  queueBtn.removeEventListener('click');
+};
+
+export const showModal = () => {
+  toggleModal;
+  // addEventListenersToBtns;
+};
+
+export const hideModal = () => {
+  toggleModal;
+  // removeEventListenersFromBtns;
+};
