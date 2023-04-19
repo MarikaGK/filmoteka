@@ -29,3 +29,13 @@ renderPagination()
 // paginationClicker.addEventListener("click", ()=>{
 //     console.log(paginationClicker.value)
 // })
+
+document.addEventListener("click", (e)=>{
+  const target = e.target.closest(".tui-page-btn"); // Or any other selector.
+
+  if(target){
+    const targetPage = target.id
+    console.log(targetPage)
+    getPopularMovies(targetPage)
+  }
+});

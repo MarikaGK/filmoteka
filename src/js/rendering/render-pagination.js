@@ -64,8 +64,8 @@ const options = {
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
-    page: '<a href="#" class="tui-page-btn" data-src="{{page}}">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected" data-src="{{page}}">{{page}}</strong>',
+    page: '<a href="#" class="tui-page-btn" id="{{page}}">{{page}}</a>',
+    currentPage: '<strong class="tui-page-btn tui-is-selected" id="{{page}}">{{page}}</strong>',
     moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -89,6 +89,7 @@ console.log('0000000000000000000000000000');
 console.log(pagination)
 
 }
+
 
 // const paginationClicker = document.querySelectorAll('.header')
 // console.log('0000000000000000000000000000');

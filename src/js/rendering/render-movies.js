@@ -5,6 +5,7 @@ const gallery = document.querySelector('.gallery');
 // ------> RENDERING POPULAR/SEARCH GALLERY:
 
 export const renderMovies = movies => {
+  gallery.innerHTML=''
   const markupMovies = movies
     .map(movie => {
       const genres = renderGenresToGallery(movie.genre_ids);
