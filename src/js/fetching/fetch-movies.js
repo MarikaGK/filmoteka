@@ -5,6 +5,7 @@ import { saveTotalPageToStorage,
          saveTotalResultsToStorage,
          saveCurrentPageToStorage,
          getTotalPagesFromStorage,
+         setPopularParameterToStorage,
         renderPagination } from '../rendering/render-pagination'
 
 // ------> CONSTANTS USED IN THE PROJECT:
@@ -51,6 +52,7 @@ export const getPopularMovies = async (page = 1) => {
     console.log(data);
 
     // TODO function here!
+    setPopularParameterToStorage(true)
     renderMovies(data.results);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
@@ -85,6 +87,7 @@ export const getMoviesByTitle = async movieTitle => {
     showLoader();
 
     //TODO function here!
+    setPopularParameterToStorage(false)
     renderMovies(data.results);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
