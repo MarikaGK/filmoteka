@@ -1,7 +1,7 @@
 import {
   getMoviesByTitle,
   getPopularMovies,
-  getMovieGenres,
+  getMovieGenresAndSaveToStore,
   getMovieById,
   getTrailerUrlByMovieId,
 } from './js/fetching/fetch-movies.js';
@@ -14,7 +14,7 @@ const FORM_DOM = document.querySelector('.header-input__form');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 
-getMovieGenres();
+getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
 let oldMovieIdExample = '1369'; // Film: Rambo First Blood

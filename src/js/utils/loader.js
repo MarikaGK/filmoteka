@@ -1,10 +1,10 @@
-import { getMovieGenres } from '../fetching/fetch-movies';
+import { getMovieGenresAndSaveToStore } from '../fetching/fetch-movies';
 
 const checkGenresInLocalStorage = () => {
-  if (localStorage.getItem('movieGenresIdsArray') !== null) {
+  if (localStorage.getItem('movieGenresIdsArray')) {
     return;
   }
-  getMovieGenres();
+  getMovieGenresAndSaveToStore();
 };
 
 export const startLoader = () => {

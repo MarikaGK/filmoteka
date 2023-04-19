@@ -12,7 +12,7 @@ const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 let page = 1;
 
-export const getMovieGenres = async () => {
+export const getMovieGenresAndSaveToStore = async () => {
   try {
     const response = await fetch(searchGenresUrl + `?api_key=` + apiKey);
     // response Status:404 handling
