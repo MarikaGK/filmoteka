@@ -1,0 +1,109 @@
+.toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  &__track {
+    width: 42px;
+    height: 22px;
+    border-radius: 21px;
+    display: flex;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+
+    // &--checked {
+    //   background-color: #000000;
+    //   border: 1px solid #ffffff;
+    // }
+
+    &__finish {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 20px;
+      height: 20px;
+    }
+
+    &__start {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__sun {
+    display: block;
+  }
+
+  &__moon {
+    display: block;
+  }
+
+  &__control {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+
+    animation: DarckSchemeToggleUnchacked 0.25s forwards;
+    // animation-name: DarckSchemeToggleUnchecked;
+    // animation-fill-mode: forwards;
+    // animation-duration: 250ms;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 2px 2px #ff6b08;
+    }
+  }
+
+  &-control--checked {
+    transform: translateX(20px);
+    background-color: #000000;
+    border: 1px solid #ffffff;
+
+    animation: DarckSchemeToggleChecked 0.25s forwards;
+    // animation-name: DarckSchemeToggleChecked;
+    // animation-fill-mode: forwards;
+    // animation-duration: 250ms;
+  }
+}
+
+@keyframes DarckSchemeToggleUnchecked {
+  from {
+    transform: translateX(20px);
+    background-color: #000000;
+    border: 1px solid #ffffff;
+  }
+  to {
+    transform: translateX(0px);
+    border: 1px solid #000000;
+    background-color: #ffffff;
+  }
+}
+
+@keyframes DarckSchemeToggleChecked {
+  from {
+    transform: translateX(0px);
+    border: 1px solid #000000;
+    background-color: #ffffff;
+  }
+  to {
+    transform: translateX(20px);
+    background-color: #000000;
+    border: 1px solid #ffffff;
+  }
+}
+
