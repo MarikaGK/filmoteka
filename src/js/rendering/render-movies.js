@@ -1,4 +1,4 @@
-import { renderGenreIds } from './genres-rendering';
+import { renderGenresToGallery } from './render-genres';
 
 const gallery = document.querySelector('.gallery');
 
@@ -7,41 +7,33 @@ const gallery = document.querySelector('.gallery');
 export const renderMovies = movies => {
   const markupMovies = movies
     .map(movie => {
-      const genres = renderGenreIds(movie.genre_ids);
+      const genres = renderGenresToGallery(movie.genre_ids);
       if (movie.poster_path !== null) {
         return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster">
           <img class="movie-img" src="https://image.tmdb.org/t/p/original${
             movie.poster_path
           }" width=280 alt="${movie.original_title}" loading="lazy" />
-            </div>
+              </div>
             <div class="movie-card-description">
-            <p class="movie-title">${movie.original_title}</p>
-            <div class="movie-subtitle">
-            <p class="movie-genre">${genres}  |</p>
-            <p class="movie-year">${parseInt(movie.release_date)}</p>
-            <p><button class="movie-vote" type="button">${movie.vote_average.toPrecision(
-              2
-            )}</button>
-              </p>
-              </div>
-              </div>
-              </div>`;
+              <p class="movie-title">${movie.original_title}</p>
+              <div class="movie-subtitle">
+              <span class="movie-genre">${genres}  |</span>
+              <span class="movie-year">${parseInt(movie.release_date)}</span>
+            </div>
+          </div>
+          </div>`;
       } else {
         return `<div class="movie-card" data-movie-id="${movie.id}">
         <div class="movie-card-poster"></div>
         <div class="movie-card-description">  
           <p class="movie-title">${movie.original_title}</p>
           <div class="movie-subtitle">
-          <p class="movie-genre">${genres}</p>
-          <p class="movie-year">${parseInt(movie.release_date)}</p>
-          <p><button class="movie-vote" type="button">${movie.vote_average.toPrecision(
-            2
-          )}</button>
-            </p>
-            </div>
-            </div>
-            </div>`;
+            <span class="movie-genre">${genres}  |</span>
+            <span class="movie-year">${parseInt(movie.release_date)}</span>
+          </div>
+        </div>
+        </div>`;
       }
     })
     .join('');
@@ -51,9 +43,9 @@ export const renderMovies = movies => {
 // -----> RENDERING USER'S QUEUED/WATCHED LIBRARY:
 
 export const renderLibrary = movies => {
-  const markupMovies = movies
+  const markupLibrary = movies
     .map(movie => {
-      const genres = renderGenreIds(movie.genre_ids);
+      const genres = renderGenresToGallery(movie.genre_ids);
       if (movie.poster_path !== null) {
         return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster">
@@ -62,36 +54,34 @@ export const renderLibrary = movies => {
             }" width=280 alt="${movie.original_title}" loading="lazy" />
             </div>
             <div class="movie-card-description">
-            <p class="movie-title">${movie.original_title}</p>
-            <div class="movie-subtitle">
-            <p class="movie-genre">${genres}  |</p>
-            <p class="movie-year">${parseInt(movie.release_date)}</p>
-            <p><button class="movie-vote" type="button">${movie.vote_average.toPrecision(
-              2
-            )}</button>
-              </p>
+              <p class="movie-title">${movie.original_title}</p>
+              <div class="movie-subtitle">
+                <span class="movie-genre">${genres}  |</span>
+                <span class="movie-year">${parseInt(movie.release_date)}</span>
+                <span class="movie-vote">${movie.vote_average.toPrecision(
+                  2
+                )}</span>
+              </div>
             </div>
-          </div>
-        </div>`;
+            </div>`;
       } else {
         return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster"></div>
           <div class="movie-card-description">  
-          <p class="movie-title">${movie.original_title}</p>
+            <p class="movie-title">${movie.original_title}</p>
             <div class="movie-subtitle">
-              <p class="movie-genre">${genres}</p>
-              <p class="movie-year">${parseInt(movie.release_date)}</p>
-              <p><button class="movie-vote" type="button">${movie.vote_average.toPrecision(
+              <span class="movie-genre">${genres}  |</span>
+              <span class="movie-year">${parseInt(movie.release_date)}</span>
+              <span class="movie-vote">${movie.vote_average.toPrecision(
                 2
-              )}</button>
-              </p>
-              </div>
+              )}</span>
             </div>
+          </div>
           </div>`;
       }
     })
     .join('');
-  gallery.insertAdjacentHTML('beforeend', markupMovies);
+  gallery.insertAdjacentHTML('beforeend', markupLibrary);
 };
 
 // -----> EXAMPLE FETCH FOR GALLERY RENDER:

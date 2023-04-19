@@ -1,4 +1,4 @@
-import { getMovieGenres } from '../fetches/movies';
+import { getMovieGenres } from '../fetching/fetch-movies';
 
 const checkGenresInLocalStorage = () => {
   if (localStorage.getItem('movieGenresIdsArray') !== null) {
@@ -7,7 +7,7 @@ const checkGenresInLocalStorage = () => {
   getMovieGenres();
 };
 
-export const loadGallery = () => {
+export const startLoader = () => {
   window.addEventListener('load', () => {
     checkGenresInLocalStorage();
     const loader = document.querySelector('.loader');
@@ -18,10 +18,10 @@ export const loadGallery = () => {
     }, 1500);
     console.log(loader.classList);
   });
-  console.log('loadGallery work');
+  console.log('startLoader work');
 };
 
-export const loadMovie = () => {
+export const showLoader = () => {
   const gallery = document.querySelector('form');
   gallery.addEventListener('submit', () => {
     const loader = document.querySelector('.loader');
@@ -32,5 +32,5 @@ export const loadMovie = () => {
     }, 1500);
     console.log(loader.classList);
   });
-  console.log('loadMovie work');
+  console.log('showLoader work');
 };
