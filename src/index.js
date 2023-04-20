@@ -9,12 +9,11 @@ import {
 import { handleSubmit } from './js/utils/search-form-handler.js';
 
 //toggle modal fn
-import { hideModal, showModal } from './modal.js';
+import { hideModal, onShowModal, showModal, toggleModal } from './modal.js';
 import { startLoader } from './js/utils/loader.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
-const CLOSE_BTN = document.querySelector('[data-modal-close]');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 
@@ -30,10 +29,12 @@ getTrailerUrlByMovieId(newMovieIdExample);
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   //zmiana klasy modala
-  showModal;
+  toggleModal();
   //do dodania return dla nie divów
   const singleMovieCard = evt.target.parentElement.parentElement;
   //wyświetlenie Id filmu
   console.log(singleMovieCard.dataset.movieId);
   getMovieById(singleMovieCard.dataset.movieId);
+  getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
+  onShowModal();
 });

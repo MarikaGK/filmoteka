@@ -1,9 +1,14 @@
 .modal-overlay {
-  width: 100%;
-  height: 100%;
-  background-color: $modal-overlay-color;
+  position: fixed;
   display: flex;
   justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: $modal-overlay-color;
 }
 
 .modal-card {
@@ -50,21 +55,28 @@
 }
 
 .modal-card__poster {
-  width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 357px;
-  border-radius: $border-radius;
-  background-size: cover;
   overflow: hidden;
+  aspect-ratio: 0.7;
+  border-radius: $border-radius;
 
   @include tablet {
-    width: 264px;
     height: 373.5px;
   }
 
   @include desktop {
-    width: 375px;
     height: 478px;
   }
+}
+
+.modal-card__img {
+  border-radius: $border-radius;
+  width: fit-content;
+  height: 100%;
+  object-fit: cover;
 }
 
 .modal-card__movie-description {
@@ -100,4 +112,38 @@
   color: $main-font-dark-color;
   font-size: 12px;
   line-height: 1.67;
+
+  @include tablet {
+    max-width: 264px;
+  }
+
+  @include desktop {
+    max-width: 391px;
+  }
+}
+
+.modal-card__trailer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-card__yt-link {
+  padding-top: 20px;
+  color: $card-categories-name-color;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.modal-card__yt-logo {
+  content: ' ';
+  
+  background-image: url(/src/images/icons/youtube.svg);
+  width: 30px;
+  height: 12px;
+  fill: $card-categories-name-color;
+  color: $card-categories-name-color;
+
+  stroke: $card-categories-name-color;
 }

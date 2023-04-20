@@ -7,6 +7,7 @@
 .movie-data-list__item {
   display: flex;
   justify-content: left;
+  align-items: baseline;
   font-size: 12px;
   line-height: 1.67;
   padding: 0;
@@ -14,13 +15,26 @@
 }
 
 .movie-data-list__item-description {
-  display: block;
-  width: 108;
+  display: inline-block;
+  width: 108px;
   color: $card-categories-name-color;
+
+  @include desktop {
+    width: 152px;
+  }
 }
 
 .movie-data-list__item-value {
   color: $main-font-dark-color;
   display: flex;
   align-items: center;
+  max-width: 107px;
+
+  @include tablet {
+    max-width: 128px;
+  }
+
+  @include desktop {
+    max-width: 238px;
+  }
 }

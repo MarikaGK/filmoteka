@@ -1,9 +1,9 @@
 const modal = document.querySelector('[data-modal]');
 const watchedBtn = document.querySelector('[data-add-to-watched]');
 const queueBtn = document.querySelector('[data-add-to-queue]');
-const CLOSE_BTN = document.querySelector('[data-modal-close]');
+const CLOSE_BTN = document.querySelector('.close-btn');
 
-const toggleModal = () => {
+export const toggleModal = () => {
   modal.classList.toggle('is-hidden');
 };
 
@@ -16,13 +16,12 @@ const removeEventListenersFromBtns = () => {
   queueBtn.removeEventListener('click');
 };
 
-export const showModal = () => {
-  toggleModal;
-  CLOSE_BTN.addEventListener('click', hideModal);
+export const onShowModal = () => {
+  CLOSE_BTN.addEventListener('click', onHideModal);
   // addEventListenersToBtns;
 };
 
-export const hideModal = () => {
-  toggleModal;
+export const onHideModal = () => {
+  toggleModal();
   // removeEventListenersFromBtns;
 };

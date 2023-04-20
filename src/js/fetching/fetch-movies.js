@@ -2,6 +2,7 @@ import { saveMovieGenresToStorage } from '../rendering/render-genres';
 import { renderMovies } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
 import { renderModal } from '../rendering/render-modal';
+import { renderTrailerLink } from '../rendering/render-trailer-link';
 // ------> CONSTANTS USED IN THE PROJECT:
 
 const apiKey = '11f568ee70218bec08ad7368f7bb3250';
@@ -121,13 +122,12 @@ export const getTrailerUrlByMovieId = async movieId => {
     const findIndexOfKeyTrailer = data.results.findIndex(
       youtubeKey => youtubeKey.type === 'Trailer'
     );
+
     const youtubeKey = data.results[findIndexOfKeyTrailer].key;
     const movieTrailerUrl = `https://www.youtube.com/watch?v=${youtubeKey}`;
-    console.log(movieTrailerUrl);
-
-    return movieTrailerUrl;
 
     //TODO function here!
+    return renderTrailerLink(movieTrailerUrl);
   } catch (error) {
     console.error(error);
   }
