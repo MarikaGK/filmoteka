@@ -2,8 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, child, update, onValue } from 'firebase/database';
 // import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-// import { getAnalytics } from "firebase/analytics";
-// jeszcze nie wiem czy będzie potrzebne
 
 // const firebase = require('firebase');
 // const firebaseui = require('firebaseui');
@@ -24,24 +22,29 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-// const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
-// const analytics = getAnalytics(app);
-//jeszcze nie wiem czy będzie potrzebne
 
 //AUTHENTICATION BY GOOGLE
 
 const homeAndLibrary = document.querySelector("#home-and-library");
 const signInBtn = document.querySelector("#sign-in");
+
+
+if (localStorage.getItem("user")) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  homeAndLibrary.classList.remove("header__none");
+}
+
 signInBtn.addEventListener("click", () => {
-  signOut(auth);
+  // signOut(auth);
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
       console.log("SUCCES SIGN IN");
+      localStorage.setItem("user", JSON.stringify(user));
       homeAndLibrary.classList.remove("header__none");
     }).catch((error) => {
       const errorCode = error.code;
@@ -54,7 +57,9 @@ signInBtn.addEventListener("click", () => {
 const signOutBtn = document.querySelector("#sign-out");
 signOutBtn.addEventListener("click", () => {
   signOut(auth).then(() => {
-    console.log("Succes Sign Out")
+    console.log("Succes Sign Out");
+    localStorage.removeItem("user");
+    homeAndLibrary.classList.add("header__none");
   }).catch((error) => {
     console.log("Error Sign Out")
   });
@@ -95,6 +100,7 @@ export function pushToWatched(id) {
   id = 67890966;
   const movieId = id;
   console.log(movieId);
+  // const user = JSON.parse(localStorage.getItem("user"));
   const newPostKey = push(child(ref(db), 'watched')).key;
   const updates = {};
   updates['/watched/' + newPostKey] = movieId;
