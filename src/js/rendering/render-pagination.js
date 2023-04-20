@@ -38,12 +38,12 @@ export const getTotalPagesFromStorage = () => {
     return parsedTotalPages;
   };
 
-  const getTotalResultsFromStorage = () => {
+export const getTotalResultsFromStorage = () => {
     const totalResults = localStorage.getItem('totalResultsArray');
     const parsedTotalResults = JSON.parse(totalResults);
     return parsedTotalResults;
   };
-  const getCurrentPageFromStorage = () => {
+export const getCurrentPageFromStorage = () => {
     const currentPage = localStorage.getItem('currentPageArray');
     const parsedCurrentPage = JSON.parse(currentPage);
     return parsedCurrentPage;
@@ -93,8 +93,12 @@ document.addEventListener("click", (e)=>{
     else
         {
         if(target){
-        const targetPage = target.id
-        alert(`Strona nr:${targetPage} - tu bedzie paginacja dla filmow po tytule `)
+        const targetPage = target.id;
+        console.log(targetPage)
+        const searchMovieBox = document.querySelector('.header-input__text-box')
+        const searchMovie = searchMovieBox.value
+        console.log(searchMovie)
+        getMoviesByTitle(searchMovie, targetPage)
         } }
     }
 );

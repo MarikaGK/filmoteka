@@ -6,6 +6,7 @@ import { saveTotalPageToStorage,
          saveCurrentPageToStorage,
          getTotalPagesFromStorage,
          setPopularParameterToStorage,
+         getCurrentPageFromStorage,
         renderPagination } from '../rendering/render-pagination'
 
 // ------> CONSTANTS USED IN THE PROJECT:
@@ -16,7 +17,8 @@ const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
-let page = 1;
+// let page = getCurrentPageFromStorage();
+
 
 export const getMovieGenresAndSaveToStore = async () => {
   try {
@@ -53,10 +55,10 @@ export const getPopularMovies = async (page = 1) => {
 
     // TODO function here!
     setPopularParameterToStorage(true)
-    renderMovies(data.results);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
+    renderMovies(data.results);
   } catch (error) {
     console.error(error);
   }
@@ -65,7 +67,7 @@ export const getPopularMovies = async (page = 1) => {
 //  3.    ------ function fetch - get movies by title ------
 
 // movieTitle is a .value from header input
-export const getMoviesByTitle = async movieTitle => {
+export const getMoviesByTitle = async (movieTitle, page=1) => {
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
@@ -88,10 +90,10 @@ export const getMoviesByTitle = async movieTitle => {
 
     //TODO function here!
     setPopularParameterToStorage(false)
-    renderMovies(data.results);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
+    renderMovies(data.results);
     renderPagination()
   } catch (error) {
     console.error(error);
