@@ -3,11 +3,6 @@ import { getDatabase, ref, push, child, update, onValue } from 'firebase/databas
 // import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
-// const firebase = require('firebase');
-// const firebaseui = require('firebaseui');
-// Initialize the FirebaseUI Widget using Firebase.
-// const ui = new firebaseui.auth.AuthUI(firebase.auth());
-
 const firebaseConfig = {
   apiKey: "AIzaSyC3WI9OwBz4EKjWjZ6_OIwGrF26sBcAXyE",
   authDomain: "filmoteka-js-team-project.firebaseapp.com",
@@ -26,20 +21,15 @@ const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 
 //AUTHENTICATION BY GOOGLE
-
-const homeAndLibrary = document.querySelector("#home-and-library");
 const signInBtn = document.querySelector("#sign-in");
 const signOutBtn = document.querySelector("#sign-out");
-const signInSpan = document.querySelector(".sign-in__span");
-const signInSvg = document.querySelector(".sign-in__svg");
-
+const navFirst = document.querySelector(".header-nav__first");
+const navSecond = document.querySelector(".header-nav__second");
 
 if (localStorage.getItem("user")) {
   const user = JSON.parse(localStorage.getItem("user"));
-  signInSpan.classList.add("header__none");
-  signInSvg.classList.add("header__none");
-  homeAndLibrary.classList.remove("header__none");
-  signOutBtn.classList.remove("header__none");
+  navFirst.classList.add("header__none");
+  navSecond.classList.remove("header__none");
 }
 
 signInBtn.addEventListener("click", () => {
@@ -51,10 +41,8 @@ signInBtn.addEventListener("click", () => {
       const user = result.user;
       console.log("SUCCES SIGN IN");
       localStorage.setItem("user", JSON.stringify(user));
-      homeAndLibrary.classList.remove("header__none");
-      signOutBtn.classList.remove("header__none");
-      signInSpan.classList.add("header__none");
-      signInSvg.classList.add("header__none");
+      navFirst.classList.add("header__none");
+      navSecond.classList.remove("header__none");
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -67,10 +55,8 @@ signOutBtn.addEventListener("click", () => {
   signOut(auth).then(() => {
     console.log("Succes Sign Out");
     localStorage.removeItem("user");
-    homeAndLibrary.classList.add("header__none");
-    signOutBtn.classList.add("header__none");
-    signInSpan.classList.remove("header__none");
-    signInSvg.classList.remove("header__none");
+    navFirst.classList.remove("header__none");
+    navSecond.classList.add("header__none");
   }).catch((error) => {
     console.log("Error Sign Out")
   });
