@@ -135,7 +135,7 @@
 
 .modal-card__yt-link {
   padding-top: 20px;
-  color: $main-font-dark-color;
+  color: $movie-category-color;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -145,7 +145,7 @@
 
   &:hover,
   &:focus {
-    color: $movie-category-color;
+    color: $main-font-dark-color;
     text-shadow: 4px 4px 5px rgba(140, 140, 140, 1);
   }
 }
