@@ -7,6 +7,8 @@ import { getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
 // Pagination config:
 const perPage = 20
 const visiblePage = 7
+const prevPage = document.querySelector('.tui-prev')
+const nextPage = document.querySelector('.tui-next')
 
 
 export const saveTotalPageToStorage = d => {
@@ -88,7 +90,6 @@ document.addEventListener("click", (e)=>{
     if (popularParameter==true) 
         {
             if(target){const targetPage = target.id;
-              showLoader();
             getPopularMovies(targetPage)}  
         }
     else
@@ -97,8 +98,42 @@ document.addEventListener("click", (e)=>{
         const targetPage = target.id;
         const searchMovieBox = document.querySelector('.header-input__text-box')
         const searchMovie = searchMovieBox.value;
-        showLoader();
         getMoviesByTitle(searchMovie, targetPage)
+        console.log('test');
         } }
     }
 );
+
+document.addEventListener("click", (e)=>{
+  const target = e.target.closest(".tui-prev");
+  const selectedTarget = document.querySelector('.tui-is-selected')
+  const selectedPage = selectedTarget.id
+  const popularParameter = getPopularParameterFromStorage();
+  if (popularParameter==true) 
+      {
+        if(target){
+            const targetPage = selectedPage; getPopularMovies(targetPage)}}
+  else
+      {
+        if(target){
+        const searchMovieBox = document.querySelector('.header-input__text-box')
+        const searchMovie = searchMovieBox.value;
+        getMoviesByTitle(searchMovie, selectedPage)
+      } }
+  }
+);
+
+document.addEventListener("click", (e)=>{
+  const target = e.target.closest(".tui-next");
+  const selectedTarget = document.querySelector('.tui-is-selected')
+  const selectedPage = selectedTarget.id
+  const popularParameter = getPopularParameterFromStorage();
+  if (popularParameter==true) 
+      {
+        if(target){getPopularMovies(selectedPage)}}
+  else
+      {
+        if(target){
+            const searchMovieBox = document.querySelector('.header-input__text-box')
+            const searchMovie = searchMovieBox.value;
+            getMoviesByTitle(searchMovie, selectedPage)}}});
