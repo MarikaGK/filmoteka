@@ -86,11 +86,16 @@
 
 .modal-card__movie-title {
   padding: 20px 0;
+  margin: 0;
   font-family: $main-font;
   color: $main-font-dark-color;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.17;
+
+  @include tablet {
+    padding: 0 0 20px 0;
+  }
 
   @include desktop {
     font-size: 30px;
@@ -150,6 +155,5 @@
   height: 12px;
   fill: $card-categories-name-color;
   color: $card-categories-name-color;
-
   stroke: $card-categories-name-color;
 }

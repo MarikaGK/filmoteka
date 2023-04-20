@@ -9,7 +9,7 @@ import {
 import { handleSubmit } from './js/utils/search-form-handler.js';
 
 //toggle modal fn
-import { hideModal, onShowModal, showModal, toggleModal } from './modal.js';
+import { onShowModal, toggleModal } from './modal.js';
 import { startLoader } from './js/utils/loader.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
@@ -34,7 +34,7 @@ GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
   //wyświetlenie Id filmu
   console.log(singleMovieCard.dataset.movieId);
-  getMovieById(singleMovieCard.dataset.movieId);
   getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
+  getMovieById(singleMovieCard.dataset.movieId);
   onShowModal();
 });

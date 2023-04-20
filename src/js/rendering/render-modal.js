@@ -1,3 +1,4 @@
+
 const modalCardMovieInfo = document.querySelector('.modal-card__movie-info');
 
 export const renderModal = ({
