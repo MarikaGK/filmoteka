@@ -110,27 +110,3 @@ const getTrailerUrlFromObjectVideos = videosObject => {
     return movieTrailerUrl;
   }
 };
-//  6. --- Function fetch - get array of movieIds  ---
-export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
-  const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
-  const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
-  try {
-    //getting arrayOfMoviesIds and its videos object at once
-    // const response = await fetch(url);
-    // response Status:404 handling
-    for (let i = 0; i < 2; i++) {
-      i++;
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-    }
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    const data = await response.json();
-    return data;
-    //return object with movie's details
-  } catch (error) {
-    console.error(error);
-  }
-};
