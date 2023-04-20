@@ -1,4 +1,4 @@
-import { getMoviesByTitle } from '../fetches/movies';
+import { getMoviesByTitle } from '../fetching/fetch-movies';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 const INPUT_DOM = document.querySelector('.header-input__text-box');
@@ -10,7 +10,7 @@ export function handleSubmit(event) {
   const searchingPhrasesTrimmed = INPUT_DOM.value.trim();
   NO_HIT_INFO_DIV_DOM.textContent = '';
   if (!searchingPhrasesTrimmed) {
-    NO_HIT_INFO_DIV_DOM.textContent = 'Type anything...';
+    NO_HIT_INFO_DIV_DOM.textContent = 'Type your movie title here';
     return;
   }
 
