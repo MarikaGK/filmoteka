@@ -43,6 +43,7 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
+  font-family: $main-font;
 
   @include tablet {
     flex-direction: row;
@@ -82,6 +83,7 @@
 .modal-card__movie-description {
   display: flex;
   flex-direction: column;
+  font-family: $main-font;
 }
 
 .modal-card__movie-title {
@@ -114,6 +116,7 @@
 
 .modal-card__about-description {
   padding-bottom: 20px;
+  font-family: $main-font;
   color: $main-font-dark-color;
   font-size: 12px;
   line-height: 1.67;
@@ -136,6 +139,7 @@
 .modal-card__yt-link {
   padding-top: 20px;
   color: $movie-category-color;
+  font-family: $main-font;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -146,7 +150,7 @@
 
   &:hover,
   &:focus {
-    scale: 1.05;
+    scale: 1.1;
     color: $main-font-dark-color;
     text-shadow: 4px 4px 5px rgba(140, 140, 140, 1);
   }
