@@ -64,7 +64,7 @@ const options = {
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
-    page: '<a href="#" class="tui-page-btn" id="{{page}}">{{page}}</a>',
+    page: '<a href="#" class="tui-page-btn tui-mid-button" id="{{page}}">{{page}}</a>',
     currentPage: '<strong class="tui-page-btn tui-is-selected" id="{{page}}">{{page}}</strong>',
     moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}}">' +
@@ -85,7 +85,7 @@ const pagination = new Pagination('pagination', options);
 }
 
 document.addEventListener("click", (e)=>{
-    const target = e.target.closest(".tui-page-btn");
+    const target = e.target.closest(".tui-mid-button");
     const popularParameter = getPopularParameterFromStorage();
     if (popularParameter==true) 
         {
