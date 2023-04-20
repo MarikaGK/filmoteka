@@ -9,6 +9,7 @@ import {
 import { handleSubmit } from './js/utils/search-form-handler.js';
 //loader gallery
 import { startLoader } from './js/utils/loader.js';
+import { darkModeSwitch } from './js/utils/dark-mode-switch.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 

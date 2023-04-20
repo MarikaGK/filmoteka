@@ -1,12 +1,17 @@
-.toggle {
+body.dark-mode {
+  background-color: #10181d;
+  color: #ffffff;
+}
+
+.dark-mode-switch {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 140px;
+  right: 30px;
   cursor: pointer;
 
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
+  // @include mobile-retina {
+  //   display: none;
+  // }
 
   &__track {
     width: 42px;
@@ -14,19 +19,13 @@
     border-radius: 21px;
     display: flex;
     box-sizing: border-box;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-
-    // &--checked {
-    //   background-color: #000000;
-    //   border: 1px solid #ffffff;
-    // }
+    background-color: transparent;
+    border: 1px solid #ff6b08;
 
     &__finish {
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 20px;
       height: 20px;
     }
@@ -57,11 +56,7 @@
     border-radius: 50%;
     border: 1px solid #000000;
     background-color: #ffffff;
-
-    animation: DarckSchemeToggleUnchacked 0.25s forwards;
-    // animation-name: DarckSchemeToggleUnchecked;
-    // animation-fill-mode: forwards;
-    // animation-duration: 250ms;
+    animation: DarkModeSwitchUnchacked 0.25s forwards;
 
     &:hover,
     &:focus {
@@ -73,15 +68,11 @@
     transform: translateX(20px);
     background-color: #000000;
     border: 1px solid #ffffff;
-
-    animation: DarckSchemeToggleChecked 0.25s forwards;
-    // animation-name: DarckSchemeToggleChecked;
-    // animation-fill-mode: forwards;
-    // animation-duration: 250ms;
+    animation: DarkModeSwitchChecked 0.25s forwards;
   }
 }
 
-@keyframes DarckSchemeToggleUnchecked {
+@keyframes DarkModeSwitchUnchacked {
   from {
     transform: translateX(20px);
     background-color: #000000;
@@ -94,7 +85,7 @@
   }
 }
 
-@keyframes DarckSchemeToggleChecked {
+@keyframes DarkModeSwitchChecked {
   from {
     transform: translateX(0px);
     border: 1px solid #000000;
@@ -106,4 +97,22 @@
     border: 1px solid #ffffff;
   }
 }
+
+// ================ alternatywa ============ prototyp 
+
+// /* Dark mode */
+// @media (prefers-color-scheme: dark) {
+//   body {
+//       background-color: black;
+//       color: white;
+//   }
+// }
+
+// /* Light mode */
+// @media (prefers-color-scheme: light) {
+//   body {
+//       background-color: white;
+//       color: black;
+//   }
+// }
 
