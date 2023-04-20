@@ -39,7 +39,6 @@ signInBtn.addEventListener("click", () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      console.log("SUCCES SIGN IN");
       localStorage.setItem("user", JSON.stringify(user));
       navFirst.classList.add("header__none");
       navSecond.classList.remove("header__none");
@@ -53,7 +52,6 @@ signInBtn.addEventListener("click", () => {
 
 signOutBtn.addEventListener("click", () => {
   signOut(auth).then(() => {
-    console.log("Succes Sign Out");
     localStorage.removeItem("user");
     navFirst.classList.remove("header__none");
     navSecond.classList.add("header__none");
@@ -96,7 +94,6 @@ signOutBtn.addEventListener("click", () => {
 export function pushToWatched(id) {
   id = 67890966;
   const movieId = id;
-  console.log(movieId);
   // const user = JSON.parse(localStorage.getItem("user"));
   const newPostKey = push(child(ref(db), 'watched')).key;
   const updates = {};
@@ -108,7 +105,6 @@ export function pushToWatched(id) {
 export function pushToQueue(id) {
   id = 23323232;
   const movieId = id;
-  console.log(movieId);
   const newPostKey = push(child(ref(db), 'queue')).key;
   const updates = {};
   updates['/queue/' + newPostKey] = movieId;
@@ -125,7 +121,6 @@ export function getWatchedMoviesIds() {
       watchedMoviesIds.push(movieId);
     });
   });
-  console.log(watchedMoviesIds);
   return watchedMoviesIds;
 }
 
@@ -139,6 +134,5 @@ export function getQueueMoviesIds() {
       queueMoviesIds.push(movieId);
     });
   });
-  console.log(queueMoviesIds);
   return queueMoviesIds;
 };

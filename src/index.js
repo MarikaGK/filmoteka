@@ -27,14 +27,14 @@ getTrailerUrlByMovieId(newMovieIdExample);
 import {
   pushToWatched,
   pushToQueue,
-  // getWatchedMoviesIds,
+  getWatchedMoviesIds,
   getQueueMoviesIds
 } from './js/firebase/firebase.js';
 const addToWatched = document.querySelector(".button-list_watched");
 const addToQueue = document.querySelector(".button-list_queue");
 addToWatched.addEventListener("click", pushToWatched);
 addToQueue.addEventListener("click", pushToQueue);
-// getWatchedMoviesIds();
+getWatchedMoviesIds();
 getQueueMoviesIds();
 
 
