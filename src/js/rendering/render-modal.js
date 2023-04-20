@@ -28,7 +28,7 @@ export const renderModal = ({
     <li class="movie-data-list__item">
       <p class="movie-data-list__item-description">Vote / Votes</p>
       <p class="movie-data-list__item-value">
-        <span class="rating"> ${vote_average.toFixed(2)} </span> / ${vote_count}
+        <span class="rating--orange"> ${vote_average.toFixed(2)} </span> / <span class="rating--grey"> ${vote_count}</span>
       </p>
     </li>
     <li class="movie-data-list__item">
