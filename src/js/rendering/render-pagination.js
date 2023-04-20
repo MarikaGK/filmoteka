@@ -56,7 +56,7 @@ console.log('ponizej console.log dla renderPopularPagination')
 const options = {
   totalItems: getTotalResultsFromStorage(),
   itemsPerPage: 20,
-  visiblePages: 7,
+  visiblePages: 5,
   page: getCurrentPageFromStorage(),
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
