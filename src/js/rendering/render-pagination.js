@@ -1,6 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { renderMovies } from './render-movies';
+import { showLoader } from '../utils/loader';
 import { getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
 
 // Pagination config:
@@ -52,7 +53,6 @@ export const getCurrentPageFromStorage = () => {
 
 
 export const renderPagination = (data) => {
-console.log('ponizej console.log dla renderPopularPagination')
 const options = {
   totalItems: getTotalResultsFromStorage(),
   itemsPerPage: 20,
@@ -88,16 +88,16 @@ document.addEventListener("click", (e)=>{
     if (popularParameter==true) 
         {
             if(target){const targetPage = target.id;
+              showLoader();
             getPopularMovies(targetPage)}  
         }
     else
         {
         if(target){
         const targetPage = target.id;
-        console.log(targetPage)
         const searchMovieBox = document.querySelector('.header-input__text-box')
-        const searchMovie = searchMovieBox.value
-        console.log(searchMovie)
+        const searchMovie = searchMovieBox.value;
+        showLoader();
         getMoviesByTitle(searchMovie, targetPage)
         } }
     }

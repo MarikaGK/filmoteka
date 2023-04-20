@@ -67,7 +67,7 @@ export const getPopularMovies = async (page = 1) => {
 //  3.    ------ function fetch - get movies by title ------
 
 // movieTitle is a .value from header input
-export const getMoviesByTitle = async (movieTitle, page=1) => {
+export const getMoviesByTitle = async (movieTitle, page = 1) => {
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
