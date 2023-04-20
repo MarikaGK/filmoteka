@@ -52,6 +52,12 @@
   border: 1px solid $main-background-color;
 }
 
+.button--transparent-black {
+  background-color: transparent;
+  color: $main-font-dark-color;
+  border: 1px solid $main-font-dark-color;
+}
+
 // &-form {
 //   display: flex;
 //   justify-content: center;

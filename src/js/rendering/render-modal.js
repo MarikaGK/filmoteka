@@ -28,7 +28,9 @@ export const renderModal = ({
     <li class="movie-data-list__item">
       <p class="movie-data-list__item-description">Vote / Votes</p>
       <p class="movie-data-list__item-value">
-        <span class="rating--orange"> ${vote_average.toFixed(2)} </span> / <span class="rating--grey"> ${vote_count}</span>
+        <span class="rating--orange"> ${vote_average.toFixed(
+          2
+        )} </span> / <span class="rating--grey"> ${vote_count}</span>
       </p>
     </li>
     <li class="movie-data-list__item">
@@ -59,7 +61,7 @@ export const renderModal = ({
       Add to watched
     </button>
     <button
-      class="button button--transparent uppercase"
+      class="button button--transparent-black uppercase"
       type="button"
       [data-add-to-queue]
     >
