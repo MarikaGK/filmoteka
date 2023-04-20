@@ -9,7 +9,7 @@ import {
 import { handleSubmit } from './js/utils/search-form-handler.js';
 
 //toggle modal fn
-import { onShowModal, toggleModal } from './modal.js';
+import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js'
 import { startLoader } from './js/utils/loader.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');

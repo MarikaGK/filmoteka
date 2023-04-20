@@ -11,8 +11,9 @@ const addEventListenersToBtns = () => {
   watchedBtn.addEventListener('click');
   queueBtn.addEventListener('click');
 };
+
 const removeEventListenersFromBtns = () => {
-  watchedBtn.removeEventListener('click');
+  watchedBtn.removeEventListener('click' );
   queueBtn.removeEventListener('click');
 };
 
