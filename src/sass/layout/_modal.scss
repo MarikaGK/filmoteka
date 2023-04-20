@@ -134,11 +134,18 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  text-shadow: none;
+  will-change: text-shadow;
+
+  &:hover,
+  &:focus {
+    text-shadow: 4px 4px 5px rgba(140, 140, 140, 1);
+  }
 }
 
 .modal-card__yt-logo {
   content: ' ';
-  
+
   background-image: url(/src/images/icons/youtube.svg);
   width: 30px;
   height: 12px;
