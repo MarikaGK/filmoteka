@@ -29,11 +29,17 @@ const auth = getAuth(app);
 
 const homeAndLibrary = document.querySelector("#home-and-library");
 const signInBtn = document.querySelector("#sign-in");
+const signOutBtn = document.querySelector("#sign-out");
+const signInSpan = document.querySelector(".sign-in__span");
+const signInSvg = document.querySelector(".sign-in__svg");
 
 
 if (localStorage.getItem("user")) {
   const user = JSON.parse(localStorage.getItem("user"));
+  signInSpan.classList.add("header__none");
+  signInSvg.classList.add("header__none");
   homeAndLibrary.classList.remove("header__none");
+  signOutBtn.classList.remove("header__none");
 }
 
 signInBtn.addEventListener("click", () => {
@@ -46,6 +52,9 @@ signInBtn.addEventListener("click", () => {
       console.log("SUCCES SIGN IN");
       localStorage.setItem("user", JSON.stringify(user));
       homeAndLibrary.classList.remove("header__none");
+      signOutBtn.classList.remove("header__none");
+      signInSpan.classList.add("header__none");
+      signInSvg.classList.add("header__none");
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -54,12 +63,14 @@ signInBtn.addEventListener("click", () => {
     });
 });
 
-const signOutBtn = document.querySelector("#sign-out");
 signOutBtn.addEventListener("click", () => {
   signOut(auth).then(() => {
     console.log("Succes Sign Out");
     localStorage.removeItem("user");
     homeAndLibrary.classList.add("header__none");
+    signOutBtn.classList.add("header__none");
+    signInSpan.classList.remove("header__none");
+    signInSvg.classList.remove("header__none");
   }).catch((error) => {
     console.log("Error Sign Out")
   });

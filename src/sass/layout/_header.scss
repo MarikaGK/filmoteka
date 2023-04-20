@@ -163,3 +163,27 @@
 .header__none {
   display: none;
 }
+
+.header-nav__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+.sign-in {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.sign-in__span {
+  font-size: 15px;
+  letter-spacing: .1rem;
+  color: $main-font-bright-color;
+}
+.sign-out__span {
+  color: $main-font-bright-color;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: .1rem;
+}
