@@ -144,8 +144,7 @@
 }
 
 .modal-card__yt-logo {
-  content: ' ';
-
+  display: inline-flex;
   background-image: url(/src/images/icons/YouTube-Icon-Full-Color-Logo.wine.svg);
   width: 30px;
   height: 12px;
