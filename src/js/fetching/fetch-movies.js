@@ -2,7 +2,6 @@ import { saveMovieGenresToStorage } from '../rendering/render-genres';
 import { renderMovies } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
 import { renderModal } from '../rendering/render-modal';
-import { renderTrailerLink } from '../rendering/render-trailer-link';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
@@ -90,7 +89,7 @@ export const getMovieById = async movieId => {
     console.log(`movie trailer url` + movieTrailerUrl);
     //return object with movie's details
     return renderModal(data, movieTrailerUrl);
-    } catch (error) {
+  } catch (error) {
     console.error(error);
   }
 };
