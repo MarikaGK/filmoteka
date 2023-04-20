@@ -51,7 +51,6 @@ export const getPopularMovies = async (page = 1) => {
       throw new Error(response.status);
     }
     const data = await response.json();
-    // console.log(data);
 
     // TODO function here!
     setPopularParameterToStorage(true)
@@ -84,8 +83,6 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
       console.log('pusta tablica');
       return;
     }
-    console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
-    console.log(data);
     showLoader();
 
     //TODO function here!
