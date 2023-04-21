@@ -19,12 +19,6 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
-//Przykład zastosowania funkcji przyjmującej tablicę movieIDs
-const oldMovieIdExample = 1369; // Film: Rambo First Blood
-const newMovieIdExample = 603692; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
-const newMovieIdExample2 = 594767; // Film: Shazam! Fury of the gods (z 2023 roku)
-const arrayOfMoviesIds = [1369, 603692, 594767];
-getMoviesByArrayOfIds(arrayOfMoviesIds);
 
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {

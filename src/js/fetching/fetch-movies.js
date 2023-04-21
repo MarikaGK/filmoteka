@@ -37,10 +37,7 @@ export const getPopularMovies = async (page = 1) => {
       throw new Error(response.status);
     }
     const data = await response.json();
-    console.log(data);
     // TODO function here!
-    console.log(`log z popularnych filmów`);
-    console.log(data.results);
     renderMovies(data.results);
   } catch (error) {
     console.error(error);
@@ -65,8 +62,6 @@ export const getMoviesByTitle = async movieTitle => {
       console.log('pusta tablica');
       return;
     }
-    console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
-    console.log(data);
     showLoader();
     renderMovies(data.results);
   } catch (error) {
@@ -95,6 +90,7 @@ export const getMovieById = async movieId => {
     console.error(error);
   }
 };
+
 //  5. --- Function get trailer's url from returned object in function getMovieById (from sub-object Videos) ---
 const getTrailerUrlFromObjectVideos = videosObject => {
   const findIndexOfKeyTrailer = videosObject.findIndex(
@@ -123,22 +119,32 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
     // handling with first response from server => Status: 404
     if (response.status === 404) {
       const data = await response.json();
-      const formatOutputData = Object.values(Object.keys(data)
+      const filteredData = Object.keys(data)
         .filter(key => Number.isInteger(Number(key)))
         .reduce((acc, key) => {
           acc[key] = data[key];
           return acc;
-        }, {}));
+        }, {});
+
+      const films = [];
+      const keys = Object.keys(filteredData);
+
+      for (let i = 0; i < keys.length; ++i) {
+        const key = Number(keys[i]);
+        const newObj = structuredClone(filteredData[key]);
+        newObj.id = key;
+        films.push(newObj);
+      }
+
+      renderLibrary(films);
       //console.log do usunięcia
       console.log(
-        `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`
-      );
-      console.log(formatOutputData);
-//TODO function
-      // return filteredData;
-      renderLibrary(formatOutputData);
+        `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
+        console.log(films);
+
     }
   } catch (error) {
-    console.error(error);
+    console.log('test');
+    // console.error(error);
   }
 };

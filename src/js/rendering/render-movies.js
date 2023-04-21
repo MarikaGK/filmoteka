@@ -47,7 +47,7 @@ export const renderLibrary = movies => {
     .map(movie => {
       // const genres = renderGenresToGallery(movie.genre_ids);
       if (movie.poster_path !== null) {
-        return `<div class="movie-card" data-movie-id="${Object.keys[movie]}">
+        return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster">
             <img class="movie-img" src="https://image.tmdb.org/t/p/original${
               movie.poster_path
@@ -67,7 +67,7 @@ export const renderLibrary = movies => {
             </div>
             </div>`;
       } else {
-        return `<div class="movie-card" data-movie-id="${Object.keys[movie]}">
+        return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster"></div>
           <div class="movie-card-description">  
             <p class="movie-title">${movie.original_title}</p>
