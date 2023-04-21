@@ -1,5 +1,6 @@
 :root {
   font-family: $main-font, sans-serif;
+  font-weight: 500;
 }
 
 * {
@@ -11,19 +12,29 @@
   text-transform: uppercase;
 }
 
-.rating {
+.rating--orange {
   display: flex;
   width: 36px;
   height: 16px;
+  margin-right: 3px;
   justify-content: center;
   align-items: center;
+  align-content: center;
   color: $main-font-bright-color;
   background-color: $button-background-color;
   border-radius: $border-radius;
 }
 
-.is-hidden {
-  display: none;
+.rating--grey {
+  display: flex;
+  width: 36px;
+  height: 16px;
+  margin-left: 3px;
+  justify-content: center;
+  align-items: center;
+  color: $main-font-dark-color;
+  background-color: $footer-background-color;
+  border-radius: $border-radius;
 }
 
 .link {

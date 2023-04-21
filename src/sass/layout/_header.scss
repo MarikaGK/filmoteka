@@ -22,6 +22,7 @@
   height: 230px;
   padding-top: 40px;
   font-family: $main-font, sans-serif;
+
   @include tablet {
     background: url('/src/images/background/background_home_tablet.png');
     background-repeat: no-repeat;
@@ -30,6 +31,7 @@
     padding-top: 40px;
     height: 176px;
   }
+
   @include desktop {
     background: url('/src/images/background/background_home_pc.png');
     background-repeat: no-repeat;
@@ -51,6 +53,7 @@
 
 .header-nav__menu {
   list-style: none;
+
   @include tablet {
     display: inline-block;
     text-decoration: none;
@@ -109,6 +112,7 @@
     width: 50%;
     margin: auto;
   }
+
   @include desktop {
     width: 30%;
   }
