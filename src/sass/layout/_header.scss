@@ -22,7 +22,6 @@
   height: 230px;
   padding-top: 40px;
   font-family: $main-font, sans-serif;
-  filter: drop-shadow(0px 8px 15px rgba(255, 107, 1, 0.6));
 
   @include tablet {
     background: url('/src/images/background/background_home_tablet.png');
@@ -50,6 +49,16 @@
 .header-nav__link {
   text-decoration: none;
   color: $main-font-bright-color;
+  scale: 1;
+  text-shadow: none;
+  will-change: text-shadow, color, scale;
+  transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover,
+  &:focus {
+    scale: 1.2;
+    text-shadow: 4px 4px 5px $main-font-bright-color;
+  }
 }
 
 .header-nav__menu {
