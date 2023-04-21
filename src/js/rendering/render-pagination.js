@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import { renderMovies } from './render-movies';
 import { showLoader } from '../utils/loader';
 import { getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
@@ -68,7 +68,7 @@ const options = {
     currentPage: '<strong class="tui-page-btn tui-is-selected" id="{{page}}">{{page}}</strong>',
     moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' + 
       '</a>',
     disabledMoveButton:
       '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
