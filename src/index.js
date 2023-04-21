@@ -19,7 +19,7 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
-renderPagination()
+renderPagination();
 
 // const paginationClickerContainer = document.querySelector('.pagination', false)
 // const paginationClicker = paginationClickerContainer.querySelectorAll('a.tui-page-btn')
