@@ -34,8 +34,8 @@ import {
   getWatchedMoviesIds,
   getQueueMoviesIds
 } from './js/firebase/firebase.js';
-const addToWatched = document.querySelector(".button-list_watched");
-const addToQueue = document.querySelector(".button-list_queue");
+const addToWatched = document.querySelector("[data-add-to-watched]");
+const addToQueue = document.querySelector("[data-add-to-queue]");
 addToWatched.addEventListener("click", pushToWatched);
 addToQueue.addEventListener("click", pushToQueue);
 getWatchedMoviesIds();
