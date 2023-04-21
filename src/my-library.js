@@ -9,11 +9,10 @@ import {
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
 
-const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
 
 // getMovieGenresAndSaveToStore();
-// startLoader();
+startLoader();
 // getPopularMovies();
 //Przykład zastosowania funkcji przyjmującej tablicę movieIDs
 const oldMovieIdExample = 1369; // Film: Rambo First Blood

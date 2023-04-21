@@ -85,17 +85,5 @@ export const renderLibrary = movies => {
       }
     })
     .join('');
-  markupLibrary = `<div class="movie-card" data-movie-id="76600">
-          <div class="movie-card-poster">
-          <img class="movie-img" src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" width="280" alt="Avatar: The Way of Water" loading="lazy">
-              </div>
-            <div class="movie-card-description">
-              <p class="movie-title">Avatar: The Way of Water</p>
-              <div class="movie-subtitle">
-              <span class="movie-genre">Science Fiction, Adventure, Action  |</span>
-              <span class="movie-year">2022</span>
-            </div>
-          </div>
-          </div>`;
   gallery.insertAdjacentHTML('beforeend', markupLibrary);
 };

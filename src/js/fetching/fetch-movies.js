@@ -123,20 +123,20 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
     // handling with first response from server => Status: 404
     if (response.status === 404) {
       const data = await response.json();
-      const filteredData = Object.keys(data)
+      const formatOutputData = Object.values(Object.keys(data)
         .filter(key => Number.isInteger(Number(key)))
         .reduce((acc, key) => {
           acc[key] = data[key];
           return acc;
-        }, {});
+        }, {}));
       //console.log do usunięcia
       console.log(
         `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`
       );
-      console.log(filteredData);
+      console.log(formatOutputData);
 //TODO function
       // return filteredData;
-      renderLibrary(filteredData);
+      renderLibrary(formatOutputData);
     }
   } catch (error) {
     console.error(error);
