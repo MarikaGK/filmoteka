@@ -8,8 +8,8 @@ import {
 // import { handleSubmit } from './js/utils/search-form-handler.js';
 
 //toggle modal fn
-import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
-import { startLoader } from './js/utils/loader.js';
+import { onShowModal, toggleModal } from './js/modal-movie-details.js';
+import { startLoader } from './js/loader.js';
 
 
 const GALLERY_DOM = document.querySelector('.gallery');

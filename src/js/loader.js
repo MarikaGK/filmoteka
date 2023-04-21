@@ -1,4 +1,4 @@
-import { getMovieGenresAndSaveToStore } from '../fetching/fetch-movies';
+import { getMovieGenresAndSaveToStore } from './fetching/fetch-movies';
 
 const checkGenresInLocalStorage = () => {
   if (localStorage.getItem('movieGenresIdsArray')) {
