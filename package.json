@@ -20,6 +20,9 @@
   "dependencies": {
     "firebase": "^9.19.1",
     "firebaseui": "^6.0.2",
+    "@fancyapps/fancybox": "^3.5.7",
+    "@fancyapps/ui": "^5.0.16",
+    "jquery": "^3.6.4",
     "modern-normalize": "^1.1.0",
     "webmanifest-loader": "^0.3.0"
   },
