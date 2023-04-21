@@ -1,5 +1,5 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
-import { renderMovies, renderLibraryCard } from '../rendering/render-movies';
+import { renderMovies, renderLibrary } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
@@ -7,7 +7,7 @@ const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
-const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
+const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 let page = 1;
 //  1. --- Function fetch - get movies genres array ---
@@ -37,7 +37,6 @@ export const getPopularMovies = async (page = 1) => {
       throw new Error(response.status);
     }
     const data = await response.json();
-    console.log(data);
     // TODO function here!
     renderMovies(data.results);
   } catch (error) {
@@ -63,8 +62,6 @@ export const getMoviesByTitle = async movieTitle => {
       console.log('pusta tablica');
       return;
     }
-    console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
-    console.log(data);
     showLoader();
     renderMovies(data.results);
   } catch (error) {
@@ -76,7 +73,7 @@ export const getMovieById = async movieId => {
   try {
     //getting movieId and its videos object at once
     const response = await fetch(
-      `${searchByMovieIdUrl}${movieId}?api_key=${API_KEY}&append_to_response=videos`
+      `${searchByMovieIdUrl}/${movieId}?api_key=${API_KEY}&append_to_response=videos`
     );
     // response Status:404 handling
     if (!response.ok) {
@@ -93,6 +90,7 @@ export const getMovieById = async movieId => {
     console.error(error);
   }
 };
+
 //  5. --- Function get trailer's url from returned object in function getMovieById (from sub-object Videos) ---
 const getTrailerUrlFromObjectVideos = videosObject => {
   const findIndexOfKeyTrailer = videosObject.findIndex(
@@ -111,27 +109,42 @@ const getTrailerUrlFromObjectVideos = videosObject => {
   }
 };
 
-// //  6. --- Function fetch - get movie (details object) by movie ID for array of IDs ---
-// export const getMoviesByIds = movieIds => {
-//   movieIds.map(async id => {
-//     try {
-//       //getting movieId and its videos object at once
-//       const response = await fetch(
-//         `${searchByMovieIdUrl}${id}?api_key=${API_KEY}`
-//       );
-//       // response Status:404 handling
-//       if (!response.ok) {
-//         throw new Error(response.status);
-//       }
-//       const data = await response.json();
-//       const videoObject = data;
-//       // getting trailer url for movieId
-//       console.log(`response for id from getMoviesByIds for id ${id}`);
-//       console.log(videoObject);
-//       //return object with movie's details
-//       return renderLibraryCard(videoObject);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   });
-// };
+//  6. --- Function fetch - get array of movieIds  ---
+export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
+  const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
+  const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
+
+  try {
+    let response = await fetch(url);
+    // handling with first response from server => Status: 404
+    if (response.status === 404) {
+      const data = await response.json();
+      const filteredData = Object.keys(data)
+        .filter(key => Number.isInteger(Number(key)))
+        .reduce((acc, key) => {
+          acc[key] = data[key];
+          return acc;
+        }, {});
+
+      const films = [];
+      const keys = Object.keys(filteredData);
+
+      for (let i = 0; i < keys.length; ++i) {
+        const key = Number(keys[i]);
+        const newObj = structuredClone(filteredData[key]);
+        newObj.id = key;
+        films.push(newObj);
+      }
+
+      renderLibrary(films);
+      //console.log do usunięcia
+      console.log(
+        `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
+        console.log(films);
+
+    }
+  } catch (error) {
+    console.log('test');
+    // console.error(error);
+  }
+};
