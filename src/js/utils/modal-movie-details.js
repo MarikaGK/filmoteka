@@ -10,6 +10,7 @@ const addEvList = (target, behav, func) => {
 
 export const toggleModal = () => {
   modalOverlay.classList.toggle('is-hidden');
+  modal.classList.toggle('none');
 };
 
 const closeOnEsc = e => {

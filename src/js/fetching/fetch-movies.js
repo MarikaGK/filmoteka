@@ -1,5 +1,5 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
-import { renderMovies } from '../rendering/render-movies';
+import { renderMovies, renderLibraryCard } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
@@ -110,3 +110,28 @@ const getTrailerUrlFromObjectVideos = videosObject => {
     return movieTrailerUrl;
   }
 };
+
+// //  6. --- Function fetch - get movie (details object) by movie ID for array of IDs ---
+// export const getMoviesByIds = movieIds => {
+//   movieIds.map(async id => {
+//     try {
+//       //getting movieId and its videos object at once
+//       const response = await fetch(
+//         `${searchByMovieIdUrl}${id}?api_key=${API_KEY}`
+//       );
+//       // response Status:404 handling
+//       if (!response.ok) {
+//         throw new Error(response.status);
+//       }
+//       const data = await response.json();
+//       const videoObject = data;
+//       // getting trailer url for movieId
+//       console.log(`response for id from getMoviesByIds for id ${id}`);
+//       console.log(videoObject);
+//       //return object with movie's details
+//       return renderLibraryCard(videoObject);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   });
+// };
