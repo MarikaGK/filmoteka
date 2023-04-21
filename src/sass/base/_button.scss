@@ -57,6 +57,16 @@
   background-color: transparent;
   color: $main-font-dark-color;
   border: 1px solid $main-font-dark-color;
+  transform: scale(1);
+  will-change: color, border, transform;
+  transition: color, border, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover,
+  &:focus {
+    color: $button-background-color;
+    border: 1px solid $button-background-color;
+    transform: scale(1.1);
+  }
 }
 
 // &-form {
