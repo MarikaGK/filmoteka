@@ -29,7 +29,7 @@
   color: $main-font-dark-color;
   display: flex;
   align-items: center;
-  width: 100%;
+  max-width: 132px;
 
   @include tablet {
     max-width: 128px;

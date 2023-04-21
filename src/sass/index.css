@@ -16,7 +16,7 @@
 */
 @import '~node_modules/modern-normalize/modern-normalize.css';
 :root {
-  font-family: "Roboto", sans-serif, sans-serif;
+  font-family: 'Roboto', sans-serif, sans-serif;
 }
 
 * {
@@ -52,7 +52,7 @@
   position: relative;
 }
 .link--active::after {
-  content: " ";
+  content: ' ';
   width: 100%;
   height: 3px;
   position: absolute;
@@ -91,16 +91,16 @@
 }
 
 .header {
-  background: url("/src/images/background/background_home_mobile.png");
+  background: url('/src/images/background/background_home_mobile.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 230px;
   padding-top: 40px;
-  font-family: "Roboto", sans-serif, sans-serif;
+  font-family: 'Roboto', sans-serif, sans-serif;
 }
 @media (min-width: 768px) {
   .header {
-    background: url("/src/images/background/background_home_tablet.png");
+    background: url('/src/images/background/background_home_tablet.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -110,7 +110,7 @@
 }
 @media (min-width: 1280px) {
   .header {
-    background: url("/src/images/background/background_home_pc.png");
+    background: url('/src/images/background/background_home_pc.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -148,7 +148,7 @@
 @media (min-width: 768px) {
   .header-nav__menu-title {
     display: inline-flex;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 30px;
     line-height: 1.17;
     color: #ffffff;
@@ -225,7 +225,8 @@
 .header-input__text-box::placeholder {
   opacity: 1;
 }
-.header-input__text-box:focus, .header-input__text-box:focus-within {
+.header-input__text-box:focus,
+.header-input__text-box:focus-within {
   border-bottom: 2px solid #ff6b01;
 }
 
@@ -234,7 +235,7 @@
 }
 
 .active__page::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 3px;
@@ -295,7 +296,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: "Roboto", sans-serif, sans-serif;
+  font-family: 'Roboto', sans-serif, sans-serif;
   text-decoration: none;
   width: 100%;
   gap: 8px;
@@ -515,7 +516,7 @@
 
 .modal-card__movie-title {
   padding: 20px 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #000000;
   font-weight: 500;
   font-size: 20px;
@@ -530,7 +531,7 @@
 .modal-card__about {
   padding-top: 20px;
   padding-bottom: 8px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #000000;
   font-weight: 500;
   font-size: 12px;
@@ -669,7 +670,7 @@
   transition: opacity 1s, visibility 1s;
 }
 .loader-big::after {
-  content: "";
+  content: '';
   width: 200px;
   height: 200px;
   border: 15px solid #b9b9b9;
@@ -682,7 +683,7 @@
   background-clip: content-box;
 }
 .loader-small::after {
-  content: "";
+  content: '';
   width: 150px;
   height: 150px;
   border: 15px solid #b9b9b9;
@@ -695,7 +696,7 @@
   background-clip: content-box;
 }
 .loader-smallest::after {
-  content: "";
+  content: '';
   width: 100px;
   height: 100px;
   border: 15px solid #b9b9b9;
@@ -724,7 +725,7 @@
 
 .button {
   width: 130px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   text-transform: uppercase;
   font-weight: 500;
@@ -741,7 +742,8 @@
 .button:not(:last-child) {
   margin-right: 20px;
 }
-.button:hover, .button:focus {
+.button:hover,
+.button:focus {
   text-shadow: 2px 0 15px #ffffff;
 }
 @media (min-width: 768px) {
@@ -764,4 +766,4 @@
   background-color: transparent;
   color: #ffffff;
   border: 1px solid #ffffff;
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */
