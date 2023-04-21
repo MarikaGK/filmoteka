@@ -4,8 +4,26 @@ const watchedBtn = document.querySelector('[data-add-to-watched]');
 const queueBtn = document.querySelector('[data-add-to-queue]');
 const CLOSE_BTN = document.querySelector('.close-btn');
 
+const addEvList = (target, behav, func) => {
+  target.addEventListener(behav, func);
+};
+
 export const toggleModal = () => {
   modalOverlay.classList.toggle('is-hidden');
+};
+
+const closeOnEsc = e => {
+  if (e.code === 'Escape') {
+    toggleModal();
+  }
+  return;
+};
+
+const closeOnBackdropClick = e => {
+  if (e.target === modalOverlay) {
+    toggleModal();
+  }
+  return;
 };
 
 const addEventListenersToBtns = () => {
@@ -19,17 +37,15 @@ const removeEventListenersFromBtns = () => {
 };
 
 export const onShowModal = () => {
-  CLOSE_BTN.addEventListener('click', onHideModal);
-  document.addEventListener('click', e => {
-    if (e.target === modal) {
-      return;
-    }
-    onHideModal;
-  });
+  CLOSE_BTN.addEventListener('click', toggleModal);
+  modalOverlay.addEventListener('click', closeOnBackdropClick);
+  document.addEventListener('keydown', closeOnEsc);
   // addEventListenersToBtns;
 };
 
 export const onHideModal = () => {
-  toggleModal();
+  CLOSE_BTN.removeEventListener('click', toggleModal);
+  modalOverlay.removeEventListener('click', closeOnBackdropClick);
+  document.removeEventListener('keydown', closeOnEsc);
   // removeEventListenersFromBtns;
 };
