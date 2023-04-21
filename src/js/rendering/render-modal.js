@@ -66,7 +66,7 @@ export const renderModal = (
   <p class="modal-card__about-description">${overview}</p>
   <div class="button-list">
     <button
-      class="button button--orange uppercase"
+      class="button button--transparent-black uppercase"
       type="button"
       [data-add-to-watched]
     >
