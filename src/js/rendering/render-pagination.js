@@ -1,14 +1,5 @@
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
-import { renderMovies } from './render-movies';
-import { showLoader } from '../utils/loader';
 import { getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
-
-// Pagination config:
-const perPage = 20
-const visiblePage = 7
-const prevPage = document.querySelector('.tui-prev')
-const nextPage = document.querySelector('.tui-next')
 
 
 export const saveTotalPageToStorage = d => {

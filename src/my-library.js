@@ -10,7 +10,7 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
-
+import { renderPagination } from './js/rendering/render-pagination.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 
@@ -18,6 +18,7 @@ const GALLERY_DOM = document.querySelector('.gallery');
 
 getMovieGenresAndSaveToStore();
 startLoader();
+renderPagination();
 
 //*  Trzeba pobierać z localstorage tablice watched i queue oraz zapisywać do zmiennych (aktualizować zmiany i przesyłać na serwer zewn również)
 //! localStorage.getItem('watched')); - może taka zmienna?
