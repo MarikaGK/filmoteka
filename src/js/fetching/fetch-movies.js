@@ -1,5 +1,5 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
-import { renderMovies } from '../rendering/render-movies';
+import { renderMovies, renderLibrary } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
@@ -7,7 +7,7 @@ const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
-const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
+const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 let page = 1;
 //  1. --- Function fetch - get movies genres array ---
@@ -39,6 +39,8 @@ export const getPopularMovies = async (page = 1) => {
     const data = await response.json();
     console.log(data);
     // TODO function here!
+    console.log(`log z popularnych filmów`);
+    console.log(data.results);
     renderMovies(data.results);
   } catch (error) {
     console.error(error);
@@ -76,7 +78,7 @@ export const getMovieById = async movieId => {
   try {
     //getting movieId and its videos object at once
     const response = await fetch(
-      `${searchByMovieIdUrl}${movieId}?api_key=${API_KEY}&append_to_response=videos`
+      `${searchByMovieIdUrl}/${movieId}?api_key=${API_KEY}&append_to_response=videos`
     );
     // response Status:404 handling
     if (!response.ok) {
@@ -108,5 +110,35 @@ const getTrailerUrlFromObjectVideos = videosObject => {
     //do usunięcia console.log()
     console.log(` oraz url do trailera: ${movieTrailerUrl}`);
     return movieTrailerUrl;
+  }
+};
+
+//  6. --- Function fetch - get array of movieIds  ---
+export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
+  const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
+  const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
+
+  try {
+    let response = await fetch(url);
+    // handling with first response from server => Status: 404
+    if (response.status === 404) {
+      const data = await response.json();
+      const filteredData = Object.keys(data)
+        .filter(key => Number.isInteger(Number(key)))
+        .reduce((acc, key) => {
+          acc[key] = data[key];
+          return acc;
+        }, {});
+      //console.log do usunięcia
+      console.log(
+        `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`
+      );
+      console.log(filteredData);
+//TODO function
+      // return filteredData;
+      renderLibrary(filteredData);
+    }
+  } catch (error) {
+    console.error(error);
   }
 };

@@ -45,18 +45,20 @@ export const renderMovies = movies => {
 export const renderLibrary = movies => {
   const markupLibrary = movies
     .map(movie => {
-      const genres = renderGenresToGallery(movie.genre_ids);
+      // const genres = renderGenresToGallery(movie.genre_ids);
       if (movie.poster_path !== null) {
-        return `<div class="movie-card" data-movie-id="${movie.id}">
+        return `<div class="movie-card" data-movie-id="${Object.keys[movie]}">
           <div class="movie-card-poster">
             <img class="movie-img" src="https://image.tmdb.org/t/p/original${
               movie.poster_path
             }" width=280 alt="${movie.original_title}" loading="lazy" />
             </div>
             <div class="movie-card-description">
-              <p class="movie-title">${movie.original_title}</p>
+              <p class="movie-title">${movie.title}</p>
               <div class="movie-subtitle">
-                <span class="movie-genre">${genres}  |</span>
+                <span class="movie-genre">${movie.genres
+                  .map(g => g.name)
+                  .join(', ')}  |</span>
                 <span class="movie-year">${parseInt(movie.release_date)}</span>
                 <span class="movie-vote">${movie.vote_average.toPrecision(
                   2
@@ -65,12 +67,14 @@ export const renderLibrary = movies => {
             </div>
             </div>`;
       } else {
-        return `<div class="movie-card" data-movie-id="${movie.id}">
+        return `<div class="movie-card" data-movie-id="${Object.keys[movie]}">
           <div class="movie-card-poster"></div>
           <div class="movie-card-description">  
             <p class="movie-title">${movie.original_title}</p>
             <div class="movie-subtitle">
-              <span class="movie-genre">${genres}  |</span>
+              <span class="movie-genre">${movie.genres
+                .map(g => g.name)
+                .join(', ')}  |</span>
               <span class="movie-year">${parseInt(movie.release_date)}</span>
               <span class="movie-vote">${movie.vote_average.toPrecision(
                 2
@@ -81,27 +85,17 @@ export const renderLibrary = movies => {
       }
     })
     .join('');
+  markupLibrary = `<div class="movie-card" data-movie-id="76600">
+          <div class="movie-card-poster">
+          <img class="movie-img" src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" width="280" alt="Avatar: The Way of Water" loading="lazy">
+              </div>
+            <div class="movie-card-description">
+              <p class="movie-title">Avatar: The Way of Water</p>
+              <div class="movie-subtitle">
+              <span class="movie-genre">Science Fiction, Adventure, Action  |</span>
+              <span class="movie-year">2022</span>
+            </div>
+          </div>
+          </div>`;
   gallery.insertAdjacentHTML('beforeend', markupLibrary);
 };
-
-// -----> EXAMPLE FETCH FOR GALLERY RENDER:
-
-// const API_KEY = 'b118f38ec77100db6763b4cc83604589';
-// const fetchTrendingMovies = async () => {
-//   const movieGallery = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`;
-//   try {
-//     const response = await fetch(movieGallery);
-//     const movies = await response.json();
-//     return movies;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const startRenderingTrendingMovies = async () => {
-//   const trendingMovies = await fetchTrendingMovies();
-//   console.log(trendingMovies);
-//   renderMovies(trendingMovies.results);
-// };
-
-// startRenderingTrendingMovies();

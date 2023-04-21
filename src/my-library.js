@@ -5,8 +5,6 @@ import {
   getMoviesByArrayOfIds,
 } from './js/fetching/fetch-movies.js';
 
-import { handleSubmit } from './js/utils/search-form-handler.js';
-
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
@@ -14,11 +12,9 @@ import { startLoader } from './js/utils/loader.js';
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
 
-FORM_DOM.addEventListener('submit', handleSubmit);
-
-getMovieGenresAndSaveToStore();
-startLoader();
-getPopularMovies();
+// getMovieGenresAndSaveToStore();
+// startLoader();
+// getPopularMovies();
 //Przykład zastosowania funkcji przyjmującej tablicę movieIDs
 const oldMovieIdExample = 1369; // Film: Rambo First Blood
 const newMovieIdExample = 603692; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
