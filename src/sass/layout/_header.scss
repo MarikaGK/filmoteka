@@ -53,15 +53,6 @@
 
 .header-nav__menu {
   list-style: none;
-
-  @include tablet {
-    display: inline-block;
-    text-decoration: none;
-    color: $main-font-bright-color;
-    font-size: 30px;
-    letter-spacing: 0.1rem;
-    margin: 0;
-  }
 }
 
 .header-nav__menu-title {
@@ -76,7 +67,7 @@
   }
 }
 
-.header-input__text-box {
+.header-form__input {
   background: transparent;
   border: none;
   color: $main-font-bright-color;
@@ -87,6 +78,16 @@
   @include tablet {
     padding-bottom: 4px;
     max-width: 700px;
+  }
+   outline: none;
+
+  &::placeholder {
+    opacity: 1;
+  }
+
+  &:focus,
+  &:focus-within {
+    border-bottom: 2px solid $button-background-color;
   }
 }
 
@@ -103,51 +104,34 @@
   align-items: center;
 }
 
-.header-input {
-  text-align: center;
-  padding-top: 40px;
-  padding-bottom: 20px;
 
-  @include tablet {
+
+.header-form {
+   text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  position: relative;
+  display: flex;
+  outline: none;
+    @include tablet {
     width: 50%;
     margin: auto;
   }
-
   @include desktop {
     width: 30%;
   }
 }
 
-.header-input__form {
-  position: relative;
-  display: flex;
-  outline: none;
-}
-
-.header-input__button {
+.header-form__button {
   background: none;
   border: none;
   position: absolute;
-  top: 0;
+  top: 30;
   right: 0;
   cursor: pointer;
 }
-
-.header-input__icon {
+.header-form__icon {
   background-color: none;
-}
-
-.header-input__text-box {
-  outline: none;
-
-  &::placeholder {
-    opacity: 1;
-  }
-
-  &:focus,
-  &:focus-within {
-    border-bottom: 2px solid $button-background-color;
-  }
 }
 
 .active__page {
