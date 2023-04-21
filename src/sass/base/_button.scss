@@ -52,7 +52,7 @@
   &:hover,
   &:focus {
     filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 
@@ -68,7 +68,7 @@
   &:focus {
     color: $button-background-color;
     border: 1px solid $button-background-color;
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 

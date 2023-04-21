@@ -6,8 +6,8 @@
   left: 0;
   top: 0;
   z-index: 99;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: $modal-overlay-color;
   overflow: scroll;
   padding: 80px 0;
@@ -16,34 +16,32 @@
   will-change: opacity;
   transition: opacity 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-
 .modal-card {
   position: relative;
+  left: 0;
+  top: 8vh;
   padding: 48px 20px 40px;
   min-width: 280px;
   width: 90%;
+  min-height: fit-content;
   background-color: $main-background-color;
   margin: 20px;
   border-radius: $border-radius;
-  -webkit-box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
-  box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
   transform: scale(1);
   will-change: transform;
   transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
   @include tablet {
+    position: relative;
     width: 704px;
     margin: auto;
     padding: 36px 37px;
   }
-
   @include desktop {
     width: 806px;
     padding: 40px 12px;
   }
 }
-
 .modal__icon-close {
   padding: 0;
   margin: 0;
@@ -54,30 +52,25 @@
   scale: 1;
   transform: stroke, scale;
   transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
   &:hover,
   &:focus {
     stroke: $movie-category-color;
     scale: 1.1;
   }
 }
-
 .modal-card__movie-info {
   display: flex;
   flex-direction: column;
   justify-content: left;
   font-family: $main-font;
-
   @include tablet {
     flex-direction: row;
     gap: 68px;
   }
-
   @include desktop {
     gap: 16px;
   }
 }
-
 .modal-card__poster {
   display: flex;
   justify-content: center;
@@ -86,33 +79,24 @@
   height: 357px;
   overflow: hidden;
   border-radius: $border-radius;
-
   @include tablet {
     height: 373.5px;
   }
-
   @include desktop {
     height: 478px;
   }
 }
-
 .modal-card__img {
   border-radius: $border-radius;
-  width: auto;
+  width: fit-content;
   height: 100%;
   object-fit: cover;
-
-  @include mobile-retina {
-    height: 100%;
-  }
 }
-
 .modal-card__movie-description {
   display: flex;
   flex-direction: column;
   font-family: $main-font;
 }
-
 .modal-card__movie-title {
   padding: 20px 0;
   margin: 0;
@@ -121,16 +105,13 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.17;
-
   @include tablet {
     padding: 0 0 20px 0;
   }
-
   @include desktop {
     font-size: 30px;
   }
 }
-
 .modal-card__about {
   padding-top: 20px;
   padding-bottom: 8px;
@@ -140,29 +121,24 @@
   font-size: 12px;
   line-height: 1.33;
 }
-
 .modal-card__about-description {
   padding-bottom: 20px;
   font-family: $main-font;
   color: $main-font-dark-color;
   font-size: 12px;
   line-height: 1.67;
-
   @include tablet {
     max-width: 264px;
   }
-
   @include desktop {
     max-width: 391px;
   }
 }
-
 .modal-card__trailer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .modal-card__yt-link {
   padding-top: 20px;
   color: $movie-category-color;
@@ -174,7 +150,6 @@
   text-shadow: none;
   will-change: text-shadow, color, scale;
   transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
   &:hover,
   &:focus {
     scale: 1.1;
@@ -182,7 +157,6 @@
     text-shadow: 4px 4px 5px rgba(140, 140, 140, 1);
   }
 }
-
 .modal-card__yt-logo {
   display: inline-flex;
   background-image: url(/src/images/icons/YouTube-Icon-Full-Color-Logo.wine.svg);
