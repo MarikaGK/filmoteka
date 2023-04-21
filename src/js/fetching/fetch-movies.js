@@ -1,6 +1,6 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
 import { renderMovies, renderLibrary } from '../rendering/render-movies';
-import { showLoader } from '../loader';
+import { showLoader } from '../utils/loader';
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
