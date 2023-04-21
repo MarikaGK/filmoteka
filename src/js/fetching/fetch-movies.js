@@ -9,7 +9,7 @@ const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
-let page = 1;
+// let page = 1;
 //  1. --- Function fetch - get movies genres array ---
 export const getMovieGenresAndSaveToStore = async () => {
   try {
@@ -45,7 +45,7 @@ export const getPopularMovies = async (page = 1) => {
 };
 //  3. --- function fetch - get movies by title ---
 // movieTitle is a .value from header input
-export const getMoviesByTitle = async movieTitle => {
+export const getMoviesByTitle = async (movieTitle, page = 1) => {
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
@@ -140,7 +140,7 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
       //console.log do usunięcia
       console.log(
         `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
-        console.log(films);
+      console.log(films);
 
     }
   } catch (error) {

@@ -4,7 +4,7 @@ const GALLERY_DOM = document.querySelector('.gallery');
 const INPUT_DOM = document.querySelector('.header-input__text-box');
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 
-export function handleSubmit(event) {
+export const handleSubmit = (event) => {
   event.preventDefault();
 
   const searchingPhrasesTrimmed = INPUT_DOM.value.trim();
