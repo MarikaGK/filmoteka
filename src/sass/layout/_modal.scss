@@ -33,12 +33,13 @@
   transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
   @include tablet {
-    width: auto;
+    width: 704px;
     margin: auto;
     padding: 36px 37px;
   }
 
   @include desktop {
+    width: 806px;
     padding: 40px 12px;
   }
 }
