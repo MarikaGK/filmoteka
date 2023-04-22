@@ -10,7 +10,7 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
-
+import { renderPagination } from './js/rendering/render-pagination.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 
@@ -32,7 +32,7 @@ const newMovieIdExample = 603692; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
 const newMovieIdExample2 = 594767; // Film: Shazam! Fury of the gods (z 2023 roku)
 const arrayOfMoviesIds = [1369, 603692, 594767];
 getMoviesByArrayOfIds(arrayOfMoviesIds);
-
+renderPagination();
 
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {

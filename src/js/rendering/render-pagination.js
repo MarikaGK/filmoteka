@@ -6,7 +6,7 @@ import { getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
 
 // Pagination config:
 const perPage = 20
-const visiblePage = 7
+const visiblePages = 5
 const prevPage = document.querySelector('.tui-prev')
 const nextPage = document.querySelector('.tui-next')
 
@@ -52,8 +52,6 @@ export const getCurrentPageFromStorage = () => {
     return parsedCurrentPage;
   };
 
-
-
 export const renderPagination = (data) => {
 const options = {
   totalItems: getTotalResultsFromStorage(),
@@ -92,15 +90,13 @@ document.addEventListener("click", (e)=>{
             if(target){const targetPage = target.id;
             getPopularMovies(targetPage)}  
         }
-    else
-        {
-        if(target){
+    else if(target){
         const targetPage = target.id;
         const searchMovieBox = document.querySelector('.header-input__text-box')
         const searchMovie = searchMovieBox.value;
         getMoviesByTitle(searchMovie, targetPage)
         console.log('test');
-        } }
+    }
     }
 );
 
@@ -113,13 +109,11 @@ document.addEventListener("click", (e)=>{
       {
         if(target){
             const targetPage = selectedPage; getPopularMovies(targetPage)}}
-  else
-      {
-        if(target){
+  else if(target){
         const searchMovieBox = document.querySelector('.header-input__text-box')
         const searchMovie = searchMovieBox.value;
         getMoviesByTitle(searchMovie, selectedPage)
-      } }
+      }
   }
 );
 
