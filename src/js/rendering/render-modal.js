@@ -149,3 +149,4 @@ export const renderModal = (
     modalCardMovieInfo.innerHTML = markupModal;
   }
 };
+

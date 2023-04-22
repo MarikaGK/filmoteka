@@ -46,6 +46,7 @@ import {
   getQueueMoviesIds
 } from './js/firebase/firebase.js';
 const addToWatched = document.querySelector("[data-add-to-watched]");
+console.log(addToWatched);
 const addToQueue = document.querySelector("[data-add-to-queue]");
 addToWatched.addEventListener("click", pushToWatched);
 addToQueue.addEventListener("click", pushToQueue);
