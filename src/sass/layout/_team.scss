@@ -44,6 +44,7 @@
     gap: 30px;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
 }
 
 .team__item {
@@ -77,4 +78,17 @@
     display: flex;
     align-items: center;
 }
-
+.team__top {
+    display: flex;
+    justify-content: space-between;
+}
+.team__top-text {
+    font-size: 30px;
+}
+.team__top-wrapper {
+    @include tablet {
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+        }
+}
