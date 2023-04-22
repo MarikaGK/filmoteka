@@ -75,23 +75,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
-  height: 357px;
+  aspect-ratio: 0.7;
   overflow: hidden;
   border-radius: $border-radius;
-  @include mobile-retina {
-    height: 179px;
-  }
-  @include tablet {
-    height: 373.5px;
-  }
-  @include desktop {
-    height: 478px;
-  }
 }
 .modal-card__img {
   border-radius: $border-radius;
-  width: fit-content;
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
