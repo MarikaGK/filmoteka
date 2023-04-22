@@ -28,7 +28,6 @@ renderPagination();
 //     console.log(paginationClicker.value)
 // })
 
-
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   //zmiana klasy modala
@@ -41,3 +40,23 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal();
 });
+
+const scrollUpBtn = document.querySelector('.scroll-up-arrow');
+window.addEventListener('scroll', showButtonOnScroll);
+scrollUpBtn.addEventListener('click', scrollToTop);
+
+function showButtonOnScroll(event) {
+  event.preventDefault();
+  if (window.scrollY > 700) {
+    scrollUpBtn.classList.remove('is-hidden');
+  } else {
+    scrollUpBtn.classList.add('is-hidden');
+  }
+}
+
+export function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
