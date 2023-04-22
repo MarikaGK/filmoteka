@@ -79,6 +79,9 @@
   height: 357px;
   overflow: hidden;
   border-radius: $border-radius;
+  @include mobile-retina {
+    height: 179px;
+  }
   @include tablet {
     height: 373.5px;
   }
