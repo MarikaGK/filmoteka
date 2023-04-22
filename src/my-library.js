@@ -16,7 +16,7 @@ const GALLERY_DOM = document.querySelector('.gallery');
 
 // FORM_DOM.addEventListener('submit', handleSubmit);
 
-getMovieGenresAndSaveToStore();
+// getMovieGenresAndSaveToStore();
 startLoader();
 
 //*  Trzeba pobierać z localstorage tablice watched i queue oraz zapisywać do zmiennych (aktualizować zmiany i przesyłać na serwer zewn również)
