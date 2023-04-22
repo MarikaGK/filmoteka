@@ -5,6 +5,14 @@
   padding: 0;
 }
 
+.button-list.button-list--header {
+   padding: 60px 0 0 0;
+
+  @include tablet {
+    padding-top: 40px;
+  } 
+}
+
 .button {
   width: 130px;
   font-family: $main-font;
@@ -88,56 +96,3 @@
   }
 }
 
-// &-form {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// &__input {
-//   height: 20px;
-
-//   background-color: transparent;
-//   border: 0;
-//   border-bottom: 1px solid $footer-background-color;
-//   border-radius: 0px;
-
-//   color: $main-background-color;
-
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 14px;
-//   line-height: 16px;
-
-//   @media screen and (min-width: 320px) {
-//     width: 280px;
-//   }
-//   @media screen and (min-width: 768px) {
-//     width: 336px;
-//   }
-//   @media screen and (min-width: 1024px) {
-//     width: 336px;
-//   }
-//   &::placeholder {
-//     color: $main-background-color;
-
-//     font-style: normal;
-//     font-weight: 400;
-//     font-size: 14px;
-//     line-height: 16px;
-//   }
-
-//   &:focus {
-//     outline: none;
-//   }
-
-//   &:focus::placeholder {
-//     color: transparent;
-//   }
-// }
-
-// ----------------------------HTML btn
-
-// <div class="button-list">
-// <button class="button button--orange" type="button" data-watched-btn>watched</button>
-// <button class="button button--transparent" type="button" data-queue-btn>queue</button>
-// </div>

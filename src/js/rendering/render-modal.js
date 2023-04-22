@@ -149,3 +149,7 @@ export const renderModal = (
     modalCardMovieInfo.innerHTML = markupModal;
   }
 };
+
+export const resetModal = () => {
+  modalCardMovieInfo.innerHTML = '';
+};
