@@ -10,6 +10,7 @@ import { handleSubmit } from './js/utils/search-form-handler.js';
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
+import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
@@ -41,22 +42,7 @@ GALLERY_DOM.addEventListener('click', evt => {
   onShowModal();
 });
 
-const scrollUpBtn = document.querySelector('.scroll-up-arrow');
+//* Scroll site to top
+const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
-scrollUpBtn.addEventListener('click', scrollToTop);
-
-function showButtonOnScroll(event) {
-  event.preventDefault();
-  if (window.scrollY > 700) {
-    scrollUpBtn.classList.remove('is-hidden');
-  } else {
-    scrollUpBtn.classList.add('is-hidden');
-  }
-}
-
-export function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-}
+SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);

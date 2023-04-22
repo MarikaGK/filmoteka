@@ -1,21 +1,25 @@
 .scroll-up-arrow {
+  z-index: 50;
   position: fixed;
   bottom: 20px;
   right: 30px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $scroll-background-button-color;
+  background-color: $main-background-color;
   border-color: $movie-category-color;
-  border-width: 3px;
-
+  border-width: 2px;
   width: 50px;
   height: 50px;
-  border-radius: 10%;
+  border-radius: $border-radius;
   cursor: pointer;
+  transform: scale(1);
+  will-change: filter, transform;
+  transition: filter, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
   &:hover {
-    border-width: 10px;
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+    transform: scale(1.05);
   }
 
   @include tablet {
