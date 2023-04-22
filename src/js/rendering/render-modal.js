@@ -1,5 +1,6 @@
 import { Fancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
+import { toggleClassToWatchedBtn, toggleClassToQueueBtn } from '../firebase/firebase';
 
 const modalCardMovieInfo = document.querySelector('.modal-card__movie-info');
 
@@ -68,14 +69,14 @@ export const renderModal = (
     <button
       class="button button--transparent-black uppercase"
       type="button"
-      [data-add-to-watched]
+      [data-add-to-watched] data-movie-id="${id}"
     >
       Add to watched
     </button>
     <button
       class="button button--transparent-black uppercase"
       type="button"
-      [data-add-to-queue]
+      [data-add-to-queue] data-movie-id="${id}"
     >
       Add to queue
     </button>
@@ -132,14 +133,14 @@ export const renderModal = (
     <button
       class="button button--orange uppercase"
       type="button"
-      [data-add-to-watched]
+      [data-add-to-watched] data-movie-id="${id}"
     >
       Add to watched
     </button>
     <button
       class="button button--transparent-black uppercase"
       type="button"
-      [data-add-to-queue]
+      [data-add-to-queue] data-movie-id="${id}"
     >
       Add to queue
     </button>
@@ -148,4 +149,6 @@ export const renderModal = (
 `;
     modalCardMovieInfo.innerHTML = markupModal;
   }
+toggleClassToQueueBtn(id);
+toggleClassToWatchedBtn(id);
 };

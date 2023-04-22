@@ -11,13 +11,7 @@ import { handleSubmit } from './js/utils/search-form-handler.js';
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
-import {
-  pushToWatched,
-  pushToQueue,
-  getWatchedMoviesIds,
-  getQueueMoviesIds
-} from './js/firebase/firebase.js';
-
+import { db } from './js/firebase/firebase.js';
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
 
@@ -35,7 +29,6 @@ renderPagination();
 //     console.log(paginationClicker.value)
 // })
 
-
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   //zmiana klasy modala
@@ -49,10 +42,5 @@ GALLERY_DOM.addEventListener('click', evt => {
   onShowModal();
 });
 
-
-// const addToWatched = document.querySelector("[data-add-to-watched]");
-// const addToQueue = document.querySelector("[data-add-to-queue]");
-// addToWatched.addEventListener("click", pushToWatched);
-// addToQueue.addEventListener("click", pushToQueue);
-getWatchedMoviesIds();
-getQueueMoviesIds();
+console.log('to jest zzawartość db')
+console.log(db);

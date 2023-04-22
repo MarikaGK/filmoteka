@@ -1,4 +1,9 @@
-import { pushToWatched, pushToQueue } from "../firebase/firebase";
+import {
+  manageIdInQueue,
+  manageIdInWatched,
+  toggleClassToQueueBtn,
+  toggleClassToWatchedBtn,
+} from '../firebase/firebase';
 
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');
@@ -29,30 +34,37 @@ const closeOnBackdropClick = e => {
   return;
 };
 
+const checkWatched = e => {
+  const movieId = e.target.dataset.movieId;
+  manageIdInWatched(id);
+  toggleClassToWatchedBtn();
+};
+const checkQueue = e => {
+  const movieId = e.target.dataset.movieId;
+  manageIdInQueue(id);
+  toggleClassToQueueBtn();
+};
+
 const addEventListenersToBtns = () => {
-  watchedBtn.addEventListener('click');
-  queueBtn.addEventListener('click');
+  watchedBtn.addEventListener('click', checkWatched);
+  queueBtn.addEventListener('click', checkQueue);
 };
 
 const removeEventListenersFromBtns = () => {
-  watchedBtn.removeEventListener('click');
-  queueBtn.removeEventListener('click');
+  watchedBtn.removeEventListener('click', checkWatched);
+  queueBtn.removeEventListener('click', checkQueue);
 };
 
 export const onShowModal = () => {
   CLOSE_BTN.addEventListener('click', toggleModal);
   modalOverlay.addEventListener('click', closeOnBackdropClick);
   document.addEventListener('keydown', closeOnEsc);
-  // addEventListenersToBtns;
+  addEventListenersToBtns();
 };
 
 export const onHideModal = () => {
   CLOSE_BTN.removeEventListener('click', toggleModal);
   modalOverlay.removeEventListener('click', closeOnBackdropClick);
   document.removeEventListener('keydown', closeOnEsc);
-  // removeEventListenersFromBtns;
+  removeEventListenersFromBtns();
 };
-
-const checkedWatched = (id) => {
-  
-}

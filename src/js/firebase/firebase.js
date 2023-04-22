@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+export const db = getDatabase(app);
 const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 
@@ -25,6 +25,8 @@ const signInBtn = document.querySelector("#sign-in");
 const signOutBtn = document.querySelector("#sign-out");
 const navFirst = document.querySelector(".header-nav__first");
 const navSecond = document.querySelector(".header-nav__second");
+const watchedBtn = document.querySelector('[data-add-to-watched]');
+const queueBtn = document.querySelector('[data-add-to-queue]');
 
 if (localStorage.getItem("user")) {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -91,8 +93,7 @@ signOutBtn.addEventListener("click", () => {
 
 //REALTIME DATABASE 
 
-export function pushToWatched(id) {
-  id = 67890966;
+function pushToWatched(id) {
   const movieId = id;
   // const user = JSON.parse(localStorage.getItem("user"));
   const newPostKey = push(child(ref(db), 'watched')).key;
@@ -102,8 +103,7 @@ export function pushToWatched(id) {
   return getWatchedMoviesIds()
 }
 
-export function pushToQueue(id) {
-  id = 23323232;
+function pushToQueue(id) {
   const movieId = id;
   const newPostKey = push(child(ref(db), 'queue')).key;
   const updates = {};
@@ -136,3 +136,40 @@ export function getQueueMoviesIds() {
   });
   return queueMoviesIds;
 };
+
+// funkcja zwraca -1, jeśli id nie ma w tablicy
+const checkTheIdInWatched = id => {
+  const arrayOfWatchedIds = getWatchedMoviesIds();
+  const movieId = id;
+  return arrayOfWatchedIds.indexOf(movieId);
+}
+const checkTheIdInQueue = id => {
+  const arrayOfQueueIds = getQueueMoviesIds();
+  const movieId = id;
+  return arrayOfQueueIds.indexOf(movieId);
+}
+
+export const toggleClassToWatchedBtn = (id) => {
+if (checkTheIdInWatched(id) === -1)
+{return}
+return watchedBtn.classList.toggle('button--orange');
+} 
+
+export const toggleClassToQueueBtn = (id) => {
+if (checkTheIdInQueue(id) === -1)
+{return}
+return queueBtn.classList.toggle('button--orange');
+}
+
+export const manageIdInWatched = (id) => {
+if (checkTheIdInWatched(id) === -1) {
+ return pushToWatched(id)
+}
+// removeFromWatched(id);
+} 
+export const manageIdInQueue = (id) => {
+if (checkTheIdInQueue(id) === -1) {
+ return pushToQueue(id)
+}
+// removeFromQueue(id);
+} 
