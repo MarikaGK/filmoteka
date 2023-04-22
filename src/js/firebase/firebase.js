@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, child, update, onValue } from 'firebase/database';
-// import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 const firebaseConfig = {
@@ -59,35 +58,6 @@ signOutBtn.addEventListener("click", () => {
     console.log("Error Sign Out")
   });
 });
-
-//AUTHENTICATION BY EMAIL AND PASSWORD
-
-// const emailInput = document.querySelector("#email");
-// const passwordInput = document.querySelector("#password");
-// const signUpBtn = document.querySelector("#sign-up");
-
-// let email;
-// let password;
-
-// signUpBtn.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   email = emailInput.value;
-//   password = passwordInput.value;
-//   createUserWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       // Signed in 
-//       const user = userCredential.user;
-//       console.log(email);
-//       console.log(password);
-//       console.log("Nowy User:", user);
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       console.log('Błąd:', errorCode);
-//       console.log('Błąd:', errorMessage);
-//     });
-// })
 
 //REALTIME DATABASE 
 
