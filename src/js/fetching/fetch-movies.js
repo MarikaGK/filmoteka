@@ -69,7 +69,7 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
   }
 };
 //  4. --- Function fetch - get movie (details object) by movie ID ---
-export const getMovieById = async movieId => {
+export const getMovieById = async (movieId) => {
   try {
     //getting movieId and its videos object at once
     const response = await fetch(
@@ -110,7 +110,7 @@ const getTrailerUrlFromObjectVideos = videosObject => {
 };
 
 //  6. --- Function fetch - get array of movieIds  ---
-export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
+export const getMoviesByArrayOfIds = async (arrayOfMoviesIds) => {
   const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
   const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
 
