@@ -150,3 +150,6 @@ export const renderModal = (
   }
 };
 
+export const resetModal = () => {
+  modalCardMovieInfo.innerHTML = '';
+};
