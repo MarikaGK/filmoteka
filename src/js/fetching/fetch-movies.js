@@ -1,13 +1,21 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
-import { renderMovies } from '../rendering/render-movies';
+import { renderMovies, renderLibrary } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
+import { saveTotalPageToStorage,
+         saveTotalResultsToStorage,
+         saveCurrentPageToStorage,
+         getTotalPagesFromStorage,
+         setPopularParameterToStorage,
+         getCurrentPageFromStorage,
+        renderPagination } from '../rendering/render-pagination'
+
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
-const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie/';
+const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 let page = 1;
 //  1. --- Function fetch - get movies genres array ---
@@ -37,8 +45,17 @@ export const getPopularMovies = async (page = 1) => {
       throw new Error(response.status);
     }
     const data = await response.json();
-    console.log(data);
     // TODO function here!
+    //* add secure overwrite to maxPage for popular (server say maxPage = 500)
+const limitedTotalPagesForPopularSearch = 500;
+const limitedTotalResultsForPopularSearch = 10000;
+data.total_pages = limitedTotalPagesForPopularSearch;
+data.total_results = limitedTotalResultsForPopularSearch;
+console.log(data);
+    setPopularParameterToStorage(true)
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
     renderMovies(data.results);
   } catch (error) {
     console.error(error);
@@ -46,7 +63,7 @@ export const getPopularMovies = async (page = 1) => {
 };
 //  3. --- function fetch - get movies by title ---
 // movieTitle is a .value from header input
-export const getMoviesByTitle = async movieTitle => {
+export const getMoviesByTitle = async (movieTitle, page = 1) => {
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
@@ -63,10 +80,15 @@ export const getMoviesByTitle = async movieTitle => {
       console.log('pusta tablica');
       return;
     }
-    console.log(`Poniżej przykladowy console.log dla filmu "${movieTitle}"`);
-    console.log(data);
     showLoader();
+
+    //TODO function here!
+    setPopularParameterToStorage(false)
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
     renderMovies(data.results);
+    renderPagination()
   } catch (error) {
     console.error(error);
   }
@@ -76,7 +98,7 @@ export const getMovieById = async movieId => {
   try {
     //getting movieId and its videos object at once
     const response = await fetch(
-      `${searchByMovieIdUrl}${movieId}?api_key=${API_KEY}&append_to_response=videos`
+      `${searchByMovieIdUrl}/${movieId}?api_key=${API_KEY}&append_to_response=videos`
     );
     // response Status:404 handling
     if (!response.ok) {
@@ -93,6 +115,7 @@ export const getMovieById = async movieId => {
     console.error(error);
   }
 };
+
 //  5. --- Function get trailer's url from returned object in function getMovieById (from sub-object Videos) ---
 const getTrailerUrlFromObjectVideos = videosObject => {
   const findIndexOfKeyTrailer = videosObject.findIndex(
@@ -108,5 +131,45 @@ const getTrailerUrlFromObjectVideos = videosObject => {
     //do usunięcia console.log()
     console.log(` oraz url do trailera: ${movieTrailerUrl}`);
     return movieTrailerUrl;
+  }
+};
+
+//  6. --- Function fetch - get array of movieIds  ---
+export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
+  const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
+  const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
+
+  try {
+    let response = await fetch(url);
+    // handling with first response from server => Status: 404
+    if (response.status === 404) {
+      const data = await response.json();
+      const filteredData = Object.keys(data)
+        .filter(key => Number.isInteger(Number(key)))
+        .reduce((acc, key) => {
+          acc[key] = data[key];
+          return acc;
+        }, {});
+
+      const films = [];
+      const keys = Object.keys(filteredData);
+
+      for (let i = 0; i < keys.length; ++i) {
+        const key = Number(keys[i]);
+        const newObj = structuredClone(filteredData[key]);
+        newObj.id = key;
+        films.push(newObj);
+      }
+
+      renderLibrary(films);
+      //console.log do usunięcia
+      console.log(
+        `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
+        console.log(films);
+
+    }
+  } catch (error) {
+    console.log('test');
+    // console.error(error);
   }
 };
