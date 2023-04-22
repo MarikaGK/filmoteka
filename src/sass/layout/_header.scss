@@ -28,7 +28,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
+  }
 
   @include tablet {
     background: url('/src/images/background/background_home_tablet.png');
@@ -43,8 +43,8 @@
     background: url('/src/images/background/background_home_tablet@2x.png');
     background-size: cover;
     background-position: center;
-}
-  
+  }
+
   @include desktop {
     background: url('/src/images/background/background_home_pc.png');
     background-repeat: no-repeat;
@@ -55,9 +55,9 @@
 
   @include desktop-retina {
     background: url('/src/images/background/background_home_pc@2x.png');
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
-}
+  }
 }
 
 .header-nav {
