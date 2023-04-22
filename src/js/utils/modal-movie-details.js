@@ -1,3 +1,5 @@
+import { pushToWatched, pushToQueue } from "../firebase/firebase";
+
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');
 const watchedBtn = document.querySelector('[data-add-to-watched]');
@@ -50,3 +52,7 @@ export const onHideModal = () => {
   document.removeEventListener('keydown', closeOnEsc);
   // removeEventListenersFromBtns;
 };
+
+const checkedWatched = (id) => {
+  
+}
