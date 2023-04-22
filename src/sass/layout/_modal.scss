@@ -78,6 +78,9 @@
   aspect-ratio: 0.7;
   overflow: hidden;
   border-radius: $border-radius;
+  @include desktop {
+    width: 375px;
+  }
 }
 .modal-card__img {
   border-radius: $border-radius;
