@@ -70,14 +70,13 @@
 
 .team__description-role {
     color: $main-font-dark-color;
-    margin-right: 10px;
-    // letter-spacing: 0.1rem;
     font-size: 12px;
 }
 
 .team__description-wrapper {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 .team__top {
     display: flex;
@@ -92,4 +91,14 @@
             align-items: flex-end;
             gap: 20px;
         }
+}
+
+.team__description-wrapper-test {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.team__description-role-test {
+    font-size: 14px
 }
