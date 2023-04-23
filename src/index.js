@@ -1,11 +1,13 @@
 import {
   getPopularMovies,
   getMovieGenresAndSaveToStore,
+  getMovieGenresFromStorage,
   getMovieById,
   getMoviesByArrayOfIds,
 } from './js/fetching/fetch-movies.js';
 
 import { handleSubmit } from './js/utils/search-form-handler.js';
+import { renderCategoriesBox } from './js/rendering/render-multiselectBox.js';
 
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
@@ -19,7 +21,7 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
-
+renderCategoriesBox(getMovieGenresFromStorage);
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   //zmiana klasy modala

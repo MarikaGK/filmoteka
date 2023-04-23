@@ -7,7 +7,7 @@ export const saveMovieGenresToStorage = d => {
 };
 
 // ---- rendering array of ids genres from local storage to JS ------
-const getMovieGenresFromStorage = () => {
+export const getMovieGenresFromStorage = () => {
   const movieGenresIdsJSON = localStorage.getItem('movieGenresIdsArray');
   const parsedGenresIDS = JSON.parse(movieGenresIdsJSON);
   return parsedGenresIDS;
