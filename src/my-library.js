@@ -1,5 +1,4 @@
 import {
-    
   getMovieGenresAndSaveToStore,
   getMovieById,
   getMoviesByArrayOfIds,
@@ -23,9 +22,8 @@ startLoader();
 //*  Trzeba pobierać z localstorage tablice watched i queue oraz zapisywać do zmiennych (aktualizować zmiany i przesyłać na serwer zewn również)
 //! localStorage.getItem('watched')); - może taka zmienna?
 //! localStorage.getItem('queue')); - może taka zmienna?
-//* eventLestenery na buttony: Watched i Queue 
+//* eventLestenery na buttony: Watched i Queue
 //* wybierać funkcją getMoviesByArrayOfIds() odpowiednią tablicę z local storage
-
 
 //Przykład zastosowania funkcji przyjmującej tablicę movieIDs
 const oldMovieIdExample = 1369; // Film: Rambo First Blood

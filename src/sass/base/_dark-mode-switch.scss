@@ -1,6 +1,12 @@
-body.dark-mode {
+.dark-mode {
   background-color: $dark-mode-main-background-color;
   color: $dark-mode-main-font-bright-color;
+  border-block: 1px solid $dark-mode-border-bright-gray-color;
+}
+.dark-mode-modal {
+  background-color: $dark-mode-modal-background-color;
+  color: $dark-mode-main-font-bright-color;
+  border-block: 1px solid $dark-mode-border-bright-gray-color;
 }
 .dark-mode-box-shadow {
   background-color: $dark-mode-main-background-color;
@@ -10,12 +16,16 @@ body.dark-mode {
   box-shadow: 6px 5px 15px 6px rgba(152, 152, 152, 0.58);
 }
 
+.tui-pagination .tui-page-btn.dark-mode-pagination {
+  color: $dark-mode-main-font-bright-color;
+}
+
 .dark-mode-switch {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 195px;
+  top: 185px;
   right: 16px;
   width: 30px;
   height: 30px;
@@ -24,12 +34,12 @@ body.dark-mode {
   cursor: pointer;
 
   @include tablet {
-    top: 175px;
+    top: 170px;
     right: 25px;
   }
 
   @include desktop {
-    top: 140px;
+    top: 125px;
     right: 25px;
   }
 
