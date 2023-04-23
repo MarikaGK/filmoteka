@@ -10,7 +10,7 @@ import { handleSubmit } from './js/utils/search-form-handler.js';
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
-import { darkModeSwitch } from './js/utils/dark-mode-switch.js';
+import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 
@@ -48,3 +48,15 @@ GALLERY_DOM.addEventListener('click', evt => {
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
+
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();
+const CHECKBOX_DARK_MODE_SWITCH_DOM = document.querySelector(
+  'input[type="checkbox"]'
+);
+
+// CHECKBOX_DARK_MODE_SWITCH_DOM.addEventListener(
+//   'change',
+//   switchThemeOnDarkModeSwitchEvent,
+//   IS_DARK_MODE_ON
+// );
