@@ -16,4 +16,6 @@
 @import './layout/my-library-header';
 
 // ma zostać na końcu!
+@import './base/dark-mode-switch';
+@import './base/_display-none';
 @import './base/is-hidden';

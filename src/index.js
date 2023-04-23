@@ -10,9 +10,11 @@ import { handleSubmit } from './js/utils/search-form-handler.js';
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
+import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
+
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
 
@@ -37,3 +39,6 @@ renderPagination();
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
+
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();
