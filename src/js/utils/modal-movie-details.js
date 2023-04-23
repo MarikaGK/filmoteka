@@ -20,9 +20,6 @@ const modalCardDescriptionWrapper = document.querySelector(
   '.modal-card__movie-description-wrapper'
 );
 
-const addEvList = (target, behav, func) => {
-  target.addEventListener(behav, func);
-};
 
 export const toggleModal = () => {
   modalOverlay.classList.toggle('is-hidden');
@@ -52,13 +49,11 @@ const closeOnBackdropClick = e => {
   return;
 };
 
-const checkWatched = e => {
-  const movieId = e.target.dataset.movieId;
+const checkWatched = movieId => {
   manageIdInWatched(movieId);
   toggleClassToWatchedBtn();
 };
-const checkQueue = e => {
-  const movieId = e.target.dataset.movieId;
+const checkQueue = movieId => {
   manageIdInQueue(movieId);
   toggleClassToQueueBtn();
 };
@@ -67,27 +62,16 @@ const getMovieIdFromParent = e => {
   const movieInfo = e.target.parentElement.parentElement;
   return movieInfo.dataset.movieId;
 };
-const idArray = [594767, 502356, 76600];
+// const idArray = [594767, 502356, 76600];
 const addEventListenersToBtns = () => {
   // watchedBtn.addEventListener('click', checkWatched);
   // queueBtn.addEventListener('click', checkQueue);
   watchedBtn.addEventListener('click', e => {
-    const movieInfo = e.target.parentElement.parentElement;
-    const movieId = movieInfo.dataset.movieId;
-    pushToWatched(idArray);
-    console.log('to id filmu wysyłane do db');
-    console.log(movieId);
-    console.log('to jest zzawartość db');
-    console.log(db);
-    getWatchedMoviesIds();
-    console.log(getWatchedMoviesIds());
+    const movieId = getMovieIdFromParent(e);
+
   });
   queueBtn.addEventListener('click', e => {
-    const movieInfo = e.target.parentElement.parentElement;
-    const movieId = movieInfo.dataset.movieId;
-    pushToQueue(Number(movieId));
-    console.log('to jest zzawartość db');
-    console.log(db);
+    const movieId = getMovieIdFromParent(e);
   });
 };
 

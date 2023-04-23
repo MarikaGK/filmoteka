@@ -9,16 +9,16 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
-import { getWatchedMoviesIds, pushToWatched } from './js/firebase/firebase.js';
+import {
+  getQueueMoviesIds,
+  getWatchedMoviesIds,
+  pushToWatched,
+} from './js/firebase/firebase.js';
+import { getIdArrayFromStore } from './js/utils/store.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 
 
-const idArray = [594767, 502356, 76600];
-pushToWatched(idArray);
-const watchedMoviesArray = getWatchedMoviesIds();
-console.log(getWatchedMoviesIds());
-console.log(typeof getWatchedMoviesIds());
 // for (const key in watchedMoviesArray) {
 //   idArray.push(watchedMoviesArray.value);
 // }
@@ -27,7 +27,7 @@ console.log(typeof getWatchedMoviesIds());
 
 // getMovieGenresAndSaveToStore();
 startLoader();
-getMoviesByArrayOfIds(watchedMoviesArray);
+getMoviesByArrayOfIds(getIdsArrayFromStore('watched'));
 
 //*  Trzeba pobierać z localstorage tablice watched i queue oraz zapisywać do zmiennych (aktualizować zmiany i przesyłać na serwer zewn również)
 //! localStorage.getItem('watched')); - może taka zmienna?
