@@ -1,16 +1,36 @@
 <div class="modal-overlay is-hidden" data-modal>
-
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  <div class="modal-card nAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG~`````````````````````\one">
-    <button class="close-btn" title="clo-+se-btn" type="button" data-modal-close>
+  <div class="modal-card none">
+    <button class="close-btn" title="close-btn" type="button" data-modal-close>
       <svg
         class="modal__icon-close"
-y67``        width="30"
+        width="30"
         height="30"
         viewport="0 0 32 32"
       >
         <use href="./images/icons/icons.svg#icon-close"></use>
       </svg>
     </button>
-    <div class="modal-card__movie-info"></div>
-  </div>;/;/                                                  7
+    <div class="modal-card__movie-info">
+      <div class="modal-card__poster"></div>
+      <div class="modal-card__movie-description" data-movie-id="">
+        <div class="modal-card__movie-description-wrapper"></div>
+        <div class="button-list modal-btns-div display-none-for-unsigned-user">
+          <button
+            class="button button--transparent-black uppercase add-to-watched"
+            type="button"
+            [data-add-to-watched] data-movie-id=""
+          >
+            Add to watched
+          </button>
+          <button
+            class="button button--transparent-black uppercase add-to-queue"
+            type="button"
+            [data-add-to-queue] data-movie-id="""
+          >
+            Add to queue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

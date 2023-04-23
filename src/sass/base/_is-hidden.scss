@@ -8,6 +8,10 @@
 transform: scale(0);
 }
 
+.display-none-for-unsigned-user {
+  display: none;
+}
+
 .button--orange {
   background-color: $button-background-color;
   filter: none;

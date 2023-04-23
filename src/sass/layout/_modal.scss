@@ -95,6 +95,7 @@
 .modal-card__movie-description {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   font-family: $main-font;
 }
 .modal-card__movie-title {
