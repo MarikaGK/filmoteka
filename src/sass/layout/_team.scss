@@ -23,7 +23,7 @@
 
 .team {
     position: absolute;
-    background-color: white;
+    background-color: $main-background-color;
     border-radius: 4px;
     top: 50%;
     left: 50%;
@@ -56,6 +56,7 @@
     &:hover {
             transform: scale(1.1);
             transition-duration: 500ms;
+            background-color: rgb(255, 115, 0);
         }
 }
 
@@ -68,10 +69,10 @@
 }
 
 .team__description-role {
-    color: $warning-color;
+    color: $main-font-dark-color;
     margin-right: 10px;
-    letter-spacing: 0.1rem;
-    font-size: 14px;
+    // letter-spacing: 0.1rem;
+    font-size: 12px;
 }
 
 .team__description-wrapper {
