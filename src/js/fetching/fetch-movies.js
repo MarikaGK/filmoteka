@@ -1,13 +1,15 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
 import { renderMovies, renderLibrary } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
-import { saveTotalPageToStorage,
-         saveTotalResultsToStorage,
-         saveCurrentPageToStorage,
-         getTotalPagesFromStorage,
-         setPopularParameterToStorage,
-         getCurrentPageFromStorage,
-        renderPagination } from '../rendering/render-pagination'
+import {
+  saveTotalPageToStorage,
+  saveTotalResultsToStorage,
+  saveCurrentPageToStorage,
+  getTotalPagesFromStorage,
+  setPopularParameterToStorage,
+  getCurrentPageFromStorage,
+  renderPagination
+} from '../rendering/render-pagination'
 
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
@@ -47,11 +49,11 @@ export const getPopularMovies = async (page = 1) => {
     const data = await response.json();
     // TODO function here!
     //* add secure overwrite to maxPage for popular (server say maxPage = 500)
-const limitedTotalPagesForPopularSearch = 500;
-const limitedTotalResultsForPopularSearch = 10000;
-data.total_pages = limitedTotalPagesForPopularSearch;
-data.total_results = limitedTotalResultsForPopularSearch;
-console.log(data);
+    const limitedTotalPagesForPopularSearch = 500;
+    const limitedTotalResultsForPopularSearch = 10000;
+    data.total_pages = limitedTotalPagesForPopularSearch;
+    data.total_results = limitedTotalResultsForPopularSearch;
+    console.log(data);
     setPopularParameterToStorage(true)
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
@@ -165,7 +167,7 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
       //console.log do usunięcia
       console.log(
         `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
-        console.log(films);
+      console.log(films);
 
     }
   } catch (error) {
