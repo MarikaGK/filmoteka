@@ -67,14 +67,14 @@ const getMovieIdFromParent = e => {
   const movieInfo = e.target.parentElement.parentElement;
   return movieInfo.dataset.movieId;
 };
-
+const idArray = [594767, 502356, 76600];
 const addEventListenersToBtns = () => {
   // watchedBtn.addEventListener('click', checkWatched);
   // queueBtn.addEventListener('click', checkQueue);
   watchedBtn.addEventListener('click', e => {
     const movieInfo = e.target.parentElement.parentElement;
     const movieId = movieInfo.dataset.movieId;
-    pushToWatched(Number(movieId));
+    pushToWatched(idArray);
     console.log('to id filmu wysyłane do db');
     console.log(movieId);
     console.log('to jest zzawartość db');

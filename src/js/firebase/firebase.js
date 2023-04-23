@@ -15,6 +15,8 @@ import {
   signOut,
 } from 'firebase/auth';
 
+import { getMoviesByArrayOfIds } from '../fetching/fetch-movies';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyC3WI9OwBz4EKjWjZ6_OIwGrF26sBcAXyE',
   authDomain: 'filmoteka-js-team-project.firebaseapp.com',
@@ -129,15 +131,27 @@ signOutBtn.addEventListener('click', () => {
 
 //REALTIME DATABASE
 
-export function pushToWatched(id) {
-  const movieId = id;
-  // const user = JSON.parse(localStorage.getItem("user"));
-  const newPostKey = push(child(ref(db), 'watched')).key;
-  const updates = {};
-  updates['/watched/' + newPostKey] = movieId;
+export function pushToWatched(array) {
+  const moviesArray = array;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user.uid;
+    const updates = {};
+   console.log(user);
+  console.log(userId);
+  updates['/users/' + userId + '/watched/'] = moviesArray;
+  console.log(updates)
   update(ref(db), updates);
-  return getWatchedMoviesIds();
 }
+
+
+// export function pushToWatched(id) {
+//   const movieId = id;
+//   // const user = JSON.parse(localStorage.getItem("user"));
+//   const newPostKey = push(child(ref(db), 'watched')).key;
+//   const updates = {};
+//   updates['/watched/' + newPostKey] = movieId;
+//   update(ref(db), updates);
+// }
 
 export function pushToQueue(id) {
   const movieId = id;
@@ -156,9 +170,10 @@ export function getWatchedMoviesIds() {
       const movieId = childSnapshot.val();
       watchedMoviesIds.push(movieId);
     });
+    console.log(`watchedMoviesIds: ${watchedMoviesIds}`);
+    getMoviesByArrayOfIds(watchedMoviesIds);
   });
   // return watchedMoviesIds.map(element => parseInt(element.split(':')[1]));
-  return watchedMoviesIds;
 }
 
 export function getQueueMoviesIds() {

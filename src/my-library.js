@@ -9,20 +9,19 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
-import { getWatchedMoviesIds } from './js/firebase/firebase.js';
+import { getWatchedMoviesIds, pushToWatched } from './js/firebase/firebase.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 
-console.log(getWatchedMoviesIds());
 
+const idArray = [594767, 502356, 76600];
+pushToWatched(idArray);
 const watchedMoviesArray = getWatchedMoviesIds();
-const idArray = [];
-for (const key in watchedMoviesArray) {
-  idArray.push(watchedMoviesArray.value);
-}
-
-console.log(watchedMoviesArray);
-console.log(idArray);
+console.log(getWatchedMoviesIds());
+console.log(typeof getWatchedMoviesIds());
+// for (const key in watchedMoviesArray) {
+//   idArray.push(watchedMoviesArray.value);
+// }
 
 // FORM_DOM.addEventListener('submit', handleSubmit);
 
