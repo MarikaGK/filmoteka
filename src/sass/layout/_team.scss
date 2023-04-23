@@ -20,7 +20,7 @@
   background-color: #10181d;
   border-radius: $border-radius;
   overflow: scroll;
-  top: 270%;
+  top: 560%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -30,13 +30,13 @@
     4px 6px 10px 3px rgba(255, 255, 255, 0.3),
     4px 6px 10px 3px rgba(255, 255, 255, 0.3);
   @include tablet {
-    top: 130%;
+    top: 230%;
     width: 80%;
     padding: 25px;
     gap: 25px;
   }
   @include desktop {
-    top: 60%;
+    top: 110%;
   }
 }
 
