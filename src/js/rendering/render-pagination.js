@@ -15,12 +15,12 @@ const nextPage = document.querySelector('.tui-next')
 const watchedArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50];
 const queueArray = [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150];
 
-const saveWatchedToLocalStorage = watchedArray => {
+export const saveWatchedToLocalStorage = watchedArray => {
   const watched = watchedArray;
   localStorage.setItem('watched', JSON.stringify(watched));
 };
 
-const saveQueueToLocalStorage = queueArray => {
+export const saveQueueToLocalStorage = queueArray => {
   const queue = queueArray;
   localStorage.setItem('queue', JSON.stringify(queue));
 };
@@ -76,15 +76,15 @@ export const saveFactorToLocalStorage = (value) => {
     localStorage.setItem('factor', JSON.stringify(factor));
   };
 
-export const createArrayOfCurrentPage = (factor=1)=>{
+export const createArrayOfCurrentPageForWatched = (factor=1)=>{
     const popularParameter = getPopularParameterFromStorage();
     console.log(popularParameter)
     // const factor = getFactorFromStorage()-1;
     const multiplier = 20 * (factor-1);
     if (popularParameter==3)
     {
-      const arrayOfCurrentPage = queueArray.slice(0+multiplier,19+multiplier);
-      console.log('console log dla array of current page');
+      const arrayOfCurrentPage = watchedArray.slice(0+multiplier,20+multiplier);
+      console.log('console log dla array of CurrentPage of Watched');
       console.log(arrayOfCurrentPage)
     }
     saveFactorToLocalStorage(factor)
@@ -125,7 +125,7 @@ export const renderPagination = (data) => {
     else
     {
       const options = {
-        totalItems: queueArray.length,
+        totalItems: watchedArray.length,
         itemsPerPage: 20,
         visiblePages: 5,
         page: getCurrentPageFromStorage(),
@@ -182,7 +182,7 @@ document.addEventListener("click", (e)=>{
         if(target)
         {
             const factor = parseInt(target.id);
-            createArrayOfCurrentPage(factor)
+            createArrayOfCurrentPageForWatched(factor)
             saveFactorToLocalStorage(factor) 
         }
       }
