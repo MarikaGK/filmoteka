@@ -30,26 +30,33 @@ export const setStateOfDarkModeToLocalStorage = IS_DARK_MODE_ON => {
   return;
 };
 
-// function switchTheme(e) {
-//   if (e.target.checked) {
-//     document.documentElement.setAttribute('data-theme', 'dark');
-//     isDarkModeOn = true;
-//   } else {
-//     document.documentElement.setAttribute('data-theme', 'light');
-//     isDarkModeOn = false;
-//   }
-// }
-
-// CHECKBOX_DARK_MODE_SWITCH_DOM.addEventListener('change', switchTheme, false);
-
-// const checkboxSwitch = document.querySelector('input[type="checkbox"]');
 const BODY_DOM = document.querySelector('body');
+const MOVIE_CARD_ALL_DOM = document.querySelectorAll('.movie-card');
+const DARK_MODE_MOON_ICON_DOM = document.querySelector(
+  '.dark-mode-switch__moon-icon'
+);
+const DARK_MODE_SUN_ICON_DOM = document.querySelector(
+  '.dark-mode-switch__sun-icon'
+);
 
 export const setDarkOrNormalModeOnPageLoadFromLocalStorageState = () => {
   if (IS_DARK_MODE_ON === true) {
     BODY_DOM.classList.add('dark-mode');
     document.documentElement.setAttribute('data-theme', 'dark');
-  } else return;
+    if (!DARK_MODE_SUN_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_SUN_ICON_DOM.classList.add('display-none');
+    }
+    if (DARK_MODE_MOON_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_MOON_ICON_DOM.classList.remove('display-none');
+    }
+  } else {
+    if (!DARK_MODE_MOON_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_MOON_ICON_DOM.classList.add('display-none');
+    }
+    if (DARK_MODE_SUN_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_SUN_ICON_DOM.classList.remove('display-none');
+    }
+  }
 };
 
 export const switchThemeOnDarkModeSwitchEvent = event => {
@@ -57,11 +64,23 @@ export const switchThemeOnDarkModeSwitchEvent = event => {
     BODY_DOM.classList.add('dark-mode');
     document.documentElement.setAttribute('data-theme', 'dark');
     IS_DARK_MODE_ON = true;
+    if (!DARK_MODE_SUN_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_SUN_ICON_DOM.classList.add('display-none');
+    }
+    if (DARK_MODE_MOON_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_MOON_ICON_DOM.classList.remove('display-none');
+    }
     setStateOfDarkModeToLocalStorage(IS_DARK_MODE_ON);
   } else {
     BODY_DOM.classList.remove('dark-mode');
     document.documentElement.setAttribute('data-theme', 'light');
     IS_DARK_MODE_ON = false;
+    if (!DARK_MODE_MOON_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_MOON_ICON_DOM.classList.add('display-none');
+    }
+    if (DARK_MODE_SUN_ICON_DOM.classList.contains('display-none')) {
+      DARK_MODE_SUN_ICON_DOM.classList.remove('display-none');
+    }
     setStateOfDarkModeToLocalStorage(IS_DARK_MODE_ON);
   }
 };
@@ -71,13 +90,3 @@ CHECKBOX_DARK_MODE_SWITCH_DOM.addEventListener(
   switchThemeOnDarkModeSwitchEvent,
   IS_DARK_MODE_ON
 );
-
-// ==== js ==== prototyp
-
-// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//   // dark mode
-// }
-
-// window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-//   const newColorScheme = e.matches ? "dark" : "light";
-// });

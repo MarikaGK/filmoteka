@@ -51,12 +51,3 @@ SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
 
 //* DARK MODE
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();
-const CHECKBOX_DARK_MODE_SWITCH_DOM = document.querySelector(
-  'input[type="checkbox"]'
-);
-
-// CHECKBOX_DARK_MODE_SWITCH_DOM.addEventListener(
-//   'change',
-//   switchThemeOnDarkModeSwitchEvent,
-//   IS_DARK_MODE_ON
-// );

@@ -10,6 +10,7 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
+import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
@@ -46,3 +47,6 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal();
 });
+
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();
