@@ -18,25 +18,45 @@
 .header {
   background: url('/src/images/background/background_home_mobile.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   height: 230px;
   padding-top: 40px;
   font-family: $main-font, sans-serif;
 
+  @include mobile-retina {
+    background: url('/src/images/background/background_home_mobile@2x.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
   @include tablet {
     background: url('/src/images/background/background_home_tablet.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
     padding-top: 40px;
-    height: 176px;
+    height: 219px;
+  }
+
+  @include tablet-retina {
+    background: url('/src/images/background/background_home_tablet@2x.png');
+    background-size: cover;
+    background-position: center;
   }
 
   @include desktop {
     background: url('/src/images/background/background_home_pc.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
+    height: 176px;
+  }
+
+  @include desktop-retina {
+    background: url('/src/images/background/background_home_pc@2x.png');
+    background-size: 100% 100%;
+    background-position: center;
   }
 }
 
@@ -73,6 +93,7 @@
     font-size: 30px;
     line-height: 1.17;
     color: $main-font-bright-color;
+    padding-left: 10px;
   }
 }
 

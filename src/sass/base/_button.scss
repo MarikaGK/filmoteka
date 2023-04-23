@@ -5,6 +5,14 @@
   padding: 0;
 }
 
+.button-list.button-list--header {
+   padding: 60px 0 0 0;
+
+  @include tablet {
+    padding-top: 40px;
+  } 
+}
+
 .button {
   width: 130px;
   font-family: $main-font;
@@ -43,72 +51,48 @@
 }
 
 .button--orange {
-  filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
   background-color: $button-background-color;
+  filter: none;
+  transform: scale(1);
+  will-change: filter, transform;
+  transition: filter, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover,
+  &:focus {
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+    transform: scale(1.05);
+  }
 }
 
 .button--transparent {
   background-color: transparent;
   color: $main-background-color;
   border: 1px solid $main-background-color;
+  transform: scale(1);
+  will-change: color, border, transform;
+  transition: color, border, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover,
+  &:focus {
+    color: $button-background-color;
+    border: 1px solid $button-background-color;
+    transform: scale(1.05);
+  }
 }
 
 .button--transparent-black {
   background-color: transparent;
   color: $main-font-dark-color;
   border: 1px solid $main-font-dark-color;
+  transform: scale(1);
+  will-change: color, border, transform;
+  transition: color, border, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover,
+  &:focus {
+    color: $button-background-color;
+    border: 1px solid $button-background-color;
+    transform: scale(1.1);
+  }
 }
 
-// &-form {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// &__input {
-//   height: 20px;
-
-//   background-color: transparent;
-//   border: 0;
-//   border-bottom: 1px solid $footer-background-color;
-//   border-radius: 0px;
-
-//   color: $main-background-color;
-
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 14px;
-//   line-height: 16px;
-
-//   @media screen and (min-width: 320px) {
-//     width: 280px;
-//   }
-//   @media screen and (min-width: 768px) {
-//     width: 336px;
-//   }
-//   @media screen and (min-width: 1024px) {
-//     width: 336px;
-//   }
-//   &::placeholder {
-//     color: $main-background-color;
-
-//     font-style: normal;
-//     font-weight: 400;
-//     font-size: 14px;
-//     line-height: 16px;
-//   }
-
-//   &:focus {
-//     outline: none;
-//   }
-
-//   &:focus::placeholder {
-//     color: transparent;
-//   }
-// }
-
-// ----------------------------HTML btn
-
-// <div class="button-list">
-// <button class="button button--orange" type="button" data-watched-btn>watched</button>
-// <button class="button button--transparent" type="button" data-queue-btn>queue</button>
-// </div>

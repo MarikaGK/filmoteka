@@ -1,6 +1,14 @@
 import { saveMovieGenresToStorage } from '../rendering/render-genres';
 import { renderMovies, renderLibrary } from '../rendering/render-movies';
 import { showLoader } from '../utils/loader';
+import { saveTotalPageToStorage,
+         saveTotalResultsToStorage,
+         saveCurrentPageToStorage,
+         getTotalPagesFromStorage,
+         setPopularParameterToStorage,
+         getCurrentPageFromStorage,
+        renderPagination } from '../rendering/render-pagination'
+
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
@@ -38,6 +46,16 @@ export const getPopularMovies = async (page = 1) => {
     }
     const data = await response.json();
     // TODO function here!
+    //* add secure overwrite to maxPage for popular (server say maxPage = 500)
+const limitedTotalPagesForPopularSearch = 500;
+const limitedTotalResultsForPopularSearch = 10000;
+data.total_pages = limitedTotalPagesForPopularSearch;
+data.total_results = limitedTotalResultsForPopularSearch;
+console.log(data);
+    setPopularParameterToStorage(true)
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
     renderMovies(data.results);
   } catch (error) {
     console.error(error);
@@ -63,7 +81,14 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
       return;
     }
     showLoader();
+
+    //TODO function here!
+    setPopularParameterToStorage(false)
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
     renderMovies(data.results);
+    renderPagination()
   } catch (error) {
     console.error(error);
   }
