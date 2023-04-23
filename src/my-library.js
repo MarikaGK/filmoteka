@@ -31,7 +31,7 @@ startLoader();
 const oldMovieIdExample = 1369; // Film: Rambo First Blood
 const newMovieIdExample = 603692; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
 const newMovieIdExample2 = 594767; // Film: Shazam! Fury of the gods (z 2023 roku)
-const arrayOfMoviesIds = [1369, 603692, 594767, 4756, 2148];
+const arrayOfMoviesIds = [1369, 603692, 594767, 47356, 21248];
 
 // ---------- Edited 23.04.2023
 saveFactorToLocalStorage(2)
@@ -75,7 +75,7 @@ saveQueueToLocalStorage(queueArray)
 
 // -------------------------END OF EDIT
 
-// getMoviesByArrayOfIds(arrayOfMoviesIds);
+getMoviesByArrayOfIds(arrayOfMoviesIds);
 renderPagination();
 
 //jutro wyeksportuję do oddzielnego handlera
