@@ -51,7 +51,7 @@
     background-color: rgba(0, 0, 0, 0.15);
     box-shadow: 4px 6px 13px 3px rgba(0, 0, 0, 0.2), 4px 6px 13px 3px rgba(0, 0, 0, 0.2), 4px 6px 13px 3px rgba(0, 0, 0, 0.2);
     width: 170px;
-    height: 220px;
+    height: 248px;
     border-radius: $border-radius;
     &:hover {
             transform: scale(1.1);
@@ -64,19 +64,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 15px;
+    font-size: 14px;
     gap: 5px;
 }
 
 .team__description-role {
     color: $main-font-dark-color;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .team__description-wrapper {
     display: flex;
     align-items: center;
-    gap: 5px;
+    flex-direction: row;
+    gap: 20px;
 }
 .team__top {
     display: flex;
@@ -84,6 +85,10 @@
 }
 .team__top-text {
     font-size: 30px;
+    @include tablet {
+        font-size: 40px;
+        }
+    
 }
 .team__top-wrapper {
     @include tablet {
@@ -92,13 +97,20 @@
             gap: 20px;
         }
 }
-
-.team__description-wrapper-test {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.team-item-test {
+    height: 220px;
+    &:hover {
+        height: 248px;
+        }
 }
 
-.team__description-role-test {
-    font-size: 14px
+.team-item-test .wrapper-test {
+    display: none;
+    transition: opacity 1s ease-in-out;
+    transition-delay: 1s;
+}
+
+.team-item-test:hover .wrapper-test {
+    display: flex;
+    opacity: 1;
 }
