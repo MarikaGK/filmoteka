@@ -15,13 +15,13 @@ import { startLoader } from './js/utils/loader.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
-
+const CATEGORIES_BUTTON = document.querySelector('.header-input__categoriesButton')
 FORM_DOM.addEventListener('submit', handleSubmit);
 
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
-renderCategoriesBox(getMovieGenresFromStorage);
+// renderCategoriesBox(getMovieGenresFromStorage);
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   //zmiana klasy modala
@@ -34,3 +34,15 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal();
 });
+
+
+
+CATEGORIES_BUTTON.addEventListener('click', (evt) => {
+  const categories = getMovieGenresFromStorage();
+  console.log(categories);
+
+})
+
+console.log("  test")
+const test = getMovieGenresFromStorage();
+console.log(test)
