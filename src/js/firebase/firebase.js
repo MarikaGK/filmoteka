@@ -133,32 +133,20 @@ signOutBtn.addEventListener('click', () => {
 
 export function pushToWatched(array) {
   const moviesArray = array;
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem('user'));
   const userId = user.uid;
-    const updates = {};
-   console.log(user);
-  console.log(userId);
+  const updates = {};
   updates['/users/' + userId + '/watched/'] = moviesArray;
-  console.log(updates)
   update(ref(db), updates);
 }
 
-
-// export function pushToWatched(id) {
-//   const movieId = id;
-//   // const user = JSON.parse(localStorage.getItem("user"));
-//   const newPostKey = push(child(ref(db), 'watched')).key;
-//   const updates = {};
-//   updates['/watched/' + newPostKey] = movieId;
-//   update(ref(db), updates);
-// }
-
-export function pushToQueue(id) {
-  const movieId = id;
-  const newPostKey = push(child(ref(db), 'queue')).key;
+export function pushToQueue(array) {
+  const moviesArray = array;
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user.uid;
   const updates = {};
-  updates['/queue/' + newPostKey] = movieId;
-  return update(ref(db), updates);
+  updates['/users/' + userId + '/queue/'] = moviesArray;
+  update(ref(db), updates);
 }
 
 export function getWatchedMoviesIds() {
@@ -170,11 +158,11 @@ export function getWatchedMoviesIds() {
       const movieId = childSnapshot.val();
       watchedMoviesIds.push(movieId);
     });
-    console.log(`watchedMoviesIds: ${watchedMoviesIds}`);
     getMoviesByArrayOfIds(watchedMoviesIds);
   });
   // return watchedMoviesIds.map(element => parseInt(element.split(':')[1]));
 }
+
 
 export function getQueueMoviesIds() {
   const queueRef = ref(db, 'queue');
