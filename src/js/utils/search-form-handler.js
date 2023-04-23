@@ -16,4 +16,7 @@ export const handleSubmit = (event) => {
 
   GALLERY_DOM.textContent = '';
   getMoviesByTitle(searchingPhrasesTrimmed);
+  const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+  console.log([...checked].map(c => c.id))
+
 }

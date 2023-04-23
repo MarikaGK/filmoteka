@@ -35,9 +35,8 @@ const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
 
-
-
 CATEGORIES_BUTTON.addEventListener('click', (evt) => {
+  evt.preventDefault();
   renderCategoriesBox();
 
 })
