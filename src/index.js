@@ -15,6 +15,8 @@ import { startLoader } from './js/utils/loader.js';
 import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
+
+
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
 const CATEGORIES_BUTTON = document.querySelector('.header-input__categoriesButton')
@@ -36,11 +38,8 @@ SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
 
 
 CATEGORIES_BUTTON.addEventListener('click', (evt) => {
-  const categories = getMovieGenresFromStorage();
-  console.log(categories);
+  renderCategoriesBox();
 
 })
 
-console.log("  test")
-const test = getMovieGenresFromStorage();
-console.log(test)
+

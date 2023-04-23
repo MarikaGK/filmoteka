@@ -172,9 +172,26 @@
 }
 
 .header-input__categoriesButton {
-  position: relative;
+
   background-color: blue;
 
+}
+
+.header-input__categoriesBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 280px;
+  padding: 20px;
+  background-color: $main-background-color;
+  border: solid 1px black;
+  z-index: 2;
+}
+
+.header-input__label {
+  min-width: 150px;
+  text-align: right;
 }
 
 .active__page {
