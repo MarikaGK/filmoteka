@@ -11,6 +11,8 @@ import { handleSubmit } from './js/utils/search-form-handler.js';
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
 import { darkModeSwitch } from './js/utils/dark-mode-switch.js';
+import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
+import { renderPagination } from './js/rendering/render-pagination.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
@@ -20,6 +22,14 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
+renderPagination();
+
+// const paginationClickerContainer = document.querySelector('.pagination', false)
+// const paginationClicker = paginationClickerContainer.querySelectorAll('a.tui-page-btn')
+
+// paginationClicker.addEventListener("click", ()=>{
+//     console.log(paginationClicker.value)
+// })
 
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
@@ -33,3 +43,8 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal();
 });
+
+//* Scroll site to top
+const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
+window.addEventListener('scroll', showButtonOnScroll);
+SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);

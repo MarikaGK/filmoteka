@@ -1,3 +1,5 @@
+import { resetModal } from "../rendering/render-modal";
+
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');
 const watchedBtn = document.querySelector('[data-add-to-watched]');
@@ -45,6 +47,7 @@ export const onShowModal = () => {
 };
 
 export const onHideModal = () => {
+  resetModal();
   CLOSE_BTN.removeEventListener('click', toggleModal);
   modalOverlay.removeEventListener('click', closeOnBackdropClick);
   document.removeEventListener('keydown', closeOnEsc);
