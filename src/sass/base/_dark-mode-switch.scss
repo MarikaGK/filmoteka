@@ -7,6 +7,7 @@
   background-color: $dark-mode-modal-background-color;
   color: $dark-mode-main-font-bright-color;
   border-block: 1px solid $dark-mode-border-bright-gray-color;
+  text-shadow: 0 0 2.5em $main-background-color;
 }
 .dark-mode-box-shadow {
   background-color: $dark-mode-main-background-color;
