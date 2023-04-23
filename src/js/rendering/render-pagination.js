@@ -3,6 +3,7 @@ import Pagination from 'tui-pagination';
 import { renderMovies } from './render-movies';
 import { showLoader } from '../utils/loader';
 import { getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
+// import { createArrayOfCurrentPage, saveFactorToLocalStorage } from '../../my-library';
 
 // Pagination config:
 const perPage = 20
@@ -51,6 +52,10 @@ export const getCurrentPageFromStorage = () => {
     const parsedCurrentPage = JSON.parse(currentPage);
     return parsedCurrentPage;
   };
+export const saveFactorToLocalStorage = (value) => {
+    let factor = value;
+    localStorage.setItem('factor', JSON.stringify(factor));
+  };
 
 export const renderPagination = (data) => {
 const options = {
@@ -85,7 +90,7 @@ const pagination = new Pagination('pagination', options);
 document.addEventListener("click", (e)=>{
     const target = e.target.closest(".tui-mid-button");
     const popularParameter = getPopularParameterFromStorage();
-    if (popularParameter==true) 
+    if (popularParameter==1) 
         {
             if(target){const targetPage = target.id;
             getPopularMovies(targetPage)}  
@@ -105,7 +110,7 @@ document.addEventListener("click", (e)=>{
   const selectedTarget = document.querySelector('.tui-is-selected')
   const selectedPage = selectedTarget.id
   const popularParameter = getPopularParameterFromStorage();
-  if (popularParameter==true) 
+  if (popularParameter==1) 
       {
         if(target){
             const targetPage = selectedPage; getPopularMovies(targetPage)}}
@@ -122,7 +127,7 @@ document.addEventListener("click", (e)=>{
   const selectedTarget = document.querySelector('.tui-is-selected')
   const selectedPage = selectedTarget.id
   const popularParameter = getPopularParameterFromStorage();
-  if (popularParameter==true) 
+  if (popularParameter==1) 
       {
         if(target){getPopularMovies(selectedPage)}}
   else
