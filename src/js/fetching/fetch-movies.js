@@ -18,6 +18,7 @@ const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie';
+const searchWithFilters = 'https://api.themoviedb.org/3/discover/movie';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 // let page = 1;
 //  1. --- Function fetch - get movies genres array ---
@@ -66,12 +67,12 @@ export const getPopularMovies = async (page = 1) => {
 //  3. --- function fetch - get movies by title ---
 // movieTitle is a .value from header input
 export const getMoviesByTitle = async (movieTitle, page = 1) => {
-  const genres = categoriesFilter();
+
   console.log(genres);
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
-      `${apiUrl}?api_key=${API_KEY}&query=${movieTitle}&page=${page}&with_genres=${genres}`
+      `${apiUrl}?api_key=${API_KEY}&query=${movieTitle}&page=${page}`
 
     );
     // response Status:404 handling
@@ -177,5 +178,41 @@ export const getMoviesByArrayOfIds = async (arrayOfMoviesIds) => {
   } catch (error) {
     console.log('test');
     // console.error(error);
+  }
+};
+
+//  7. --- Function fetch - get movies with filters  ---
+
+export const getMoviesWithFilters = async (page = 1) => {
+  const genres = categoriesFilter();
+  try {
+    NO_HIT_INFO_DIV_DOM.textContent = '';
+    const response = await fetch(
+      `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
+
+    );
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    const data = await response.json();
+    if (!data.total_results) {
+      NO_HIT_INFO_DIV_DOM.textContent =
+        'Search result not successful. Enter the correct movie name and search again.';
+      console.log('pusta tablica');
+      return;
+    }
+    showLoader();
+
+    //TODO function here!
+
+    setPopularParameterToStorage(false)
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
+    renderMovies(data.results);
+    renderPagination();
+  } catch (error) {
+    console.error(error);
   }
 };

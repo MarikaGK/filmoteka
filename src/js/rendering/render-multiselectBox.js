@@ -8,6 +8,7 @@ export const renderCategoriesBox = () => {
     )
         .join('');
     multiselectBox.insertAdjacentHTML('beforeend', markup)
+
 }
 
 
