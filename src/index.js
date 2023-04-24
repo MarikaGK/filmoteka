@@ -9,6 +9,7 @@ import { handleSubmit } from './js/utils/search-form-handler.js';
 
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
+import { toggleModalTeam, onShowModalTeam } from './js/utils/modal-team.js';
 import { startLoader } from './js/utils/loader.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
