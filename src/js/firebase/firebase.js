@@ -106,6 +106,8 @@ signOutBtn.addEventListener('click', () => {
   signOut(auth)
     .then(() => {
       localStorage.remove('user');
+      localStorage.remove('watched');
+      localStorage.remove('queue');
       navFirst.classList.toggle('header__none');
       navSecond.classList.toggle('header__none');
       window.location.href = '/index';
