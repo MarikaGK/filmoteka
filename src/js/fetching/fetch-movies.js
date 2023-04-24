@@ -10,7 +10,7 @@ import {
   getCurrentPageFromStorage,
   renderPagination
 } from '../rendering/render-pagination'
-
+import { categoriesFilter } from '../utils/categories-filter.js';
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
@@ -18,6 +18,7 @@ const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie';
+const searchWithFilters = 'https://api.themoviedb.org/3/discover/movie';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 let page = 1;
 //  1. --- Function fetch - get movies genres array ---

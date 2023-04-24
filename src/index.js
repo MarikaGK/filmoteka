@@ -33,6 +33,7 @@ DISCOVERY_BUTTON.addEventListener('click', (evt) => {
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
+renderCategoriesBox();
 renderPagination();
 
 // const paginationClickerContainer = document.querySelector('.pagination', false)
