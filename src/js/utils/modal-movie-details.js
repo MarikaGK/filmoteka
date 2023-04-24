@@ -18,6 +18,7 @@ import {
 } from '../firebase/firebase';
 import { actualLibraryFromStore } from './store';
 // import localStorage from './localStorage';
+import { resetModal } from "../rendering/render-modal";
 
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');

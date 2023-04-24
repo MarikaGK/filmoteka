@@ -24,6 +24,8 @@ import {
   renderQueueGallery,
 } from './js/utils/my-library-btns.js';
 import localStorage from './js/utils/localStorage.js';
+import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
+import { renderPagination } from './js/rendering/render-pagination.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
@@ -35,6 +37,9 @@ startLoader();
 getMoviesByArrayOfIds(localStorage.load('watched'));
 WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
+
+renderPagination();
+
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   //zmiana klasy modala
@@ -47,3 +52,6 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal(singleMovieCard.dataset.movieId);
 });
+
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();

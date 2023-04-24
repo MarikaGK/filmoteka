@@ -1,13 +1,13 @@
 import { Fancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
-import {
-  toggleClassToWatchedBtn,
-  toggleClassToQueueBtn,
-} from '../firebase/firebase';
-import {
-  addEventListenersToBtns,
-  setIdAttributeToBtns,
-} from '../utils/modal-movie-details';
+// import {
+//   toggleClassToWatchedBtn,
+//   toggleClassToQueueBtn,
+// } from '../firebase/firebase';
+// import {
+//   addEventListenersToBtns,
+//   setIdAttributeToBtns,
+// } from '../utils/modal-movie-details';
 
 const modalCardMovieDescription = document.querySelector(
   '.modal-card__movie-description'
@@ -286,3 +286,6 @@ export const renderModal = (
 //     addEventListenersToBtns();
 //   });
 // };
+export const resetModal = () => {
+  modalCardMovieInfo.innerHTML = '';
+};
