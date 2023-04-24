@@ -1,3 +1,11 @@
+export const actualLibraryUpdateToStore = (actualLibrary) => {
+    localStorage.setItem('actualLibrary', JSON.stringify(actualLibrary));
+}
+
+export const actualLibraryFromStore = () => {
+    return JSON.parse(localStorage.getItem('actualLibrary'));
+}
+
 export const saveIdsArrayToStore = (data, nameOfArray) => {
     localStorage.setItem(nameOfArray, JSON.stringify(data));
 }

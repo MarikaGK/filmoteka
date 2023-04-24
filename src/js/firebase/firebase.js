@@ -44,8 +44,7 @@ const watchedBtn = document.querySelector('[data-add-to-watched]');
 const queueBtn = document.querySelector('[data-add-to-queue]');
 const modalBtnsDiv = document.querySelector('.modal-btns-div');
 
-
-const saveIdArraysFromFirebaseToStore = () => {
+export const saveIdArraysFromFirebaseToStore = () => {
   window.addEventListener('load', () => {
     getWatchedMoviesIds();
     getQueueMoviesIds();
@@ -65,9 +64,11 @@ if (localStorage.getItem('user')) {
         const token = credential.accessToken;
         const user = result.user;
         localStorage.setItem('user', JSON.stringify(user));
-        saveIdArraysFromFirebaseToStore();
+        // saveIdArraysFromFirebaseToStore();
         navFirst.classList.add('header__none');
         navSecond.classList.remove('header__none');
+        // console.log(user.uid)
+        // console.log(`To jest wysłana do lS przy logowaniu tablica watched ${getIdsArrayFromStore('watched')}`);
       })
       .catch(error => {
         const errorCode = error.code;
@@ -160,7 +161,9 @@ export function pushToQueue(array) {
 }
 
 export function getWatchedMoviesIds() {
-  const watchedRef = ref(db, 'watched');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user.uid;
+  const watchedRef = ref(db, '/users/' + userId + '/watched/');
   const watchedMoviesIds = [];
 
   onValue(watchedRef, snapshot => {
@@ -168,20 +171,26 @@ export function getWatchedMoviesIds() {
       const movieId = childSnapshot.val();
       watchedMoviesIds.push(movieId);
     });
+    console.log(user.uid);
+    console.log(`To jest watchedMoviesIds z firebase`);
+    console.log(watchedMoviesIds);
     saveIdsArrayToStore(watchedMoviesIds, 'watched');
   });
 }
 
-
 export function getQueueMoviesIds() {
-  const queueRef = ref(db, 'queue');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user.uid;
+  const queueRef = ref(db, '/users/' + userId + '/queue/');
   const queueMoviesIds = [];
-  
+
   onValue(queueRef, snapshot => {
     snapshot.forEach(childSnapshot => {
       const movieId = childSnapshot.val();
       queueMoviesIds.push(movieId);
     });
+    console.log(`To jest queueMoviesIds z firebase`);
+    console.log(queueMoviesIds);
     saveIdsArrayToStore(queueMoviesIds, 'queue');
   });
 }
@@ -196,18 +205,26 @@ const checkTheIdInQueue = id => {
   return arrayOfQueueIds.indexOf(id);
 };
 
-export const toggleClassToWatchedBtn = id => {
+export const ifWatchedBtnClassHasToBeToggled = id => {
   if (checkTheIdInWatched(id) === -1) {
-    return;
+    console.log('Nie ma id w watched');
+    return watchedBtn.classList.remove('button--orange');
   }
-  return watchedBtn.classList.toggle('button--orange');
+  console.log('Jest id w watched');
+  watchedBtn.classList.add('button--orange');
+  watchedBtn.innerHTML = 'In watched';
 };
-export const toggleClassToQueueBtn = id => {
+export const ifQueueBtnClassHasToBeToggled = id => {
   if (checkTheIdInQueue(id) === -1) {
-    return;
+    console.log('Nie ma id w queue');
+    return watchedBtn.classList.remove('button--orange');
   }
-  return queueBtn.classList.toggle('button--orange');
+  console.log('Jest id w queue');
+  queueBtn.classList.add('button--orange');
+  queueBtn.innerHTML = 'In queue';
 };
+
+/////do zmiany
 export const manageIdInWatched = id => {
   if (checkTheIdInWatched(id) === -1) {
     return pushToStore(id, 'watched');

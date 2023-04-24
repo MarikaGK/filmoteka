@@ -14,11 +14,32 @@ import {
   getWatchedMoviesIds,
   pushToWatched,
 } from './js/firebase/firebase.js';
-import { getIdArrayFromStore } from './js/utils/store.js';
+import {
+  actualLibraryUpdateToStore,
+  getIdsArrayFromStore,
+} from './js/utils/store.js';
+import {
+  renderWatchedGallery,
+  renderQueueGallery,
+} from './js/utils/my-library-btns.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
+const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
+const QUEUE_BTN_DOM = document.querySelector('[data-queue-btn');
 
+actualLibraryUpdateToStore('watched');
 
+const saveIdArraysFromFirebaseToStore = () => {
+  window.addEventListener('load', () => {
+    getWatchedMoviesIds();
+    getIdsArrayFromStore('watched');
+    console.log(getIdsArrayFromStore('watched'));
+    getQueueMoviesIds();
+    console.log(getIdsArrayFromStore('queue'));
+  });
+};
+
+saveIdArraysFromFirebaseToStore();
 // for (const key in watchedMoviesArray) {
 //   idArray.push(watchedMoviesArray.value);
 // }
@@ -42,6 +63,9 @@ const newMovieIdExample2 = 594767; // Film: Shazam! Fury of the gods (z 2023 rok
 const arrayOfMoviesIds = [1369, 603692, 594767];
 // getMoviesByArrayOfIds(arrayOfMoviesIds);
 
+WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
+QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
+
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   //zmiana klasy modala
@@ -52,5 +76,5 @@ GALLERY_DOM.addEventListener('click', evt => {
   console.log(singleMovieCard.dataset.movieId);
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
   getMovieById(singleMovieCard.dataset.movieId);
-  onShowModal();
+  onShowModal(singleMovieCard.dataset.movieId);
 });

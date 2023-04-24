@@ -7,11 +7,19 @@ const checkGenresInLocalStorage = () => {
   getMovieGenresAndSaveToStore();
 };
 
-const saveToStoreOnLoad = () => {
+export const startLoader = () => {
   window.addEventListener('load', () => {
-    
-  })
-}
+    checkGenresInLocalStorage();
+    const loader = document.querySelector('.loader');
+    loader.classList.remove('loader-hidden');
+    let timeout;
+    timeout = setTimeout(() => {
+      loader.classList.add('loader-hidden');
+    }, 1500);
+    console.log(loader.classList);
+  });
+  console.log('startLoader work');
+};
 
 export const showLoader = () => {
   const gallery = document.querySelector('form');

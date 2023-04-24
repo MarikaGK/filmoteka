@@ -39,7 +39,7 @@ GALLERY_DOM.addEventListener('click', evt => {
   console.log(singleMovieCard.dataset.movieId);
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
   getMovieById(singleMovieCard.dataset.movieId);
-  onShowModal();
+  onShowModal(singleMovieCard.dataset.movieId);
 });
 
 console.log('to jest zzawartość db')
