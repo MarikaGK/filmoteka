@@ -1,5 +1,4 @@
 import {
-    
   getMovieGenresAndSaveToStore,
   getMovieById,
   getMoviesByArrayOfIds,
@@ -10,6 +9,7 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
+import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
@@ -22,9 +22,8 @@ startLoader();
 //*  Trzeba pobierać z localstorage tablice watched i queue oraz zapisywać do zmiennych (aktualizować zmiany i przesyłać na serwer zewn również)
 //! localStorage.getItem('watched')); - może taka zmienna?
 //! localStorage.getItem('queue')); - może taka zmienna?
-//* eventLestenery na buttony: Watched i Queue 
+//* eventLestenery na buttony: Watched i Queue
 //* wybierać funkcją getMoviesByArrayOfIds() odpowiednią tablicę z local storage
-
 
 //Przykład zastosowania funkcji przyjmującej tablicę movieIDs
 const oldMovieIdExample = 1369; // Film: Rambo First Blood
@@ -46,3 +45,6 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal();
 });
+
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();
