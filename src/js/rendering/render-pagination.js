@@ -13,7 +13,7 @@ const prevPage = document.querySelector('.tui-prev')
 const nextPage = document.querySelector('.tui-next')
 
 const watchedArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50];
-const queueArray = [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150];
+const queueArray = [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125];
 
 export const saveWatchedToLocalStorage = watchedArray => {
   const watched = watchedArray;
@@ -25,6 +25,17 @@ export const saveQueueToLocalStorage = queueArray => {
   localStorage.setItem('queue', JSON.stringify(queue));
 };
 
+export const getWatchedFromStorage = () => {
+  const watched = localStorage.getItem('watched');
+  const parsedWatched = JSON.parse(watched);
+  return parsedWatched
+}
+
+export const getQueueFromStorage = () => {
+  const queue = localStorage.getItem('queue');
+  const parsedQueue = JSON.parse(queue);
+  return parsedQueue
+}
 
 export const getFactorFromStorage = () => {
   const factor = localStorage.getItem('factor');
@@ -82,14 +93,16 @@ export const createArrayOfCurrentPageForWatched = (factor=1)=>{
     const multiplier = 20 * (factor-1);
     if (popularParameter==3)
       {
-        const arrayOfCurrentPage = watchedArray.slice(0+multiplier,20+multiplier);
+        const array = getWatchedFromStorage()
+        const arrayOfCurrentPage = array.slice(0+multiplier,20+multiplier);
         console.log('console log dla array of CurrentPage of Watched');
         console.log(arrayOfCurrentPage)
         getMoviesByArrayOfIds(arrayOfCurrentPage)
       }
     else if(popularParameter==4)
       {
-        const arrayOfCurrentPage = queueArray.slice(0+multiplier,20+multiplier);
+        const array = getQueueFromStorage()
+        const arrayOfCurrentPage = array.slice(0+multiplier,20+multiplier);
         console.log('console log dla array of CurrentPage of Watched');
         console.log(arrayOfCurrentPage)
         getMoviesByArrayOfIds(arrayOfCurrentPage)
@@ -98,9 +111,11 @@ export const createArrayOfCurrentPageForWatched = (factor=1)=>{
   }
 
 export const renderPagination = (data) => {
+  pagination.innerHTML=''
   const paginationType = getPopularParameterFromStorage();
-  if (paginationType!==3)
+  if (paginationType==1 || paginationType ==2)
     {
+      console.log('1 i 2 typ paginacji')
       const options = {
         totalItems: getTotalResultsFromStorage(),
         itemsPerPage: 20,
@@ -129,10 +144,42 @@ export const renderPagination = (data) => {
       };
       const pagination = new Pagination('pagination', options);
     }
-    else
+  else if(paginationType==3)
     {
+      console.log('3 typ paginacji')
       const options = {
         totalItems: watchedArray.length,
+        itemsPerPage: 20,
+        visiblePages: 5,
+        page: getCurrentPageFromStorage(),
+        centerAlign: true,
+        firstItemClassName: 'tui-first-child',
+        lastItemClassName: 'tui-last-child',
+        template: 
+          {
+            page: '<a href="#" class="tui-page-btn tui-mid-button" id="{{page}}">{{page}}</a>',
+            currentPage: '<strong class="tui-page-btn tui-is-selected" id="{{page}}">{{page}}</strong>',
+            moveButton:
+              '<a href="#" class="tui-page-btn tui-{{type}}">' +
+                '<span class="tui-ico-{{type}}">{{type}}</span>' +
+              '</a>',
+            disabledMoveButton:
+              '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+                '<span class="tui-ico-{{type}}">{{type}}</span>' +
+              '</span>',
+            moreButton:
+              '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+                '<span class="tui-ico-ellip">...</span>' +
+              '</a>'
+          }
+      };
+      const pagination = new Pagination('pagination', options);
+    }
+  else if(paginationType==4)
+    { 
+      console.log('4 typ paginacji')
+      const options = {
+        totalItems: queueArray.length,
         itemsPerPage: 20,
         visiblePages: 5,
         page: getCurrentPageFromStorage(),
@@ -288,3 +335,7 @@ document.addEventListener("click", (e)=>{
     }
     }
   );
+
+
+saveWatchedToLocalStorage(watchedArray)
+saveQueueToLocalStorage(queueArray)
