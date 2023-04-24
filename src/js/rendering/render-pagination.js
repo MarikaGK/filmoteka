@@ -111,11 +111,9 @@ export const createArrayOfCurrentPageForWatched = (factor=1)=>{
   }
 
 export const renderPagination = (data) => {
-  pagination.innerHTML=''
   const paginationType = getPopularParameterFromStorage();
   if (paginationType==1 || paginationType ==2)
     {
-      console.log('1 i 2 typ paginacji')
       const options = {
         totalItems: getTotalResultsFromStorage(),
         itemsPerPage: 20,
@@ -146,7 +144,6 @@ export const renderPagination = (data) => {
     }
   else if(paginationType==3)
     {
-      console.log('3 typ paginacji')
       const options = {
         totalItems: watchedArray.length,
         itemsPerPage: 20,
@@ -177,7 +174,6 @@ export const renderPagination = (data) => {
     }
   else if(paginationType==4)
     { 
-      console.log('4 typ paginacji')
       const options = {
         totalItems: queueArray.length,
         itemsPerPage: 20,
