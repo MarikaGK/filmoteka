@@ -67,6 +67,7 @@
 
 .modal__icon-close {
   stroke: $footer-background-color;
+  cursor: pointer;
   &:hover {
     transform: scale(1.2);
     transition-duration: 500ms;
