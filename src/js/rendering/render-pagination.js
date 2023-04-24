@@ -184,23 +184,22 @@ document.addEventListener("click", (e)=>{
           getMoviesByTitle(searchMovie, targetPage)
         }
       }
-      else if (popularParameter==3)
+    else if (popularParameter==3)
       {
         if(target)
         {
-            const factor = parseInt(target.id);
-            createArrayOfCurrentPageForWatched(factor)
-            saveFactorToLocalStorage(factor)
-            
+          const factor = parseInt(target.id);
+          createArrayOfCurrentPageForWatched(factor)
+          saveFactorToLocalStorage(factor)
         }
       }
-      else if (popularParameter==4)
+    else if (popularParameter==4)
       {
         if(target)
         {
-            const factor = parseInt(target.id);
-            createArrayOfCurrentPageForWatched(factor)
-            saveFactorToLocalStorage(factor) 
+          const factor = parseInt(target.id);
+          createArrayOfCurrentPageForWatched(factor)
+          saveFactorToLocalStorage(factor) 
         }
       }
     }
@@ -231,7 +230,18 @@ document.addEventListener("click", (e)=>{
     {
       if(target)
       {
-
+          const factor = parseInt(selectedPage);
+          createArrayOfCurrentPageForWatched(factor)
+          saveFactorToLocalStorage(factor)
+      }
+    }
+    else if(popularParameter==4)
+    {
+      if(target)
+      {
+        const factor = parseInt(selectedPage);
+        createArrayOfCurrentPageForWatched(factor)
+        saveFactorToLocalStorage(factor)
       }
     }
   }
@@ -262,7 +272,18 @@ document.addEventListener("click", (e)=>{
     {
       if(target)
       {
-
+        const factor = parseInt(selectedPage);
+        createArrayOfCurrentPageForWatched(factor)
+        saveFactorToLocalStorage(factor)
+      }
+    }
+  else if (popularParameter==4) 
+    {
+      if(target)
+      {
+        const factor = parseInt(selectedPage);
+        createArrayOfCurrentPageForWatched(factor)
+        saveFactorToLocalStorage(factor)
       }
     }
     }
