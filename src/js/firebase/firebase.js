@@ -15,7 +15,12 @@ import {
   signOut,
 } from 'firebase/auth';
 
-import { getIdsArrayFromStore, saveIdsArrayToStore } from '../utils/store';
+import {
+  getIdsArrayFromStore,
+  saveIdsArrayToStore,
+  pushToStore,
+  removeFromStore,
+} from '../utils/store';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC3WI9OwBz4EKjWjZ6_OIwGrF26sBcAXyE',
@@ -40,8 +45,8 @@ const signInBtn = document.querySelector('#sign-in');
 const signOutBtn = document.querySelector('#sign-out');
 const navFirst = document.querySelector('.header-nav__first');
 const navSecond = document.querySelector('.header-nav__second');
-const watchedBtn = document.querySelector('[data-add-to-watched]');
-const queueBtn = document.querySelector('[data-add-to-queue]');
+const watchedBtn = document.querySelector('.add-to-watched');
+const queueBtn = document.querySelector('.add-to-queue');
 const modalBtnsDiv = document.querySelector('.modal-btns-div');
 
 export const saveIdArraysFromFirebaseToStore = () => {
@@ -142,8 +147,10 @@ signOutBtn.addEventListener('click', () => {
 
 //REALTIME DATABASE
 
-export function pushToWatched(array) {
+export function updateWatchedInFirebase(array) {
   const moviesArray = array;
+  console.log(`Zupdate'owana watched do firebase ${array}`);
+  console.log(array);
   const user = JSON.parse(localStorage.getItem('user'));
   const userId = user.uid;
   const updates = {};
@@ -151,8 +158,9 @@ export function pushToWatched(array) {
   update(ref(db), updates);
 }
 
-export function pushToQueue(array) {
+export function updateQueueInFirebase(array) {
   const moviesArray = array;
+  console.log(`Zupdate'owana queue do firebase ${array}`);
   const user = JSON.parse(localStorage.getItem('user'));
   const userId = user.uid;
   const updates = {};
@@ -196,16 +204,39 @@ export function getQueueMoviesIds() {
 }
 
 // funkcja zwraca -1, jeśli id nie ma w tablicy
-const checkTheIdInWatched = id => {
+export const checkTheIdInWatched = id => {
   const arrayOfWatchedIds = getIdsArrayFromStore('watched');
-  return arrayOfWatchedIds.indexOf(id);
-};
-const checkTheIdInQueue = id => {
-  const arrayOfQueueIds = getIdsArrayFromStore('queue');
-  return arrayOfQueueIds.indexOf(id);
+  if (arrayOfWatchedIds == []) {
+        return -1;
+  }
+  // console.log(
+  //   `To jest id filmu ${id}, sprawdzenie tablicy watched z ls ${arrayOfWatchedIds}`
+  //   );
+  //   console.log(typeof arrayOfWatchedIds[0]);
+  //   console.log(arrayOfWatchedIds);
+  // console.log(arrayOfWatchedIds);
+  //   console.log(typeof id);
+    return arrayOfWatchedIds.indexOf(Number(id));
+  };
+  export const checkTheIdInQueue = id => {
+    const arrayOfQueueIds = getIdsArrayFromStore('queue');
+    if (arrayOfQueueIds === []) {
+          return -1;
+    }
+  // console.log(`To jest sprawdzenie tablicy queue z ls ${arrayOfQueueIds}`);
+  // console.log(typeof arrayOfQueueIds.indexOf(id));
+  return arrayOfQueueIds.indexOf(Number(id));
 };
 
 export const ifWatchedBtnClassHasToBeToggled = id => {
+  // console.log(
+  //   'to jest typ danych wychodzących z funkcji sprawdzającej id  watched'
+  // );
+  // console.log(typeof checkTheIdInWatched(id));
+  // console.log(
+  //   'to jest typ danych wychodzących z funkcji sprawdzającej id  watched'
+  // );
+  // console.log(typeof checkTheIdInWatched(id));
   if (checkTheIdInWatched(id) === -1) {
     console.log('Nie ma id w watched');
     return watchedBtn.classList.remove('button--orange');
@@ -224,16 +255,21 @@ export const ifQueueBtnClassHasToBeToggled = id => {
   queueBtn.innerHTML = 'In queue';
 };
 
-/////do zmiany
 export const manageIdInWatched = id => {
   if (checkTheIdInWatched(id) === -1) {
-    return pushToStore(id, 'watched');
+    console.log(`to jest managedIdInWatched id ${id}`)
+    console.log(typeof id)
+    pushToStore(id, 'watched');
+  } else {
+    removeFromStore(id, 'watched');
   }
-  removeFromStore(id, 'watched');
+  updateWatchedInFirebase(getIdsArrayFromStore('watched'));
 };
 export const manageIdInQueue = id => {
   if (checkTheIdInQueue(id) === -1) {
-    return pushToStore(id, 'queue');
+    pushToStore(id, 'queue');
+  } else {
+    removeFromStore(id, 'queue');
   }
-  removeFromStore(id, 'queue');
+  updateWatchedInFirebase(getIdsArrayFromStore('queue'));
 };

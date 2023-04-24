@@ -10,6 +10,9 @@ import {
   getQueueMoviesIds,
   ifWatchedBtnClassHasToBeToggled,
   ifQueueBtnClassHasToBeToggled,
+  checkTheIdInWatched,
+  updateWatchedInFirebase,
+  updateQueueInFirebase,
 } from '../firebase/firebase';
 import { getIdsArrayFromStore } from './store';
 
@@ -52,13 +55,20 @@ const closeOnBackdropClick = e => {
   return;
 };
 
-const checkWatched = movieId => {
-  manageIdInWatched(movieId);
-  toggleClassToWatchedBtn();
+const checkWatched = e => {
+  e.preventDefault();
+  const movieId = getMovieIdFromParent(e);
+  console.log(`to jest movie id przekazywane z el`)
+  console.log(movieId)
+  console.log(typeof movieId)
+  manageIdInWatched(Number(movieId));
+  ifWatchedBtnClassHasToBeToggled(Number(movieId));
 };
-const checkQueue = movieId => {
-  manageIdInQueue(movieId);
-  toggleClassToQueueBtn();
+const checkQueue = e => {
+  e.preventDefault();
+  const movieId = getMovieIdFromParent(e);
+  manageIdInQueue(Number(movieId));
+  ifQueueBtnClassHasToBeToggled(Number(movieId));
 };
 
 const refreshingMyLibraryOnHidingMovieDetails = () => {
@@ -70,16 +80,10 @@ const getMovieIdFromParent = e => {
   const movieInfo = e.target.parentElement.parentElement;
   return movieInfo.dataset.movieId;
 };
-// const idArray = [594767, 502356, 76600];
-const addEventListenersToBtns = () => {
-  // watchedBtn.addEventListener('click', checkWatched);
-  // queueBtn.addEventListener('click', checkQueue);
-  watchedBtn.addEventListener('click', e => {
-    const movieId = getMovieIdFromParent(e);
-  });
-  queueBtn.addEventListener('click', e => {
-    const movieId = getMovieIdFromParent(e);
-  });
+
+const addEventListenersToBtns = e => {
+  watchedBtn.addEventListener('click', checkWatched);
+  queueBtn.addEventListener('click', checkQueue);
 };
 
 const removeEventListenersFromBtns = () => {
@@ -88,7 +92,6 @@ const removeEventListenersFromBtns = () => {
 };
 
 export const onShowModal = id => {
-  console.log(`Id filmu przekazanego do modala ${id}`);
   getWatchedMoviesIds();
   getQueueMoviesIds();
   CLOSE_BTN.addEventListener('click', closeOnXBtn);
@@ -100,9 +103,9 @@ export const onShowModal = id => {
   console.log(getIdsArrayFromStore('watched'));
   console.log(`To jest getIdsArrayFromStore('queue')`);
   console.log(getIdsArrayFromStore('queue'));
+  ifWatchedBtnClassHasToBeToggled(Number(id));
+  ifQueueBtnClassHasToBeToggled(Number(id));
   addEventListenersToBtns();
-  ifWatchedBtnClassHasToBeToggled(id);
-  ifQueueBtnClassHasToBeToggled(id);
 };
 
 const onHideModal = () => {
@@ -111,6 +114,8 @@ const onHideModal = () => {
   modalOverlay.removeEventListener('click', closeOnBackdropClick);
   document.removeEventListener('keydown', closeOnEsc);
   toggleModal();
-  refreshingMyLibraryOnHidingMovieDetails;
+  refreshingMyLibraryOnHidingMovieDetails();
   // removeEventListenersFromBtns();
+  // updateWatchedInFirebase(getIdsArrayFromStore('watched'));
+  // updateQueueInFirebase(getIdsArrayFromStore('queue'));
 };
