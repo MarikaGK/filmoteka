@@ -41,6 +41,3 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal(singleMovieCard.dataset.movieId);
 });
-
-console.log('to jest zzawartość db')
-console.log(db);

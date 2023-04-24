@@ -2,8 +2,11 @@ import { initializeApp } from 'firebase/app';
 import {
   getDatabase,
   ref,
-  push,
-  child,
+  // push,
+  set,
+  get,
+  // child,
+  remove,
   update,
   onValue,
 } from 'firebase/database';
@@ -15,12 +18,8 @@ import {
   signOut,
 } from 'firebase/auth';
 
-import {
-  getIdsArrayFromStore,
-  saveIdsArrayToStore,
-  pushToStore,
-  removeFromStore,
-} from '../utils/store';
+import localStorage from '../utils/localStorage';
+// import { renderMovies } from '../rendering/render-movies';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC3WI9OwBz4EKjWjZ6_OIwGrF26sBcAXyE',
@@ -56,11 +55,11 @@ export const saveIdArraysFromFirebaseToStore = () => {
   });
 };
 
-if (localStorage.getItem('user')) {
-  const user = JSON.parse(localStorage.getItem('user'));
-  navFirst.classList.add('header__none');
-  navSecond.classList.remove('header__none');
-  modalBtnsDiv.classList.remove('display-none-for-unsigned-user');
+if (localStorage.load('user')) {
+  // const user = localStorage.load('user');
+  navFirst.classList.toggle('header__none');
+  navSecond.classList.toggle('header__none');
+  modalBtnsDiv.classList.toggle('display-none-for-unsigned-user');
   signInBtn.removeEventListener('click', () => {
     // signOut(auth);
     signInWithPopup(auth, provider)
@@ -68,10 +67,10 @@ if (localStorage.getItem('user')) {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.save('user', user);
         // saveIdArraysFromFirebaseToStore();
-        navFirst.classList.add('header__none');
-        navSecond.classList.remove('header__none');
+        navFirst.classList.toggle('header__none');
+        navSecond.classList.toggle('header__none');
         // console.log(user.uid)
         // console.log(`To jest wysłana do lS przy logowaniu tablica watched ${getIdsArrayFromStore('watched')}`);
       })
@@ -91,9 +90,9 @@ signInBtn.addEventListener('click', () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      localStorage.setItem('user', JSON.stringify(user));
-      navFirst.classList.add('header__none');
-      navSecond.classList.remove('header__none');
+      localStorage.save('user', user);
+      navFirst.classList.toggle('header__none');
+      navSecond.classList.toggle('header__none');
     })
     .catch(error => {
       const errorCode = error.code;
@@ -106,9 +105,9 @@ signInBtn.addEventListener('click', () => {
 signOutBtn.addEventListener('click', () => {
   signOut(auth)
     .then(() => {
-      localStorage.removeItem('user');
-      navFirst.classList.remove('header__none');
-      navSecond.classList.add('header__none');
+      localStorage.remove('user');
+      navFirst.classList.toggle('header__none');
+      navSecond.classList.toggle('header__none');
       window.location.href = '/index';
     })
     .catch(error => {
@@ -147,29 +146,48 @@ signOutBtn.addEventListener('click', () => {
 
 //REALTIME DATABASE
 
-export function updateWatchedInFirebase(array) {
-  const moviesArray = array;
-  console.log(`Zupdate'owana watched do firebase ${array}`);
-  console.log(array);
-  const user = JSON.parse(localStorage.getItem('user'));
-  const userId = user.uid;
-  const updates = {};
-  updates['/users/' + userId + '/watched/'] = moviesArray;
-  update(ref(db), updates);
-}
+// export function updateWatchedInFirebase(id) {
+//   const movieId = id;
+//   console.log(`Zupdate'owana watched do firebase ${id}`);
+//   console.log(id);
+//   const user = localStorage.load('user');
+//   const userId = user.uid;
+//   const updates = {};
+//   updates['/users/' + userId + '/watched/'] = movieId;
+//   update(ref(db), updates);
+// }
 
-export function updateQueueInFirebase(array) {
-  const moviesArray = array;
-  console.log(`Zupdate'owana queue do firebase ${array}`);
-  const user = JSON.parse(localStorage.getItem('user'));
-  const userId = user.uid;
-  const updates = {};
-  updates['/users/' + userId + '/queue/'] = moviesArray;
-  update(ref(db), updates);
-}
+// export function updateQueueInFirebase(id) {
+//   const movieId = id;
+//   console.log(`Zupdate'owana queue do firebase ${id}`);
+//   const user = localStorage.load('user');
+//   const userId = user.uid;
+//   const updates = {};
+//   updates['/users/' + userId + '/queue/'] = movieId;
+//   update(ref(db), updates);
+// }
+
+// export function removeFromWatchedFirebase(id) {
+//   const movieId = id;
+//   console.log(`Zupdate'owana queue do firebase ${id}`);
+//   const user = localStorage.load('user');
+//   const userId = user.uid;
+//   const updates = {};
+//   updates['/users/' + userId + '/watched/'] = movieId;
+//   remove(ref(db), updates);
+// }
+// export function removeFromQueueFirebase(id) {
+//   const movieId = id;
+//   console.log(`Zupdate'owana queue do firebase ${id}`);
+//   const user = localStorage.load('user');
+//   const userId = user.uid;
+//   const updates = {};
+//   updates['/users/' + userId + '/queue/'] = movieId;
+//   remove(ref(db), updates);
+// }
 
 export function getWatchedMoviesIds() {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = localStorage.load('user');
   const userId = user.uid;
   const watchedRef = ref(db, '/users/' + userId + '/watched/');
   const watchedMoviesIds = [];
@@ -182,12 +200,12 @@ export function getWatchedMoviesIds() {
     console.log(user.uid);
     console.log(`To jest watchedMoviesIds z firebase`);
     console.log(watchedMoviesIds);
-    saveIdsArrayToStore(watchedMoviesIds, 'watched');
+    localStorage.save('watched', watchedMoviesIds);
   });
 }
 
 export function getQueueMoviesIds() {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = localStorage.load('user');
   const userId = user.uid;
   const queueRef = ref(db, '/users/' + userId + '/queue/');
   const queueMoviesIds = [];
@@ -197,79 +215,138 @@ export function getQueueMoviesIds() {
       const movieId = childSnapshot.val();
       queueMoviesIds.push(movieId);
     });
-    console.log(`To jest queueMoviesIds z firebase`);
-    console.log(queueMoviesIds);
-    saveIdsArrayToStore(queueMoviesIds, 'queue');
+    localStorage.save('queue', queueMoviesIds);
   });
 }
 
 // funkcja zwraca -1, jeśli id nie ma w tablicy
-export const checkTheIdInWatched = id => {
-  const arrayOfWatchedIds = getIdsArrayFromStore('watched');
-  if (arrayOfWatchedIds == []) {
-        return -1;
-  }
-  // console.log(
-  //   `To jest id filmu ${id}, sprawdzenie tablicy watched z ls ${arrayOfWatchedIds}`
-  //   );
-  //   console.log(typeof arrayOfWatchedIds[0]);
-  //   console.log(arrayOfWatchedIds);
-  // console.log(arrayOfWatchedIds);
-  //   console.log(typeof id);
-    return arrayOfWatchedIds.indexOf(Number(id));
-  };
-  export const checkTheIdInQueue = id => {
-    const arrayOfQueueIds = getIdsArrayFromStore('queue');
-    if (arrayOfQueueIds === []) {
-          return -1;
-    }
-  // console.log(`To jest sprawdzenie tablicy queue z ls ${arrayOfQueueIds}`);
-  // console.log(typeof arrayOfQueueIds.indexOf(id));
-  return arrayOfQueueIds.indexOf(Number(id));
+// export const checkTheIdInWatched = id => {
+//   const arrayOfWatchedIds = localStorage.load('watched');
+//   if (arrayOfWatchedIds.length === 0) {
+//     return -1;
+//   }
+//   return arrayOfWatchedIds.indexOf(Number(id));
+// };
+// export const checkTheIdInQueue = id => {
+//   const arrayOfQueueIds = localStorage.load('queue');
+//   if (arrayOfQueueIds.length === 0) {
+//     return -1;
+//   }
+//   return arrayOfQueueIds.indexOf(Number(id));
+// };
+
+export const changeWatched = e => {
+  const movieInfo = e.target.parentElement.parentElement;
+  const id = Number(movieInfo.dataset.movieId);
+  const user = localStorage.load('user');
+  const userId = user.uid;
+  const watchedRef = ref(db, '/users/' + userId + '/watched/');
+  get(watchedRef)
+    .then(snapshot => {
+      const watchedArray = snapshot.val() || [];
+      if (!watchedArray.includes(id)) {
+        watchedArray.push(id);
+        set(watchedRef, watchedArray);
+        if (!watchedBtn.classList.contains('button--orange')) {
+          watchedBtn.classList.add('button--orange');
+        }
+        watchedBtn.innerHTML = 'In watched';
+        localStorage.save('watched', watchedArray);
+      } else {
+        const updatedArray = watchedArray.filter(e => e != id);
+        set(watchedRef, updatedArray);
+        watchedBtn.innerHTML = 'Add to watched';
+        if (watchedBtn.classList.contains('button--orange')) {
+          watchedBtn.classList.remove('button--orange');
+        }
+        localStorage.save('watched', updatedArray);
+      }
+    })
+    .catch(console.error());
 };
+export const changeQueue = e => {
+  const movieInfo = e.target.parentElement.parentElement;
+  const id = Number(movieInfo.dataset.movieId);
+  const user = localStorage.load('user');
+  const userId = user.uid;
+  const queueRef = ref(db, '/users/' + userId + '/queue/');
+  get(queueRef)
+    .then(snapshot => {
+      const queueArray = snapshot.val() || [];
+      if (!queueArray.includes(id)) {
+        queueArray.push(id);
+        set(queueRef, queueArray);
+        queueBtn.innerHTML = 'In queue';
+        queueBtn.classList.toggle('button--orange');
+        localStorage.save('queue', queueArray);
+      } else {
+        const updatedArray = queueArray.filter(e => e != id);
+        set(queueRef, updatedArray);
+        queueBtn.classList.toggle('button--orange');
+        queueBtn.innerHTML = 'Add to queue';
+        localStorage.save('queue', updatedArray);
+      }
+    })
+    .catch(console.error());
+};
+
+// watchedBtn.addEventListener('click', changeWatched);
 
 export const ifWatchedBtnClassHasToBeToggled = id => {
-  // console.log(
-  //   'to jest typ danych wychodzących z funkcji sprawdzającej id  watched'
-  // );
-  // console.log(typeof checkTheIdInWatched(id));
-  // console.log(
-  //   'to jest typ danych wychodzących z funkcji sprawdzającej id  watched'
-  // );
-  // console.log(typeof checkTheIdInWatched(id));
-  if (checkTheIdInWatched(id) === -1) {
-    console.log('Nie ma id w watched');
-    return watchedBtn.classList.remove('button--orange');
-  }
-  console.log('Jest id w watched');
-  watchedBtn.classList.add('button--orange');
-  watchedBtn.innerHTML = 'In watched';
-};
-export const ifQueueBtnClassHasToBeToggled = id => {
-  if (checkTheIdInQueue(id) === -1) {
-    console.log('Nie ma id w queue');
-    return watchedBtn.classList.remove('button--orange');
-  }
-  console.log('Jest id w queue');
-  queueBtn.classList.add('button--orange');
-  queueBtn.innerHTML = 'In queue';
+  const user = localStorage.load('user');
+  const userId = user.uid;
+  const watchedRef = ref(db, '/users/' + userId + '/watched/');
+  get(watchedRef).then(snapshot => {
+    const watchedArray = snapshot.val() || [];
+    if (!watchedArray.includes(id)) {
+      if (watchedBtn.classList.contains('button--orange')) {
+        watchedBtn.classList.remove('button--orange');
+      }
+      return (watchedBtn.innerHTML = 'Add to watched');
+    }
+    if (!watchedBtn.classList.contains('button--orange')) {
+      watchedBtn.classList.add('button--orange');
+    }
+    watchedBtn.innerHTML = 'In watched';
+  });
 };
 
-export const manageIdInWatched = id => {
-  if (checkTheIdInWatched(id) === -1) {
-    console.log(`to jest managedIdInWatched id ${id}`)
-    console.log(typeof id)
-    pushToStore(id, 'watched');
-  } else {
-    removeFromStore(id, 'watched');
-  }
-  updateWatchedInFirebase(getIdsArrayFromStore('watched'));
+export const ifQueueBtnClassHasToBeToggled = id => {
+  const user = localStorage.load('user');
+  const userId = user.uid;
+  const queueRef = ref(db, '/users/' + userId + '/queue/');
+  get(queueRef).then(snapshot => {
+    const queueArray = snapshot.val() || [];
+    if (!queueArray.includes(id)) {
+      if (queueBtn.classList.contains('button--orange')) {
+        queueBtn.classList.remove('button--orange');
+      }
+      return (queueBtn.innerHTML = 'Add to queue');
+    }
+    if (!queueBtn.classList.contains('button--orange')) {
+      queueBtn.classList.add('button--orange');
+    }
+    queueBtn.innerHTML = 'In queue';
+    // watchedBtn.classList.toggle('button--orange');
+  });
 };
-export const manageIdInQueue = id => {
-  if (checkTheIdInQueue(id) === -1) {
-    pushToStore(id, 'queue');
-  } else {
-    removeFromStore(id, 'queue');
-  }
-  updateWatchedInFirebase(getIdsArrayFromStore('queue'));
-};
+
+// export const manageIdInWatched = id => {
+//   if (checkTheIdInWatched(id) === -1) {
+//     console.log(`to jest managedIdInWatched id ${id}`);
+//     console.log(typeof id);
+//     const watchedArray = localStorage.load('watched');
+//     const updatedWatchedArray = watchedArray.push(id);
+//     updateWatchedInFirebase(updatedWatchedArray);
+//   } else {
+//     removeFromWatchedFirebase(id);
+//   }
+// };
+// export const manageIdInQueue = id => {
+//   console.log(`To jest id przekazane do manage ${id}`);
+//   if (checkTheIdInQueue(id) === -1) {
+//     updateQueueInFirebase(id);
+//   } else {
+//     removeFromQueueFirebase(id);
+//   }
+// };
