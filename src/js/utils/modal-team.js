@@ -1,7 +1,7 @@
 
 const linkModalTeam = document.querySelector('.footer__wrapper-link');
 const modalTeam = document.querySelector('.backdrop');
-const modalClose = document.querySelector('.modal__icon-close');
+const modalClose = document.querySelector('.team_close');
 
 linkModalTeam.addEventListener('click', (e) => {
   e.preventDefault();
@@ -11,7 +11,7 @@ linkModalTeam.addEventListener('click', (e) => {
 modalTeam.addEventListener('click', (e) => {
   if (
     e.target.classList.contains('backdrop') ||
-    e.target.classList.contains('modal__icon-close')
+    e.target.classList.contains('team_close')
   ) {
     modalTeam.classList.add('is-hidden');
   }
