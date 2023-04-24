@@ -17,8 +17,8 @@ import { renderPagination } from './js/rendering/render-pagination.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
 import { discoveryHandler } from './js/utils/categories-filter.js';
 
-
-
+const FORM_DOM = document.querySelector('.header-input__form');
+const GALLERY_DOM = document.querySelector('.gallery');
 const DISCOVERY_BUTTON = document.querySelector('.header-input__discoveryButton')
 const FIND_BUTTON = document.querySelector('.header-input__findButton')
 const CATEGORIES_BOX = document.querySelector('.header-input__categoriesBox')
@@ -64,8 +64,6 @@ import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
 
-const FORM_DOM = document.querySelector('.header-input__form');
-const GALLERY_DOM = document.querySelector('.gallery');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 GALLERY_DOM.addEventListener('click', galleryHandler);
@@ -74,6 +72,15 @@ getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
 renderPagination();
+
+// const paginationClickerContainer = document.querySelector('.pagination', false)
+// const paginationClicker = paginationClickerContainer.querySelectorAll('a.tui-page-btn')
+
+// paginationClicker.addEventListener("click", ()=>{
+//     console.log(paginationClicker.value)
+// })
+
+
 
 
 
