@@ -5,7 +5,7 @@
   transition: 500ms ease-in-out;
 }
 .dark-mode-modal {
-  background-color: #60100b;
+  background-color: $dark-mode-main-background-color;
   color: $dark-mode-main-font-bright-color;
   border-block: 1px solid $dark-mode-border-bright-gray-color;
   text-shadow: 0 0 2.5em $main-background-color;
