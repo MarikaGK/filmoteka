@@ -214,12 +214,49 @@ body {
 }
 
 .header-nav__menu {
+  position: relative;
   margin: 0;
   display: flex;
   gap: 39px;
   font-size: 12px;
   white-space: nowrap;
   align-items: center;
+}
+
+.header-nav__browse {
+  background: none;
+  color: #ffffff;
+  font-size: small;
+  border: none;
+  right: 0;
+  cursor: pointer;
+}
+
+.header-nav__categoriesBox {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px;
+  background-color: #ffffff;
+  z-index: 2;
+  box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
+}
+
+.header-nav__label {
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  min-width: 50px;
+  text-align: right;
+  margin: 5px;
+  font-size: small;
+}
+
+.header-nav__selectButton {
+  background-color: greenyellow;
+  width: 100%;
 }
 
 .header-input {
@@ -266,38 +303,6 @@ body {
 }
 .header-input__text-box:focus, .header-input__text-box:focus-within {
   border-bottom: 2px solid #ff6b01;
-}
-
-.header-input__discoveryButton {
-  background: none;
-  color: #ffffff;
-  font-size: small;
-  border: none;
-  position: absolute;
-  top: 25px;
-  right: 0;
-  opacity: 0.7;
-  cursor: pointer;
-}
-
-.header-input__categoriesBox {
-  position: absolute;
-  right: 0;
-  top: 61px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 10px;
-  background-color: #ffffff;
-  z-index: 2;
-  box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
-}
-
-.header-input__label {
-  min-width: 50px;
-  text-align: right;
-  margin: 5px;
-  font-size: small;
 }
 
 .active__page {

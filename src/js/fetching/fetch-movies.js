@@ -183,6 +183,7 @@ export const getMoviesWithFilters = async (page = 1) => {
   const genres = categoriesFilter();
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
+    console.log(`${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`);
     const response = await fetch(
       `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
 
@@ -194,7 +195,7 @@ export const getMoviesWithFilters = async (page = 1) => {
     const data = await response.json();
     if (!data.total_results) {
       NO_HIT_INFO_DIV_DOM.textContent =
-        'Search result not successful. Enter the correct movie name and search again.';
+        'Search result not successful. Select less movies genres and search again.';
       console.log('pusta tablica');
       return;
     }

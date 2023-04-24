@@ -18,14 +18,14 @@ import { discoveryHandler } from './js/utils/categories-filter.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
-const DISCOVERY_BUTTON = document.querySelector('.header-input__discoveryButton')
-const FIND_BUTTON = document.querySelector('.header-input__findButton')
-const CATEGORIES_BOX = document.querySelector('.header-input__categoriesBox')
+const BROWSE_BUTTON = document.querySelector('.header-nav__browse')
+const FIND_BUTTON = document.querySelector('.header-nav__selectButton')
+const CATEGORIES_BOX = document.querySelector('.header-nav__categoriesBox')
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 GALLERY_DOM.addEventListener('click', galleryHandler);
 FIND_BUTTON.addEventListener('click', discoveryHandler);
-DISCOVERY_BUTTON.addEventListener('click', (evt) => {
+BROWSE_BUTTON.addEventListener('click', (evt) => {
   evt.preventDefault();
   CATEGORIES_BOX.classList.toggle('is-hidden')
 })

@@ -1,5 +1,5 @@
 import { getMoviesWithFilters } from "../fetching/fetch-movies";
-const CATEGORIES_BOX = document.querySelector('.header-input__categoriesBox')
+const CATEGORIES_BOX = document.querySelector('.header-nav__categoriesBox')
 export const categoriesFilter = () => {
     const checked = document.querySelectorAll('input[type="checkbox"]:checked');
     return ([...checked].map(c => Number(c.id))).join();
