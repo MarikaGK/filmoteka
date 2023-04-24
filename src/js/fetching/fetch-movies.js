@@ -138,6 +138,7 @@ const getTrailerUrlFromObjectVideos = videosObject => {
 
 //  6. --- Function fetch - get array of movieIds  ---
 export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
+
   const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
   const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
 
@@ -162,7 +163,7 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
         newObj.id = key;
         films.push(newObj);
       }
-      setPopularParameterToStorage(3)
+
       renderLibrary(films);
       //console.log do usunięcia
       console.log(

@@ -3,7 +3,7 @@ import Pagination from 'tui-pagination';
 import { renderMovies } from './render-movies';
 import { showLoader } from '../utils/loader';
 
-import { getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
+import { getMoviesByArrayOfIds, getMoviesByTitle, getPopularMovies } from '../fetching/fetch-movies';
 // import { createArrayOfCurrentPage, saveFactorToLocalStorage } from '../../my-library';
 
 // Pagination config:
@@ -79,14 +79,21 @@ export const saveFactorToLocalStorage = (value) => {
 export const createArrayOfCurrentPageForWatched = (factor=1)=>{
     const popularParameter = getPopularParameterFromStorage();
     console.log(popularParameter)
-    // const factor = getFactorFromStorage()-1;
     const multiplier = 20 * (factor-1);
     if (popularParameter==3)
-    {
-      const arrayOfCurrentPage = watchedArray.slice(0+multiplier,20+multiplier);
-      console.log('console log dla array of CurrentPage of Watched');
-      console.log(arrayOfCurrentPage)
-    }
+      {
+        const arrayOfCurrentPage = watchedArray.slice(0+multiplier,20+multiplier);
+        console.log('console log dla array of CurrentPage of Watched');
+        console.log(arrayOfCurrentPage)
+        getMoviesByArrayOfIds(arrayOfCurrentPage)
+      }
+    else if(popularParameter==4)
+      {
+        const arrayOfCurrentPage = queueArray.slice(0+multiplier,20+multiplier);
+        console.log('console log dla array of CurrentPage of Watched');
+        console.log(arrayOfCurrentPage)
+        getMoviesByArrayOfIds(arrayOfCurrentPage)
+      }
     saveFactorToLocalStorage(factor)
   }
 
@@ -178,6 +185,16 @@ document.addEventListener("click", (e)=>{
         }
       }
       else if (popularParameter==3)
+      {
+        if(target)
+        {
+            const factor = parseInt(target.id);
+            createArrayOfCurrentPageForWatched(factor)
+            saveFactorToLocalStorage(factor)
+            
+        }
+      }
+      else if (popularParameter==4)
       {
         if(target)
         {

@@ -29,12 +29,12 @@ const closeOnBackdropClick = e => {
   return;
 };
 
-const addEventListenersToBtns = () => {
+export const addEventListenersToBtns = () => {
   watchedBtn.addEventListener('click');
   queueBtn.addEventListener('click');
 };
 
-const removeEventListenersFromBtns = () => {
+export const removeEventListenersFromBtns = () => {
   watchedBtn.removeEventListener('click');
   queueBtn.removeEventListener('click');
 };

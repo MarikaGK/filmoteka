@@ -6,7 +6,7 @@ import {
 } from './js/fetching/fetch-movies.js';
 
 import { handleSubmit } from './js/utils/search-form-handler.js';
-
+import { removeEventListenersFromBtns } from './js/utils/modal-movie-details.js'
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
@@ -37,3 +37,14 @@ renderPagination();
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
+
+// const watchedButton = document.querySelector('.button button--orange')
+// const queueButton = document.querySelector('.button button--transparent')
+
+// watchedButton.addEventListener("click", ()=>{
+//   console.log('watched button zostal wcisniety')
+// })
+// queueButton.addEventListener("click", ()=>{
+//   console.log('queue button zostal wcisniety')
+// })
+

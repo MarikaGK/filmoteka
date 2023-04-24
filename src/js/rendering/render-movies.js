@@ -44,6 +44,7 @@ export const renderMovies = movies => {
 // -----> RENDERING USER'S QUEUED/WATCHED LIBRARY:
 
 export const renderLibrary = movies => {
+  gallery.innerHTML=''
   const markupLibrary = movies
     .map(movie => {
       // const genres = renderGenresToGallery(movie.genre_ids);
