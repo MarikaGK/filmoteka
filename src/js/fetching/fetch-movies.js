@@ -10,8 +10,8 @@ import {
   getCurrentPageFromStorage,
   renderPagination
 } from '../rendering/render-pagination'
-
 import { renderModal } from '../rendering/render-modal';
+import { categoriesFilter } from '../utils/categories-filter';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
@@ -53,7 +53,7 @@ export const getPopularMovies = async (page = 1) => {
     const limitedTotalResultsForPopularSearch = 10000;
     data.total_pages = limitedTotalPagesForPopularSearch;
     data.total_results = limitedTotalResultsForPopularSearch;
-    console.log(data);
+
     setPopularParameterToStorage(true)
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
@@ -66,10 +66,13 @@ export const getPopularMovies = async (page = 1) => {
 //  3. --- function fetch - get movies by title ---
 // movieTitle is a .value from header input
 export const getMoviesByTitle = async (movieTitle, page = 1) => {
+  const genres = categoriesFilter();
+  console.log(genres);
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
     const response = await fetch(
-      `${apiUrl}?api_key=${API_KEY}&query=${movieTitle}&page=${page}`
+      `${apiUrl}?api_key=${API_KEY}&query=${movieTitle}&page=${page}&with_genres=${genres}`
+
     );
     // response Status:404 handling
     if (!response.ok) {
@@ -85,12 +88,13 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
     showLoader();
 
     //TODO function here!
+
     setPopularParameterToStorage(false)
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
     renderMovies(data.results);
-    renderPagination()
+    renderPagination();
   } catch (error) {
     console.error(error);
   }

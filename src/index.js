@@ -20,6 +20,7 @@ import { galleryHandler } from './js/utils/gallery-handler.js';
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
 const CATEGORIES_BUTTON = document.querySelector('.header-input__categoriesButton')
+const CATEGORIES_BOX = document.querySelector('.header-input__categoriesBox')
 FORM_DOM.addEventListener('submit', handleSubmit);
 GALLERY_DOM.addEventListener('click', galleryHandler);
 
@@ -34,11 +35,13 @@ renderPagination();
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
+
+
 renderCategoriesBox();
+
 CATEGORIES_BUTTON.addEventListener('click', (evt) => {
   evt.preventDefault();
-  // renderCategoriesBox();
-
+  CATEGORIES_BOX.classList.toggle('is-hidden')
 })
 
 
