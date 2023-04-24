@@ -175,3 +175,40 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
     // console.error(error);
   }
 };
+
+//  7. --- Function fetch - get movies with filters  ---
+
+export const getMoviesWithFilters = async (page = 1) => {
+  const genres = categoriesFilter();
+  try {
+    NO_HIT_INFO_DIV_DOM.textContent = '';
+    const response = await fetch(
+      `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
+
+    );
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    const data = await response.json();
+    if (!data.total_results) {
+      NO_HIT_INFO_DIV_DOM.textContent =
+        'Search result not successful. Enter the correct movie name and search again.';
+      console.log('pusta tablica');
+      return;
+    }
+    showLoader();
+
+    //TODO function here!
+
+    setPopularParameterToStorage(false)
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
+    renderMovies(data.results);
+    renderPagination();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
