@@ -16,6 +16,7 @@ import { renderPagination } from './js/rendering/render-pagination.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
 import { renderCategoriesBox } from './js/rendering/render-multiselectBox.js';
 import { discoveryHandler } from './js/utils/categories-filter.js';
+import { addELToTeamModal } from './js/utils/modal-team.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
@@ -36,7 +37,7 @@ startLoader();
 getPopularMovies();
 // renderCategoriesBox();
 renderPagination();
-
+addELToTeamModal();
 // const paginationClickerContainer = document.querySelector('.pagination', false)
 // const paginationClicker = paginationClickerContainer.querySelectorAll('a.tui-page-btn')
 
