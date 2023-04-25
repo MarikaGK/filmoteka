@@ -125,34 +125,6 @@
   align-items: center;
 }
 
-.header-nav__browse {
-  background: none;
-  color: $main-font-bright-color;
-  font-size: small;
-  border: none;
-  right: 0;
-  cursor: pointer;
-}
-
-
-.header-nav__categoriesBox {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  right: 0;
-  top: 30px;
-  background-color: $main-background-color;
-  border-radius: $border-radius;
-  box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
-  z-index: 2;
-  opacity: 1;
-  transition: opacity 0.1s ease-in;
-}
-
-
-
-
 .header-nav__label {
   color: $main-font-dark-color;
   min-width: 50px;
@@ -164,16 +136,14 @@
   text-shadow: 0;
   transition: text-shadow 0.1s ease-in, transform 0.1s ease-in;
 
-
   &:hover {
     // text-shadow: 2px 2px 2px rgba(140, 140, 140, 1);
-    transform: translateX(-5px)
+    transform: translateX(-5px);
   }
 }
 
-
 .header-nav__selectButton {
-  background-color: #FFF0;
+  background-color: #fff0;
   border: solid 1px $movie-category-color;
   border-radius: $border-radius;
   width: 100%;
@@ -184,11 +154,13 @@
 
   &:hover {
     color: $main-font-bright-color;
-    background-color: $movie-category-color ;
+    background-color: $movie-category-color;
   }
 }
 
 .header-input {
+  display: flex;
+  align-items: center;
   text-align: center;
   padding-top: 40px;
   padding-bottom: 20px;
@@ -205,6 +177,7 @@
 
 .header-input__form {
   position: relative;
+  flex-grow: 1;
   display: flex;
   outline: none;
 }
@@ -231,8 +204,42 @@
 
   &:focus,
   &:focus-within {
-    border-bottom: 2px solid $button-background-color;
+    border-bottom: 1px solid $button-background-color;
   }
+}
+
+.header-input__separator {
+  padding: 0 20px;
+  color: rgb(48, 52, 54);
+  font-size: small;
+}
+
+.header-nav__browse {
+  position: relative;
+  background: none;
+  color: rgb(48, 52, 54);
+  font-size: small;
+  border: none;
+  right: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: $main-font-bright-color;
+  }
+}
+
+.header-nav__categoriesBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 120px;
+  background-color: $main-background-color;
+  border-radius: $border-radius;
+  box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
 }
 
 .active__page {

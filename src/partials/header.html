@@ -2,7 +2,12 @@
   <div class="container">
     <nav class="header-nav">
       <a href="./index.html" class="header-nav__home-page-btn">
-        <svg class="header-nav__mobile-menu-icon" width="24" height="24" viewBox="0 0 32 32">
+        <svg
+          class="header-nav__mobile-menu-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 32 32"
+        >
           <use href="./images/icons/icons.svg#icon-film"></use>
         </svg>
         <p class="header-nav__menu-title link">Filmoteka</p>
@@ -18,26 +23,33 @@
             <p class="header-nav__link-text link">MY LIBRARY</p>
           </a>
         </li>
-
-        <button class="header-nav__element header-nav__browse">BROWSE</button>
-        <div class="header-nav__categoriesBox is-hidden">
-          <button class="header-nav__selectButton">select</button>
-        </div>
-
-
-        </li>
       </ul>
     </nav>
     <div class="header-input">
       <form class="header-input__form">
-        <input type="text" placeholder="Movie search" class="header-input__text-box" />
+        <input
+          type="text"
+          placeholder="Movie search"
+          class="header-input__text-box"
+        />
         <button class="header-input__button" type="submit" title="search-btn">
-          <svg class="header-input__icon" width="12" height="12" viewBox="0 0 32 32">
+          <svg
+            class="header-input__icon"
+            width="12"
+            height="12"
+            viewBox="0 0 32 32"
+          >
             <use href="./images/icons/icons.svg#icon-search"></use>
           </svg>
         </button>
-
       </form>
+      <p class="header-input__separator">or</p>
+      <div class="header-nav__element header-nav__browse"><p class="uppercase">Browse</p>
+        <div class="header-nav__categoriesBox is-hidden">
+          <button class="header-nav__selectButton">select</button>
+        </div>
+      </div>
+      
     </div>
     <div class="header-no-hit-info">
       <!-- info when empty and no hit searching -->
