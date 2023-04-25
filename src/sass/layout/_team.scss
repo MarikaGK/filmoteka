@@ -89,12 +89,12 @@
   height: 100%;
   background-color: #ff6b01;
   border-radius: $border-radius;
+  transition-duration: 500ms;
 
   
   &:hover {
     transform: scale(1.05);
     filter: none;
-    transition-duration: 500ms;
     box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.1),
       4px 6px 10px 3px rgba(255, 255, 255, 0.1),
       4px 6px 10px 3px rgba(255, 255, 255, 0.1);

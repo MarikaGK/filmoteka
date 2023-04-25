@@ -7,7 +7,7 @@ const modalClose = document.querySelector('.team_close');
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 
 const closeModalTeamByBackdrop = e => {
-  if (e.target.classList.contains('backdrop')) {
+  if (e.target === modalTeamBackdrop) {
     modalTeam.classList.toggle('none');
     modalTeamBackdrop.classList.toggle('is-hidden');
     modalTeam.removeEventListener('keydown', keyPress);
@@ -27,7 +27,7 @@ const closeModalTeamByIcon = e => {
 };
 
 const keyPress = e => {
-  if (e.key === 'Escape') {
+  if (e.code === 'Escape') {
     modalTeam.classList.toggle('none');
     modalTeamBackdrop.classList.toggle('is-hidden');
     modalClose.removeEventListener('click', closeModalTeamByIcon);
@@ -37,11 +37,12 @@ const keyPress = e => {
   }
 };
 
-export const addELToTeamModal = () => {linkModalTeam.addEventListener('click', e => {
-  e.preventDefault();
-  onShowTeamModal();
-});
-}
+export const addELToTeamModal = () => {
+  linkModalTeam.addEventListener('click', e => {
+    e.preventDefault();
+    onShowTeamModal();
+  });
+};
 
 const onShowTeamModal = () => {
   modalTeam.classList.toggle('none');
@@ -50,6 +51,7 @@ const onShowTeamModal = () => {
   modalTeam.addEventListener('click', closeModalTeamByBackdrop);
   modalClose.addEventListener('click', closeModalTeamByIcon);
   window.removeEventListener('scroll', showButtonOnScroll);
-  if (!(SCROLL_UP_BUTTON_DOM.classList.contain('is-hidden')))
-  {SCROLL_UP_BUTTON_DOM.classList.add('is-hidden')}
+  if (!SCROLL_UP_BUTTON_DOM.classList.contain('is-hidden')) {
+    SCROLL_UP_BUTTON_DOM.classList.add('is-hidden');
+  }
 };
