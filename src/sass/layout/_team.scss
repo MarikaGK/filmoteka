@@ -1,6 +1,7 @@
 .backdrop {
   position: relative;
   position: fixed;
+  z-index: 100;
   width: 100vw;
   height: 100vh;
   left: 0;
@@ -12,10 +13,6 @@
   transition-duration: 250ms;
   transition-timing-function: ease;
   overflow-y: scroll;
-
-  @include desktop {
-    overflow-y: hidden;
-  }
 }
 
 .team {
