@@ -13,13 +13,16 @@ import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/d
 import { renderPagination } from './js/rendering/render-pagination.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
+import { addELToTeamModal } from './js/utils/modal-team.js';
+import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 const GALLERY_DOM = document.querySelector('.gallery');
 
 // FORM_DOM.addEventListener('submit', handleSubmit);
 
-// getMovieGenresAndSaveToStore();
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 startLoader();
-
+addELToTeamModal();
 //*  Trzeba pobierać z localstorage tablice watched i queue oraz zapisywać do zmiennych (aktualizować zmiany i przesyłać na serwer zewn również)
 //! localStorage.getItem('watched')); - może taka zmienna?
 //! localStorage.getItem('queue')); - może taka zmienna?
@@ -40,6 +43,3 @@ GALLERY_DOM.addEventListener('click', galleryHandler);
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
-
-//* DARK MODE
-setDarkOrNormalModeOnPageLoadFromLocalStorageState();
