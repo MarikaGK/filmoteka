@@ -142,21 +142,6 @@
   }
 }
 
-.header-nav__selectButton {
-  background-color: #fff0;
-  border: solid 1px $movie-category-color;
-  border-radius: $border-radius;
-  width: 100%;
-  font-family: $main-font;
-  font-size: medium;
-  cursor: pointer;
-  transition: color 0.2s ease-in, background-color 0.2s ease-in;
-
-  &:hover {
-    color: $main-font-bright-color;
-    background-color: $movie-category-color;
-  }
-}
 
 .header-input {
   display: flex;
@@ -169,7 +154,7 @@
     width: 50%;
     margin: auto;
   }
-
+  
   @include desktop {
     width: 30%;
   }
@@ -197,11 +182,11 @@
 
 .header-input__text-box {
   outline: none;
-
+  
   &::placeholder {
     opacity: 1;
   }
-
+  
   &:focus,
   &:focus-within {
     border-bottom: 1px solid $button-background-color;
@@ -214,7 +199,7 @@
   font-size: small;
 }
 
-.header-nav__browse {
+.header__browse {
   position: relative;
   background: none;
   color: rgb(48, 52, 54);
@@ -223,13 +208,13 @@
   border: none;
   right: 0;
   cursor: pointer;
-
+  
   &:hover {
     color: $main-font-bright-color;
   }
 }
 
-.header-nav__categoriesBox {
+.header__categoriesBox {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -241,6 +226,22 @@
   z-index: 2;
   opacity: 1;
   transition: opacity 0.1s ease-in;
+}
+
+.header__selectButton {
+  background-color: #fff0;
+  border: solid 1px $movie-category-color;
+  border-radius: $border-radius;
+  width: 100%;
+  font-family: $main-font;
+  font-size: medium;
+  cursor: pointer;
+  transition: color 0.2s ease-in, background-color 0.2s ease-in;
+
+  &:hover {
+    color: $main-font-bright-color;
+    background-color: $movie-category-color;
+  }
 }
 
 .active__page {
