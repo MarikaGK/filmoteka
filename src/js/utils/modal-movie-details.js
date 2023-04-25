@@ -111,5 +111,4 @@ const onHideModal = () => {
   toggleModal();
   watchedBtn.removeEventListener('click', changeWatched);
   queueBtn.removeEventListener('click', changeQueue);
-  location.reload();
 };
