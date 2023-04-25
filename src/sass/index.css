@@ -5,6 +5,11 @@
 /* ------ DARK MODE COLORS ------ */
 /* ------other colors------ */
 /* ------OTHER VARIABLES------ */
+@import '~node_modules/modern-normalize/modern-normalize.css';
+li {
+  list-style-type: none;
+}
+
 /* ------MIXIN------ */
 /* reminder how to use mixin in media queries:
 .products {
@@ -15,7 +20,6 @@
   }
 } 
 */
-@import '~node_modules/modern-normalize/modern-normalize.css';
 :root {
   font-family: "Roboto", sans-serif, sans-serif;
   font-weight: 500;
@@ -597,6 +601,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 357px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+@media (min-width: 768px) {
+  .modal-card__poster {
+    height: 373.5px;
+  }
+}
+@media (min-width: 1280px) {
+  .modal-card__poster {
+    height: 478px;
+  }
   aspect-ratio: 0.7;
   overflow: hidden;
   border-radius: 5px;
@@ -612,6 +631,15 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.modal-card__img {
+  border-radius: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .modal-card__movie-description {
@@ -756,6 +784,81 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.backdrop {
+  position: relative;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  scale: 1;
+  opacity: 1;
+  visibility: visible;
+  transition-property: scale, opacity, visibility;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.team {
+  position: absolute;
+  background-color: white;
+  border-radius: 4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 90%;
+  overflow: scroll;
+  padding: 15px;
+}
+@media (min-width: 768px) {
+  .team {
+    width: 700px;
+    max-height: 800px;
+  }
+}
+
+.team__ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.team__item {
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 6px 13px 3px rgba(0, 0, 0, 0.2), 4px 6px 13px 3px rgba(0, 0, 0, 0.2), 4px 6px 13px 3px rgba(0, 0, 0, 0.2);
+  width: 170px;
+  height: 220px;
+  border-radius: 5px;
+}
+.team__item:hover {
+  transform: scale(1.1);
+  transition-duration: 500ms;
+}
+
+.team__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  gap: 5px;
+}
+
+.team__description-role {
+  color: #ff001b;
+  margin-right: 10px;
+  letter-spacing: 0.1rem;
+  font-size: 14px;
+}
+
+.team__description-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .loader {
