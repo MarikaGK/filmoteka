@@ -10,12 +10,15 @@ linkModalTeam.addEventListener('click', (e) => {
 
 modalTeam.addEventListener('click', (e) => {
   if (
-    e.target.classList.contains('backdrop') ||
-    e.target.classList.contains('team_close')
+    e.target.classList.contains('backdrop')
   ) {
     modalTeam.classList.add('is-hidden');
   }
 });
+
+modalClose.addEventListener('click', (e) => {
+    modalTeam.classList.add('is-hidden');
+  })
 
 const keyPress = (e) => {
   if (e.key === 'Escape') {
