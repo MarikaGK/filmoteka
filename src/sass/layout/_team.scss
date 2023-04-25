@@ -6,21 +6,14 @@
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  scale: 1;
   opacity: 1;
   visibility: visible;
-  transition-property: scale, opacity, visibility;
+  transition-property: opacity, visibility;
   transition-duration: 250ms;
   transition-timing-function: ease;
   overflow: scroll;
 }
 
-.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  scale: 0;
-}
 
 .team {
   position: absolute;
@@ -34,6 +27,7 @@
   max-width: 400px;
   height: 90%;
   padding: 40px;
+  transform: scale(1);
   box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.3),
     4px 6px 10px 3px rgba(255, 255, 255, 0.3),
     4px 6px 10px 3px rgba(255, 255, 255, 0.3);
