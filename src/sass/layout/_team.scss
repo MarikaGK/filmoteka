@@ -19,18 +19,16 @@
   position: absolute;
   background-color: #10181d;
   border-radius: $border-radius;
-  overflow: scroll;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
   max-width: 400px;
-  height: 90%;
   padding: 40px;
   transform: scale(1);
-  box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.3),
-    4px 6px 10px 3px rgba(255, 255, 255, 0.3),
-    4px 6px 10px 3px rgba(255, 255, 255, 0.3);
+  box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.2),
+    4px 6px 10px 3px rgba(255, 255, 255, 0.2),
+    4px 6px 10px 3px rgba(255, 255, 255, 0.2);
   @include tablet {
     width: 80%;
     max-width: 750px;
