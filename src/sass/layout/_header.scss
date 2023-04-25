@@ -125,7 +125,7 @@
   align-items: center;
 }
 
-.header-nav__label {
+.header__label {
   color: $main-font-dark-color;
   min-width: 50px;
   text-align: right;
@@ -142,7 +142,6 @@
   }
 }
 
-
 .header-input {
   display: flex;
   align-items: center;
@@ -154,7 +153,7 @@
     width: 50%;
     margin: auto;
   }
-  
+
   @include desktop {
     width: 30%;
   }
@@ -182,11 +181,11 @@
 
 .header-input__text-box {
   outline: none;
-  
+
   &::placeholder {
     opacity: 1;
   }
-  
+
   &:focus,
   &:focus-within {
     border-bottom: 1px solid $button-background-color;
@@ -208,7 +207,7 @@
   border: none;
   right: 0;
   cursor: pointer;
-  
+
   &:hover {
     color: $main-font-bright-color;
   }
