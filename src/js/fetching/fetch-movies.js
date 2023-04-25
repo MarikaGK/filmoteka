@@ -91,6 +91,8 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
     renderMovies(data.results);
+    console.log(`To są ${data.results}`);
+    console.log(data.results);
     renderPagination()
   } catch (error) {
     console.error(error);

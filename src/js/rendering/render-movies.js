@@ -11,6 +11,12 @@ export const renderMovies = movies => {
   const markupMovies = movies
     .map(movie => {
       const genres = renderGenresToGallery(movie.genre_ids);
+      const releaseDate = release_date => {
+        if (release_date) {
+          return release_date;
+        }
+        return `No info`;
+      };
       if (IS_DARK_MODE_ON) {
         if (movie.poster_path !== null) {
           return `<div class="movie-card dark-mode-box-shadow" data-movie-id="${
@@ -22,24 +28,26 @@ export const renderMovies = movies => {
           }" width=280 alt="${movie.original_title}" loading="lazy" />
               </div>
             <div class="movie-card-description">
-              <p class="movie-title">${movie.original_title}</p>
-              <div class="movie-subtitle">
-              <span class="movie-genre">${genres}  |</span>
-              <span class="movie-year">${parseInt(movie.release_date)}</span>
-            </div>
-          </div>
-          </div>`;
-        } else {
-          return `<div class="movie-card" data-movie-id="${movie.id}">
-        <div class="movie-card-poster"></div>
-        <div class="movie-card-description">  
-          <p class="movie-title">${movie.original_title}</p>
-          <div class="movie-subtitle">
+            <p class="movie-title">${movie.original_title}</p>
+            <div class="movie-subtitle">
             <span class="movie-genre">${genres}  |</span>
             <span class="movie-year">${parseInt(movie.release_date)}</span>
-          </div>
-        </div>
-        </div>`;
+            </div>
+            </div>
+            </div>`;
+        } else {
+          return `<div class="movie-card" data-movie-id="${movie.id}">
+            <div class="movie-card-poster"></div>
+            <div class="movie-card-description">  
+            <p class="movie-title">${movie.original_title}</p>
+            <div class="movie-subtitle">
+            <span class="movie-genre">${genres}  |</span>
+            <span class="movie-year">${releaseDate(
+              parseInt(movie.release_date)
+            )}</span>
+            </div>
+            </div>
+            </div>`;
         }
       } else {
         if (movie.poster_path !== null) {
@@ -48,26 +56,30 @@ export const renderMovies = movies => {
           <img class="movie-img" src="https://image.tmdb.org/t/p/original${
             movie.poster_path
           }" width=280 alt="${movie.original_title}" loading="lazy" />
+          </div>
+          <div class="movie-card-description">
+          <p class="movie-title">${movie.original_title}</p>
+              <div class="movie-subtitle">
+              <span class="movie-genre">${genres}  |</span>
+              <span class="movie-year">${releaseDate(
+                parseInt(movie.release_date)
+              )}</span>
               </div>
-            <div class="movie-card-description">
+              </div>
+              </div>`;
+        } else {
+          return `<div class="movie-card" data-movie-id="${movie.id}">
+              <div class="movie-card-poster"></div>
+              <div class="movie-card-description">  
               <p class="movie-title">${movie.original_title}</p>
               <div class="movie-subtitle">
               <span class="movie-genre">${genres}  |</span>
-              <span class="movie-year">${parseInt(movie.release_date)}</span>
-            </div>
-          </div>
-          </div>`;
-        } else {
-          return `<div class="movie-card" data-movie-id="${movie.id}">
-        <div class="movie-card-poster"></div>
-        <div class="movie-card-description">  
-          <p class="movie-title">${movie.original_title}</p>
-          <div class="movie-subtitle">
-            <span class="movie-genre">${genres}  |</span>
-            <span class="movie-year">${parseInt(movie.release_date)}</span>
-          </div>
-        </div>
-        </div>`;
+              <span class="movie-year">${releaseDate(
+                parseInt(movie.release_date)
+              )}</span>
+              </div>
+              </div>
+              </div>`;
         }
       }
     })
@@ -81,6 +93,12 @@ export const renderLibrary = movies => {
   const IS_DARK_MODE_ON = getStateOfDarkModeFromLocalStorage();
   const markupLibrary = movies
     .map(movie => {
+      const releaseDate = release_date => {
+        if (release_date) {
+          return release_date;
+        }
+        return `No info`;
+      };
       if (IS_DARK_MODE_ON) {
         // const genres = renderGenresToGallery(movie.genre_ids);
         if (movie.poster_path !== null) {
@@ -93,12 +111,14 @@ export const renderLibrary = movies => {
             }" width=280 alt="${movie.original_title}" loading="lazy" />
             </div>
             <div class="movie-card-description">
-              <p class="movie-title">${movie.title}</p>
+            <p class="movie-title">${movie.title}</p>
               <div class="movie-subtitle">
-                <span class="movie-genre">${movie.genres
-                  .map(g => g.name)
-                  .join(', ')}  |</span>
-                <span class="movie-year">${parseInt(movie.release_date)}</span>
+              <span class="movie-genre">${movie.genres
+                .map(g => g.name)
+                .join(', ')}  |</span>
+                <span class="movie-year">${releaseDate(
+                  parseInt(movie.release_date)
+                )}</span>
                 <span class="movie-vote">${movie.vote_average.toPrecision(
                   2
                 )}</span>
@@ -114,7 +134,9 @@ export const renderLibrary = movies => {
               <span class="movie-genre">${movie.genres
                 .map(g => g.name)
                 .join(', ')}  |</span>
-              <span class="movie-year">${parseInt(movie.release_date)}</span>
+              <span class="movie-year">${releaseDate(
+                parseInt(movie.release_date)
+              )}</span>
               <span class="movie-vote">${movie.vote_average.toPrecision(
                 2
               )}</span>
@@ -136,7 +158,9 @@ export const renderLibrary = movies => {
                 <span class="movie-genre">${movie.genres
                   .map(g => g.name)
                   .join(', ')}  |</span>
-                <span class="movie-year">${parseInt(movie.release_date)}</span>
+                <span class="movie-year">${releaseDate(
+                  parseInt(movie.release_date)
+                )}</span>
                 <span class="movie-vote">${movie.vote_average.toPrecision(
                   2
                 )}</span>
@@ -152,7 +176,9 @@ export const renderLibrary = movies => {
               <span class="movie-genre">${movie.genres
                 .map(g => g.name)
                 .join(', ')}  |</span>
-              <span class="movie-year">${parseInt(movie.release_date)}</span>
+              <span class="movie-year">${releaseDate(
+                parseInt(movie.release_date)
+              )}</span>
               <span class="movie-vote">${movie.vote_average.toPrecision(
                 2
               )}</span>
