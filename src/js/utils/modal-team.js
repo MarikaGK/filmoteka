@@ -35,6 +35,8 @@ linkModalTeam.addEventListener('click', (e) => {
   modalTeam.classList.remove('is-hidden');
 });
 
+export const showTeamModal = () => {
 modalTeam.addEventListener('keydown', keyPress);
 modalTeam.addEventListener('click', closeModalTeamByBackdrop);
 modalClose.addEventListener('click', closeModalTeamByIcon);
+}
