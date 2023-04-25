@@ -88,9 +88,9 @@
   max-width: 100%;
   height: 100%;
   background-color: #ff6b01;
-  box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.3),
-    4px 6px 10px 3px rgba(255, 255, 255, 0.3),
-    4px 6px 10px 3px rgba(255, 255, 255, 0.3);
+  box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.1),
+    4px 6px 10px 3px rgba(255, 255, 255, 0.1),
+    4px 6px 10px 3px rgba(255, 255, 255, 0.1);
   border-radius: $border-radius;
   &:hover {
     transform: scale(1.05);
