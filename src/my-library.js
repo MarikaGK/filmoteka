@@ -16,9 +16,7 @@ import { startLoader } from './js/utils/loader.js';
 //   updateQueueInFirebase,
 //   updateWatchedInFirebase,
 // } from './js/firebase/firebase.js';
-import {
-  actualLibraryUpdateToStore,
-} from './js/utils/store.js';
+import { actualLibraryUpdateToStore } from './js/utils/store.js';
 import {
   renderWatchedGallery,
   renderQueueGallery,
@@ -26,6 +24,7 @@ import {
 import localStorage from './js/utils/localStorage.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
+import { galleryHandler } from './js/utils/gallery-handler.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
@@ -37,21 +36,9 @@ startLoader();
 getMoviesByArrayOfIds(localStorage.load('watched'));
 WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
-
+addELToTeamModal();
 renderPagination();
-
-//jutro wyeksportuję do oddzielnego handlera
-GALLERY_DOM.addEventListener('click', evt => {
-  //zmiana klasy modala
-  toggleModal();
-  //do dodania return dla nie divów
-  const singleMovieCard = evt.target.parentElement.parentElement;
-  //wyświetlenie Id filmu
-  console.log(singleMovieCard.dataset.movieId);
-  // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
-  getMovieById(singleMovieCard.dataset.movieId);
-  onShowModal(singleMovieCard.dataset.movieId);
-});
+GALLERY_DOM.addEventListener('click', galleryHandler);
 
 //* DARK MODE
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();

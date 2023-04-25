@@ -1,40 +1,42 @@
-
 const linkModalTeam = document.querySelector('.footer__wrapper-link');
 const modalTeam = document.querySelector('.backdrop');
 const modalClose = document.querySelector('.team_close');
 
-const closeModalTeamByBackdrop = (e) => {
-  if (
-    e.target.classList.contains('backdrop')
-  ) {
-    modalTeam.classList.add('is-hidden');
+const closeModalTeamByBackdrop = e => {
+  if (e.target.classList.contains('backdrop')) {
+    modalTeam.classList.toggle('is-hidden');
     modalTeam.removeEventListener('keydown', keyPress);
     modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
     modalClose.removeEventListener('click', closeModalTeamByIcon);
   }
 };
 
-const closeModalTeamByIcon = (e) => {
-  modalTeam.classList.add('is-hidden');
+const closeModalTeamByIcon = e => {
+  modalTeam.classList.toggle('is-hidden');
   modalTeam.removeEventListener('keydown', keyPress);
   modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
   modalClose.removeEventListener('click', closeModalTeamByIcon);
-}
+};
 
-const keyPress = (e) => {
+const keyPress = e => {
   if (e.key === 'Escape') {
-    modalTeam.classList.add('is-hidden');
+    modalTeam.classList.toggle('is-hidden');
     modalClose.removeEventListener('click', closeModalTeamByIcon);
     modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
     modalTeam.removeEventListener('keydown', keyPress);
   }
 };
 
-linkModalTeam.addEventListener('click', (e) => {
-  e.preventDefault();
-  modalTeam.classList.remove('is-hidden');
-});
+export const addELToTeamModal = () => {
+  linkModalTeam.addEventListener('click', e => {
+    e.preventDefault();
+    onShowTeamModal();
+  });
+};
 
-modalTeam.addEventListener('keydown', keyPress);
-modalTeam.addEventListener('click', closeModalTeamByBackdrop);
-modalClose.addEventListener('click', closeModalTeamByIcon);
+const onShowTeamModal = () => {
+  modalTeam.classList.toggle('is-hidden');
+  modalTeam.addEventListener('keydown', keyPress);
+  modalTeam.addEventListener('click', closeModalTeamByBackdrop);
+  modalClose.addEventListener('click', closeModalTeamByIcon);
+};
