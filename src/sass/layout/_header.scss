@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 16px;
-  padding-top: 20px;
+  padding: 20px 0;
 
   color: $warning-color;
   font-weight: 400;
@@ -14,9 +14,9 @@
     justify-content: center;
   }
 
-  @include desktop {
-    padding-right: 160px;
-  }
+  // @include desktop {
+  //   padding-right: 160px;
+  // }
 }
 
 .header {
