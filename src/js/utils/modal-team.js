@@ -8,18 +8,24 @@ const closeModalTeamByBackdrop = (e) => {
     e.target.classList.contains('backdrop')
   ) {
     modalTeam.classList.add('is-hidden');
+    modalTeam.removeEventListener('keydown', keyPress);
     modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
+    modalClose.removeEventListener('click', closeModalTeamByIcon);
   }
 };
 
 const closeModalTeamByIcon = (e) => {
   modalTeam.classList.add('is-hidden');
+  modalTeam.removeEventListener('keydown', keyPress);
+  modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
   modalClose.removeEventListener('click', closeModalTeamByIcon);
-  }
+}
 
 const keyPress = (e) => {
   if (e.key === 'Escape') {
     modalTeam.classList.add('is-hidden');
+    modalClose.removeEventListener('click', closeModalTeamByIcon);
+    modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
     modalTeam.removeEventListener('keydown', keyPress);
   }
 };

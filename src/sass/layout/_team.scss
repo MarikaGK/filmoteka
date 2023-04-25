@@ -41,9 +41,9 @@
     width: 80%;
     max-width: 750px;
   }
-    @include desktop {
-      max-width: 850px;
-    }
+  @include desktop {
+    max-width: 850px;
+  }
 }
 
 .team__top {
@@ -65,7 +65,7 @@
   }
 }
 
-.modal__icon-close {
+.modal-team__icon-close {
   stroke: $footer-background-color;
   cursor: pointer;
   &:hover {
@@ -115,7 +115,7 @@
   filter: grayscale(30%) sepia(15%) saturate(102%);
   -webkit-filter: grayscale(30%) sepia(15%) saturate(102%);
   -moz-filter: grayscale(30%) sepia(15%) saturate(102%);
-  
+
   &:hover {
     filter: none;
     transition-duration: 500ms;
@@ -137,9 +137,9 @@
   @include tablet {
     font-size: 19px;
   }
-    @include desktop {
-      font-size: 18px;
-    }
+  @include desktop {
+    font-size: 18px;
+  }
 }
 
 .team__description-name {

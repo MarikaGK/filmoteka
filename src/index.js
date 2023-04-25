@@ -25,16 +25,16 @@ const CATEGORIES_BOX = document.querySelector('.header__categoriesBox');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 GALLERY_DOM.addEventListener('click', galleryHandler);
-FIND_BUTTON.addEventListener('click', discoveryHandler);
-BROWSE_BUTTON.addEventListener('click', evt => {
-  evt.preventDefault();
-  CATEGORIES_BOX.classList.toggle('is-hidden');
-});
+// FIND_BUTTON.addEventListener('click', discoveryHandler);
+// BROWSE_BUTTON.addEventListener('click', evt => {
+//   evt.preventDefault();
+//   CATEGORIES_BOX.classList.toggle('is-hidden');
+// });
 
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
-renderCategoriesBox();
+// renderCategoriesBox();
 renderPagination();
 
 // const paginationClickerContainer = document.querySelector('.pagination', false)
