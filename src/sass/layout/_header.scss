@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 16px;
-  padding-bottom: 44px;
+  padding: 20px 0;
 
   color: $warning-color;
   font-weight: 400;
@@ -13,6 +13,10 @@
   @include tablet {
     justify-content: center;
   }
+
+  // @include desktop {
+  //   padding-right: 160px;
+  // }
 }
 
 .header {
@@ -116,7 +120,6 @@
 }
 
 .header-nav__menu {
-  position: relative;
   margin: 0;
   display: flex;
   gap: 39px;
@@ -142,8 +145,40 @@
   }
 }
 
+.header__label {
+  color: $main-font-dark-color;
+  min-width: 50px;
+  text-align: right;
+  margin: 5px;
+  font-family: $main-font;
+  font-size: small;
+  cursor: pointer;
+  text-shadow: 0;
+  transition: text-shadow 0.1s ease-in, transform 0.1s ease-in;
+
+  &:hover {
+    transform: translateX(-5px);
+  }
+}
+
+.header__selectButton {
+  background-color: #fff0;
+  border: solid 1px $movie-category-color;
+  border-radius: $border-radius;
+  width: 100%;
+  font-family: $main-font;
+  font-size: medium;
+  cursor: pointer;
+  transition: color 0.2s ease-in, background-color 0.2s ease-in;
+
+  &:hover {
+    color: $main-font-bright-color;
+    background-color: $movie-category-color;
+  }
+}
+
 .header-input {
-  display: flex;
+  position: relative;
   align-items: center;
   text-align: center;
   padding-bottom: 20px;
@@ -154,6 +189,7 @@
   }
 
   @include desktop {
+    display: flex;
     width: 30%;
   }
 }
@@ -192,28 +228,31 @@
 }
 
 .header-input__separator {
-  padding: 0 20px;
-  color: rgb(48, 52, 54);
+  padding: 10px 0;
+  color: $card-categories-name-color;
   font-size: small;
+
+  @include desktop {
+    padding: 0 20px;
+  }
 }
 
 .header__browse {
-  position: relative;
   background: none;
-  color: rgb(48, 52, 54);
+  color: $card-categories-name-color;
   font-size: small;
   font-weight: 400;
   border: none;
-  right: 0;
   cursor: pointer;
-
-  &:hover {
-    color: $main-font-bright-color;
-  }
+  border: 1px solid $card-categories-name-color;
+  padding: 5px;
+  border-radius: 3px;
 }
 
 .header__categoriesBox {
   position: absolute;
+  top: 60px;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
