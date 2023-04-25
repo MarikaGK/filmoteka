@@ -10,8 +10,8 @@ const closeModalTeamByBackdrop = e => {
   if (e.target === modalTeamBackdrop) {
     modalTeam.classList.toggle('none');
     modalTeamBackdrop.classList.toggle('is-hidden');
-    modalTeam.removeEventListener('keydown', keyPress);
-    modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
+    document.removeEventListener('keydown', keyPress);
+    modalTeamBackdrop.removeEventListener('click', closeModalTeamByBackdrop);
     modalClose.removeEventListener('click', closeModalTeamByIcon);
     window.addEventListener('scroll', showButtonOnScroll);
   }
@@ -20,8 +20,8 @@ const closeModalTeamByBackdrop = e => {
 const closeModalTeamByIcon = e => {
   modalTeam.classList.toggle('none');
   modalTeamBackdrop.classList.toggle('is-hidden');
-  modalTeam.removeEventListener('keydown', keyPress);
-  modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
+  document.removeEventListener('keydown', keyPress);
+  modalTeamBackdrop.removeEventListener('click', closeModalTeamByBackdrop);
   modalClose.removeEventListener('click', closeModalTeamByIcon);
   window.addEventListener('scroll', showButtonOnScroll);
 };
@@ -31,8 +31,8 @@ const keyPress = e => {
     modalTeam.classList.toggle('none');
     modalTeamBackdrop.classList.toggle('is-hidden');
     modalClose.removeEventListener('click', closeModalTeamByIcon);
-    modalTeam.removeEventListener('click', closeModalTeamByBackdrop);
-    modalTeam.removeEventListener('keydown', keyPress);
+    modalTeamBackdrop.removeEventListener('click', closeModalTeamByBackdrop);
+    document.removeEventListener('keydown', keyPress);
     window.addEventListener('scroll', showButtonOnScroll);
   }
 };
@@ -47,8 +47,8 @@ export const addELToTeamModal = () => {
 const onShowTeamModal = () => {
   modalTeam.classList.toggle('none');
   modalTeamBackdrop.classList.toggle('is-hidden');
-  modalTeam.addEventListener('keydown', keyPress);
-  modalTeam.addEventListener('click', closeModalTeamByBackdrop);
+  document.addEventListener('keydown', keyPress);
+  modalTeamBackdrop.addEventListener('click', closeModalTeamByBackdrop);
   modalClose.addEventListener('click', closeModalTeamByIcon);
   window.removeEventListener('scroll', showButtonOnScroll);
   if (!SCROLL_UP_BUTTON_DOM.classList.contain('is-hidden')) {
