@@ -20,8 +20,13 @@
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
     "@fancyapps/ui": "^5.0.16",
+    "@firebase/database": "^0.14.4",
+    "@firebase/util": "^1.9.3",
+    "firebase": "^9.20.0",
+    "import-fresh": "^3.3.0",
     "jquery": "^3.6.4",
     "modern-normalize": "^1.1.0",
+    "parse-json": "^5.2.0",
     "tui-pagination": "^3.4.1",
     "webmanifest-loader": "^0.3.0"
   },
@@ -31,7 +36,8 @@
     "@parcel/transformer-webmanifest": "^2.6.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }

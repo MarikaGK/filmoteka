@@ -3,7 +3,27 @@
   opacity: 0;
 }
 
-
 .none {
-transform: scale(0);
+  transform: scale(0);
+}
+
+.display-none-for-unsigned-user {
+  display: none;
+}
+
+.button--orange {
+  background-color: $button-background-color;
+  filter: none;
+  transform: scale(1);
+  will-change: filter, transform;
+  transition: filter, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover,
+  &:focus {
+    color: $main-font-bright-color;
+    -webkit-box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.44);
+    -moz-box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.44);
+    box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.44);
+    transform: scale(1.05);
+  }
 }

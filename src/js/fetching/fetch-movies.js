@@ -163,7 +163,7 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
         newObj.id = key;
         films.push(newObj);
       }
-
+console.log(films);
       renderLibrary(films);
       //console.log do usunięcia
       console.log(

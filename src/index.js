@@ -12,6 +12,7 @@ import { startLoader } from './js/utils/loader.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
+import { db } from './js/firebase/firebase.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
 import { renderCategoriesBox } from './js/rendering/render-multiselectBox.js';
 import { discoveryHandler } from './js/utils/categories-filter.js';
