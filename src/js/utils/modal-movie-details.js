@@ -18,7 +18,7 @@ import {
 } from '../firebase/firebase';
 import { actualLibraryFromStore } from './store';
 // import localStorage from './localStorage';
-import { resetModal } from "../rendering/render-modal";
+import { resetModal } from '../rendering/render-modal';
 
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');
@@ -111,4 +111,5 @@ const onHideModal = () => {
   toggleModal();
   watchedBtn.removeEventListener('click', changeWatched);
   queueBtn.removeEventListener('click', changeQueue);
+  location.reload();
 };
