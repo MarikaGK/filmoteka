@@ -30,6 +30,8 @@ const GALLERY_DOM = document.querySelector('.gallery');
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
 const QUEUE_BTN_DOM = document.querySelector('[data-queue-btn');
 
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 actualLibraryUpdateToStore('watched');
 // saveIdArraysFromFirebaseToStore();
 startLoader();
@@ -40,5 +42,3 @@ addELToTeamModal();
 renderPagination();
 GALLERY_DOM.addEventListener('click', galleryHandler);
 
-//* DARK MODE
-setDarkOrNormalModeOnPageLoadFromLocalStorageState();

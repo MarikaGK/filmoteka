@@ -34,9 +34,11 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 GALLERY_DOM.addEventListener('click', galleryHandler);
 // FIND_BUTTON.addEventListener('click', discoveryHandler);
 // BROWSE_BUTTON.addEventListener('click', evt => {
-//   evt.preventDefault();
-//   CATEGORIES_BOX.classList.toggle('is-hidden');
-// });
+  //   evt.preventDefault();
+  //   CATEGORIES_BOX.classList.toggle('is-hidden');
+  // });
+  //* DARK MODE
+  setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 addELToTeamModal();
 getMovieGenresAndSaveToStore();
 startLoader();
@@ -56,5 +58,3 @@ const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
 
-//* DARK MODE
-setDarkOrNormalModeOnPageLoadFromLocalStorageState();
