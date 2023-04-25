@@ -6,7 +6,6 @@ import {
 } from './js/fetching/fetch-movies.js';
 
 import { handleSubmit } from './js/utils/search-form-handler.js';
-
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
@@ -14,16 +13,27 @@ import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/d
 import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
+import { renderCategoriesBox } from './js/rendering/render-multiselectBox.js';
+import { discoveryHandler } from './js/utils/categories-filter.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
+const BROWSE_BUTTON = document.querySelector('.header-nav__browse')
+const FIND_BUTTON = document.querySelector('.header-nav__selectButton')
+const CATEGORIES_BOX = document.querySelector('.header-nav__categoriesBox')
 
 FORM_DOM.addEventListener('submit', handleSubmit);
 GALLERY_DOM.addEventListener('click', galleryHandler);
+FIND_BUTTON.addEventListener('click', discoveryHandler);
+BROWSE_BUTTON.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  CATEGORIES_BOX.classList.toggle('is-hidden')
+})
 
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
+renderCategoriesBox();
 renderPagination();
 
 // const paginationClickerContainer = document.querySelector('.pagination', false)
