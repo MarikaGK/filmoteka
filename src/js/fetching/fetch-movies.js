@@ -10,7 +10,7 @@ import {
   getCurrentPageFromStorage,
   renderPagination
 } from '../rendering/render-pagination'
-
+import { categoriesFilter } from '../utils/categories-filter.js';
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
@@ -18,6 +18,7 @@ const apiUrl = 'https://api.themoviedb.org/3/search/movie';
 const searchPopularUrl = 'https://api.themoviedb.org/3/movie/popular';
 const searchGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list';
 const searchByMovieIdUrl = 'https://api.themoviedb.org/3/movie';
+const searchWithFilters = 'https://api.themoviedb.org/3/discover/movie';
 const NO_HIT_INFO_DIV_DOM = document.querySelector('.header-no-hit-info');
 let page = 1;
 //  1. --- Function fetch - get movies genres array ---
@@ -175,3 +176,41 @@ console.log(films);
     // console.error(error);
   }
 };
+
+//  7. --- Function fetch - get movies with filters  ---
+
+export const getMoviesWithFilters = async (page = 1) => {
+  const genres = categoriesFilter();
+  try {
+    NO_HIT_INFO_DIV_DOM.textContent = '';
+    console.log(`${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`);
+    const response = await fetch(
+      `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
+
+    );
+    // response Status:404 handling
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    const data = await response.json();
+    if (!data.total_results) {
+      NO_HIT_INFO_DIV_DOM.textContent =
+        'Search result not successful. Select less movies genres and search again.';
+      console.log('pusta tablica');
+      return;
+    }
+    showLoader();
+
+    //TODO function here!
+
+    setPopularParameterToStorage(false)
+    saveTotalPageToStorage(data);
+    saveTotalResultsToStorage(data);
+    saveCurrentPageToStorage(data);
+    renderMovies(data.results);
+    renderPagination();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
