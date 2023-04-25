@@ -219,6 +219,7 @@
   background: none;
   color: rgb(48, 52, 54);
   font-size: small;
+  font-weight: 400;
   border: none;
   right: 0;
   cursor: pointer;
@@ -233,7 +234,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 120px;
+  width: 130px;
   background-color: $main-background-color;
   border-radius: $border-radius;
   box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
