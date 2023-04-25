@@ -71,6 +71,7 @@ if (localStorage.load('user')) {
         // saveIdArraysFromFirebaseToStore();
         navFirst.classList.toggle('header__none');
         navSecond.classList.toggle('header__none');
+        location.reload();
         // console.log(user.uid)
         // console.log(`To jest wysłana do lS przy logowaniu tablica watched ${getIdsArrayFromStore('watched')}`);
       })
@@ -93,6 +94,7 @@ signInBtn.addEventListener('click', () => {
       localStorage.save('user', user);
       navFirst.classList.toggle('header__none');
       navSecond.classList.toggle('header__none');
+      location.reload();
     })
     .catch(error => {
       const errorCode = error.code;

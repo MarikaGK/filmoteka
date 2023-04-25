@@ -13,6 +13,7 @@
 
 .button--orange {
   background-color: $button-background-color;
+  border: none;
   filter: none;
   transform: scale(1);
   will-change: filter, transform;

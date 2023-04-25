@@ -7,7 +7,6 @@ import {
 // import { handleSubmit } from './js/utils/search-form-handler.js';
 
 //toggle modal fn
-import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
 // import {
 //   getQueueMoviesIds,
@@ -25,6 +24,7 @@ import localStorage from './js/utils/localStorage.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
+import { addELToTeamModal } from './js/utils/modal-team.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
