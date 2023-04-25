@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 16px;
-  padding-bottom: 44px;
+  padding-top: 20px;
 
   color: $warning-color;
   font-weight: 400;
@@ -12,6 +12,10 @@
 
   @include tablet {
     justify-content: center;
+  }
+
+  @include desktop {
+    padding-right: 160px;
   }
 }
 
@@ -177,7 +181,7 @@
   position: relative;
   align-items: center;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 10px;
   padding-bottom: 20px;
 
   @include tablet {
@@ -226,7 +230,7 @@
 
 .header-input__separator {
   padding: 10px 0;
-  color: rgb(48, 52, 54);
+  color: $card-categories-name-color;
   font-size: small;
 
   @include desktop {
@@ -236,15 +240,14 @@
 
 .header__browse {
   background: none;
-  color: rgb(48, 52, 54);
+  color: $card-categories-name-color;
   font-size: small;
   font-weight: 400;
   border: none;
   cursor: pointer;
-
-  &:hover {
-    color: $main-font-bright-color;
-  }
+  border: 1px solid $card-categories-name-color;
+  padding: 5px;
+  border-radius: 3px;
 }
 
 .header__categoriesBox {
