@@ -11,15 +11,18 @@
   transition-property: opacity, visibility;
   transition-duration: 250ms;
   transition-timing-function: ease;
-  overflow: scroll;
-}
+  overflow-y: scroll;
 
+  @include desktop {
+    overflow-y: hidden;
+  }
+}
 
 .team {
   position: absolute;
   background-color: #10181d;
   border-radius: $border-radius;
-  top: 80%;
+  top: 300%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
@@ -32,9 +35,11 @@
   @include tablet {
     width: 80%;
     max-width: 750px;
+    top: 120%;
   }
   @include desktop {
     max-width: 850px;
+    top: 80%;
   }
 }
 
@@ -91,7 +96,6 @@
   border-radius: $border-radius;
   transition-duration: 500ms;
 
-  
   &:hover {
     transform: scale(1.05);
     filter: none;
