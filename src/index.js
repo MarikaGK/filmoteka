@@ -46,7 +46,6 @@ addELToTeamModal();
 // paginationClicker.addEventListener("click", ()=>{
 //     console.log(paginationClicker.value)
 // })
-//jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
   if (!singleMovieCard.classList.contains('movie-card')) return;

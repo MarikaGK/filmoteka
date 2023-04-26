@@ -14,7 +14,6 @@
 .button--orange {
   background-color: $button-background-color;
   color: $main-font-bright-color;
-  filter: none;
   border: inherit;
   transform: scale(1);
   will-change: filter, transform;
@@ -22,9 +21,10 @@
 
   &:hover,
   &:focus {
-    -webkit-box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.44);
-    -moz-box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.44);
-    box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.44);
+    color: $main-font-bright-color;
+    -webkit-box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.1);
+    -moz-box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.1);
+    box-shadow: 0px 0px 39px 3px rgba(255, 107, 1, 0.1);
     transform: scale(1.05);
   }
 }

@@ -30,7 +30,7 @@ export const getMovieGenresAndSaveToStore = async () => {
       throw new Error(response.status);
     }
     const data = await response.json();
-    console.log(data.genres);
+    // console.log(data.genres);
     saveMovieGenresToStorage(data);
     return;
   } catch (error) {
@@ -54,7 +54,7 @@ export const getPopularMovies = async (page = 1) => {
     const limitedTotalResultsForPopularSearch = 10000;
     data.total_pages = limitedTotalPagesForPopularSearch;
     data.total_results = limitedTotalResultsForPopularSearch;
-    console.log(data);
+    // console.log(data);
     setPopularParameterToStorage(true)
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
@@ -80,7 +80,7 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
     if (!data.total_results) {
       NO_HIT_INFO_DIV_DOM.textContent =
         'Search result not successful. Enter the correct movie name and search again.';
-      console.log('pusta tablica');
+      // console.log('pusta tablica');
       return;
     }
     showLoader();
@@ -111,7 +111,7 @@ export const getMovieById = async movieId => {
     const videosObject = data.videos.results;
     // getting trailer url for movieId
     const movieTrailerUrl = getTrailerUrlFromObjectVideos(videosObject);
-    console.log(`movie trailer url` + movieTrailerUrl);
+    // console.log(`movie trailer url` + movieTrailerUrl);
     //return object with movie's details
     return renderModal(data, movieTrailerUrl);
   } catch (error) {
@@ -132,7 +132,7 @@ const getTrailerUrlFromObjectVideos = videosObject => {
     const youtubeKey = videosObject[findIndexOfKeyTrailer].key;
     const movieTrailerUrl = `https://www.youtube.com/watch?v=${youtubeKey}`;
     //do usunięcia console.log()
-    console.log(` oraz url do trailera: ${movieTrailerUrl}`);
+    // console.log(` oraz url do trailera: ${movieTrailerUrl}`);
     return movieTrailerUrl;
   }
 };
@@ -163,17 +163,17 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
         newObj.id = key;
         films.push(newObj);
       }
-console.log(films);
+// console.log(films);
       renderLibrary(films);
       //console.log do usunięcia
-      console.log(
-        `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
-      console.log(films);
+      // console.log(
+      //   `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
+      // console.log(films);
 
     }
   } catch (error) {
-    console.log('test');
-    // console.error(error);
+    // console.log('test');
+    console.error(error);
   }
 };
 
@@ -196,7 +196,7 @@ export const getMoviesWithFilters = async (page = 1) => {
     if (!data.total_results) {
       NO_HIT_INFO_DIV_DOM.textContent =
         'Search result not successful. Select less movies genres and search again.';
-      console.log('pusta tablica');
+      // console.log('pusta tablica');
       return;
     }
     showLoader();

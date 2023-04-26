@@ -17,9 +17,7 @@ import { addELToTeamModal } from './js/utils/modal-team.js';
 //   updateQueueInFirebase,
 //   updateWatchedInFirebase,
 // } from './js/firebase/firebase.js';
-import {
-  actualLibraryUpdateToStore,
-} from './js/utils/store.js';
+import { actualLibraryUpdateToStore } from './js/utils/store.js';
 import {
   renderWatchedGallery,
   renderQueueGallery,
@@ -43,7 +41,6 @@ WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
 renderPagination();
 addELToTeamModal();
-GALLERY_DOM.addEventListener('click', galleryHandler);
 
 GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
@@ -54,6 +51,3 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal(singleMovieCard.dataset.movieId);
 });
-
-//* DARK MODE
-setDarkOrNormalModeOnPageLoadFromLocalStorageState();
