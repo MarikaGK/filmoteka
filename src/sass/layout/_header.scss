@@ -166,14 +166,14 @@
   text-align: center;
   padding-top: 54px;
   padding-bottom: 20px;
-
+  
   @include tablet {
+    padding-top: 40px;
     width: 50%;
     margin: auto;
   }
 
   @include desktop {
-    display: flex;
     width: 30%;
   }
 }
