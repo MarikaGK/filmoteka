@@ -102,6 +102,7 @@ export const renderMovies = movies => {
               <p class="movie-title">${movie.title}</p>
               <div class="movie-subtitle">
                 <span class="movie-genre">${movie.genres
+                  .slice(0, 3)
                   .map(g => g.name)
                   .join(', ')}  |</span>
                 <span class="movie-year">${markupReleaseDate(parseInt(movie.release_date))}</span>
@@ -118,6 +119,7 @@ export const renderMovies = movies => {
             <p class="movie-title">${movie.original_title}</p>
             <div class="movie-subtitle">
               <span class="movie-genre">${movie.genres
+                .slice(0, 3)
                 .map(g => g.name)
                 .join(', ')}  |</span>
               <span class="movie-year">${markupReleaseDate(parseInt(movie.release_date))}</span>
@@ -140,6 +142,7 @@ export const renderMovies = movies => {
               <p class="movie-title">${movie.title}</p>
               <div class="movie-subtitle">
                 <span class="movie-genre">${movie.genres
+                  .slice(0, 3)
                   .map(g => g.name)
                   .join(', ')}  |</span>
                 <span class="movie-year">${markupReleaseDate(parseInt(movie.release_date))}</span>
@@ -156,6 +159,7 @@ export const renderMovies = movies => {
             <p class="movie-title">${movie.original_title}</p>
             <div class="movie-subtitle">
               <span class="movie-genre">${movie.genres
+                .slice(0, 3)
                 .map(g => g.name)
                 .join(', ')}  |</span>
               <span class="movie-year">${markupReleaseDate(parseInt(movie.release_date))}</span>
