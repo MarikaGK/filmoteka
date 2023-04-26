@@ -5,8 +5,8 @@ import { renderPagination,
   getPopularParameterFromStorage,
   saveFactorToLocalStorage,
   createArrayOfCurrentPageForWatched,
-  saveWatchedToLocalStorage, 
-  saveQueueToLocalStorage,
+  // saveWatchedToLocalStorage, 
+  // saveQueueToLocalStorage,
 setPopularParameterToStorage } from '../rendering/render-pagination';
 
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn]');

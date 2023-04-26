@@ -8,7 +8,6 @@ import {
   getMoviesByTitle,
   getPopularMovies,
 } from '../fetching/fetch-movies';
-// import { createArrayOfCurrentPage, saveFactorToLocalStorage } from '../../my-library';
 
 // Pagination config:
 const perPage = 20;
@@ -20,19 +19,6 @@ indexButton.addEventListener('click', () => {
   const popularParameter = 1;
   renderPagination();
 });
-
-// const watchedArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50];
-// const queueArray = [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125];
-
-export const saveWatchedToLocalStorage = watchedArray => {
-  // const watched = watchedArray;
-  // localStorage.setItem('watched', JSON.stringify(watched));
-};
-
-export const saveQueueToLocalStorage = queueArray => {
-  // const queue = queueArray;
-  // localStorage.setItem('queue', JSON.stringify(queue));
-};
 
 export const getWatchedFromStorage = () => {
   const watched = localStorage.getItem('watched');
@@ -98,19 +84,14 @@ export const saveFactorToLocalStorage = value => {
 
 export const createArrayOfCurrentPageForWatched = (factor = 1) => {
   const popularParameter = getPopularParameterFromStorage();
-  console.log(popularParameter);
   const multiplier = 20 * (factor - 1);
   if (popularParameter == 3) {
     const array = getWatchedFromStorage();
     const arrayOfCurrentPage = array.slice(0 + multiplier, 20 + multiplier);
-    console.log('console log dla array of CurrentPage of Watched');
-    console.log(arrayOfCurrentPage);
     getMoviesByArrayOfIds(arrayOfCurrentPage);
   } else if (popularParameter == 4) {
     const array = getQueueFromStorage();
     const arrayOfCurrentPage = array.slice(0 + multiplier, 20 + multiplier);
-    console.log('console log dla array of CurrentPage of Watched');
-    console.log(arrayOfCurrentPage);
     getMoviesByArrayOfIds(arrayOfCurrentPage);
   }
   saveFactorToLocalStorage(factor);

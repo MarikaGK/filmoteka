@@ -16,8 +16,8 @@ import { renderPagination,
           getPopularParameterFromStorage,
           saveFactorToLocalStorage,
           createArrayOfCurrentPageForWatched,
-          saveWatchedToLocalStorage, 
-          saveQueueToLocalStorage,
+          // saveWatchedToLocalStorage, 
+          // saveQueueToLocalStorage,
         setPopularParameterToStorage } from './js/rendering/render-pagination.js';
 
 setPopularParameterToStorage(3)
@@ -73,23 +73,4 @@ GALLERY_DOM.addEventListener('click', evt => {
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
 });
 
-// const watchedBtn = document.querySelector('[data-watched-btn]');
-// const queueBtn = document.querySelector('[data-queue-btn]');
-
-// watchedBtn.addEventListener("click", ()=>{
-//   console.log('watched button zostal wcisniety')
-//   setPopularParameterToStorage(3)
-//   const factor = parseInt(1);
-//   createArrayOfCurrentPageForWatched(factor)
-//   saveFactorToLocalStorage(factor)
-//   renderPagination()
-// })
-// queueBtn.addEventListener("click", ()=>{
-//   console.log('queue button zostal wcisniety')
-//   setPopularParameterToStorage(4)
-//   const factor = parseInt(1);
-//   createArrayOfCurrentPageForWatched(factor)
-//   saveFactorToLocalStorage(factor)
-//   renderPagination()
-// })
 getMoviesByArrayOfIds(localStorage.load('watched'))
