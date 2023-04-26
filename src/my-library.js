@@ -38,10 +38,8 @@ actualLibraryUpdateToStore('watched');
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 // saveIdArraysFromFirebaseToStore();
 startLoader();
-getMoviesByArrayOfIds(localStorage.load('watched'));
 WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
-renderPagination();
 addELToTeamModal();
 
 GALLERY_DOM.addEventListener('click', evt => {
@@ -53,3 +51,6 @@ GALLERY_DOM.addEventListener('click', evt => {
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal(singleMovieCard.dataset.movieId);
 });
+
+getMoviesByArrayOfIds(localStorage.load('watched'));
+renderPagination();

@@ -28,7 +28,7 @@
   // transform: translate(-50%, -50%);
   width: 90%;
   max-width: 400px;
-  padding: 40px;
+  padding: 20px;
   transform: scale(1);
   box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.2),
     4px 6px 10px 3px rgba(255, 255, 255, 0.2),
@@ -40,6 +40,7 @@
   @include tablet {
     // width: 80%;
     max-width: 750px;
+    padding: 40px;
   }
   @include desktop {
     max-width: 850px;
