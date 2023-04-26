@@ -29,7 +29,7 @@ export const showLoader = () => {
     timeout = setTimeout(() => {
       loader.classList.add('loader-hidden');
     }, 1500);
-    console.log(loader.classList);
+    // console.log(loader.classList);
   });
-  console.log('showLoader work');
+  // console.log('showLoader work');
 };

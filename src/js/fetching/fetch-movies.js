@@ -126,7 +126,7 @@ const getTrailerUrlFromObjectVideos = videosObject => {
   );
   if (findIndexOfKeyTrailer === -1) {
     //do usunięcia console.log()
-    console.log(`There's no trailer`);
+    // console.log(`There's no trailer`);
     return;
   } else {
     const youtubeKey = videosObject[findIndexOfKeyTrailer].key;
