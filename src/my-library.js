@@ -1,5 +1,5 @@
 import {
-  getMovieGenresAndSaveToStore,
+  // getMovieGenresAndSaveToStore,
   getMovieById,
   getMoviesByArrayOfIds,
 } from './js/fetching/fetch-movies.js';
@@ -9,37 +9,48 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
+import { addELToTeamModal } from './js/utils/modal-team.js';
+// import {
+//   getQueueMoviesIds,
+//   getWatchedMoviesIds,
+//   pushToWatched,
+//   updateQueueInFirebase,
+//   updateWatchedInFirebase,
+// } from './js/firebase/firebase.js';
+import { actualLibraryUpdateToStore } from './js/utils/store.js';
+import {
+  renderWatchedGallery,
+  renderQueueGallery,
+} from './js/utils/my-library-btns.js';
+import localStorage from './js/utils/localStorage.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
+import { saveIdArraysFromFirebaseToStore } from './js/firebase/firebase.js';
 const GALLERY_DOM = document.querySelector('.gallery');
+const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
+const QUEUE_BTN_DOM = document.querySelector('[data-queue-btn');
 
-// FORM_DOM.addEventListener('submit', handleSubmit);
-
-// getMovieGenresAndSaveToStore();
-startLoader();
-
-//*  Trzeba pobierać z localstorage tablice watched i queue oraz zapisywać do zmiennych (aktualizować zmiany i przesyłać na serwer zewn również)
-//! localStorage.getItem('watched')); - może taka zmienna?
-//! localStorage.getItem('queue')); - może taka zmienna?
-//* eventLestenery na buttony: Watched i Queue
-//* wybierać funkcją getMoviesByArrayOfIds() odpowiednią tablicę z local storage
-
-//Przykład zastosowania funkcji przyjmującej tablicę movieIDs
-const oldMovieIdExample = 1369; // Film: Rambo First Blood
-const newMovieIdExample = 603692; // Film: JOHN WICK: CHAPTER 4 (z 2023 roku)
-const newMovieIdExample2 = 594767; // Film: Shazam! Fury of the gods (z 2023 roku)
-const arrayOfMoviesIds = [1369, 603692, 594767];
-getMoviesByArrayOfIds(arrayOfMoviesIds);
-renderPagination();
-
-addELToTeamModal();
-GALLERY_DOM.addEventListener('click', galleryHandler);
-//* Scroll site to top
-const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
-window.addEventListener('scroll', showButtonOnScroll);
-SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
-
+saveIdArraysFromFirebaseToStore()
+actualLibraryUpdateToStore('watched');
 //* DARK MODE
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();
+// saveIdArraysFromFirebaseToStore();
+startLoader();
+WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
+QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
+addELToTeamModal();
+
+GALLERY_DOM.addEventListener('click', evt => {
+  const singleMovieCard = evt.target.parentElement.parentElement;
+  if (!singleMovieCard.classList.contains('movie-card')) return;
+  getMovieById(singleMovieCard.dataset.movieId);
+  onShowModal(singleMovieCard.dataset.movieId);
+  //zmiana klasy modala
+  toggleModal();
+  // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
+});
+
+getMoviesByArrayOfIds(localStorage.load('watched'));
+renderPagination();

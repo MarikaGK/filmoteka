@@ -1,6 +1,6 @@
 import { showButtonOnScroll } from './scroll-to-top.js';
 
-const linkModalTeam = document.querySelector('.footer__wrapper-link');
+const linkModalTeam = document.querySelector('.goit-students');
 const modalTeamBackdrop = document.querySelector('.backdrop');
 const modalTeam = document.querySelector('.team');
 const modalClose = document.querySelector('.team_close');
@@ -51,7 +51,7 @@ const onShowTeamModal = () => {
   modalTeamBackdrop.addEventListener('click', closeModalTeamByBackdrop);
   modalClose.addEventListener('click', closeModalTeamByIcon);
   window.removeEventListener('scroll', showButtonOnScroll);
-  if (!SCROLL_UP_BUTTON_DOM.classList.contain('is-hidden')) {
+  if (!SCROLL_UP_BUTTON_DOM.classList.contains('is-hidden')) {
     SCROLL_UP_BUTTON_DOM.classList.add('is-hidden');
   }
 };

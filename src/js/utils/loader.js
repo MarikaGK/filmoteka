@@ -15,9 +15,9 @@ export const startLoader = () => {
     timeout = setTimeout(() => {
       loader.classList.add('loader-hidden');
     }, 1500);
-    console.log(loader.classList);
+    // console.log(loader.classList);
   });
-  console.log('startLoader work');
+  // console.log('startLoader work');
 };
 
 export const showLoader = () => {
