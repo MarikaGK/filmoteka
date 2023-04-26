@@ -201,9 +201,9 @@ export function getWatchedMoviesIds() {
       const movieId = childSnapshot.val();
       watchedMoviesIds.push(movieId);
     });
-    console.log(user.uid);
-    console.log(`To jest watchedMoviesIds z firebase`);
-    console.log(watchedMoviesIds);
+    // console.log(user.uid);
+    // console.log(`To jest watchedMoviesIds z firebase`);
+    // console.log(watchedMoviesIds);
     localStorage.save('watched', watchedMoviesIds);
   });
 }
