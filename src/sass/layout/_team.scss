@@ -1,6 +1,11 @@
 .backdrop {
-  position: relative;
+  // position: relative;
   position: fixed;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  // align-content: center;
+  // margin: 0 auto;
   z-index: 100;
   width: 100vw;
   height: 100vh;
@@ -14,14 +19,13 @@
   transition-timing-function: ease;
   overflow-y: scroll;
 }
-
 .team {
   position: absolute;
-  background-color: #10181d;
+  background-color: #10181D;
   border-radius: $border-radius;
-  top: 300%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // top: 300%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
   width: 90%;
   max-width: 400px;
   padding: 40px;
@@ -29,14 +33,16 @@
   box-shadow: 4px 6px 10px 3px rgba(255, 255, 255, 0.2),
     4px 6px 10px 3px rgba(255, 255, 255, 0.2),
     4px 6px 10px 3px rgba(255, 255, 255, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-block: 2% auto;
   @include tablet {
-    width: 80%;
+    // width: 80%;
     max-width: 750px;
-    top: 120%;
   }
   @include desktop {
     max-width: 850px;
-    top: 80%;
   }
 }
 
