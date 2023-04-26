@@ -76,6 +76,9 @@
   aspect-ratio: 0.7;
   overflow: hidden;
   border-radius: $border-radius;
+  @include tablet {
+    width: 290px;
+  }
   @include desktop {
     width: 375px;
   }
@@ -85,6 +88,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.modal-card__no-img {
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  background-image: url(./../images/icons/filmotekalogo.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 0 10px 0px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 0 0 10px 0px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 0 0 10px 0px rgba(0,0,0,0.75) inset;
+}
+.modal-card__movie-description-wrapper {
+
 }
 .modal-card__movie-description {
   display: flex;

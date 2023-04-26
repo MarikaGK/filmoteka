@@ -8,8 +8,8 @@ import {
   getTotalPagesFromStorage,
   setPopularParameterToStorage,
   getCurrentPageFromStorage,
-  renderPagination
-} from '../rendering/render-pagination'
+  renderPagination,
+} from '../rendering/render-pagination';
 import { categoriesFilter } from '../utils/categories-filter.js';
 import { renderModal } from '../rendering/render-modal';
 // ------> CONSTANTS USED IN THE PROJECT:
@@ -55,7 +55,7 @@ export const getPopularMovies = async (page = 1) => {
     data.total_pages = limitedTotalPagesForPopularSearch;
     data.total_results = limitedTotalResultsForPopularSearch;
     // console.log(data);
-    setPopularParameterToStorage(true)
+    setPopularParameterToStorage(true);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
@@ -86,12 +86,12 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
     showLoader();
 
     //TODO function here!
-    setPopularParameterToStorage(false)
+    setPopularParameterToStorage(false);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
     renderMovies(data.results);
-    renderPagination()
+    renderPagination();
   } catch (error) {
     console.error(error);
   }
@@ -113,6 +113,7 @@ export const getMovieById = async movieId => {
     const movieTrailerUrl = getTrailerUrlFromObjectVideos(videosObject);
     // console.log(`movie trailer url` + movieTrailerUrl);
     //return object with movie's details
+    console.log(data);
     return renderModal(data, movieTrailerUrl);
   } catch (error) {
     console.error(error);
@@ -126,7 +127,7 @@ const getTrailerUrlFromObjectVideos = videosObject => {
   );
   if (findIndexOfKeyTrailer === -1) {
     //do usunięcia console.log()
-    console.log(`There's no trailer`);
+    // console.log(`There's no trailer`);
     return;
   } else {
     const youtubeKey = videosObject[findIndexOfKeyTrailer].key;
@@ -163,13 +164,12 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
         newObj.id = key;
         films.push(newObj);
       }
-// console.log(films);
+      // console.log(films);
       renderLibrary(films);
       //console.log do usunięcia
       // console.log(
       //   `Przykładowy obiekt zwracany przez funkcję getMoviesByArrayOfIds`);
       // console.log(films);
-
     }
   } catch (error) {
     // console.log('test');
@@ -183,10 +183,11 @@ export const getMoviesWithFilters = async (page = 1) => {
   const genres = categoriesFilter();
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
-    console.log(`${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`);
+    console.log(
+      `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
+    );
     const response = await fetch(
       `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
-
     );
     // response Status:404 handling
     if (!response.ok) {
@@ -203,7 +204,7 @@ export const getMoviesWithFilters = async (page = 1) => {
 
     //TODO function here!
 
-    setPopularParameterToStorage(false)
+    setPopularParameterToStorage(false);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
@@ -213,4 +214,3 @@ export const getMoviesWithFilters = async (page = 1) => {
     console.error(error);
   }
 };
-
