@@ -54,8 +54,7 @@ export const getPopularMovies = async (page = 1) => {
     const limitedTotalResultsForPopularSearch = 10000;
     data.total_pages = limitedTotalPagesForPopularSearch;
     data.total_results = limitedTotalResultsForPopularSearch;
-    // console.log(data);
-    setPopularParameterToStorage(true);
+    setPopularParameterToStorage(1)
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
@@ -86,7 +85,7 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
     showLoader();
 
     //TODO function here!
-    setPopularParameterToStorage(false);
+    setPopularParameterToStorage(2)
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
     saveCurrentPageToStorage(data);
@@ -140,6 +139,7 @@ const getTrailerUrlFromObjectVideos = videosObject => {
 
 //  6. --- Function fetch - get array of movieIds  ---
 export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
+
   const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
   const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
 

@@ -1,6 +1,13 @@
 import { getMoviesByArrayOfIds } from '../fetching/fetch-movies';
 import { actualLibraryUpdateToStore } from './store';
 import localStorage from './localStorage';
+import { renderPagination, 
+  getPopularParameterFromStorage,
+  saveFactorToLocalStorage,
+  createArrayOfCurrentPageForWatched,
+  // saveWatchedToLocalStorage, 
+  // saveQueueToLocalStorage,
+setPopularParameterToStorage } from '../rendering/render-pagination';
 
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn]');
 const QUEUE_BTN_DOM = document.querySelector('[data-queue-btn]');
@@ -20,6 +27,11 @@ export const renderWatchedGallery = e => {
     WATCHED_BTN_DOM.classList.add('button--orange');
     QUEUE_BTN_DOM.classList.remove('button--orange');
   }
+  setPopularParameterToStorage(3)
+  const factor = parseInt(1);
+  createArrayOfCurrentPageForWatched(factor);
+  saveFactorToLocalStorage(factor);
+  renderPagination();
   actualLibraryUpdateToStore('watched');
 };
 export const renderQueueGallery = e => {
@@ -36,5 +48,10 @@ export const renderQueueGallery = e => {
     QUEUE_BTN_DOM.classList.add('button--orange');
     WATCHED_BTN_DOM.classList.remove('button--orange');
   }
+  setPopularParameterToStorage(4)
+  const factor = parseInt(1);
+  createArrayOfCurrentPageForWatched(factor)
+  saveFactorToLocalStorage(factor)
+  renderPagination()
   actualLibraryUpdateToStore('queue');
 };

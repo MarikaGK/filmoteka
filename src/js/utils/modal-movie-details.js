@@ -63,19 +63,15 @@ const closeOnBackdropClick = e => {
   return;
 };
 
-// const checkWatched = e => {
-//   e.preventDefault();
-//   const movieId = getMovieIdFromParent(e);
+export const addEventListenersToBtns = () => {
+  watchedBtn.addEventListener('click');
+  queueBtn.addEventListener('click');
+};
 
-//   // manageIdInWatched(Number(movieId));
-//   ifWatchedBtnClassHasToBeToggled(Number(movieId));
-// };
-// const checkQueue = e => {
-//   e.preventDefault();
-//   const movieId = getMovieIdFromParent(e);
-//   manageIdInQueue(Number(movieId));
-//   ifQueueBtnClassHasToBeToggled(Number(movieId));
-// };
+export const removeEventListenersFromBtns = () => {
+  watchedBtn.removeEventListener('click');
+  queueBtn.removeEventListener('click');
+};
 
 // const refreshingMyLibraryOnHidingMovieDetails = () => {
 //   if (location.pathname === '/my-library') {

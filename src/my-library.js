@@ -9,14 +9,21 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
+
+
+
+import { renderPagination, 
+          getPopularParameterFromStorage,
+          saveFactorToLocalStorage,
+          createArrayOfCurrentPageForWatched,
+          // saveWatchedToLocalStorage, 
+          // saveQueueToLocalStorage,
+        setPopularParameterToStorage } from './js/rendering/render-pagination.js';
+
+setPopularParameterToStorage(3)
+
+import { getMoviesByArrayOfIds } from './js/fetching/fetch-movies.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
-// import {
-//   getQueueMoviesIds,
-//   getWatchedMoviesIds,
-//   pushToWatched,
-//   updateQueueInFirebase,
-//   updateWatchedInFirebase,
-// } from './js/firebase/firebase.js';
 import { actualLibraryUpdateToStore } from './js/utils/store.js';
 import {
   renderWatchedGallery,
@@ -24,7 +31,6 @@ import {
 } from './js/utils/my-library-btns.js';
 import localStorage from './js/utils/localStorage.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
-import { renderPagination } from './js/rendering/render-pagination.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
 import { saveIdArraysFromFirebaseToStore } from './js/firebase/firebase.js';
@@ -42,15 +48,29 @@ WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
 addELToTeamModal();
 
+
+saveFactorToLocalStorage(1)
+
+
+
+createArrayOfCurrentPageForWatched(1)
+
+// -------------------------END OF EDIT
+// addEventListenersToBtns()
+
+// getMoviesByArrayOfIds(arrayOfMoviesIds);
+renderPagination();
+
+//jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
   if (!singleMovieCard.classList.contains('movie-card')) return;
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal(singleMovieCard.dataset.movieId);
+
   //zmiana klasy modala
   toggleModal();
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
 });
 
-getMoviesByArrayOfIds(localStorage.load('watched'));
-renderPagination();
+getMoviesByArrayOfIds(localStorage.load('watched'))

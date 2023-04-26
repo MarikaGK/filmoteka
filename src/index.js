@@ -6,13 +6,14 @@ import {
 } from './js/fetching/fetch-movies.js';
 
 import { handleSubmit } from './js/utils/search-form-handler.js';
+
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
-import { toggleModalTeam, onShowModalTeam } from './js/utils/modal-team.js';
+
 import { startLoader } from './js/utils/loader.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
-import { renderPagination } from './js/rendering/render-pagination.js';
+import { renderPagination, saveFactorToLocalStorage, setPopularParameterToStorage } from './js/rendering/render-pagination.js';
 import { db } from './js/firebase/firebase.js';
 import { galleryHandler } from './js/utils/gallery-handler.js';
 import { renderCategoriesBox } from './js/rendering/render-multiselectBox.js';
@@ -27,6 +28,9 @@ const FIND_BUTTON = document.querySelector('.header__selectButton');
 const CATEGORIES_BOX = document.querySelector('.header__categoriesBox');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
+
+setPopularParameterToStorage(1)
+saveFactorToLocalStorage(2)
 // GALLERY_DOM.addEventListener('click', galleryHandler);
 // FIND_BUTTON.addEventListener('click', discoveryHandler);
 // BROWSE_BUTTON.addEventListener('click', evt => {
