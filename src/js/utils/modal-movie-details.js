@@ -15,6 +15,7 @@ import {
   // updateQueueInFirebase,
   changeWatched,
   changeQueue,
+  saveIdArraysFromFirebaseToStore,
 } from '../firebase/firebase';
 import { actualLibraryFromStore } from './store';
 // import localStorage from './localStorage';
@@ -104,6 +105,7 @@ export const onShowModal = id => {
 };
 
 const onHideModal = () => {
+  saveIdArraysFromFirebaseToStore();
   resetMarkupModal();
   CLOSE_BTN.removeEventListener('click', closeOnXBtn);
   modalOverlay.removeEventListener('click', closeOnBackdropClick);
