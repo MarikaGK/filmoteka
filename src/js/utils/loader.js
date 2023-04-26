@@ -9,7 +9,6 @@ const checkGenresInLocalStorage = () => {
 
 export const startLoader = () => {
   window.addEventListener('load', () => {
-    checkGenresInLocalStorage();
     const loader = document.querySelector('.loader');
     loader.classList.remove('loader-hidden');
     let timeout;
