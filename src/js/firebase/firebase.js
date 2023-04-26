@@ -257,9 +257,9 @@ export const changeWatched = e => {
         }
         watchedBtn.innerHTML = 'In watched';
         localStorage.save('watched', watchedArray);
-        if (localStorage.load('actualLibrary') == 'watched') {
-          getMoviesByArrayOfIds(watchedArray);
-        }
+        // if (localStorage.load('actualLibrary') == 'watched') {
+        //   getMoviesByArrayOfIds(watchedArray);
+        // }
       } else {
         const updatedArray = watchedArray.filter(e => e != id);
         set(watchedRef, updatedArray);
@@ -268,9 +268,9 @@ export const changeWatched = e => {
           watchedBtn.classList.remove('button--orange');
         }
         localStorage.save('watched', updatedArray);
-        if (localStorage.load('actualLibrary') === 'watched') {
-          getMoviesByArrayOfIds(updatedArray);
-        }
+        // if (localStorage.load('actualLibrary') === 'watched') {
+        //   getMoviesByArrayOfIds(updatedArray);
+        // }
       }
     })
     .catch(console.error());
@@ -290,18 +290,18 @@ export const changeQueue = e => {
         queueBtn.innerHTML = 'In queue';
         queueBtn.classList.toggle('button--orange');
         localStorage.save('queue', queueArray);
-        if (localStorage.load('actualLibrary') === 'queue') {
-          getMoviesByArrayOfIds(queueArray);
-        }
+        // if (localStorage.load('actualLibrary') === 'queue') {
+        //   getMoviesByArrayOfIds(queueArray);
+        // }
       } else {
         const updatedArray = queueArray.filter(e => e != id);
         set(queueRef, updatedArray);
         queueBtn.classList.toggle('button--orange');
         queueBtn.innerHTML = 'Add to queue';
         localStorage.save('queue', updatedArray);
-        if (localStorage.load('actualLibrary') === 'queue') {
-          getMoviesByArrayOfIds(updatedArray);
-        }
+        // if (localStorage.load('actualLibrary') === 'queue') {
+        //   getMoviesByArrayOfIds(updatedArray);
+        // }
       }
     })
     .catch(console.error());

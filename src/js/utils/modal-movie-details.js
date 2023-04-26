@@ -17,9 +17,12 @@ import {
   changeQueue,
   saveIdArraysFromFirebaseToStore,
 } from '../firebase/firebase';
+import localStorage from './localStorage';
+import { getMoviesByArrayOfIds } from '../fetching/fetch-movies';
+import { renderPagination } from '../rendering/render-pagination';
 import { actualLibraryFromStore } from './store';
 // import localStorage from './localStorage';
-import { resetModal } from "../rendering/render-modal";
+import { resetModal } from '../rendering/render-modal';
 
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');
@@ -105,7 +108,13 @@ export const onShowModal = id => {
 };
 
 const onHideModal = () => {
-  saveIdArraysFromFirebaseToStore();
+  if (localStorage.load('actualLibrary') === 'watched') {
+    getMoviesByArrayOfIds(localStorage.load('watched'));
+  }
+  if (localStorage.load('actualLibrary') === 'queue') {
+    getMoviesByArrayOfIds(localStorage.load('queue'));
+  }
+  renderPagination();
   resetMarkupModal();
   CLOSE_BTN.removeEventListener('click', closeOnXBtn);
   modalOverlay.removeEventListener('click', closeOnBackdropClick);

@@ -45,11 +45,11 @@ addELToTeamModal();
 GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
   if (!singleMovieCard.classList.contains('movie-card')) return;
+  getMovieById(singleMovieCard.dataset.movieId);
+  onShowModal(singleMovieCard.dataset.movieId);
   //zmiana klasy modala
   toggleModal();
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
-  getMovieById(singleMovieCard.dataset.movieId);
-  onShowModal(singleMovieCard.dataset.movieId);
 });
 
 getMoviesByArrayOfIds(localStorage.load('watched'));
