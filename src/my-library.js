@@ -9,6 +9,7 @@ import {
 //toggle modal fn
 import { onShowModal, toggleModal } from './js/utils/modal-movie-details.js';
 import { startLoader } from './js/utils/loader.js';
+import { addELToTeamModal } from './js/utils/modal-team.js';
 // import {
 //   getQueueMoviesIds,
 //   getWatchedMoviesIds,
@@ -37,8 +38,8 @@ startLoader();
 getMoviesByArrayOfIds(localStorage.load('watched'));
 WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
-
 renderPagination();
+addELToTeamModal();
 
 //jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
