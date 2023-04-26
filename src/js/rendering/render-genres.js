@@ -20,5 +20,8 @@ const compareGenresId = id => {
 // ----- rendering ids into genres ----------
 export const renderGenresToGallery = genreIds => {
   const markupIds = genreIds.slice(0, 3).map(id => compareGenresId(id));
+  if (markupIds.length == 0) {
+    return `No info`;
+  }
   return markupIds.join(', ');
 };

@@ -1,36 +1,64 @@
 <header class="header">
-    <div class="container">
-      <nav class="header-nav">
+  <div class="container">
+    <nav class="header-nav header-nav__first">
+      <a href="./index.html" class="header-nav__home-page-btn">
+        <svg
+          class="header-nav__mobile-menu-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 32 32"
+        >
+          <use href="./images/icons/icons.svg#icon-film"></use>
+        </svg>
+      <p class="header-nav__menu-title link">Filmoteka</p>
+    </a>
+        <div class="sign-in" id="sign-in">
+          <span class="sign-in__span">SIGN IN </span>
+          <svg class="sign-in__svg" width="30" height="30">
+            <use href="./images/icons/icons.svg#icon-google"></use>
+          </svg>
+        </div>
+      </nav>
+
+      <nav class="header-nav header-nav__second header__none">
         <a href="./index.html" class="header-nav__home-page-btn">
           <svg
-            class="header-nav__mobile-menu-icon"
+          class="header-nav__mobile-menu-icon"
             width="24"
             height="24"
             viewBox="0 0 32 32"
           >
-            <use href="./images/icons/icons.svg#icon-film"></use>
+          <use href="./images/icons/icons.svg#icon-film"></use>
           </svg>
           <p class="header-nav__menu-title link">Filmoteka</p>
         </a>
-        <ul class="header-nav__menu">
-          <li class="header-nav__element">
-            <a class="header-nav__link" href="./index.html">
-              <p class="header-nav__link-text link link--active">HOME</p>
-            </a>
-          </li>
-          <li class="header-nav__element">
-            <a class="header-nav__link" href="./my-library.html">
-              <p class="header-nav__link-text link">MY LIBRARY</p>
-            </a>
-          </li>
-        </ul>
+        <div class="header-nav__right">
+          <ul class="header-nav__menu">
+            <li class="header-nav__element">
+              <a class="header-nav__link" href="./index.html">
+                <p class="header-nav__link-text link link--active">HOME</p>
+              </a>
+            </li>
+            <li class="header-nav__element">
+              <a class="header-nav__link" href="./my-library.html">
+                <p class="header-nav__link-text link">MY LIBRARY</p>
+              </a>
+            </li>
+            <li class="header-nav__element">
+              <p class="header-nav__link-text sign-out__span" id="sign-out">
+                SIGN OUT
+              </p>
+            </li>
+          </ul>
+        </div>
       </nav>
+      
       <div class="header-input">
         <form class="header-input__form">
           <input
-            type="text"
-            placeholder="Movie search"
-            class="header-input__text-box"
+          type="text"
+          placeholder="Movie search"
+          class="header-input__text-box"
           />
           <button class="header-input__button" type="submit" title="search-btn">
             <svg
@@ -38,14 +66,24 @@
               width="12"
               height="12"
               viewBox="0 0 32 32"
-            >
+              >
               <use href="./images/icons/icons.svg#icon-search"></use>
             </svg>
           </button>
         </form>
-      </div>
+        <!-- <p class="header-input__separator">or</p>
+        <div class="header__element header__browse">
+          <p class="uppercase">Browse in popular</p>
+          <div class="header__categoriesBox is-hidden">
+            <button class="header__selectButton">select</button>
+          </div>
+      </div> -->
       <div class="header-no-hit-info">
         <!-- info when empty and no hit searching -->
       </div>
+      <div class="header__categoriesBox is-hidden">
+        <button class="header__selectButton">Select</button>
+      </div> 
     </div>
+  </div>
 </header>

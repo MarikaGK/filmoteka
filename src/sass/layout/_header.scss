@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 16px;
-  padding-bottom: 44px;
+  padding: 20px 0;
 
   color: $warning-color;
   font-weight: 400;
@@ -13,6 +13,10 @@
   @include tablet {
     justify-content: center;
   }
+
+  // @include desktop {
+  //   padding-right: 160px;
+  // }
 }
 
 .header {
@@ -124,12 +128,47 @@
   align-items: center;
 }
 
-.header-input {
-  text-align: center;
-  padding-top: 40px;
-  padding-bottom: 20px;
+.header__label {
+  color: $main-font-dark-color;
+  min-width: 50px;
+  text-align: right;
+  margin: 5px;
+  font-family: $main-font;
+  font-size: small;
+  cursor: pointer;
+  text-shadow: 0;
+  transition: text-shadow 0.1s ease-in, transform 0.1s ease-in;
 
+  &:hover {
+    transform: translateX(-5px);
+  }
+}
+
+.header__selectButton {
+  background-color: #fff0;
+  border: solid 1px $movie-category-color;
+  border-radius: $border-radius;
+  width: 100%;
+  font-family: $main-font;
+  font-size: medium;
+  cursor: pointer;
+  transition: color 0.2s ease-in, background-color 0.2s ease-in;
+
+  &:hover {
+    color: $main-font-bright-color;
+    background-color: $movie-category-color;
+  }
+}
+
+.header-input {
+  position: relative;
+  align-items: center;
+  text-align: center;
+  padding-top: 54px;
+  padding-bottom: 20px;
+  
   @include tablet {
+    padding-top: 40px;
     width: 50%;
     margin: auto;
   }
@@ -141,6 +180,7 @@
 
 .header-input__form {
   position: relative;
+  flex-grow: 1;
   display: flex;
   outline: none;
 }
@@ -163,11 +203,66 @@
 
   &::placeholder {
     opacity: 1;
+    color: $main-font-bright-color;
   }
 
   &:focus,
   &:focus-within {
-    border-bottom: 2px solid $button-background-color;
+    border-bottom: 1px solid $button-background-color;
+  }
+}
+
+.header-input__separator {
+  padding: 10px 0;
+  color: $card-categories-name-color;
+  font-size: small;
+
+  @include desktop {
+    padding: 0 20px;
+  }
+}
+
+.header__browse {
+  background: none;
+  color: $card-categories-name-color;
+  font-size: small;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  border: 1px solid $card-categories-name-color;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.header__categoriesBox {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 130px;
+  background-color: $main-background-color;
+  border-radius: $border-radius;
+  box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
+}
+
+.header__selectButton {
+  background-color: #fff0;
+  border: solid 1px $movie-category-color;
+  border-radius: $border-radius;
+  width: 100%;
+  font-family: $main-font;
+  font-size: medium;
+  cursor: pointer;
+  transition: color 0.2s ease-in, background-color 0.2s ease-in;
+
+  &:hover {
+    color: $main-font-bright-color;
+    background-color: $movie-category-color;
   }
 }
 
@@ -183,4 +278,32 @@
   background-color: $underline-color;
   bottom: -2px;
   left: 0;
+}
+
+.header__none {
+  display: none;
+}
+
+.header-nav__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+.sign-in {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.sign-in__span {
+  font-size: 15px;
+  letter-spacing: 0.1rem;
+  color: $main-font-bright-color;
+}
+.sign-out__span {
+  color: $main-font-bright-color;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.1rem;
 }

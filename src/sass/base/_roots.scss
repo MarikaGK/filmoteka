@@ -8,6 +8,10 @@
   padding: 0;
 }
 
+body {
+  background-color: $main-background-color;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -55,3 +59,4 @@
     background-color: $underline-color;
   }
 }
+
