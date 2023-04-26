@@ -41,14 +41,11 @@ QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
 renderPagination();
 addELToTeamModal();
 
-//jutro wyeksportuję do oddzielnego handlera
 GALLERY_DOM.addEventListener('click', evt => {
+  const singleMovieCard = evt.target.parentElement.parentElement;
+  if (!singleMovieCard.classList.contains('movie-card')) return;
   //zmiana klasy modala
   toggleModal();
-  //do dodania return dla nie divów
-  const singleMovieCard = evt.target.parentElement.parentElement;
-  //wyświetlenie Id filmu
-  console.log(singleMovieCard.dataset.movieId);
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
   getMovieById(singleMovieCard.dataset.movieId);
   onShowModal(singleMovieCard.dataset.movieId);

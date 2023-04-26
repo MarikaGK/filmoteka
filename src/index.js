@@ -25,17 +25,17 @@ const FIND_BUTTON = document.querySelector('.header__selectButton');
 const CATEGORIES_BOX = document.querySelector('.header__categoriesBox');
 
 FORM_DOM.addEventListener('submit', handleSubmit);
-GALLERY_DOM.addEventListener('click', galleryHandler);
-FIND_BUTTON.addEventListener('click', discoveryHandler);
-BROWSE_BUTTON.addEventListener('click', evt => {
-  evt.preventDefault();
-  CATEGORIES_BOX.classList.toggle('is-hidden');
-});
+// GALLERY_DOM.addEventListener('click', galleryHandler);
+// FIND_BUTTON.addEventListener('click', discoveryHandler);
+// BROWSE_BUTTON.addEventListener('click', evt => {
+//   evt.preventDefault();
+//   CATEGORIES_BOX.classList.toggle('is-hidden');
+// });
 
 getMovieGenresAndSaveToStore();
 startLoader();
 getPopularMovies();
-renderCategoriesBox();
+// renderCategoriesBox();
 renderPagination();
 addELToTeamModal();
 // const paginationClickerContainer = document.querySelector('.pagination', false)
@@ -44,7 +44,16 @@ addELToTeamModal();
 // paginationClicker.addEventListener("click", ()=>{
 //     console.log(paginationClicker.value)
 // })
-
+//jutro wyeksportuję do oddzielnego handlera
+GALLERY_DOM.addEventListener('click', evt => {
+  const singleMovieCard = evt.target.parentElement.parentElement;
+  if (!singleMovieCard.classList.contains('movie-card')) return;
+  //zmiana klasy modala
+  toggleModal();
+  // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
+  getMovieById(singleMovieCard.dataset.movieId);
+  onShowModal(singleMovieCard.dataset.movieId);
+});
 //* Scroll site to top
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
