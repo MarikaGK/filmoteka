@@ -27,12 +27,15 @@ import {
 import localStorage from './js/utils/localStorage.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { renderPagination } from './js/rendering/render-pagination.js';
+import { galleryHandler } from './js/utils/gallery-handler.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
 const QUEUE_BTN_DOM = document.querySelector('[data-queue-btn');
 
 actualLibraryUpdateToStore('watched');
+//* DARK MODE
+setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 // saveIdArraysFromFirebaseToStore();
 startLoader();
 getMoviesByArrayOfIds(localStorage.load('watched'));
@@ -40,6 +43,7 @@ WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
 renderPagination();
 addELToTeamModal();
+GALLERY_DOM.addEventListener('click', galleryHandler);
 
 GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
