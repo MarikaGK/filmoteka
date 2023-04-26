@@ -37,7 +37,9 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 getMovieGenresAndSaveToStore();
 startLoader();
-addELToTeamModal();
+getPopularMovies();
+// renderCategoriesBox();
+renderPagination();
 // const paginationClickerContainer = document.querySelector('.pagination', false)
 // const paginationClicker = paginationClickerContainer.querySelectorAll('a.tui-page-btn')
 
@@ -45,19 +47,17 @@ addELToTeamModal();
   //     console.log(paginationClicker.value)
   // })
   GALLERY_DOM.addEventListener('click', evt => {
-    const singleMovieCard = evt.target.parentElement.parentElement;
-    if (!singleMovieCard.classList.contains('movie-card')) return;
-    getMovieById(singleMovieCard.dataset.movieId);
-    onShowModal(singleMovieCard.dataset.movieId);
-    //zmiana klasy modala
-    toggleModal();
+  const singleMovieCard = evt.target.parentElement.parentElement;
+  if (!singleMovieCard.classList.contains('movie-card')) return;
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
+  getMovieById(singleMovieCard.dataset.movieId);
+  onShowModal(singleMovieCard.dataset.movieId);
+  //zmiana klasy modala
+  toggleModal();
 });
 //* Scroll site to top
 const SCROLL_UP_BUTTON_DOM = document.querySelector('.scroll-up-arrow');
 window.addEventListener('scroll', showButtonOnScroll);
 SCROLL_UP_BUTTON_DOM.addEventListener('click', scrollToTop);
-getPopularMovies();
-// renderCategoriesBox();
-renderPagination();
 
+addELToTeamModal();

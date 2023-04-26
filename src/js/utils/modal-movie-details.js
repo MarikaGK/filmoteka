@@ -98,11 +98,11 @@ const closeOnBackdropClick = e => {
 // };
 
 export const onShowModal = id => {
+  ifWatchedBtnClassHasToBeToggled(Number(id));
+  ifQueueBtnClassHasToBeToggled(Number(id));
   CLOSE_BTN.addEventListener('click', closeOnXBtn);
   modalOverlay.addEventListener('click', closeOnBackdropClick);
   document.addEventListener('keydown', closeOnEsc);
-  ifWatchedBtnClassHasToBeToggled(Number(id));
-  ifQueueBtnClassHasToBeToggled(Number(id));
   watchedBtn.addEventListener('click', changeWatched);
   queueBtn.addEventListener('click', changeQueue);
 };
