@@ -2,15 +2,14 @@
   display: flex;
   justify-content: center;
   margin: 0;
-  padding: 0;
-}
-
-.button-list.button-list--header {
-   padding: 60px 0 0 0;
-
+  padding-top: 60px;
   @include tablet {
+    padding-top: 46px;
+  }
+  
+  @include desktop {
     padding-top: 40px;
-  } 
+  }
 }
 
 .button {
@@ -95,4 +94,3 @@
     transform: scale(1.1);
   }
 }
-
