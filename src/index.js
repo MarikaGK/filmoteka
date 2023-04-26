@@ -18,6 +18,7 @@ import { galleryHandler } from './js/utils/gallery-handler.js';
 import { renderCategoriesBox } from './js/rendering/render-multiselectBox.js';
 import { discoveryHandler } from './js/utils/categories-filter.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
+import { actualLibraryUpdateToStore } from './js/utils/store.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
@@ -32,7 +33,7 @@ FORM_DOM.addEventListener('submit', handleSubmit);
 //   evt.preventDefault();
 //   CATEGORIES_BOX.classList.toggle('is-hidden');
 // });
-
+actualLibraryUpdateToStore('home');
 //* DARK MODE
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 getMovieGenresAndSaveToStore();
@@ -44,9 +45,9 @@ renderPagination();
 // const paginationClicker = paginationClickerContainer.querySelectorAll('a.tui-page-btn')
 
 // paginationClicker.addEventListener("click", ()=>{
-  //     console.log(paginationClicker.value)
-  // })
-  GALLERY_DOM.addEventListener('click', evt => {
+//     console.log(paginationClicker.value)
+// })
+GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
   if (!singleMovieCard.classList.contains('movie-card')) return;
   // getTrailerUrlByMovieId(singleMovieCard.dataset.movieId);
