@@ -2,15 +2,12 @@
   visibility: hidden;
   opacity: 0;
 }
-
 .none {
   transform: translate(-50%, -50%);
 }
-
 .display-none-for-unsigned-user {
   display: none;
 }
-
 .button--orange {
   background-color: $button-background-color;
   color: $main-font-bright-color;
@@ -18,7 +15,6 @@
   transform: scale(1);
   will-change: filter, transform;
   transition: filter, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
   &:hover,
   &:focus {
     color: $main-font-bright-color;

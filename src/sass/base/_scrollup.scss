@@ -16,19 +16,16 @@
   transform: scale(1);
   will-change: filter, transform;
   transition: filter, transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
   &:hover {
     filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
     transform: scale(1.05);
   }
-
   @include tablet {
     bottom: 30px;
     right: 40px;
     width: 60px;
     height: 60px;
   }
-
   @include desktop {
     bottom: 60px;
     right: 60px;

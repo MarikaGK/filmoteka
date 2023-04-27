@@ -2,15 +2,10 @@ import { initializeApp } from 'firebase/app';
 import {
   getDatabase,
   ref,
-  // push,
   set,
   get,
-  // child,
-  remove,
-  update,
   onValue,
 } from 'firebase/database';
-// import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import {
   getAuth,
   signInWithPopup,
@@ -19,8 +14,6 @@ import {
 } from 'firebase/auth';
 
 import localStorage from '../utils/localStorage';
-import { getMoviesByArrayOfIds } from '../fetching/fetch-movies';
-// import { renderMovies } from '../rendering/render-movies';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC3WI9OwBz4EKjWjZ6_OIwGrF26sBcAXyE',
@@ -60,21 +53,19 @@ if (localStorage.load('user')) {
   // const user = localStorage.load('user');
   navFirst.classList.toggle('header__none');
   navSecond.classList.toggle('header__none');
-  modalBtnsDiv.classList.toggle('display-none-for-unsigned-user');
   signInBtn.removeEventListener('click', () => {
     // signOut(auth);
     signInWithPopup(auth, provider)
-      .then(result => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        localStorage.save('user', user);
-        // saveIdArraysFromFirebaseToStore();
-        navFirst.classList.toggle('header__none');
-        navSecond.classList.toggle('header__none');
-        saveIdArraysFromFirebaseToStore();
-        // console.log(user.uid)
-        // console.log(`To jest wysłana do lS przy logowaniu tablica watched ${getIdsArrayFromStore('watched')}`);
+    .then(result => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      localStorage.save('user', user);
+      // saveIdArraysFromFirebaseToStore();
+      navFirst.classList.toggle('header__none');
+      navSecond.classList.toggle('header__none');
+      modalBtnsDiv.classList.remove('display-none-for-unsigned-user');
+      saveIdArraysFromFirebaseToStore();
       })
       .catch(error => {
         const errorCode = error.code;
@@ -82,10 +73,10 @@ if (localStorage.load('user')) {
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
-  });
-}
-
-signInBtn.addEventListener('click', () => {
+    });
+  }
+  
+  signInBtn.addEventListener('click', () => {
   // signOut(auth);
   signInWithPopup(auth, provider)
     .then(result => {
@@ -95,6 +86,7 @@ signInBtn.addEventListener('click', () => {
       localStorage.save('user', user);
       navFirst.classList.toggle('header__none');
       navSecond.classList.toggle('header__none');
+      modalBtnsDiv.classList.add('display-none-for-unsigned-user');
       saveIdArraysFromFirebaseToStore();
     })
     .catch(error => {
@@ -120,77 +112,6 @@ signOutBtn.addEventListener('click', () => {
     });
 });
 
-//AUTHENTICATION BY EMAIL AND PASSWORD
-
-// const emailInput = document.querySelector("#email");
-// const passwordInput = document.querySelector("#password");
-// const signUpBtn = document.querySelector("#sign-up");
-
-// let email;
-// let password;
-
-// signUpBtn.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   email = emailInput.value;
-//   password = passwordInput.value;
-//   createUserWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       // Signed in
-//       const user = userCredential.user;
-//       console.log(email);
-//       console.log(password);
-//       console.log("Nowy User:", user);
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       console.log('Błąd:', errorCode);
-//       console.log('Błąd:', errorMessage);
-//     });
-// })
-
-//REALTIME DATABASE
-
-// export function updateWatchedInFirebase(id) {
-//   const movieId = id;
-//   console.log(`Zupdate'owana watched do firebase ${id}`);
-//   console.log(id);
-//   const user = localStorage.load('user');
-//   const userId = user.uid;
-//   const updates = {};
-//   updates['/users/' + userId + '/watched/'] = movieId;
-//   update(ref(db), updates);
-// }
-
-// export function updateQueueInFirebase(id) {
-//   const movieId = id;
-//   console.log(`Zupdate'owana queue do firebase ${id}`);
-//   const user = localStorage.load('user');
-//   const userId = user.uid;
-//   const updates = {};
-//   updates['/users/' + userId + '/queue/'] = movieId;
-//   update(ref(db), updates);
-// }
-
-// export function removeFromWatchedFirebase(id) {
-//   const movieId = id;
-//   console.log(`Zupdate'owana queue do firebase ${id}`);
-//   const user = localStorage.load('user');
-//   const userId = user.uid;
-//   const updates = {};
-//   updates['/users/' + userId + '/watched/'] = movieId;
-//   remove(ref(db), updates);
-// }
-// export function removeFromQueueFirebase(id) {
-//   const movieId = id;
-//   console.log(`Zupdate'owana queue do firebase ${id}`);
-//   const user = localStorage.load('user');
-//   const userId = user.uid;
-//   const updates = {};
-//   updates['/users/' + userId + '/queue/'] = movieId;
-//   remove(ref(db), updates);
-// }
-
 export function getWatchedMoviesIds() {
   const user = localStorage.load('user');
   const userId = user.uid;
@@ -202,9 +123,6 @@ export function getWatchedMoviesIds() {
       const movieId = childSnapshot.val();
       watchedMoviesIds.push(movieId);
     });
-    // console.log(user.uid);
-    // console.log(`To jest watchedMoviesIds z firebase`);
-    // console.log(watchedMoviesIds);
     localStorage.save('watched', watchedMoviesIds);
   });
 }
@@ -224,22 +142,6 @@ export function getQueueMoviesIds() {
   });
 }
 
-// funkcja zwraca -1, jeśli id nie ma w tablicy
-// export const checkTheIdInWatched = id => {
-//   const arrayOfWatchedIds = localStorage.load('watched');
-//   if (arrayOfWatchedIds.length === 0) {
-//     return -1;
-//   }
-//   return arrayOfWatchedIds.indexOf(Number(id));
-// };
-// export const checkTheIdInQueue = id => {
-//   const arrayOfQueueIds = localStorage.load('queue');
-//   if (arrayOfQueueIds.length === 0) {
-//     return -1;
-//   }
-//   return arrayOfQueueIds.indexOf(Number(id));
-// };
-
 export const changeWatched = e => {
   const movieInfo = e.target.parentElement.parentElement;
   const id = Number(movieInfo.dataset.movieId);
@@ -257,9 +159,6 @@ export const changeWatched = e => {
         }
         watchedBtn.innerHTML = 'In watched';
         localStorage.save('watched', watchedArray);
-        // if (localStorage.load('actualLibrary') == 'watched') {
-        //   getMoviesByArrayOfIds(watchedArray);
-        // }
       } else {
         const updatedArray = watchedArray.filter(e => e != id);
         set(watchedRef, updatedArray);
@@ -268,9 +167,6 @@ export const changeWatched = e => {
           watchedBtn.classList.remove('button--orange');
         }
         localStorage.save('watched', updatedArray);
-        // if (localStorage.load('actualLibrary') === 'watched') {
-        //   getMoviesByArrayOfIds(updatedArray);
-        // }
       }
     })
     .catch(console.error());
@@ -290,24 +186,16 @@ export const changeQueue = e => {
         queueBtn.innerHTML = 'In queue';
         queueBtn.classList.toggle('button--orange');
         localStorage.save('queue', queueArray);
-        // if (localStorage.load('actualLibrary') === 'queue') {
-        //   getMoviesByArrayOfIds(queueArray);
-        // }
       } else {
         const updatedArray = queueArray.filter(e => e != id);
         set(queueRef, updatedArray);
         queueBtn.classList.toggle('button--orange');
         queueBtn.innerHTML = 'Add to queue';
         localStorage.save('queue', updatedArray);
-        // if (localStorage.load('actualLibrary') === 'queue') {
-        //   getMoviesByArrayOfIds(updatedArray);
-        // }
       }
     })
     .catch(console.error());
 };
-
-// watchedBtn.addEventListener('click', changeWatched);
 
 export const ifWatchedBtnClassHasToBeToggled = id => {
   const user = localStorage.load('user');
@@ -344,26 +232,5 @@ export const ifQueueBtnClassHasToBeToggled = id => {
       queueBtn.classList.add('button--orange');
     }
     queueBtn.innerHTML = 'In queue';
-    // watchedBtn.classList.toggle('button--orange');
   });
 };
-
-// export const manageIdInWatched = id => {
-//   if (checkTheIdInWatched(id) === -1) {
-//     console.log(`to jest managedIdInWatched id ${id}`);
-//     console.log(typeof id);
-//     const watchedArray = localStorage.load('watched');
-//     const updatedWatchedArray = watchedArray.push(id);
-//     updateWatchedInFirebase(updatedWatchedArray);
-//   } else {
-//     removeFromWatchedFirebase(id);
-//   }
-// };
-// export const manageIdInQueue = id => {
-//   console.log(`To jest id przekazane do manage ${id}`);
-//   if (checkTheIdInQueue(id) === -1) {
-//     updateQueueInFirebase(id);
-//   } else {
-//     removeFromQueueFirebase(id);
-//   }
-// };

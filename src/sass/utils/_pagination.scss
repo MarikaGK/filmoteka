@@ -96,20 +96,16 @@
   font-weight: 500;
   border: none;
 }
-
 .tui-pagination .tui-prev-is-ellip {
   border-right: 0;
 }
-
 .tui-pagination .tui-next-is-ellip {
   border-left: 0;
 }
-
 .tui-pagination .tui-first + .tui-prev,
 .tui-pagination .tui-next + .tui-last {
   border-left: 0;
 }
-
 .tui-pagination .tui-ico-first,
 .tui-pagination .tui-ico-prev,
 .tui-pagination .tui-ico-next,
@@ -121,45 +117,37 @@
   vertical-align: middle;
   font-size: 0px;
 }
-
 .tui-pagination .tui-prev-is-ellip,
 .tui-pagination .tui-next-is-ellip {
   padding: 0;
   line-height: 1;
 }
-
 .tui-pagination .tui-prev {
   margin-right: 10px;
 }
-
 .tui-pagination .tui-next {
   margin-left: 10px;
 }
-
 .tui-pagination .tui-ico-first {
   width: 11px;
   height: 10px;
   background-position: 0px 0px;
 }
-
 .tui-pagination .tui-ico-prev {
   width: 6px;
   height: 10px;
   background-position: -26px 0px;
 }
-
 .tui-pagination .tui-ico-next {
   width: 6px;
   height: 10px;
   background-position: -13px -24px;
 }
-
 .tui-pagination .tui-ico-last {
   width: 11px;
   height: 10px;
   background-position: 0px -12px;
 }
-
 .tui-pagination .tui-ico-ellip {
   width: 10px;
   height: 2px;
@@ -167,33 +155,26 @@
   vertical-align: top;
   background-position: 0px -24px;
 }
-
 .tui-pagination .tui-is-disabled:hover {
   background: $main-background-color;
   cursor: default;
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-prev {
   background-position: -26px -12px;
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-first {
   background-position: -13px 0px;
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-next {
   background-position: -21px -24px;
 }
-
 .tui-pagination .tui-is-disabled .tui-ico-last {
   background-position: -13px -12px;
 }
-
 .tui-page-inputs {
   display: inline-block;
   vertical-align: top;
 }
-
 .tui-page-inputs .tui-page-input {
   display: inline-block;
   width: 10px;
@@ -205,11 +186,9 @@
   border: 0;
   outline: none;
 }
-
 .tui-page-inputs .tui-page-current {
   color: #4b96e6;
 }
-
 .tui-page-separator {
   display: inline-block;
   font-size: 12px;
