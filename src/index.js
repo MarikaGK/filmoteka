@@ -11,6 +11,7 @@ import { showButtonOnScroll, scrollToTop } from './js/utils/scroll-to-top.js';
 import { renderPagination, saveFactorToLocalStorage, setPopularParameterToStorage } from './js/rendering/render-pagination.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
 import { actualLibraryUpdateToStore } from './js/utils/store.js';
+import { startLoader } from './js/utils/loader.js';
 
 const FORM_DOM = document.querySelector('.header-input__form');
 const GALLERY_DOM = document.querySelector('.gallery');
@@ -23,6 +24,7 @@ actualLibraryUpdateToStore('home');
 //* DARK MODE
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();
 getMovieGenresAndSaveToStore();
+startLoader();
 getPopularMovies();
 renderPagination();
 

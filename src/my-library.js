@@ -22,6 +22,7 @@ import localStorage from './js/utils/localStorage.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
 import { saveIdArraysFromFirebaseToStore } from './js/firebase/firebase.js';
+import { startLoader } from './js/utils/loader.js';
 
 const GALLERY_DOM = document.querySelector('.gallery');
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');
@@ -32,6 +33,7 @@ saveIdArraysFromFirebaseToStore();
 actualLibraryUpdateToStore('watched');
 //* DARK MODE
 setDarkOrNormalModeOnPageLoadFromLocalStorageState();
+startLoader();
 // saveIdArraysFromFirebaseToStore();
 WATCHED_BTN_DOM.addEventListener('click', renderWatchedGallery);
 QUEUE_BTN_DOM.addEventListener('click', renderQueueGallery);
