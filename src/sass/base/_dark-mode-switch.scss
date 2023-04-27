@@ -25,13 +25,13 @@
 }
 .dark-mode-switch {
   position: absolute;
-  top: 185px;
+  top: 160px;
   right: 16px;
   width: 30px;
   height: 30px;
   cursor: pointer;
   @include tablet {
-    top: 170px;
+    top: 155px;
     right: 25px;
   }
   @include desktop {
