@@ -1,26 +1,14 @@
 import {
-  // pushToQueue,
-  // pushToWatched,
-  // manageIdInQueue,
-  // manageIdInWatched,
-  // toggleClassToQueueBtn,
-  // toggleClassToWatchedBtn,
-  // db,
-  // getWatchedMoviesIds,
-  // getQueueMoviesIds,
   ifWatchedBtnClassHasToBeToggled,
   ifQueueBtnClassHasToBeToggled,
-  // checkTheIdInWatched,
-  // updateWatchedInFirebase,
-  // updateQueueInFirebase,
   changeWatched,
   changeQueue,
-  saveIdArraysFromFirebaseToStore,
 } from '../firebase/firebase';
 import localStorage from './localStorage';
 import { getMoviesByArrayOfIds } from '../fetching/fetch-movies';
 import { renderPagination } from '../rendering/render-pagination';
 import { getStateOfDarkModeFromLocalStorage } from './dark-mode-switch';
+import { startLoader } from './loader';
 
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');
@@ -71,26 +59,6 @@ export const removeEventListenersFromBtns = () => {
   watchedBtn.removeEventListener('click');
   queueBtn.removeEventListener('click');
 };
-
-// const refreshingMyLibraryOnHidingMovieDetails = () => {
-//   if (location.pathname === '/my-library') {
-//     getMoviesByArrayOfIds(actualLibraryFromStore());
-//   }
-// };
-// const getMovieIdFromParent = e => {
-//   const movieInfo = e.target.parentElement.parentElement;
-//   return movieInfo.dataset.movieId;
-// };
-
-// const addEventListenersToBtns = e => {
-//   watchedBtn.addEventListener('click', checkWatched);
-//   queueBtn.addEventListener('click', checkQueue);
-// };
-
-// const removeEventListenersFromBtns = () => {
-//   watchedBtn.removeEventListener('click', checkWatched);
-//   queueBtn.removeEventListener('click', checkQueue);
-// };
 
 export const onShowModal = id => {
   if (localStorage.load('user')) {

@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: inherit;
   transition: opacity 1s, visibility 1s;
   @include tablet {
     padding: 100px 0;

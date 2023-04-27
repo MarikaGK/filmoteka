@@ -113,7 +113,8 @@ export const renderModal = (
       const markupPoster = `    
   <img 
     class="modal-card__img"
-    src="https://image.tmdb.org/t/p/original${poster_path}"
+    src="https://image.tmdb.org/t/p/w500${poster_path}"
+    srcset="https://image.tmdb.org/t/p/original${poster_path} 2x"
     width="375"
     alt="${original_title}"
     loading="lazy"
@@ -163,7 +164,8 @@ export const renderModal = (
       const markupPoster = `    
     <img 
     class="modal-card__img"
-    src="https://image.tmdb.org/t/p/original${poster_path}"
+    src="https://image.tmdb.org/t/p/w500${poster_path}"
+    srcset="https://image.tmdb.org/t/p/original${poster_path} 2x"
     width="375"
     alt="${original_title}"
     loading="lazy"

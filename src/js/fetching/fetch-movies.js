@@ -10,6 +10,7 @@ import {
 } from '../rendering/render-pagination';
 import { categoriesFilter } from '../utils/categories-filter.js';
 import { renderModal } from '../rendering/render-modal';
+import { startLoader } from '../utils/loader';
 // ------> CONSTANTS USED IN THE PROJECT:
 const API_KEY = '11f568ee70218bec08ad7368f7bb3250';
 const apiUrl = 'https://api.themoviedb.org/3/search/movie';
@@ -49,6 +50,7 @@ export const getPopularMovies = async (page = 1) => {
     const limitedTotalResultsForPopularSearch = 10000;
     data.total_pages = limitedTotalPagesForPopularSearch;
     data.total_results = limitedTotalResultsForPopularSearch;
+    startLoader();
     setPopularParameterToStorage(1);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
@@ -76,8 +78,8 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
         'Search result not successful. Enter the correct movie name and search again.';
       return;
     }
-    showLoader();
     //TODO function here!
+    startLoader();
     setPopularParameterToStorage(2);
     saveTotalPageToStorage(data);
     saveTotalResultsToStorage(data);
@@ -125,10 +127,10 @@ export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
   const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
   const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
 
+  startLoader();
   if (spreadArrayOfMoviesIds.length == 0) {
     return;
   }
-
   try {
     let response = await fetch(url);
     // handling with first response from server => Status: 404
@@ -173,7 +175,7 @@ export const getMoviesWithFilters = async (page = 1) => {
         'Search result not successful. Select less movies genres and search again.';
       return;
     }
-    showLoader();
+    startLoader();
     //TODO function here!
     setPopularParameterToStorage(false);
     saveTotalPageToStorage(data);

@@ -23,9 +23,12 @@ export const renderMovies = movies => {
             movie.id
           }">
           <div class="movie-card-poster">
-          <img class="movie-img" src="https://image.tmdb.org/t/p/original${
+          <img class="movie-img" src="https://image.tmdb.org/t/p/w500${
             movie.poster_path
-          }" width=280 alt="${movie.original_title}" loading="lazy" />
+          }"
+          srcset="https://image.tmdb.org/t/p/original${
+            movie.poster_path
+          } 2x" width=280 alt="${movie.original_title}" loading="lazy" />
           </div>
           <div class="movie-card-description">
               <p class="movie-title">${movie.original_title}</p>
@@ -57,9 +60,12 @@ export const renderMovies = movies => {
         if (movie.poster_path !== null) {
           return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster">
-          <img class="movie-img" src="https://image.tmdb.org/t/p/original${
+          <img class="movie-img" src="https://image.tmdb.org/t/p/w500${
             movie.poster_path
-          }" width=280 alt="${movie.original_title}" loading="lazy" />
+          }"
+          srcset="https://image.tmdb.org/t/p/original${
+            movie.poster_path
+          } 2x" width=280 alt="${movie.original_title}" loading="lazy" />
           </div>
           <div class="movie-card-description">
           <p class="movie-title">${movie.original_title}</p>
@@ -110,9 +116,12 @@ export const renderLibrary = movies => {
             movie.id
           }">
             <div class="movie-card-poster">
-            <img class="movie-img" src="https://image.tmdb.org/t/p/original${
+            <img class="movie-img" src="https://image.tmdb.org/t/p/w500${
               movie.poster_path
-            }" width=280 alt="${movie.original_title}" loading="lazy" />
+            }"
+            srcset="https://image.tmdb.org/t/p/original${
+              movie.poster_path
+            } 2x" width=280 alt="${movie.original_title}" loading="lazy" />
           </div>
             <div class="movie-card-description">
               <p class="movie-title">${movie.title}</p>
@@ -154,9 +163,12 @@ export const renderLibrary = movies => {
         if (movie.poster_path !== null) {
           return `<div class="movie-card" data-movie-id="${movie.id}">
           <div class="movie-card-poster">
-            <img class="movie-img" src="https://image.tmdb.org/t/p/original${
+            <img class="movie-img" src="https://image.tmdb.org/t/p/w500${
               movie.poster_path
-            }" width=280 alt="${movie.original_title}" loading="lazy" />
+            }"
+            srcset="https://image.tmdb.org/t/p/original${
+              movie.poster_path
+            } 2x" width=280 alt="${movie.original_title}" loading="lazy" />
             </div>
             <div class="movie-card-description">
               <p class="movie-title">${movie.title}</p>
