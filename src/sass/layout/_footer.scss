@@ -8,18 +8,15 @@
     display: flex;
     justify-content: center;
     padding: 30px 0;
-    
     @include tablet {
         height: 79px;
         font-size: 16px;
         line-height: 1;
     }
-    
     @include desktop {
         height: 77px;
     }
 }
-
 .footer__wrapper {
     display: flex;
     flex-direction: column;
@@ -27,23 +24,19 @@
     justify-content: center;
     gap: 10px;
     padding: 0;
-    
     @include tablet {
         flex-direction: row;
         gap: 4px;
     }
 }
-
 .footer__wrapper-link {
     text-decoration: underline;
     color: $button-background-color;
     cursor: pointer;
 }
-
 .footer__wrapper-animation {
     animation: heart 2000ms infinite 1000ms;
 }
-
 @keyframes heart {
     0% {
         transform: scale(1);

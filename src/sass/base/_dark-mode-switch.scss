@@ -20,30 +20,24 @@
   -moz-box-shadow: 8px 10px 15px 6px rgba(152, 152, 152, 0.9);
   box-shadow: 8px 10px 15px 6px rgba(152, 152, 152, 0.9);
 }
-
 .tui-pagination .tui-page-btn.dark-mode-pagination {
   color: $dark-mode-main-font-bright-color;
 }
-
 .dark-mode-switch {
   position: absolute;
   top: 185px;
   right: 16px;
   width: 30px;
   height: 30px;
-  // border-radius: 50%;
   cursor: pointer;
-
   @include tablet {
     top: 170px;
     right: 25px;
   }
-
   @include desktop {
     top: 125px;
     right: 25px;
   }
-
   &__sun-icon {
     display: flex;
     justify-content: center;
@@ -51,7 +45,6 @@
     fill: $main-background-color;
     transform: 250ms ease-in-out;
   }
-
   &__moon-icon {
     display: flex;
     justify-content: center;
@@ -71,7 +64,6 @@
     cursor: pointer;
     opacity: 0;
   }
-
   &:hover,
   &:focus {
     transform: scale(1.3);

@@ -1,7 +1,4 @@
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
-import { renderMovies } from './render-movies';
-import { showLoader } from '../utils/loader';
 
 import {
   getMoviesByArrayOfIds,
@@ -276,6 +273,3 @@ document.addEventListener('click', e => {
     }
   }
 });
-
-// saveWatchedToLocalStorage(watchedArray)
-// saveQueueToLocalStorage(queueArray)

@@ -59,6 +59,9 @@
 }
 
 .team__top-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   @include tablet {
     display: flex;
     align-items: flex-end;

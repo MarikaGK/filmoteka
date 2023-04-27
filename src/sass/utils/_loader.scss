@@ -5,18 +5,15 @@
   align-items: center;
   background-color: white;
   transition: opacity 1s, visibility 1s;
-
   @include tablet {
     padding: 100px 0;
   }
 }
-
 .loader-hidden {
   opacity: 0;
   visibility: hidden;
   display: none;
 }
-
 .loader {
   &-big {
     width: 100%;
@@ -82,7 +79,6 @@
     background-clip: content-box;
   }
 }
-
 @keyframes loading {
   from {
     transform: rotate(0turn);

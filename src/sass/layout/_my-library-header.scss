@@ -6,8 +6,7 @@
     background-position: center;
     height: 230px;
     padding-top: 40px;
-    font-family: $main-font, sans-serif;
-    
+    font-family: $main-font, sans-serif; 
     @include mobile-retina {
         background: rgba(0, 0, 0, 0.56);
         background: url('/src/images/background/background_watched_mobile@2x.png');
@@ -15,7 +14,6 @@
         background-position: center;
         background-repeat: no-repeat;
     }
-    
     @include tablet {
         background: rgba(0, 0, 0, 0.56);
         background: url('/src/images/background/background_watched_tablet.png');
@@ -24,14 +22,12 @@
         padding-top: 40px;
         height: 219px;
     }
-    
     @include tablet-retina {
         background: rgba(0, 0, 0, 0.56);
         background: url('/src/images/background/background_watched_tablet@2x.png');
         background-size: cover;
         background-position: center;
     }
-    
     @include desktop {
         background: rgba(0, 0, 0, 0.56);
         background: url('/src/images/background/background_watched_pc.png');
@@ -39,7 +35,6 @@
         background-position: center;
         height: 176px;
     }
-    
     @include desktop-retina {
         background: rgba(0, 0, 0, 0.56);
         background: url('/src/images/background/background_watched_pc@2x.png');

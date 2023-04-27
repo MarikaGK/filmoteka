@@ -105,7 +105,6 @@ export const renderLibrary = movies => {
         return `No info`;
       };
       if (IS_DARK_MODE_ON) {
-        // const genres = renderGenresToGallery(movie.genre_ids);
         if (movie.poster_path !== null) {
           return `<div class="movie-card dark-mode-box-shadow" data-movie-id="${
             movie.id

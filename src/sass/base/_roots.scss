@@ -2,12 +2,10 @@
   font-family: $main-font, sans-serif;
   font-weight: 500;
 }
-
 * {
   margin: 0;
   padding: 0;
 }
-
 body {
   background-color: $main-background-color;
   height: 100vh;
@@ -15,11 +13,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .uppercase {
   text-transform: uppercase;
 }
-
 .rating--orange {
   display: flex;
   width: 36px;
@@ -32,7 +28,6 @@ body {
   background-color: $button-background-color;
   border-radius: $border-radius;
 }
-
 .rating--grey {
   display: flex;
   width: 36px;
@@ -44,15 +39,12 @@ body {
   background-color: $footer-background-color;
   border-radius: $border-radius;
 }
-
 .link {
   display: inline-block;
   text-decoration: none;
 }
-
 .link--active {
   position: relative;
-
   &::after {
     content: ' ';
     width: 100%;
