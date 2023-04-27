@@ -91,7 +91,6 @@ const onHideModal = () => {
   if (localStorage.load('actualLibrary') === 'queue') {
     getMoviesByArrayOfIds(localStorage.load('queue'));
   }
-  renderPagination();
   resetMarkupModal();
   CLOSE_BTN.removeEventListener('click', closeOnXBtn);
   modalOverlay.removeEventListener('click', closeOnBackdropClick);
