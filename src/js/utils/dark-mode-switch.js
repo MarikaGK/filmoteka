@@ -32,6 +32,7 @@ export const setStateOfDarkModeToLocalStorage = IS_DARK_MODE_ON => {
   return;
 };
 
+const BODY_DOM = document.querySelector('body');
 const MAIN_DOM = document.querySelector('main');
 const FOOTER_DOM = document.querySelector('footer');
 const DARK_MODE_MOON_ICON_DOM = document.querySelector(
@@ -44,6 +45,7 @@ const MODAL_CARD_DOM = document.querySelector('.modal-card');
 
 export const setDarkOrNormalModeOnPageLoadFromLocalStorageState = () => {
   if (IS_DARK_MODE_ON === true) {
+    BODY_DOM.classList.add('dark-mode');
     MAIN_DOM.classList.add('dark-mode');
     FOOTER_DOM.classList.add('dark-mode');
     MODAL_CARD_DOM.classList.add('dark-mode-modal');
@@ -66,6 +68,7 @@ export const setDarkOrNormalModeOnPageLoadFromLocalStorageState = () => {
 
 export const switchThemeOnDarkModeSwitchEvent = event => {
   if (event.target.checked) {
+    BODY_DOM.classList.add('dark-mode');
     MAIN_DOM.classList.add('dark-mode');
     FOOTER_DOM.classList.add('dark-mode');
     MODAL_CARD_DOM.classList.add('dark-mode-modal');
@@ -80,6 +83,7 @@ export const switchThemeOnDarkModeSwitchEvent = event => {
     setStateOfDarkModeToLocalStorage(IS_DARK_MODE_ON);
     renderPagination();
   } else {
+    BODY_DOM.classList.remove('dark-mode');
     MAIN_DOM.classList.remove('dark-mode');
     FOOTER_DOM.classList.remove('dark-mode');
     MODAL_CARD_DOM.classList.remove('dark-mode-modal');

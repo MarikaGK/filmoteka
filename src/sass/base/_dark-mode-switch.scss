@@ -7,8 +7,8 @@
 .dark-mode-modal {
   background-color: $dark-mode-main-background-color;
   color: $dark-mode-main-font-bright-color;
+  stroke: $dark-mode-main-font-bright-color;
   border-block: 1px solid $dark-mode-border-bright-gray-color;
-  text-shadow: 0 0 2.5em $main-background-color;
   -webkit-box-shadow: 6px 5px 15px 6px rgba(152, 152, 152, 0.4);
   -moz-box-shadow: 6px 5px 15px 6px rgba(152, 152, 152, 0.4);
   box-shadow: 6px 5px 15px 6px rgba(152, 152, 152, 0.4);

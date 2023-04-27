@@ -20,15 +20,14 @@ import {
 import localStorage from './localStorage';
 import { getMoviesByArrayOfIds } from '../fetching/fetch-movies';
 import { renderPagination } from '../rendering/render-pagination';
-import { actualLibraryFromStore } from './store';
-// import localStorage from './localStorage';
-import { resetModal } from '../rendering/render-modal';
+import { getStateOfDarkModeFromLocalStorage } from './dark-mode-switch';
 
 const modalOverlay = document.querySelector('[data-modal]');
 const modal = document.querySelector('.modal-card');
 const watchedBtn = document.querySelector('.add-to-watched');
 const queueBtn = document.querySelector('.add-to-queue');
 const CLOSE_BTN = document.querySelector('.close-btn');
+const buttonList = document.querySelector('.modal-btns-div');
 // const modalCardMovieInfo = document.querySelector('.modal-card__movie-info');
 const modalCardPoster = document.querySelector('.modal-card__poster');
 const modalCardDescriptionWrapper = document.querySelector(
@@ -95,6 +94,18 @@ export const removeEventListenersFromBtns = () => {
 
 export const onShowModal = id => {
   if (localStorage.load('user')) {
+    if (buttonList.classList.contains('display-none-for-unsigned-user')) {
+      buttonList.classList.remove('display-none-for-unsigned-user');
+    }
+    if (getStateOfDarkModeFromLocalStorage()) {
+      if (!watchedBtn.classList.contains('button--transparent')) {
+        watchedBtn.classList.add('button--transparent');
+        queueBtn.classList.add('button--transparent');
+      }
+    } else if (watchedBtn.classList.contains('button--transparent')) {
+      watchedBtn.classList.remove('button--transparent');
+      queueBtn.classList.remove('button--transparent');
+    }
     ifWatchedBtnClassHasToBeToggled(Number(id));
     ifQueueBtnClassHasToBeToggled(Number(id));
     watchedBtn.addEventListener('click', changeWatched);

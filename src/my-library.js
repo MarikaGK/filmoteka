@@ -32,7 +32,6 @@ import {
 import localStorage from './js/utils/localStorage.js';
 import { setDarkOrNormalModeOnPageLoadFromLocalStorageState } from './js/utils/dark-mode-switch.js';
 import { addELToTeamModal } from './js/utils/modal-team.js';
-import { galleryHandler } from './js/utils/gallery-handler.js';
 import { saveIdArraysFromFirebaseToStore } from './js/firebase/firebase.js';
 const GALLERY_DOM = document.querySelector('.gallery');
 const WATCHED_BTN_DOM = document.querySelector('[data-watched-btn');

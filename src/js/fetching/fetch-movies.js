@@ -112,7 +112,6 @@ export const getMovieById = async movieId => {
     const movieTrailerUrl = getTrailerUrlFromObjectVideos(videosObject);
     // console.log(`movie trailer url` + movieTrailerUrl);
     //return object with movie's details
-    console.log(data);
     return renderModal(data, movieTrailerUrl);
   } catch (error) {
     console.error(error);
@@ -183,9 +182,9 @@ export const getMoviesWithFilters = async (page = 1) => {
   const genres = categoriesFilter();
   try {
     NO_HIT_INFO_DIV_DOM.textContent = '';
-    console.log(
-      `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
-    );
+    // console.log(
+    //   `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
+    // );
     const response = await fetch(
       `${searchWithFilters}?api_key=${API_KEY}&page=${page}&with_genres=${genres}`
     );

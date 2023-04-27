@@ -10,6 +10,10 @@
 
 body {
   background-color: $main-background-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .uppercase {
@@ -59,4 +63,3 @@ body {
     background-color: $underline-color;
   }
 }
-

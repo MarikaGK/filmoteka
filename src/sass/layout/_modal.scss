@@ -1,17 +1,18 @@
 .modal-overlay {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 100;
-    visibility: visible;
-    transition-property: opacity, visibility;
-    transition-duration: 250ms;
-    transition-timing-function: ease;
-    overflow-y: scroll;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: $modal-overlay-color;
+  z-index: 100;
+  visibility: visible;
+  transition-property: opacity, visibility;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+  overflow-y: scroll;
 
   @include desktop {
     overflow-y: hidden;
@@ -24,11 +25,16 @@
   height: fit-content;
   background-color: $main-background-color;
   margin: 20px;
+  stroke: $main-font-dark-color;
+  color: $main-font-dark-color;
   border-radius: $border-radius;
+  -webkit-box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
+  box-shadow: 6px 5px 15px 6px rgba(0, 0, 0, 0.35);
   transform: scale(1);
   will-change: transform;
   transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
+  
   @include tablet {
     position: relative;
     width: 704px;
@@ -43,7 +49,7 @@
 .modal__icon-close {
   padding: 0;
   margin: 0;
-  stroke: $main-font-dark-color;
+  stroke: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,6 +67,7 @@
   flex-direction: column;
   justify-content: left;
   font-family: $main-font;
+  color: inherit;
   @include tablet {
     flex-direction: row;
     gap: 68px;
@@ -97,24 +104,24 @@
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
-  box-shadow: 0 0 10px 0px rgba(0,0,0,0.75) inset;
--webkit-box-shadow: 0 0 10px 0px rgba(0,0,0,0.75) inset;
--moz-box-shadow: 0 0 10px 0px rgba(0,0,0,0.75) inset;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35) inset;
+  -webkit-box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35) inset;
+  -moz-box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35) inset;
 }
 .modal-card__movie-description-wrapper {
-
 }
 .modal-card__movie-description {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: $main-font;
+  color: inherit;
 }
 .modal-card__movie-title {
   padding: 20px 0;
   margin: 0;
   font-family: $main-font;
-  color: $main-font-dark-color;
+  color: inherit;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.17;
@@ -129,7 +136,7 @@
   padding-top: 20px;
   padding-bottom: 8px;
   font-family: $main-font;
-  color: $main-font-dark-color;
+  color: inherit;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -137,7 +144,7 @@
 .modal-card__about-description {
   padding-bottom: 20px;
   font-family: $main-font;
-  color: $main-font-dark-color;
+  color: inherit;
   font-size: 12px;
   line-height: 1.67;
   @include tablet {
@@ -166,7 +173,7 @@
   &:hover,
   &:focus {
     scale: 1.1;
-    color: $main-font-dark-color;
+    color: inherit;
     text-shadow: 4px 4px 5px rgba(140, 140, 140, 1);
   }
 }

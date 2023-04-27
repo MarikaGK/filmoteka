@@ -60,20 +60,20 @@ if (localStorage.load('user')) {
   // const user = localStorage.load('user');
   navFirst.classList.toggle('header__none');
   navSecond.classList.toggle('header__none');
-  modalBtnsDiv.classList.toggle('display-none-for-unsigned-user');
   signInBtn.removeEventListener('click', () => {
     // signOut(auth);
     signInWithPopup(auth, provider)
-      .then(result => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        localStorage.save('user', user);
-        // saveIdArraysFromFirebaseToStore();
-        navFirst.classList.toggle('header__none');
-        navSecond.classList.toggle('header__none');
-        saveIdArraysFromFirebaseToStore();
-        // console.log(user.uid)
+    .then(result => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      localStorage.save('user', user);
+      // saveIdArraysFromFirebaseToStore();
+      navFirst.classList.toggle('header__none');
+      navSecond.classList.toggle('header__none');
+      modalBtnsDiv.classList.remove('display-none-for-unsigned-user');
+      saveIdArraysFromFirebaseToStore();
+      // console.log(user.uid)
         // console.log(`To jest wysłana do lS przy logowaniu tablica watched ${getIdsArrayFromStore('watched')}`);
       })
       .catch(error => {
@@ -82,10 +82,10 @@ if (localStorage.load('user')) {
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
-  });
-}
-
-signInBtn.addEventListener('click', () => {
+    });
+  }
+  
+  signInBtn.addEventListener('click', () => {
   // signOut(auth);
   signInWithPopup(auth, provider)
     .then(result => {
@@ -95,6 +95,7 @@ signInBtn.addEventListener('click', () => {
       localStorage.save('user', user);
       navFirst.classList.toggle('header__none');
       navSecond.classList.toggle('header__none');
+      modalBtnsDiv.classList.add('display-none-for-unsigned-user');
       saveIdArraysFromFirebaseToStore();
     })
     .catch(error => {
