@@ -11,7 +11,7 @@ library by logging in using your Google account.
 
 Our Team
 
-<div><img src="/assets/siewymysli.png" widht="500" alt="sie wymysli logo" /></div>
+<div align="center"><img src="/assets/siewymysli.png" widht="500" alt="sie wymysli logo" /></div>
 
 - [MarikaGK](https://github.com/MarikaGK/)
 - [Jakub Lisowski](https://github.com/LisowskiJakub)
