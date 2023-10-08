@@ -1,9 +1,9 @@
 # Filmoteka
 
-Aplikacja webowa w VanillaJS, korzystająca z API themoviesdb. 
+Aplikacja webowa w VanillaJS, korzystająca z API themoviesdb.
 
-Poznawaj trendy, zarządzaj własnym zbiorem filmów, tworząc prywatną bibliotekę, logując się za
-pomocą konta Google.
+Poznawaj trendy, zarządzaj własnym zbiorem filmów, tworząc prywatną bibliotekę,
+logując się za pomocą konta Google.
 
 ---
 
@@ -76,12 +76,37 @@ zainstalowaniu npm i wszystkich zależności, użyć komendy `npm start`
 
 ## Zakres funkcjonalności
 
+- Projekt RWD i user friendly 
+
+![Desktop](./assets/Screenshot_134.png)
+  ![Tablet](./assets/Screenshot_135.png) ![Mobile](./assets/Screenshot_136.png)
+  
+  ![Paginacja](./assets/Screenshot_142.png)
+
 - Obserwuj trendy filmowe: oglądaj trailery, sprawdzaj oceny, opisy filmów,
-  gatunki
+  gatunki. Zapoznaj się ze szczegółami filmu, otwierając okno modalne po
+  kliknięciu na interesujący Cię tytuł lub plakat
+
+  ![Modal Desktop](./assets/Screenshot_138.png)
+  ![Modal Tablet](./assets/Screenshot_139.png)
+  ![Modal Mobile](./assets/Screenshot_140.png)
+
 - Wyszukuj tytuły, które Cię interesują, korzystając z funkcji `Search`
+
+  ![Searched](./assets/Screenshot_137.png)
+
 - Załóż konto w serwisie, korzystając ze swojego konta Google
+
+  ![Google account](./assets/Screenshot_141.png)
+  
 - Zarządaj prywatną kolekcją filmów, jednym kliknięciem dodając do biblioteki
-  filmy w dwóch kolejkach: `obejrzane` i `do obejrzenia`
+  filmy w dwóch kolejkach: `Watched` i `Queue`
+
+  ![Watched&Queue](./assets/Screenshot_145.png)
+
+- Korzystaj z wbudowanego trybu ligh/dark mode
+
+  ![Dark mode](./assets/Screenshot_143.png)
 
 #### Todo
 
