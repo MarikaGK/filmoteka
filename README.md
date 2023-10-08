@@ -1,4 +1,4 @@
-# Filmoteka
+# Filmoteka ![Filmoteka logo](./src/images/icons/favicon.ico)
 
 Web app based on VanillaJS, using themoviesdb API.
 
