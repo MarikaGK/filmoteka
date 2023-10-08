@@ -2,8 +2,8 @@
 
 Web app based on VanillaJS, using themoviesdb API.
 
-Discover trends, and manage your own movie collection by creating a private
-library by logging in using your Google account.
+Discover trends, and manage your own movies collection by creating a private
+library. Log in using your Google account.
 
 ---
 
