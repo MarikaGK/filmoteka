@@ -2,8 +2,8 @@
 
 Web app based on VanillaJS, using themoviesdb API.
 
-Stay on with trends, manage your own library of movies, login with your Google
-account
+Discover trends, and manage your own movie collection by creating a private library by logging in
+using your Google account.
 
 ---
 
@@ -25,76 +25,80 @@ Our Team
 
 ---
 
-## Cel projektu
+## Project goal
 
-Celem projektu było przećwiczenie pracy w kolaboracji, wzajemnym code review,
-praca z Parcel, Git i GitHub, a także korzystanie z zewnętrznego API,
-zarządzanie responsami oraz elementami DOM.
-
----
-
-## Spis treści
-
-- [Zastosowane technologie](#zastosowane-technologie)
-- [Instalacja](#instalacja)
-- [Uruchomienie](#uruchomienie)
-- [Zakres funkcjonalności](#zakres-funkcjonalności)
-- [Status projektu](#status-projektu)
-- [Źródła](#źródła)
+The aim of the project was to practice working in collaboration, mutual code review,
+working with Parcel, Git, and GitHub, as well as using external API,
+managing responses and DOM elements.
 
 ---
 
-## Zastosowane technologie
+## Contents
 
-- `Vanilla JavaScript` - praca w środowisku Parcel, z modułowym tworzeniem
-  komponentów, zarządzanie elementami DOM
-- `TUI paginacja wersja 3.4.1` - do renderowania zbioru popularnych filmów oraz
-  biblioteki użytkownika
-- `Fancybox od Fancyapps wersja 3.5.7` - okno modalne do wyświetlania trailera
-  filmu
-- `Firebase wersja 0.14.4` - wykorzystanie bazy danych oraz utoryzacji
-  użytkownika za pomocą konta Google
+- [Technologies used](#technologies-used)
+- [Installation](#Installation)
+- [Activation](#Activation)
+- [Scope of functionality](#Scope-of-functionality)
+- [Project status](#Project-status)
+- [Sources](#Sources)
 
 ---
 
-## Instalacja
+## Technologies used
 
-Aby zainstalować aplikację, upewnij się, że na komputerze zainstalowana jest
-wersja LTS Node.js [Ściągnij i zainstaluj](https://nodejs.org/en/)
-
-Następnie należy zainstalować wszystkie dependencies, znajdujące się w pliku
-package.json, wpisując w terminal komendę `npm install`
-
----
-
-## Uruchomienie
-
-Zgodnie z dokumentacją `package.json`, aby uruchomić projekt, należy po
-zainstalowaniu npm i wszystkich zależności, użyć komendy `npm start`
+- `Vanilla JavaScript` - work in the Parcel environment, with modular development
+  components, DOM element management
+- `TUI pagination version 3.4.1` - for rendering a collection of popular videos and
+  user library
+- `Fancybox by Fancyapps version 3.5.7` - modal window for displaying the trailer
+  movie
+- `Firebase version 0.14.4` - use of database and authorization
+  user using a Google account
 
 ---
 
-## Zakres funkcjonalności
+## Installation
 
-- Obserwuj trendy filmowe: oglądaj trailery, sprawdzaj oceny, opisy filmów,
-  gatunki
-- Wyszukuj tytuły, które Cię interesują, korzystając z funkcji `Search`
-- Załóż konto w serwisie, korzystając ze swojego konta Google
-- Zarządaj prywatną kolekcją filmów, jednym kliknięciem dodając do biblioteki
-  filmy w dwóch kolejkach: `obejrzane` i `do obejrzenia`
+To install the application, make sure it is installed on your computer
+LTS version of Node.js [Download and install](https://nodejs.org/en/)
+
+Then install all dependencies contained in the file
+package.json by entering the `npm install` command in the terminal
+
+---
+
+## Activation
+
+According to the `package.json` documentation, to run the project you need to po
+installing npm and all dependencies, use the `npm start` command
+
+---
+
+## Scope of functionality
+
+- Follow movie trends: watch trailers, check ratings, movie descriptions,
+  species
+- Search for titles that interest you using the `Search` function
+- Create an account on the website using your Google account
+- Manage your private video collection by adding to your library with one click
+  movies in two queues: 'watched' and 'to watch
 
 #### Todo
 
-- Dodanie funkcjonalności segregowania filmów po gatunkach
+- Added the functionality of sorting films by genre
 
-## Status projektu
+## Project status
 
-Projekt w wersji podstawowej został ukończony, aplikacja działa
+The basic version of the project has been completed and the application is working
 
-## Źródła
+## Sources
 
-Bazą projektu jest projekt wykonany na bootcampie GoIT JavaScript Full Stack
-Developer. Spełnia kryteria projektowe narzucone podczas kursu, uzupełniając je
-o wdrożone przez nasz Zespół dodatkowe funkcjonalności (okno modalne
-prezentujące trailer, autoryzacja za pomocą konta Google przez Firebase,
-sortowanie po gatunkach filmowych)
+The project is based on a project created at the GoIT JavaScript Full Stack bootcamp
+Developer. It meets the design criteria imposed during the course and complements them
+o additional functionalities implemented by our Team (modal window
+presenting the trailer, authorization using a Google account via Firebase,
+sorting by film genres)
+
+
+
+
