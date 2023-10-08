@@ -1,4 +1,4 @@
-# Filmoteka
+# Filmoteka ![Filmoteka logo](./src/images/icons/favicon.ico) [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-gray)](https://marikagk.github.io/filmoteka/)
 
 Aplikacja webowa w VanillaJS, korzystająca z API themoviesdb.
 
@@ -76,12 +76,12 @@ zainstalowaniu npm i wszystkich zależności, użyć komendy `npm start`
 
 ## Zakres funkcjonalności
 
-- Projekt RWD i user friendly 
+- Projekt RWD i user friendly
 
-![Desktop](./assets/Screenshot_134.png)
-  ![Tablet](./assets/Screenshot_135.png) ![Mobile](./assets/Screenshot_136.png)
-  
-  ![Paginacja](./assets/Screenshot_142.png)
+![Desktop](./assets/Screenshot_134.png) ![Tablet](./assets/Screenshot_135.png)
+![Mobile](./assets/Screenshot_136.png)
+
+![Paginacja](./assets/Screenshot_142.png)
 
 - Obserwuj trendy filmowe: oglądaj trailery, sprawdzaj oceny, opisy filmów,
   gatunki. Zapoznaj się ze szczegółami filmu, otwierając okno modalne po
@@ -98,7 +98,7 @@ zainstalowaniu npm i wszystkich zależności, użyć komendy `npm start`
 - Załóż konto w serwisie, korzystając ze swojego konta Google
 
   ![Google account](./assets/Screenshot_141.png)
-  
+
 - Zarządaj prywatną kolekcją filmów, jednym kliknięciem dodając do biblioteki
   filmy w dwóch kolejkach: `Watched` i `Queue`
 
