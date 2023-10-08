@@ -11,7 +11,7 @@ logując się za pomocą konta Google.
 
 Zespół projektowy
 
-<div align="center"><img src="/assets/siewymysli.png" widht="500" alt="sie wymysli logo" /></div>
+<div align="center"><img src="/assets/siewymysli.png" widht="300" alt="sie wymysli logo" /></div>
 
 - [MarikaGK](https://github.com/MarikaGK/)
 - [Jakub Lisowski](https://github.com/LisowskiJakub)
