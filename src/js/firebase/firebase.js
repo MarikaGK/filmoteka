@@ -105,7 +105,7 @@ signOutBtn.addEventListener('click', () => {
       localStorage.remove('queue');
       navFirst.classList.toggle('header__none');
       navSecond.classList.toggle('header__none');
-      window.location.href = 'https://marikagk.github.io/filmoteka-js-team-project/index';
+      window.location.href = 'https://marikagk.github.io/filmoteka-js-team-project/';
     })
     .catch(error => {
       console.log('Error Sign Out');
