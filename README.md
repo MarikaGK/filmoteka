@@ -11,7 +11,7 @@ library by logging in using your Google account.
 
 Our Team
 
-![Się wymyśli](./assets/siewymysli.png)
+<div><img src="/assets/siewymysli.png" widht="500" alt="sie wymysli logo" /></div>
 
 - [MarikaGK](https://github.com/MarikaGK/)
 - [Jakub Lisowski](https://github.com/LisowskiJakub)
