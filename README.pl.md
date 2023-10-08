@@ -22,6 +22,9 @@ Celem projektu było przećwiczenie pracy w kolaboracji, wzajemnym code review, 
 * [Zastosowane technologie](#zastosowane-technologie)
 * [Instalacja](#instalacja)
 * [Uruchomienie](#uruchomienie)
+* [Zakres funkcjonalności](#zakres-funkcjonalności)
+* [Status projektu](#status-projektu)
+* [Źródła](#źródła)
 
 ---
 
@@ -38,7 +41,7 @@ Celem projektu było przećwiczenie pracy w kolaboracji, wzajemnym code review, 
 
 Aby zainstalować aplikację, upewnij się, że na komputerze zainstalowana jest wersja LTS Node.js [Ściągnij i zainstaluj](https://nodejs.org/en/) 
 
-Następnie należy zainstalować wszystkie dependencies, znajdujące się w pliku package.json, wpisując w terminal komendę `### npm install`
+Następnie należy zainstalować wszystkie dependencies, znajdujące się w pliku package.json, wpisując w terminal komendę `npm install`
 
 ---
 
@@ -49,3 +52,20 @@ Zgodnie z dokumentacją `package.json`, aby uruchomić projekt, należy po zains
 ---
 
 ## Zakres funkcjonalności
+
+* Obserwuj trendy filmowe: oglądaj trailery, sprawdzaj oceny, opisy filmów, gatunki 
+* Wyszukuj tytuły, które Cię interesują, korzystając z funkcji `Search`
+* Załóż konto w serwisie, korzystając ze swojego konta Google
+* Zarządaj prywatną kolekcją filmów, jednym kliknięciem dodając do biblioteki filmy w dwóch kolejkach: `obejrzane` i `do obejrzenia`
+
+### Todo
+
+* Dodanie funkcjonalności segregowania filmów po gatunkach
+
+## Status projektu
+
+Projekt w wersji podstawowej został ukończony, aplikacja działa.
+
+## Źródła
+
+Bazą projektu jest projekt wykonany na bootcampie GoIT JavaScript Full Stack Developer. Spełnia kryteria projektowe narzucone podczas kursu, uzupełniając je o wdrożone przez nasz Zespół dodatkowe funkcjonalności (okno modalne prezentujące trailer, autoryzacja za pomocą konta Google przez Firebase, sortowanie po gatunkach filmowych)
