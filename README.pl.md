@@ -1,4 +1,4 @@
-# Filmoteka ! <img src="./src/images/icons/favicon.ico" alt="filmoteka logo" width="30"/> [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-gray)](https://marikagk.github.io/filmoteka/)
+# <img src="./src/images/icons/favicon.ico" alt="filmoteka logo" width="30"/> Filmoteka ! [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-gray)](https://marikagk.github.io/filmoteka/)
 
 Aplikacja webowa w VanillaJS, korzystająca z API themoviesdb.
 
