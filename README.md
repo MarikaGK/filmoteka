@@ -69,8 +69,7 @@ Then install all dependencies contained in the file package.json by entering the
 
 ## Activation
 
-According to the `package.json` documentation, to run the project you need to po
-installing npm and all dependencies, use the `npm start` command
+According to the `package.json` documentation, to run the project you need to use the `npm start` command
 
 ---
 
