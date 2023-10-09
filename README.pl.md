@@ -122,4 +122,4 @@ Bazą projektu jest projekt wykonany na bootcampie GoIT JavaScript Full Stack
 Developer. Spełnia kryteria projektowe narzucone podczas kursu, uzupełniając je
 o wdrożone przez nasz Zespół dodatkowe funkcjonalności (okno modalne
 prezentujące trailer, autoryzacja za pomocą konta Google przez Firebase,
-sortowanie po gatunkach filmowych)
+sortowanie po gatunkach filmowych oraz zmiana trybu jasny/ciemny)
