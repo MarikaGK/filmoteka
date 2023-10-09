@@ -96,8 +96,7 @@ According to the `package.json` documentation, to run the project you need to us
 
   ![Google account](./assets/Screenshot_141.png)
 
-- Manage your private video collection by adding to your library with one click
-  movies in two queues: `Watched` and `Queue`
+- Manage your private video collection by one click add movies in two queues: `Watched` and `Queue`
 
   ![Watched&Queue](./assets/Screenshot_145.png)
 
@@ -118,6 +117,6 @@ working
 
 The project is based on a project created at the GoIT JavaScript Full Stack
 bootcamp Developer. It meets the design criteria imposed during the course and
-complements them o additional functionalities implemented by our Team (modal
+complements them with additional functionalities implemented by our Team (modal
 window presenting the trailer, authorization using a Google account via
-Firebase, sorting by film genres)
+Firebase, sorting by film genres or light/dark mode switcher)
