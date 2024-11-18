@@ -90,6 +90,7 @@ export const getMoviesByTitle = async (movieTitle, page = 1) => {
     console.error(error);
   }
 };
+
 //  4. --- Function fetch - get movie (details object) by movie ID ---
 export const getMovieById = async movieId => {
   try {
@@ -100,6 +101,16 @@ export const getMovieById = async movieId => {
       throw new Error(response.status);
     }
     const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//  5. --- Function fetch - get movie (details object) with videos by movie ID ---
+export const getMovieDetailsWithVideosById = async movieId => {
+  try {
+    const data = await getMovieById(movieId);
     const videosObject = data.videos.results;
     const movieTrailerUrl = getTrailerUrlFromObjectVideos(videosObject);
     return renderModal(data, movieTrailerUrl);
@@ -108,7 +119,7 @@ export const getMovieById = async movieId => {
   }
 };
 
-//  5. --- Function get trailer's url from returned object in function getMovieById (from sub-object Videos) ---
+//  6. --- Function get trailer's url from returned object in function getMovieById (from sub-object Videos) ---
 const getTrailerUrlFromObjectVideos = videosObject => {
   const findIndexOfKeyTrailer = videosObject.findIndex(
     youtubeKey => youtubeKey.type === 'Trailer'
@@ -122,42 +133,25 @@ const getTrailerUrlFromObjectVideos = videosObject => {
   }
 };
 
-//  6. --- Function fetch - get array of movieIds  ---
-export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
-  const spreadArrayOfMoviesIds = [...arrayOfMoviesIds];
-  const url = `${searchByMovieIdUrl}?api_key=${API_KEY}&append_to_response=${spreadArrayOfMoviesIds}`;
+//  7. --- Function fetch - get array of movieIds  ---
 
-  startLoader();
-  if (spreadArrayOfMoviesIds.length == 0) {
-    return;
-  }
+export const getMoviesByArrayOfIds = async arrayOfMoviesIds => {
+  const movieIds = [...arrayOfMoviesIds];
+  let movies = [];
+
   try {
-    let response = await fetch(url);
-    // handling with first response from server => Status: 404
-    if (response.status === 404) {
-      const data = await response.json();
-      const filteredData = Object.keys(data)
-        .filter(key => Number.isInteger(Number(key)))
-        .reduce((acc, key) => {
-          acc[key] = data[key];
-          return acc;
-        }, {});
-      const films = [];
-      const keys = Object.keys(filteredData);
-      for (let i = 0; i < keys.length; ++i) {
-        const key = Number(keys[i]);
-        const newObj = structuredClone(filteredData[key]);
-        newObj.id = key;
-        films.push(newObj);
-      }
-      renderLibrary(films);
+    for (const id of movieIds) {
+      const response = await getMovieById(id);
+      movies.push(response);
     }
+    renderLibrary(movies);
+    return movies;
   } catch (error) {
     console.error(error);
   }
 };
 
-//  7. --- Function fetch - get movies with filters  ---
+//  8. --- Function fetch - get movies with filters  ---
 export const getMoviesWithFilters = async (page = 1) => {
   const genres = categoriesFilter();
   try {

@@ -1,6 +1,7 @@
 import {
   // getMovieGenresAndSaveToStore,
   getMovieById,
+  getMovieDetailsWithVideosById,
   getMoviesByArrayOfIds,
 } from './js/fetching/fetch-movies.js';
 //toggle modal fn
@@ -45,7 +46,7 @@ renderPagination();
 GALLERY_DOM.addEventListener('click', evt => {
   const singleMovieCard = evt.target.parentElement.parentElement;
   if (!singleMovieCard.classList.contains('movie-card')) return;
-  getMovieById(singleMovieCard.dataset.movieId);
+  getMovieDetailsWithVideosById(singleMovieCard.dataset.movieId);
   onShowModal(singleMovieCard.dataset.movieId);
   //zmiana klasy modala
   toggleModal();
